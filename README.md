@@ -53,3 +53,8 @@
 ### **Επισκόπηση διαγράμματος περιπτώσεων χρήσης**
 
 ![Εναλλακτικό κείμενο](/docs/markdown/uml/requirements/use_case_R2.png)
+
+## Authors
+* [zaaachos](https://github.com/zaaachos)
+* [ChristoforosTrakas](https://github.com/ChristoforosTrakas)
+
