@@ -1,0 +1,83 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: AddParticipationView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Team.AddParticipation</a> ]
+</div>
+
+<h1>Coverage Summary for Class: AddParticipationView (com.example.managetournamentapp.view.Team.AddParticipation)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">AddParticipationView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Team.AddParticipation;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import com.example.managetournamentapp.domain.Tournament;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;public interface AddParticipationView {
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;    /**
+<i>10</i>&nbsp;     * @param layoutId the layout of the popup
+<i>11</i>&nbsp;     * @param msg the message of the popup
+<i>12</i>&nbsp;     * @param btn1 the first button
+<i>13</i>&nbsp;     * @param btn2 the second button
+<i>14</i>&nbsp;     * @param flag true if the second version of the popup will be shown
+<i>15</i>&nbsp;     * @return the AlertDialog that will be shown
+<i>16</i>&nbsp;     */
+<i>17</i>&nbsp;    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, boolean flag);
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * show the page of the tournament
+<i>21</i>&nbsp;     * @param tournament the tournament
+<i>22</i>&nbsp;     */
+<i>23</i>&nbsp;    void startTournamentPage(Tournament tournament);
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    /**
+<i>26</i>&nbsp;     * show the page of the player
+<i>27</i>&nbsp;     * @param userName the player&#39;s username
+<i>28</i>&nbsp;     */
+<i>29</i>&nbsp;    void startPlayerPage(String userName);
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    /**
+<i>32</i>&nbsp;     * what happens when the homepage button is pressed
+<i>33</i>&nbsp;     * @param string is the name of a player. or the title of an organizer
+<i>34</i>&nbsp;     */
+<i>35</i>&nbsp;    void backToHomePage(String string);
+<i>36</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

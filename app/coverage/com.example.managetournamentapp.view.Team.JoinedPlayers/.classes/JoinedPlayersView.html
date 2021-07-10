@@ -1,0 +1,132 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: JoinedPlayersView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Team.JoinedPlayers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: JoinedPlayersView (com.example.managetournamentapp.view.Team.JoinedPlayers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">JoinedPlayersView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Team.JoinedPlayers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;public interface JoinedPlayersView {
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;    /**
+<i>9</i>&nbsp;     * show the invite button only to the captain
+<i>10</i>&nbsp;     * @param flag true if the logged in user is the captain of the team
+<i>11</i>&nbsp;     * @param flag2 true if the player has joined the team
+<i>12</i>&nbsp;     */
+<i>13</i>&nbsp;    void changesOfAccess(boolean flag, boolean flag2);
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    /**
+<i>16</i>&nbsp;     * @param layoutId the layout of the popup
+<i>17</i>&nbsp;     * @param msg the message of the popup
+<i>18</i>&nbsp;     * @param btn1 the first button
+<i>19</i>&nbsp;     * @param btn2 the second button
+<i>20</i>&nbsp;     * @return the AlertDialog that will be shown
+<i>21</i>&nbsp;     */
+<i>22</i>&nbsp;    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2);
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    /**
+<i>25</i>&nbsp;     * show the info page of the player
+<i>26</i>&nbsp;     */
+<i>27</i>&nbsp;    void startPlayerInfo();
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    /**
+<i>30</i>&nbsp;     * show the page where invites are sent
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    void startInvitePlayerPage();
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * show the possible actions popup
+<i>36</i>&nbsp;     * @param layout the layout of the popup
+<i>37</i>&nbsp;     * @param msg the message of the popup
+<i>38</i>&nbsp;     * @param btn1 the first button
+<i>39</i>&nbsp;     * @param btn2 the second button
+<i>40</i>&nbsp;     */
+<i>41</i>&nbsp;    void displayPopUpAction(int layout, String msg, int btn1, int btn2);
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    /**
+<i>44</i>&nbsp;     * show the deletion popup
+<i>45</i>&nbsp;     * @param layout the layout of the popup
+<i>46</i>&nbsp;     * @param msg the message of the popup
+<i>47</i>&nbsp;     * @param btn1 the first button
+<i>48</i>&nbsp;     * @param btn2 the second button
+<i>49</i>&nbsp;     */
+<i>50</i>&nbsp;    void displayPopUpDeletion(int layout, String msg, int btn1, int btn2);
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    /**
+<i>53</i>&nbsp;     * close the possible actions popup
+<i>54</i>&nbsp;     */
+<i>55</i>&nbsp;    void dismissPopUpAction();
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    /**
+<i>58</i>&nbsp;     * close the deletion popup
+<i>59</i>&nbsp;     */
+<i>60</i>&nbsp;    void dismissPopUpDeletion();
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    /**
+<i>63</i>&nbsp;     * reset the popups of this activity
+<i>64</i>&nbsp;     */
+<i>65</i>&nbsp;    void resetPopUps();
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * refresh the current activity
+<i>69</i>&nbsp;     */
+<i>70</i>&nbsp;    void restartActivity();
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;    /**
+<i>73</i>&nbsp;     * what happens when the homepage button is pressed
+<i>74</i>&nbsp;     * @param noLogin boolean parameter, if true the user has not logged in
+<i>75</i>&nbsp;     * @param isPlayer boolean parameter,if true the user is a player
+<i>76</i>&nbsp;     * @param name name of the player or title of the organizer
+<i>77</i>&nbsp;     */
+<i>78</i>&nbsp;    void backToHomePage(boolean noLogin, boolean isPlayer, String name);
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    /**
+<i>81</i>&nbsp;     * show a toast on the screen
+<i>82</i>&nbsp;     * @param txt the message of the toast
+<i>83</i>&nbsp;     */
+<i>84</i>&nbsp;    void showToast(String txt);
+<i>85</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

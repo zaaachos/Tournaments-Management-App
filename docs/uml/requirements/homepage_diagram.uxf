@@ -1,0 +1,51 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>420</x><y>90</y><w>460</w><h>250</h></coordinates><panel_attributes>HomePageActivity
+--
+_-first : boolean_
+- browseBtn : Button
+-connectBtn : Button
+--
+# onCreate(savedInstanceState : Bundle) : void
++ showPopUp(layout : int , btn1 : int, btn2 : int firstPopUp : boolean) : void
++ connectAction() : void
++ loginAction() : void
++ registerAction() : void
++ organizerRegisterAction() : void
++ playerRegisterAction() : void
++ browseAction() : void
++ onBackPressed() : void
+ 
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>430</y><w>280</w><h>180</h></coordinates><panel_attributes>HomePagePresenter
+--
++ HomePagePresenter()
++ onConnectAction() : void
++ onBrowseAction() : void
++ onLogInAction() : void
++ onOrganizerRegisterAction() : void
++ onPlayerRegisterAction() : void
++ setView(view : HomePageView ) : void
++ clearView() : void
+ 
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>690</y><w>280</w><h>100</h></coordinates><panel_attributes>HomePageViewModel
+--
++ HomePageViewModel()
++ getPresenter() : HomePagePresenter
+# onCleared() : void
+ 
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>80</x><y>40</y><w>280</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>470</y><w>280</w><h>130</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; HomePageView
+--
+playerRegisterAction() : void
+organizerRegisterAction() : void
+registerAction() : void
+loginAction() : void
+browseAction() : void
+connectAction() : void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>780</x><y>710</y><w>190</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>330</y><w>210</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>190;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>70</y><w>90</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;80</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>600</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;10;40;90</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>330</y><w>30</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>720</y><w>130</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>500</y><w>180</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>160;20;10;20</additional_attributes></element></diagram>

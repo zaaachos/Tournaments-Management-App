@@ -1,0 +1,94 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: InvitationDAO</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.dao</a> ]
+</div>
+
+<h1>Coverage Summary for Class: InvitationDAO (com.example.managetournamentapp.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">InvitationDAO</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.dao;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.domain.Invitation;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.time.LocalDate;
+<i>6</i>&nbsp;import java.util.ArrayList;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;/**
+<i>9</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>10</i>&nbsp; * Athens University of Economics and Business
+<i>11</i>&nbsp; * 2020-2021
+<i>12</i>&nbsp; */
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;public interface InvitationDAO {
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    /**
+<i>17</i>&nbsp;     * Saves a specific invitation.
+<i>18</i>&nbsp;     * @param entity Invitation to be saved.
+<i>19</i>&nbsp;     */
+<i>20</i>&nbsp;    void save(Invitation entity);
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    /**
+<i>23</i>&nbsp;     * Finds an invitations specified by
+<i>24</i>&nbsp;     * @param teamName the team Name
+<i>25</i>&nbsp;     * @param dateSent and the date it was sent
+<i>26</i>&nbsp;     */
+<i>27</i>&nbsp;    void find(String teamName, LocalDate dateSent);
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    /**
+<i>30</i>&nbsp;     * Finds all invitations.
+<i>31</i>&nbsp;     * @return All invitations.
+<i>32</i>&nbsp;     */
+<i>33</i>&nbsp;    ArrayList&lt;Invitation&gt; findAll();
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * Deletes a specific invitation.
+<i>37</i>&nbsp;     * @param entity Invitation to be deleted
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    void delete(Invitation entity);
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /**
+<i>42</i>&nbsp;     * Deletes all invitations.
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;    void deleteAll();
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

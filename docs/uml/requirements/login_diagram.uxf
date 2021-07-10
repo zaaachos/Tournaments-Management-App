@@ -1,0 +1,45 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>790</x><y>300</y><w>380</w><h>120</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; LoginView
+--
+startOrganizerPage( title : String ) :  void
+startPlayerPage( username : String) : void
+showPopUp( view : LoginView, msg : String) :void
+getPassword() : String
+getUsername() : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>280</y><w>470</w><h>250</h></coordinates><panel_attributes>LoginActivity
+--
+~ loginBtn : ImageButton
+_- ORGANIZER_TITLE_EXTRA: String_
+_- PLAYER_USERNAME_EXTRA: String_
+_- PLAYER_USERNAME_EXTRA: String_
+
+--
+# onCreate(savedInstanceState : Bundle) : void
++ getUsername() : String
++ getPassword() : String
++ showPopUp ( view : LoginView, msg : String) : void
++ onClick( v : View ) : void
++ startPlayerPage( username : String) : void
++ startOrganizerPage( title : String) : void
++ onBackPressed() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>230</x><y>700</y><w>330</w><h>100</h></coordinates><panel_attributes>LoginViewModel
+--
++ LoginViewModel()
++ getPresenter() : LoginPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>600</y><w>480</w><h>260</h></coordinates><panel_attributes>LoginPresenter
+--
+- loggedInUser : LoggedInUser
+- view : LoginView
+--
++ LoginPresenter()
++ checkInDAO( username: String , password : String) : void
++ setView( view : LoginView ) : void
++ clearView() : void
++ setPlayerDAO( playerDAO : PlayerDAO) : void
++ setOrganizerDAO( organizerDAO : OrganizerDAO) : void
++ setLoggedInUser( loggedInUser : LoggedInUser ) : void
++ getLoggedInUser() : LoggedInUser
++ validateCredentials() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>180</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>210</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>718</y><w>230</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>518</y><w>70</w><h>200</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;180;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>600</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>628</y><w>160</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;122</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>378</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>150;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>408</y><w>70</w><h>210</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;190</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1240</x><y>500</y><w>150</w><h>50</h></coordinates><panel_attributes>OrganizertDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>538</y><w>70</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;10;10;62</additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>618</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>120;20;10;22</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>610</y><w>150</w><h>50</h></coordinates><panel_attributes>PlayerDAO</panel_attributes><additional_attributes></additional_attributes></element></diagram>

@@ -1,0 +1,48 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>830</x><y>230</y><w>340</w><h>160</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; TeamPageView
+--
++ startTeamInfo() : void
++ startTeamPlayers() : void
++ startTeamParticipations() : void
++ changesOfAccess() : void
++ backToHomePage(flag: voolean, name : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>150</y><w>470</w><h>340</h></coordinates><panel_attributes>TeamPageActivity
+--
+~ btnHome : ImageButton
+~ btnTeamParticipations : Button
+~ btnTeamInfo : Button
+~ btnTeamPlayers : Button
+~ teamName : String
+~ txtTeamName : TextView
+- changeOfAccess : boolean
+_- PLAYER_USERNAME_EXTRA: String_
+_- ORGANIZER_TITLE_EXTRA: String_
+_- TEAM_NAME_EXTRA: String_
+--
+# onCreate(Bundle savedInstanceState) : void
++ onClick(v : View) : void
++ startTeamInfo() : void
++ startTeamPlayers() : void
++ startTeamParticipations() : void
++ changesOfAccess() : void
++ backToHomePage(isPlayer : voolean, name : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>670</y><w>330</w><h>100</h></coordinates><panel_attributes>TeamPageViewModel
+--
++ TeamPageViewModel()
++ getPresenter() : TeamPagePresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>570</y><w>420</w><h>210</h></coordinates><panel_attributes>TeamPagePresenter
+--
+- team : Team
+--
++ TeamPagePresenter()
++ findTeamInfo(teamName: String) : void
++ findAccess() : void
++ setLoggedInUser( loggedInUser : LoggedInUser ) :void
++ setTeamDAO(teamDAO : TeamDAO) : void
++ onHomePage() : void
++ setView(view : TeamPageView) : void
++ clearView() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>30</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>688</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>280;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>478</y><w>70</w><h>210</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;190;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>590</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>618</y><w>60</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;40;52</additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>288</y><w>260</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>240;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>378</y><w>70</w><h>210</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;190</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1310</x><y>680</y><w>150</w><h>40</h></coordinates><panel_attributes>TeamDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1170</x><y>678</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>140;20;10;22</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1310</x><y>530</y><w>150</w><h>40</h></coordinates><panel_attributes>LoggedInUser</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1160</x><y>548</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>150;20;10;22</additional_attributes></element></diagram>

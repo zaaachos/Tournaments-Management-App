@@ -1,0 +1,203 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: InvitationListFragment</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Player.ReceivedInvites.fragment</a> ]
+</div>
+
+<h1>Coverage Summary for Class: InvitationListFragment (com.example.managetournamentapp.view.Player.ReceivedInvites.fragment)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">InvitationListFragment</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 25)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Player.ReceivedInvites.fragment;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.content.Context;
+<i>4</i>&nbsp;import android.os.Bundle;
+<i>5</i>&nbsp;import android.view.LayoutInflater;
+<i>6</i>&nbsp;import android.view.View;
+<i>7</i>&nbsp;import android.view.ViewGroup;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import androidx.fragment.app.Fragment;
+<i>10</i>&nbsp;import androidx.recyclerview.widget.GridLayoutManager;
+<i>11</i>&nbsp;import androidx.recyclerview.widget.LinearLayoutManager;
+<i>12</i>&nbsp;import androidx.recyclerview.widget.RecyclerView;
+<i>13</i>&nbsp;import com.example.managetournamentapp.R;
+<i>14</i>&nbsp;import com.example.managetournamentapp.domain.Invitation;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;import java.util.ArrayList;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;/**
+<i>19</i>&nbsp; * This fragment represents a list of invitations
+<i>20</i>&nbsp; * Every activity that contains this fragment must
+<i>21</i>&nbsp; * implement the {@link OnListFragmentInteractionListener} interface
+<i>22</i>&nbsp; */
+<i>23</i>&nbsp;public class InvitationListFragment extends Fragment {
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    private static final String ARG_COLUMN_COUNT = &quot;column-count&quot;;
+<b class="nc"><i>26</i>&nbsp;    private int mColumnCount = 1;</b>
+<i>27</i>&nbsp;    private OnListFragmentInteractionListener mListener;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    /**
+<i>30</i>&nbsp;     * Default constructor
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    public InvitationListFragment() {  }
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    @SuppressWarnings(&quot;unused&quot;)
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     *
+<i>37</i>&nbsp;     * @param columnCount  the number of columns in the list
+<i>38</i>&nbsp;     * @return the fragment
+<i>39</i>&nbsp;     */
+<i>40</i>&nbsp;    public static InvitationListFragment newInstance(int columnCount) {
+<b class="nc"><i>41</i>&nbsp;        InvitationListFragment fragment = new InvitationListFragment();</b>
+<b class="nc"><i>42</i>&nbsp;        Bundle args = new Bundle();</b>
+<b class="nc"><i>43</i>&nbsp;        args.putInt(ARG_COLUMN_COUNT, columnCount);</b>
+<b class="nc"><i>44</i>&nbsp;        fragment.setArguments(args);</b>
+<b class="nc"><i>45</i>&nbsp;        return fragment;</b>
+<i>46</i>&nbsp;    }
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    /**
+<i>49</i>&nbsp;     * Creates the layout and initializes the fragment
+<i>50</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>51</i>&nbsp;     */
+<i>52</i>&nbsp;    @Override
+<i>53</i>&nbsp;    public void onCreate(Bundle savedInstanceState) {
+<b class="nc"><i>54</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>55</i>&nbsp;        if (getArguments() != null) {</b>
+<b class="nc"><i>56</i>&nbsp;            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);</b>
+<i>57</i>&nbsp;        }
+<i>58</i>&nbsp;    }
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    /**
+<i>61</i>&nbsp;     * @param inflater
+<i>62</i>&nbsp;     * @param container
+<i>63</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>64</i>&nbsp;     * @return
+<i>65</i>&nbsp;     */
+<i>66</i>&nbsp;    @Override
+<i>67</i>&nbsp;    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+<b class="nc"><i>68</i>&nbsp;        View view = inflater.inflate(R.layout.fragment_invites_list, container, false);</b>
+<i>69</i>&nbsp;
+<b class="nc"><i>70</i>&nbsp;        ArrayList&lt;Invitation&gt; invitationList = mListener.getInvitationList();</b>
+<b class="nc"><i>71</i>&nbsp;        if (view instanceof RecyclerView) {</b>
+<b class="nc"><i>72</i>&nbsp;            Context context = view.getContext();</b>
+<b class="nc"><i>73</i>&nbsp;            RecyclerView recyclerView = (RecyclerView) view;</b>
+<b class="nc"><i>74</i>&nbsp;            if (mColumnCount &lt;= 1) {</b>
+<b class="nc"><i>75</i>&nbsp;                recyclerView.setLayoutManager(new LinearLayoutManager(context));</b>
+<i>76</i>&nbsp;            } else {
+<b class="nc"><i>77</i>&nbsp;                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));</b>
+<i>78</i>&nbsp;            }
+<b class="nc"><i>79</i>&nbsp;            recyclerView.setAdapter(new InvitationListRecyclerViewAdapter(new ArrayList&lt;Invitation&gt;(invitationList), mListener));</b>
+<i>80</i>&nbsp;        }
+<b class="nc"><i>81</i>&nbsp;        return view;</b>
+<i>82</i>&nbsp;    }
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    /**
+<i>85</i>&nbsp;     * When the fragment attaches on an activity
+<i>86</i>&nbsp;     * @param context the context of the activity
+<i>87</i>&nbsp;     */
+<i>88</i>&nbsp;    @Override
+<i>89</i>&nbsp;    public void onAttach(Context context) {
+<b class="nc"><i>90</i>&nbsp;        super.onAttach(context);</b>
+<b class="nc"><i>91</i>&nbsp;        if (context instanceof OnListFragmentInteractionListener) {</b>
+<b class="nc"><i>92</i>&nbsp;            mListener = (OnListFragmentInteractionListener) context;</b>
+<i>93</i>&nbsp;        } else {
+<b class="nc"><i>94</i>&nbsp;            throw new RuntimeException(context.toString()</b>
+<i>95</i>&nbsp;                    + &quot; must implement OnListFragmentInteractionListener&quot;);
+<i>96</i>&nbsp;        }
+<i>97</i>&nbsp;    }
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    /**
+<i>100</i>&nbsp;     * When the fragment detaches from the activity
+<i>101</i>&nbsp;     */
+<i>102</i>&nbsp;    @Override
+<i>103</i>&nbsp;    public void onDetach() {
+<b class="nc"><i>104</i>&nbsp;        super.onDetach();</b>
+<b class="nc"><i>105</i>&nbsp;        mListener = null;</b>
+<i>106</i>&nbsp;    }
+<i>107</i>&nbsp;
+<i>108</i>&nbsp;    /**
+<i>109</i>&nbsp;     * Every activity that contains this fragment must implement this interface, so
+<i>110</i>&nbsp;     * that the activity or the other fragments, can interact with the fragment.
+<i>111</i>&nbsp;     */
+<i>112</i>&nbsp;    public interface OnListFragmentInteractionListener {
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;        void onListFragmentInteraction(Invitation item);
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;        ArrayList&lt;Invitation&gt; getInvitationList();
+<i>117</i>&nbsp;    }
+<i>118</i>&nbsp;
+<i>119</i>&nbsp;
+<i>120</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

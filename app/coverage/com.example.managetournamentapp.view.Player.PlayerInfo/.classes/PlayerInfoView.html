@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PlayerInfoView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Player.PlayerInfo</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PlayerInfoView (com.example.managetournamentapp.view.Player.PlayerInfo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">PlayerInfoView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Player.PlayerInfo;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;public interface PlayerInfoView {
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;    /**
+<i>8</i>&nbsp;     * show the possible actions popup
+<i>9</i>&nbsp;     * @param layoutId the layout of the popup
+<i>10</i>&nbsp;     * @param msg the message of the popup
+<i>11</i>&nbsp;     * @param btn1 the first button
+<i>12</i>&nbsp;     * @param btn2 the second button
+<i>13</i>&nbsp;     */
+<i>14</i>&nbsp;    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2);
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    /**
+<i>17</i>&nbsp;     * set the contents in the username text field
+<i>18</i>&nbsp;     * @param username the new username
+<i>19</i>&nbsp;     */
+<i>20</i>&nbsp;    void setUsername(String username);
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    /**
+<i>23</i>&nbsp;     * set the contents in the password text field
+<i>24</i>&nbsp;     * @param password the new password
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    void setPassword(String password);
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * set the contents in the name text field
+<i>30</i>&nbsp;     * @param name the new name
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    void setName(String name);
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * set the contents in the surname text field
+<i>36</i>&nbsp;     * @param surname the new surname
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    void setSurname(String surname);
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /**
+<i>41</i>&nbsp;     * set the contents in the phone number text field
+<i>42</i>&nbsp;     * @param phone the new phone number
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;    void setPhone(String phone);
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    /**
+<i>47</i>&nbsp;     * set the contents in the email text field
+<i>48</i>&nbsp;     * @param email the new email
+<i>49</i>&nbsp;     */
+<i>50</i>&nbsp;    void setEmail(String email);
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    /**
+<i>53</i>&nbsp;     * set the contents in the location text field
+<i>54</i>&nbsp;     * @param location the new location
+<i>55</i>&nbsp;     */
+<i>56</i>&nbsp;    void setLocation(String location);
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    /**
+<i>59</i>&nbsp;     * set the contents in the birth date text field
+<i>60</i>&nbsp;     * @param date the new birth date
+<i>61</i>&nbsp;     */
+<i>62</i>&nbsp;    void setBirthDate(String date);
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    /**
+<i>65</i>&nbsp;     * when the player decides to edit his account
+<i>66</i>&nbsp;     * the register player activity is started
+<i>67</i>&nbsp;     */
+<i>68</i>&nbsp;    void startEditPlayer();
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    /**
+<i>71</i>&nbsp;     * when the player decides to delete his account
+<i>72</i>&nbsp;     */
+<i>73</i>&nbsp;    void startDeletePlayer();
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;    /**
+<i>76</i>&nbsp;     * show a toast when the player can&#39;t delete the account
+<i>77</i>&nbsp;     */
+<i>78</i>&nbsp;    void showCantDelete();
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    /**
+<i>81</i>&nbsp;     * the account can be edited or deleted only by the player
+<i>82</i>&nbsp;     * who owns it
+<i>83</i>&nbsp;     */
+<i>84</i>&nbsp;    void changesOfAccess();
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;    /**
+<i>87</i>&nbsp;     * show the deletion popup
+<i>88</i>&nbsp;     * @param layout the layout of the popup
+<i>89</i>&nbsp;     * @param msg the message of the popup
+<i>90</i>&nbsp;     * @param btn1 the first button
+<i>91</i>&nbsp;     * @param btn2 the second button
+<i>92</i>&nbsp;     */
+<i>93</i>&nbsp;    void displayPopUp(int layout, String msg, int btn1, int btn2);
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;    /**
+<i>96</i>&nbsp;     * close the deletion popup
+<i>97</i>&nbsp;     */
+<i>98</i>&nbsp;    void dismissPopUp();
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

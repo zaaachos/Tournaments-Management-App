@@ -1,0 +1,138 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: OrganizerInfoView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Organizer.OrganizerInfo</a> ]
+</div>
+
+<h1>Coverage Summary for Class: OrganizerInfoView (com.example.managetournamentapp.view.Organizer.OrganizerInfo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">OrganizerInfoView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Organizer.OrganizerInfo;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>5</i>&nbsp; * Athens University of Economics and Business
+<i>6</i>&nbsp; * 2020-2021
+<i>7</i>&nbsp; */
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;public interface OrganizerInfoView {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    /**
+<i>12</i>&nbsp;     * Method used
+<i>13</i>&nbsp;     * to set the username field of activity&#39;s layout
+<i>14</i>&nbsp;     * screen to the username of the organizer that is logged in
+<i>15</i>&nbsp;     * @param username username of organizer
+<i>16</i>&nbsp;     */
+<i>17</i>&nbsp;    void setUsername(String username);
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * Method used
+<i>21</i>&nbsp;     * to set the password field of activity&#39;s layout
+<i>22</i>&nbsp;     * to the password of the organizer that is logged in
+<i>23</i>&nbsp;     * @param password password of organizer to be set
+<i>24</i>&nbsp;     */
+<i>25</i>&nbsp;    void setPassword(String password);
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    /**
+<i>28</i>&nbsp;     * Method used
+<i>29</i>&nbsp;     * to set the name field of activity&#39;s layout
+<i>30</i>&nbsp;     * to the name of the organizer that is logged in
+<i>31</i>&nbsp;     * @param name name of organizer to be set
+<i>32</i>&nbsp;     */
+<i>33</i>&nbsp;    void setName(String name);
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * Method used
+<i>37</i>&nbsp;     * to set the surname field of activity&#39;s layout
+<i>38</i>&nbsp;     * to the surname of the organizer that is logged in
+<i>39</i>&nbsp;     * @param surname surname of organizer to be set
+<i>40</i>&nbsp;     */
+<i>41</i>&nbsp;    void setSurname(String surname);
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    /**
+<i>44</i>&nbsp;     * Method used
+<i>45</i>&nbsp;     * to set the phone field of activity&#39;s layout
+<i>46</i>&nbsp;     * to the phone number of the organizer that is logged in
+<i>47</i>&nbsp;     * @param phone phone of organizer to be set
+<i>48</i>&nbsp;     */
+<i>49</i>&nbsp;    void setPhone(String phone);
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    /**
+<i>52</i>&nbsp;     * Method used
+<i>53</i>&nbsp;     * to set the email field of activity&#39;s layout
+<i>54</i>&nbsp;     * to the email of the organizer that is logged in
+<i>55</i>&nbsp;     * @param email email of organizer to be set
+<i>56</i>&nbsp;     */
+<i>57</i>&nbsp;    void setEmail(String email);
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    /**
+<i>60</i>&nbsp;     * Method used
+<i>61</i>&nbsp;     * to set the birthdate field of activity&#39;s layout
+<i>62</i>&nbsp;     * to the birthdate of the organizer that is logged in
+<i>63</i>&nbsp;     * @param date birthdate of organizer to be set
+<i>64</i>&nbsp;     */
+<i>65</i>&nbsp;    void setBirthDate(String date);
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * Starts the register organizer activity so that the user can modify account
+<i>69</i>&nbsp;     * @param organizerUsername title of organizer to be passed as an extra
+<i>70</i>&nbsp;     */
+<i>71</i>&nbsp;    void startEditOrganizer(String organizerUsername);
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    /**
+<i>74</i>&nbsp;     * Deletes the organizer&#39;s account
+<i>75</i>&nbsp;     * and goes back to the home page screen
+<i>76</i>&nbsp;     */
+<i>77</i>&nbsp;    void startDeleteOrganizer();
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;    /**
+<i>80</i>&nbsp;     * Method used
+<i>81</i>&nbsp;     * to set the title field of activity&#39;s layout
+<i>82</i>&nbsp;     * to the title of the organizer that is logged in
+<i>83</i>&nbsp;     * @param title title of organizer to be set
+<i>84</i>&nbsp;     */
+<i>85</i>&nbsp;    void setTitle(String title);
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;    /**
+<i>88</i>&nbsp;     * Toast message shown in case user can&#39;t delete account
+<i>89</i>&nbsp;     */
+<i>90</i>&nbsp;    void showCantDelete();
+<i>91</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

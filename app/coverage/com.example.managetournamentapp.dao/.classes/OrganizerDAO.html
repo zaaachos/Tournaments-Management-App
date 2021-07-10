@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: OrganizerDAO</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.dao</a> ]
+</div>
+
+<h1>Coverage Summary for Class: OrganizerDAO (com.example.managetournamentapp.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">OrganizerDAO</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.dao;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.domain.Credentials;
+<i>4</i>&nbsp;import com.example.managetournamentapp.domain.Organizer;
+<i>5</i>&nbsp;import com.example.managetournamentapp.domain.Player;
+<i>6</i>&nbsp;import com.example.managetournamentapp.domain.User;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import java.util.ArrayList;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;/**
+<i>11</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>12</i>&nbsp; * Athens University of Economics and Business
+<i>13</i>&nbsp; * 2020-2021
+<i>14</i>&nbsp; */
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;public interface OrganizerDAO {
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * Verifies user, checks if credentials are ok.
+<i>19</i>&nbsp;     *
+<i>20</i>&nbsp;     * @param credentials Credentials of User.
+<i>21</i>&nbsp;     * @return true if credentials are verified.
+<i>22</i>&nbsp;     */
+<i>23</i>&nbsp;    boolean verify(Credentials credentials);
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    /**
+<i>26</i>&nbsp;     * Saves a specific organizer.
+<i>27</i>&nbsp;     *
+<i>28</i>&nbsp;     * @param entity Organizer to be saved.
+<i>29</i>&nbsp;     */
+<i>30</i>&nbsp;    void save(Organizer entity);
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    /**
+<i>33</i>&nbsp;     * Finds a specific organizer.
+<i>34</i>&nbsp;     *
+<i>35</i>&nbsp;     * @param title Title of the organizer.
+<i>36</i>&nbsp;     * @return Organizer with the title specified.
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    Organizer findByTitle(String title);
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /**
+<i>41</i>&nbsp;     * Finds a specific organizer.
+<i>42</i>&nbsp;     *
+<i>43</i>&nbsp;     * @param credentials credentials of the organizer.
+<i>44</i>&nbsp;     * @return Organizer with the credentials specified.
+<i>45</i>&nbsp;     */
+<i>46</i>&nbsp;    Organizer findByCredentials(Credentials credentials);
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    /**
+<i>49</i>&nbsp;     * Finds all organizers.
+<i>50</i>&nbsp;     *
+<i>51</i>&nbsp;     * @return All organizers.
+<i>52</i>&nbsp;     */
+<i>53</i>&nbsp;    ArrayList&lt;Organizer&gt; findAll();
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    /**
+<i>56</i>&nbsp;     * Deletes a specific organizer.
+<i>57</i>&nbsp;     *
+<i>58</i>&nbsp;     * @param entity Organizer to be deleted.
+<i>59</i>&nbsp;     */
+<i>60</i>&nbsp;    void delete(Organizer entity);
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    /**
+<i>63</i>&nbsp;     * Deletes all organizers.
+<i>64</i>&nbsp;     */
+<i>65</i>&nbsp;    void deleteAll();
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * Check if the user who tries to login exists in DAO.
+<i>69</i>&nbsp;     *
+<i>70</i>&nbsp;     * @param credentials User input credentials
+<i>71</i>&nbsp;     * @return true if User exists in DAO
+<i>72</i>&nbsp;     */
+<i>73</i>&nbsp;    boolean exist(Credentials credentials);
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;    /**
+<i>76</i>&nbsp;     * Checks if credentials is used by another user in registration
+<i>77</i>&nbsp;     * @param credentials User input credentials
+<i>78</i>&nbsp;     * @param user if user is current
+<i>79</i>&nbsp;     * @return true if credentials used by another user
+<i>80</i>&nbsp;     */
+<i>81</i>&nbsp;    boolean isUsedByAnother(Credentials credentials, User user);
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    /**
+<i>84</i>&nbsp;     * Checks if title is used by another user in registration
+<i>85</i>&nbsp;     * @param title title input
+<i>86</i>&nbsp;     * @param user if user is current
+<i>87</i>&nbsp;     * @return true if credentials used by another user
+<i>88</i>&nbsp;     */
+<i>89</i>&nbsp;    boolean TitleUsedByAnother(String title, User user);
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

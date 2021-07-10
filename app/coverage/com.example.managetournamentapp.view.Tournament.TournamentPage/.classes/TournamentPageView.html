@@ -1,0 +1,80 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TournamentPageView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Tournament.TournamentPage</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TournamentPageView (com.example.managetournamentapp.view.Tournament.TournamentPage)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">TournamentPageView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Tournament.TournamentPage;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;public interface TournamentPageView {
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;    /**
+<i>7</i>&nbsp;     * when the &quot;info&quot; button is pressed
+<i>8</i>&nbsp;     * the tournament info activity starts
+<i>9</i>&nbsp;     */
+<i>10</i>&nbsp;    void startTournamentInfo();
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * when the &quot;teams&quot; button is pressed
+<i>14</i>&nbsp;     * the participating teams activity starts
+<i>15</i>&nbsp;     */
+<i>16</i>&nbsp;    void startTeamsParticipating();
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    /**
+<i>19</i>&nbsp;     * when the &quot;games&quot; button is pressed
+<i>20</i>&nbsp;     * the tournament rounds activity starts
+<i>21</i>&nbsp;     */
+<i>22</i>&nbsp;    void startTournamentGames();
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    /**
+<i>26</i>&nbsp;     * what happens when the homepage button is pressed
+<i>27</i>&nbsp;     * @param noLogin boolean parameter, if true the user has not logged in
+<i>28</i>&nbsp;     * @param isPlayer boolean parameter,if true the user is a player
+<i>29</i>&nbsp;     * @param name name of the player or title of the organizer
+<i>30</i>&nbsp;     */
+<i>31</i>&nbsp;    void backToHomePage(boolean noLogin, boolean isPlayer, String name);
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: InvitePlayersView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Team.InvitePlayers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: InvitePlayersView (com.example.managetournamentapp.view.Team.InvitePlayers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">InvitePlayersView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Team.InvitePlayers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import com.example.managetournamentapp.domain.Player;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;/**
+<i>8</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>9</i>&nbsp; * Athens University of Economics and Business
+<i>10</i>&nbsp; * 2020-2021
+<i>11</i>&nbsp; */
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;public interface InvitePlayersView {
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    /**
+<i>16</i>&nbsp;     * @param layoutId the layout of the popup
+<i>17</i>&nbsp;     * @param msg the message of the popup
+<i>18</i>&nbsp;     * @param btn1 the first button
+<i>19</i>&nbsp;     * @param btn2 the second button
+<i>20</i>&nbsp;     * @param flag true if the second version of the popup will be shown
+<i>21</i>&nbsp;     * @return the AlertDialog that will be shown
+<i>22</i>&nbsp;     */
+<i>23</i>&nbsp;    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, boolean flag);
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    /**
+<i>26</i>&nbsp;     * show the page of the player
+<i>27</i>&nbsp;     * @param player the player
+<i>28</i>&nbsp;     */
+<i>29</i>&nbsp;    void startPlayerPage(Player player);
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    /**
+<i>32</i>&nbsp;     * @param layout the layout of the popup
+<i>33</i>&nbsp;     * @param msg the message of the popup
+<i>34</i>&nbsp;     * @param btn1 the first button
+<i>35</i>&nbsp;     * @param btn2 the second button
+<i>36</i>&nbsp;     * @param invited true if the second version of the popup will be shown
+<i>37</i>&nbsp;     * @return the AlertDialog that will be shown
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    void displayPopUpAction(int layout, String msg, int btn1, int btn2, boolean invited);
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /**
+<i>42</i>&nbsp;     * close the popup
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;    void dismissPopUpAction();
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    /**
+<i>47</i>&nbsp;     * reset the popups of this activity
+<i>48</i>&nbsp;     */
+<i>49</i>&nbsp;    void resetPopUps();
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    /**
+<i>52</i>&nbsp;     * refresh the current activity
+<i>53</i>&nbsp;     */
+<i>54</i>&nbsp;    void restartActivity();
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    /**
+<i>57</i>&nbsp;     * what happens when the homepage button is pressed
+<i>58</i>&nbsp;     * @param string is the name of a player. or the title of an organizer
+<i>59</i>&nbsp;     */
+<i>60</i>&nbsp;    void backToHomePage(String string);
+<i>61</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

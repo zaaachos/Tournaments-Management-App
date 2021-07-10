@@ -1,0 +1,268 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: RoundGamesPresenter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Tournament.RoundGames</a> ]
+</div>
+
+<h1>Coverage Summary for Class: RoundGamesPresenter (com.example.managetournamentapp.view.Tournament.RoundGames)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RoundGamesPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91.7%
+  </span>
+  <span class="absValue">
+    (11/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84.6%
+  </span>
+  <span class="absValue">
+    (55/ 65)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Tournament.RoundGames;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.dao.LoggedInUser;
+<i>4</i>&nbsp;import com.example.managetournamentapp.dao.TournamentDAO;
+<i>5</i>&nbsp;import com.example.managetournamentapp.domain.Game;
+<i>6</i>&nbsp;import com.example.managetournamentapp.domain.Group;
+<i>7</i>&nbsp;import com.example.managetournamentapp.domain.Organizer;
+<i>8</i>&nbsp;import com.example.managetournamentapp.domain.Player;
+<i>9</i>&nbsp;import com.example.managetournamentapp.domain.Round;
+<i>10</i>&nbsp;import com.example.managetournamentapp.domain.Tournament;
+<i>11</i>&nbsp;import com.example.managetournamentapp.domain.User;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import java.util.ArrayList;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;public class RoundGamesPresenter {
+<i>17</i>&nbsp;    public RoundGamesView view;
+<i>18</i>&nbsp;    private TournamentDAO tournamentDAO;
+<i>19</i>&nbsp;    private Tournament tournament;
+<i>20</i>&nbsp;    private LoggedInUser loggedInUser;
+<b class="fc"><i>21</i>&nbsp;    private ArrayList&lt;Game&gt; results = new ArrayList&lt;&gt;();</b>
+<i>22</i>&nbsp;    private boolean hasAccess;
+<i>23</i>&nbsp;    private Round currentRound;
+<i>24</i>&nbsp;    private int currentRoundIndex;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;
+<b class="fc"><i>27</i>&nbsp;    public RoundGamesPresenter() {</b>
+<b class="fc"><i>28</i>&nbsp;    }</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    /**
+<i>31</i>&nbsp;     * find the games in this round
+<i>32</i>&nbsp;     *
+<i>33</i>&nbsp;     * @param tournamentTitle  the title of the tournament
+<i>34</i>&nbsp;     * @param roundTeamsNumber the number of teams in this tournament
+<i>35</i>&nbsp;     * @param specificGroup    is the index of the specific group  if we
+<i>36</i>&nbsp;     *                         don&#39;t want to search in every group of the round
+<i>37</i>&nbsp;     *                         or else it takes the value -1
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    public void findGames(String tournamentTitle, int roundTeamsNumber, int specificGroup) {
+<b class="fc"><i>40</i>&nbsp;        if (tournamentTitle == null)</b>
+<b class="nc"><i>41</i>&nbsp;            return;</b>
+<b class="fc"><i>42</i>&nbsp;        tournament = tournamentDAO.find(tournamentTitle);</b>
+<b class="fc"><i>43</i>&nbsp;        if (tournament == null)</b>
+<b class="nc"><i>44</i>&nbsp;            return;</b>
+<i>45</i>&nbsp;
+<b class="fc"><i>46</i>&nbsp;        findAccess();</b>
+<b class="fc"><i>47</i>&nbsp;        results.clear();</b>
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;        currentRoundIndex = 0;</b>
+<b class="fc"><i>50</i>&nbsp;        for (Round round : tournament.getRounds()) {</b>
+<b class="fc"><i>51</i>&nbsp;            if (round.getTeamsNumber() == roundTeamsNumber) {</b>
+<b class="fc"><i>52</i>&nbsp;                currentRound = round;</b>
+<b class="fc"><i>53</i>&nbsp;                break;</b>
+<i>54</i>&nbsp;            }
+<b class="fc"><i>55</i>&nbsp;            currentRoundIndex++;</b>
+<b class="fc"><i>56</i>&nbsp;        }</b>
+<i>57</i>&nbsp;
+<b class="fc"><i>58</i>&nbsp;        ArrayList&lt;Group&gt; groupsWanted = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>59</i>&nbsp;        if (specificGroup == -1)</b>
+<b class="fc"><i>60</i>&nbsp;            groupsWanted.addAll(currentRound.getGroups());</b>
+<i>61</i>&nbsp;        else
+<b class="fc"><i>62</i>&nbsp;            groupsWanted.add(currentRound.getGroups().get(specificGroup));</b>
+<i>63</i>&nbsp;
+<b class="fc"><i>64</i>&nbsp;        for (Group group : groupsWanted) {</b>
+<b class="fc"><i>65</i>&nbsp;            results.addAll(group.getGames());</b>
+<b class="fc"><i>66</i>&nbsp;        }</b>
+<b class="fc"><i>67</i>&nbsp;    }</b>
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    /**
+<i>71</i>&nbsp;     * what happens when the user presses on a game
+<i>72</i>&nbsp;     *
+<i>73</i>&nbsp;     * @param game the game that was pressed on
+<i>74</i>&nbsp;     */
+<i>75</i>&nbsp;    public void onPressed(Game game) {
+<b class="fc"><i>76</i>&nbsp;        if (hasAccess)</b>
+<b class="fc"><i>77</i>&nbsp;            if (game.isFinished())</b>
+<b class="nc"><i>78</i>&nbsp;                view.showToast(&quot;THE SCORE HAS ALREADY BEEN SET&quot;);</b>
+<b class="fc"><i>79</i>&nbsp;            else if (game.getTeamA().getName() == null || game.getTeamA().getName() == null)</b>
+<b class="nc"><i>80</i>&nbsp;                view.showToast(&quot;THE TEAMS HAVE NOT BEEN SET&quot;);</b>
+<i>81</i>&nbsp;            else
+<b class="fc"><i>82</i>&nbsp;                view.showPopup(game);</b>
+<b class="fc"><i>83</i>&nbsp;    }</b>
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    /**
+<i>86</i>&nbsp;     * what happens when the organizer presses &quot;save&quot;
+<i>87</i>&nbsp;     * on the popup
+<i>88</i>&nbsp;     *
+<i>89</i>&nbsp;     * @param game   the game that was set
+<i>90</i>&nbsp;     * @param scoreA the score of the first team
+<i>91</i>&nbsp;     * @param scoreB the score of the second teams
+<i>92</i>&nbsp;     */
+<i>93</i>&nbsp;    public void onSave(Game game, String scoreA, String scoreB) {
+<b class="fc"><i>94</i>&nbsp;        if (scoreA == null || scoreA.isEmpty() || scoreB == null || scoreB.isEmpty())</b>
+<b class="nc"><i>95</i>&nbsp;            return;</b>
+<i>96</i>&nbsp;
+<b class="fc"><i>97</i>&nbsp;        game.setScoreA(Integer.parseInt(scoreA));</b>
+<b class="fc"><i>98</i>&nbsp;        game.setScoreB(Integer.parseInt(scoreB));</b>
+<b class="fc"><i>99</i>&nbsp;        game.setFinished(true);</b>
+<b class="fc"><i>100</i>&nbsp;        checkIfFinished();</b>
+<b class="fc"><i>101</i>&nbsp;        view.recreateView();</b>
+<b class="fc"><i>102</i>&nbsp;    }</b>
+<i>103</i>&nbsp;
+<i>104</i>&nbsp;    /**
+<i>105</i>&nbsp;     * if the current round just finished then
+<i>106</i>&nbsp;     * promote the winners of this round
+<i>107</i>&nbsp;     * to the next round
+<i>108</i>&nbsp;     */
+<i>109</i>&nbsp;    public void checkIfFinished() {
+<b class="fc"><i>110</i>&nbsp;        if (currentRound.allGamesFinished() &amp;&amp; currentRoundIndex &lt; tournament.getRounds().size() - 1) {</b>
+<b class="nc"><i>111</i>&nbsp;            tournament.getRounds().get(currentRoundIndex + 1).setup(currentRound.getRoundWinners());</b>
+<i>112</i>&nbsp;        }
+<b class="fc"><i>113</i>&nbsp;    }</b>
+<i>114</i>&nbsp;
+<i>115</i>&nbsp;    /**
+<i>116</i>&nbsp;     * find out if the logged in user
+<i>117</i>&nbsp;     * is the organizer of this tournament
+<i>118</i>&nbsp;     */
+<i>119</i>&nbsp;    public void findAccess() {
+<b class="fc"><i>120</i>&nbsp;        hasAccess = false;</b>
+<b class="fc"><i>121</i>&nbsp;        if (loggedInUser.getUser() != null)</b>
+<b class="fc"><i>122</i>&nbsp;            if (loggedInUser.getUser() instanceof Organizer)</b>
+<b class="fc"><i>123</i>&nbsp;                if (((Organizer) loggedInUser.getUser()).getTournaments().contains(tournament))</b>
+<b class="fc"><i>124</i>&nbsp;                    hasAccess = true;</b>
+<b class="fc"><i>125</i>&nbsp;    }</b>
+<i>126</i>&nbsp;
+<i>127</i>&nbsp;    /**
+<i>128</i>&nbsp;     * get the games of this round
+<i>129</i>&nbsp;     *
+<i>130</i>&nbsp;     * @return the ArrayList of games in this round
+<i>131</i>&nbsp;     */
+<i>132</i>&nbsp;    public ArrayList&lt;Game&gt; getResults() {
+<b class="fc"><i>133</i>&nbsp;        return results;</b>
+<i>134</i>&nbsp;    }
+<i>135</i>&nbsp;
+<i>136</i>&nbsp;    /**
+<i>137</i>&nbsp;     * set the loggedInUser
+<i>138</i>&nbsp;     *
+<i>139</i>&nbsp;     * @param loggedInUser the new LoggedInUser
+<i>140</i>&nbsp;     */
+<i>141</i>&nbsp;    public void setLoggedInUser(LoggedInUser loggedInUser) {
+<b class="fc"><i>142</i>&nbsp;        this.loggedInUser = loggedInUser;</b>
+<b class="fc"><i>143</i>&nbsp;    }</b>
+<i>144</i>&nbsp;
+<i>145</i>&nbsp;    /**
+<i>146</i>&nbsp;     * set the tournamentDAO
+<i>147</i>&nbsp;     *
+<i>148</i>&nbsp;     * @param tournamentDAO the new TournamentDAO
+<i>149</i>&nbsp;     */
+<i>150</i>&nbsp;    public void setTournamentDAO(TournamentDAO tournamentDAO) {
+<b class="fc"><i>151</i>&nbsp;        this.tournamentDAO = tournamentDAO;</b>
+<b class="fc"><i>152</i>&nbsp;    }</b>
+<i>153</i>&nbsp;
+<i>154</i>&nbsp;    /**
+<i>155</i>&nbsp;     * set a new view
+<i>156</i>&nbsp;     *
+<i>157</i>&nbsp;     * @param view the new view
+<i>158</i>&nbsp;     */
+<i>159</i>&nbsp;    public void setView(RoundGamesView view) {
+<b class="fc"><i>160</i>&nbsp;        this.view = view;</b>
+<b class="fc"><i>161</i>&nbsp;    }</b>
+<i>162</i>&nbsp;
+<i>163</i>&nbsp;    /**
+<i>164</i>&nbsp;     * clear the view
+<i>165</i>&nbsp;     */
+<i>166</i>&nbsp;    public void clearView() {
+<b class="nc"><i>167</i>&nbsp;        this.view = null;</b>
+<b class="nc"><i>168</i>&nbsp;    }</b>
+<i>169</i>&nbsp;
+<i>170</i>&nbsp;    /**
+<i>171</i>&nbsp;     * what happens when the homepage button is pressed
+<i>172</i>&nbsp;     */
+<i>173</i>&nbsp;    public void onHomePage(){
+<b class="fc"><i>174</i>&nbsp;        User user = loggedInUser.getUser();</b>
+<b class="fc"><i>175</i>&nbsp;        if (user == null){</b>
+<b class="nc"><i>176</i>&nbsp;            view.backToHomePage(true, false,&quot;&quot;);</b>
+<i>177</i>&nbsp;        }
+<b class="fc"><i>178</i>&nbsp;        else if (user instanceof Player){</b>
+<b class="nc"><i>179</i>&nbsp;            view.backToHomePage(false,true,user.getCredentials().getUsername());</b>
+<i>180</i>&nbsp;        }
+<i>181</i>&nbsp;        else{
+<b class="fc"><i>182</i>&nbsp;            view.backToHomePage(false,false,((Organizer)user).getTitle());</b>
+<i>183</i>&nbsp;        }
+<b class="fc"><i>184</i>&nbsp;    }</b>
+<i>185</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

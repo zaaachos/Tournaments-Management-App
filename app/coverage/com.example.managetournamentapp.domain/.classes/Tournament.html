@@ -1,0 +1,448 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Tournament</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.domain</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Tournament (com.example.managetournamentapp.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Tournament</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (30/ 30)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.5%
+  </span>
+  <span class="absValue">
+    (110/ 114)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.domain;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.time.LocalDate;
+<i>4</i>&nbsp;import java.util.ArrayList;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>8</i>&nbsp; * Athens University of Economics and Business
+<i>9</i>&nbsp; * 2020-2021
+<i>10</i>&nbsp; */
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;public class Tournament {
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    private final int MAX_TEAMS_NUMBER;
+<i>15</i>&nbsp;    private LocalDate startDate, finishDate;
+<i>16</i>&nbsp;    private String title, location, description;
+<i>17</i>&nbsp;    private Sport sportType;
+<i>18</i>&nbsp;    private AgeDivision ageDivision;
+<b class="fc"><i>19</i>&nbsp;    private ArrayList&lt;Round&gt; rounds = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>20</i>&nbsp;    private ArrayList&lt;LocalDate&gt; dates = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>21</i>&nbsp;    private ArrayList&lt;Participation&gt; participations = new ArrayList&lt;&gt;();</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    /**
+<i>24</i>&nbsp;     * the default constructor of this tournament
+<i>25</i>&nbsp;     */
+<b class="fc"><i>26</i>&nbsp;    public Tournament() {</b>
+<b class="fc"><i>27</i>&nbsp;        title = &quot;&quot;;</b>
+<b class="fc"><i>28</i>&nbsp;        startDate = null;</b>
+<b class="fc"><i>29</i>&nbsp;        finishDate = null;</b>
+<b class="fc"><i>30</i>&nbsp;        location = &quot;&quot;;</b>
+<b class="fc"><i>31</i>&nbsp;        description = &quot;&quot;;</b>
+<b class="fc"><i>32</i>&nbsp;        sportType = null;</b>
+<b class="fc"><i>33</i>&nbsp;        dates = null;</b>
+<b class="fc"><i>34</i>&nbsp;        ageDivision = null;</b>
+<b class="fc"><i>35</i>&nbsp;        MAX_TEAMS_NUMBER = 32;</b>
+<b class="fc"><i>36</i>&nbsp;    }</b>
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    /**
+<i>39</i>&nbsp;     * the full constructor of this tournamet
+<i>40</i>&nbsp;     * @param title of the tournament
+<i>41</i>&nbsp;     * @param startDate of the tournament
+<i>42</i>&nbsp;     * @param finishDate of the tournament
+<i>43</i>&nbsp;     * @param location of the tournament
+<i>44</i>&nbsp;     * @param sportType of the tournament
+<i>45</i>&nbsp;     * @param maxTeamsNumber of the tournament
+<i>46</i>&nbsp;     * @param ageDivision of the tournament
+<i>47</i>&nbsp;     * @param dates of the tournament
+<i>48</i>&nbsp;     */
+<b class="fc"><i>49</i>&nbsp;    public Tournament(String title, LocalDate startDate, LocalDate finishDate, String location, Sport sportType, int maxTeamsNumber, AgeDivision ageDivision, ArrayList&lt;LocalDate&gt; dates) {</b>
+<b class="fc"><i>50</i>&nbsp;        this.title = title;</b>
+<b class="fc"><i>51</i>&nbsp;        this.startDate = startDate;</b>
+<b class="fc"><i>52</i>&nbsp;        this.finishDate = finishDate;</b>
+<b class="fc"><i>53</i>&nbsp;        this.location = location;</b>
+<b class="fc"><i>54</i>&nbsp;        this.sportType = sportType;</b>
+<b class="fc"><i>55</i>&nbsp;        this.MAX_TEAMS_NUMBER = maxTeamsNumber;</b>
+<b class="fc"><i>56</i>&nbsp;        this.ageDivision = ageDivision;</b>
+<b class="fc"><i>57</i>&nbsp;        this.dates = dates;</b>
+<b class="fc"><i>58</i>&nbsp;        initRounds(dates);</b>
+<b class="fc"><i>59</i>&nbsp;    }</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    /**
+<i>62</i>&nbsp;     * initialize the game dates for each round
+<i>63</i>&nbsp;     * @param dates the arraylist of dates
+<i>64</i>&nbsp;     */
+<i>65</i>&nbsp;    public void initRounds(ArrayList&lt;LocalDate&gt; dates) {
+<b class="fc"><i>66</i>&nbsp;        int teamsNumber = MAX_TEAMS_NUMBER;</b>
+<b class="fc"><i>67</i>&nbsp;        int firstIndex = 0;</b>
+<b class="fc"><i>68</i>&nbsp;        int lastIndex = MAX_TEAMS_NUMBER / 4 * 6;</b>
+<b class="fc"><i>69</i>&nbsp;        rounds.add(new Round(MAX_TEAMS_NUMBER, false,  new ArrayList&lt;&gt;(dates.subList(firstIndex, lastIndex)) ));</b>
+<b class="fc"><i>70</i>&nbsp;        for (int i = 0; i &lt; log2(MAX_TEAMS_NUMBER) - 1; i++) {</b>
+<b class="fc"><i>71</i>&nbsp;            teamsNumber = teamsNumber / 2;</b>
+<b class="fc"><i>72</i>&nbsp;            firstIndex = lastIndex;</b>
+<b class="fc"><i>73</i>&nbsp;            lastIndex = firstIndex + teamsNumber / 2;</b>
+<b class="fc"><i>74</i>&nbsp;            rounds.add(new Round(teamsNumber, true, new ArrayList&lt;&gt;(dates.subList(firstIndex, lastIndex)) ));</b>
+<i>75</i>&nbsp;        }
+<b class="fc"><i>76</i>&nbsp;    }</b>
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;    /**
+<i>79</i>&nbsp;     * add a new participation in this tournament
+<i>80</i>&nbsp;     * @param participation the new participation
+<i>81</i>&nbsp;     */
+<i>82</i>&nbsp;    public void addParticipation(Participation participation) {
+<b class="fc"><i>83</i>&nbsp;        if (participation == null) {</b>
+<b class="nc"><i>84</i>&nbsp;            return;</b>
+<i>85</i>&nbsp;        }
+<b class="fc"><i>86</i>&nbsp;        participation.getTeam().addParticipation(participation);</b>
+<b class="fc"><i>87</i>&nbsp;    }</b>
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    /**
+<i>90</i>&nbsp;     * if the last team just entered the tournament
+<i>91</i>&nbsp;     * the first round is arranged
+<i>92</i>&nbsp;     */
+<i>93</i>&nbsp;    public void checkIfStarts(){
+<b class="fc"><i>94</i>&nbsp;        if ( isFull()) {</b>
+<b class="fc"><i>95</i>&nbsp;            rounds.get(0).setup(findTeams());</b>
+<i>96</i>&nbsp;        }
+<b class="fc"><i>97</i>&nbsp;    }</b>
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    /**
+<i>100</i>&nbsp;     * find the teams of this tournament
+<i>101</i>&nbsp;     * @return the teams that participate in this tournament
+<i>102</i>&nbsp;     */
+<i>103</i>&nbsp;    public ArrayList&lt;Team&gt; findTeams(){
+<b class="fc"><i>104</i>&nbsp;        ArrayList&lt;Team&gt; teams = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>105</i>&nbsp;        for (Participation p : participations)</b>
+<b class="fc"><i>106</i>&nbsp;            teams.add(p.getTeam());</b>
+<b class="fc"><i>107</i>&nbsp;        return teams;</b>
+<i>108</i>&nbsp;    }
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;    /**
+<i>111</i>&nbsp;     *remove a participation from the tournament
+<i>112</i>&nbsp;     * @param participation that will be removed
+<i>113</i>&nbsp;     */
+<i>114</i>&nbsp;    public void removeParticipation(Participation participation) {
+<b class="fc"><i>115</i>&nbsp;        if (participation == null) {</b>
+<b class="nc"><i>116</i>&nbsp;            return;</b>
+<i>117</i>&nbsp;        }
+<b class="fc"><i>118</i>&nbsp;        participation.getTeam().removeParticipation(participation);</b>
+<b class="fc"><i>119</i>&nbsp;    }</b>
+<i>120</i>&nbsp;
+<i>121</i>&nbsp;    /**
+<i>122</i>&nbsp;     * get the current participations in this tournament
+<i>123</i>&nbsp;     * @return a copy of the arraylist with the participations
+<i>124</i>&nbsp;     */
+<i>125</i>&nbsp;    public ArrayList&lt;Participation&gt; getParticipations() {
+<b class="fc"><i>126</i>&nbsp;        return new ArrayList&lt;&gt;(participations);</b>
+<i>127</i>&nbsp;    }
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;    /**
+<i>130</i>&nbsp;     * get the current participations in this tournament
+<i>131</i>&nbsp;     * @return the arraylist with the participations
+<i>132</i>&nbsp;     */
+<i>133</i>&nbsp;    public ArrayList&lt;Participation&gt; friendGetParticipations() {
+<b class="fc"><i>134</i>&nbsp;        return participations;</b>
+<i>135</i>&nbsp;    }
+<i>136</i>&nbsp;
+<i>137</i>&nbsp;    /**
+<i>138</i>&nbsp;     * find if the number of teams currently participating
+<i>139</i>&nbsp;     * is equal to the number of teams needed to start the tournament
+<i>140</i>&nbsp;     * @return true if the tournament is full
+<i>141</i>&nbsp;     */
+<i>142</i>&nbsp;    public boolean isFull() {
+<b class="fc"><i>143</i>&nbsp;        if (participations == null)</b>
+<b class="nc"><i>144</i>&nbsp;            return false;</b>
+<i>145</i>&nbsp;
+<b class="fc"><i>146</i>&nbsp;        return participations.size() == MAX_TEAMS_NUMBER;</b>
+<i>147</i>&nbsp;    }
+<i>148</i>&nbsp;
+<i>149</i>&nbsp;    /**
+<i>150</i>&nbsp;     * find if the tournament is taking place at the current moment
+<i>151</i>&nbsp;     * @return true if the tournament is currently happening
+<i>152</i>&nbsp;     */
+<i>153</i>&nbsp;    public boolean isRunning() {
+<b class="fc"><i>154</i>&nbsp;        LocalDate now = LocalDate.now();</b>
+<b class="fc"><i>155</i>&nbsp;        return !(now.isBefore(startDate)) &amp;&amp; !(now.isAfter(finishDate));</b>
+<i>156</i>&nbsp;    }
+<i>157</i>&nbsp;
+<i>158</i>&nbsp;    /**
+<i>159</i>&nbsp;     * find the rounds of this tournament
+<i>160</i>&nbsp;     * there can be 3 or 4 or 5 rounds
+<i>161</i>&nbsp;     * @return a copy of arraylist of the rounds
+<i>162</i>&nbsp;     */
+<i>163</i>&nbsp;    public ArrayList&lt;Round&gt; getRounds() {
+<b class="fc"><i>164</i>&nbsp;        return new ArrayList&lt;&gt;(rounds);</b>
+<i>165</i>&nbsp;    }
+<i>166</i>&nbsp;
+<i>167</i>&nbsp;    /**
+<i>168</i>&nbsp;     * get the title of the tournament
+<i>169</i>&nbsp;     * @return the title of the tournament
+<i>170</i>&nbsp;     */
+<i>171</i>&nbsp;    public String getTitle() {
+<b class="fc"><i>172</i>&nbsp;        return title;</b>
+<i>173</i>&nbsp;    }
+<i>174</i>&nbsp;
+<i>175</i>&nbsp;    /**
+<i>176</i>&nbsp;     * set a new title for the tournament
+<i>177</i>&nbsp;     * @param title is the new title
+<i>178</i>&nbsp;     */
+<i>179</i>&nbsp;    public void setTitle(String title) {
+<b class="fc"><i>180</i>&nbsp;        if (title == null || !getParticipations().isEmpty()) {</b>
+<b class="fc"><i>181</i>&nbsp;            return;</b>
+<i>182</i>&nbsp;        }
+<b class="fc"><i>183</i>&nbsp;        this.title = title;</b>
+<b class="fc"><i>184</i>&nbsp;    }</b>
+<i>185</i>&nbsp;
+<i>186</i>&nbsp;    /**
+<i>187</i>&nbsp;     * get the location that the tournament will take place in
+<i>188</i>&nbsp;     * @return the location of the tournament
+<i>189</i>&nbsp;     */
+<i>190</i>&nbsp;    public String getLocation() {
+<b class="fc"><i>191</i>&nbsp;        return location;</b>
+<i>192</i>&nbsp;    }
+<i>193</i>&nbsp;
+<i>194</i>&nbsp;    /**
+<i>195</i>&nbsp;     * set a new location for the tournament
+<i>196</i>&nbsp;     * @param location is the new location
+<i>197</i>&nbsp;     */
+<i>198</i>&nbsp;    public void setLocation(String location) {
+<b class="fc"><i>199</i>&nbsp;        if (location == null || !getParticipations().isEmpty()) {</b>
+<b class="fc"><i>200</i>&nbsp;            return;</b>
+<i>201</i>&nbsp;        }
+<b class="fc"><i>202</i>&nbsp;        this.location = location;</b>
+<b class="fc"><i>203</i>&nbsp;    }</b>
+<i>204</i>&nbsp;
+<i>205</i>&nbsp;    /**
+<i>206</i>&nbsp;     * get the description
+<i>207</i>&nbsp;     * @return the description of the tournament
+<i>208</i>&nbsp;     */
+<i>209</i>&nbsp;    public String getDescription() {
+<b class="fc"><i>210</i>&nbsp;        return description;</b>
+<i>211</i>&nbsp;    }
+<i>212</i>&nbsp;
+<i>213</i>&nbsp;    /**
+<i>214</i>&nbsp;     * set a new desctiption for the tournament
+<i>215</i>&nbsp;     * @param description the new descreption
+<i>216</i>&nbsp;     */
+<i>217</i>&nbsp;    public void setDescription(String description) {
+<b class="fc"><i>218</i>&nbsp;        if (description == null || !getParticipations().isEmpty()) {</b>
+<b class="fc"><i>219</i>&nbsp;            return;</b>
+<i>220</i>&nbsp;        }
+<b class="fc"><i>221</i>&nbsp;        this.description = description;</b>
+<b class="fc"><i>222</i>&nbsp;    }</b>
+<i>223</i>&nbsp;
+<i>224</i>&nbsp;    /**
+<i>225</i>&nbsp;     * get the sport type of the tournament
+<i>226</i>&nbsp;     * @return the sport of the tournament
+<i>227</i>&nbsp;     */
+<i>228</i>&nbsp;    public Sport getSportType() {
+<b class="fc"><i>229</i>&nbsp;        return sportType;</b>
+<i>230</i>&nbsp;    }
+<i>231</i>&nbsp;
+<i>232</i>&nbsp;    /**
+<i>233</i>&nbsp;     * set a new sport type for the tournament
+<i>234</i>&nbsp;     * @param sportType the new sport
+<i>235</i>&nbsp;     */
+<i>236</i>&nbsp;    public void setSportType(Sport sportType) {
+<b class="fc"><i>237</i>&nbsp;        if (sportType == null || !getParticipations().isEmpty()) {</b>
+<b class="fc"><i>238</i>&nbsp;            return;</b>
+<i>239</i>&nbsp;        }
+<b class="fc"><i>240</i>&nbsp;        this.sportType = sportType;</b>
+<b class="fc"><i>241</i>&nbsp;    }</b>
+<i>242</i>&nbsp;
+<i>243</i>&nbsp;    /**
+<i>244</i>&nbsp;     * get the date when the tournament begns
+<i>245</i>&nbsp;     * @return the LocalDate representation of the start date
+<i>246</i>&nbsp;     */
+<i>247</i>&nbsp;    public LocalDate getStartDate() {
+<b class="fc"><i>248</i>&nbsp;        return startDate;</b>
+<i>249</i>&nbsp;    }
+<i>250</i>&nbsp;
+<i>251</i>&nbsp;    /**
+<i>252</i>&nbsp;     * set a new start date for the tournament
+<i>253</i>&nbsp;     * @param startDate the new start date
+<i>254</i>&nbsp;     */
+<i>255</i>&nbsp;    public void setStartDate(LocalDate startDate) {
+<b class="fc"><i>256</i>&nbsp;        if (startDate == null || !getParticipations().isEmpty()) {</b>
+<b class="fc"><i>257</i>&nbsp;            return;</b>
+<i>258</i>&nbsp;        }
+<b class="fc"><i>259</i>&nbsp;        this.startDate = startDate;</b>
+<b class="fc"><i>260</i>&nbsp;    }</b>
+<i>261</i>&nbsp;
+<i>262</i>&nbsp;    /**
+<i>263</i>&nbsp;     * get the date when the tournament end
+<i>264</i>&nbsp;     * @return the LocalDate representation of the finish date
+<i>265</i>&nbsp;     */
+<i>266</i>&nbsp;    public LocalDate getFinishDate() {
+<b class="fc"><i>267</i>&nbsp;        return finishDate;</b>
+<i>268</i>&nbsp;    }
+<i>269</i>&nbsp;
+<i>270</i>&nbsp;    /**
+<i>271</i>&nbsp;     * set a new finish date for the tournament
+<i>272</i>&nbsp;     * @param finishDate the new finish date
+<i>273</i>&nbsp;     */
+<i>274</i>&nbsp;    public void setFinishDate(LocalDate finishDate) {
+<b class="fc"><i>275</i>&nbsp;        if (finishDate == null || !getParticipations().isEmpty()) {</b>
+<b class="fc"><i>276</i>&nbsp;            return;</b>
+<i>277</i>&nbsp;        }
+<b class="fc"><i>278</i>&nbsp;        this.finishDate = finishDate;</b>
+<b class="fc"><i>279</i>&nbsp;    }</b>
+<i>280</i>&nbsp;
+<i>281</i>&nbsp;
+<i>282</i>&nbsp;    /**
+<i>283</i>&nbsp;     * get the age division of the teams in this tournament
+<i>284</i>&nbsp;     * @return the age division requirement of this tournament
+<i>285</i>&nbsp;     */
+<i>286</i>&nbsp;    public AgeDivision getAgeDivision() {
+<b class="fc"><i>287</i>&nbsp;        return ageDivision;</b>
+<i>288</i>&nbsp;    }
+<i>289</i>&nbsp;
+<i>290</i>&nbsp;    /**
+<i>291</i>&nbsp;     * set a new age division for this tournament
+<i>292</i>&nbsp;     * @param ageDivision the new age division
+<i>293</i>&nbsp;     */
+<i>294</i>&nbsp;    public void setAgeDivision(AgeDivision ageDivision) {
+<b class="fc"><i>295</i>&nbsp;        if (ageDivision == null || !getParticipations().isEmpty()) {</b>
+<b class="fc"><i>296</i>&nbsp;            return;</b>
+<i>297</i>&nbsp;        }
+<b class="fc"><i>298</i>&nbsp;        this.ageDivision = ageDivision;</b>
+<b class="fc"><i>299</i>&nbsp;    }</b>
+<i>300</i>&nbsp;
+<i>301</i>&nbsp;    /**
+<i>302</i>&nbsp;     * get the maximum number of teams that can be added
+<i>303</i>&nbsp;     * until this tournament is considered full
+<i>304</i>&nbsp;     * @return the max number of teams
+<i>305</i>&nbsp;     */
+<i>306</i>&nbsp;    public int getMAX_TEAMS_NUMBER() {
+<b class="fc"><i>307</i>&nbsp;        return MAX_TEAMS_NUMBER;</b>
+<i>308</i>&nbsp;    }
+<i>309</i>&nbsp;
+<i>310</i>&nbsp;    /**
+<i>311</i>&nbsp;     * finds the logarithm of a number, using 2 as a base
+<i>312</i>&nbsp;     * @param x an integer
+<i>313</i>&nbsp;     * @return the binary logarithm of 2
+<i>314</i>&nbsp;     */
+<i>315</i>&nbsp;    public int log2(int x) {
+<b class="fc"><i>316</i>&nbsp;        return (int) (Math.log(x) / Math.log(2));</b>
+<i>317</i>&nbsp;    }
+<i>318</i>&nbsp;
+<i>319</i>&nbsp;    /**
+<i>320</i>&nbsp;     * the string representation of the tournament
+<i>321</i>&nbsp;     * @return the basic info of the tournament to string
+<i>322</i>&nbsp;     */
+<i>323</i>&nbsp;    @Override
+<i>324</i>&nbsp;    public String toString() {
+<b class="fc"><i>325</i>&nbsp;        return &quot;Tournament{&quot; +</b>
+<i>326</i>&nbsp;                &quot;title=&#39;&quot; + title + &#39;\&#39;&#39; +
+<i>327</i>&nbsp;                &quot;, location=&#39;&quot; + location + &#39;\&#39;&#39; +
+<i>328</i>&nbsp;                &quot;, description=&#39;&quot; + description + &#39;\&#39;&#39; +
+<i>329</i>&nbsp;                &quot;, sportType=&quot; + sportType +
+<i>330</i>&nbsp;                &quot;, maxTeamsNumber=&quot; + MAX_TEAMS_NUMBER +
+<b class="fc"><i>331</i>&nbsp;                &quot;, roundsNumber=&quot; + rounds.size() +</b>
+<i>332</i>&nbsp;                &quot;, teams=&quot; + MAX_TEAMS_NUMBER +
+<i>333</i>&nbsp;                &quot;, ageDivision=&quot; + ageDivision +
+<i>334</i>&nbsp;                &#39;}&#39;;
+<i>335</i>&nbsp;    }
+<i>336</i>&nbsp;
+<i>337</i>&nbsp;
+<i>338</i>&nbsp;
+<i>339</i>&nbsp;    /**
+<i>340</i>&nbsp;     *check if two tournaments are equal
+<i>341</i>&nbsp;     * @param other is the other tournament
+<i>342</i>&nbsp;     * @return if this tournament is equal to the other tournament
+<i>343</i>&nbsp;     */
+<i>344</i>&nbsp;    public boolean equals(Object other) {
+<b class="fc"><i>345</i>&nbsp;        if (this == other)</b>
+<b class="fc"><i>346</i>&nbsp;            return true;</b>
+<b class="fc"><i>347</i>&nbsp;        if (other == null || getClass() != other.getClass())</b>
+<b class="nc"><i>348</i>&nbsp;            return false;</b>
+<b class="fc"><i>349</i>&nbsp;        if (other instanceof Tournament) {</b>
+<b class="fc"><i>350</i>&nbsp;            Tournament otherTour = (Tournament) other;</b>
+<b class="fc"><i>351</i>&nbsp;            if ((title.equals(otherTour.title) &amp;&amp; otherTour.title != null) &amp;&amp;</b>
+<b class="fc"><i>352</i>&nbsp;                    (startDate.equals(otherTour.startDate) &amp;&amp; otherTour.startDate != null) &amp;&amp;</b>
+<b class="fc"><i>353</i>&nbsp;                    (finishDate.equals(otherTour.finishDate) &amp;&amp; otherTour.finishDate != null) &amp;&amp;</b>
+<b class="fc"><i>354</i>&nbsp;                    (location.equals(otherTour.location) &amp;&amp; otherTour.location != null) &amp;&amp;</b>
+<b class="fc"><i>355</i>&nbsp;                    (sportType.equals(otherTour.sportType) &amp;&amp; otherTour.sportType != null) &amp;&amp;</b>
+<b class="fc"><i>356</i>&nbsp;                    (ageDivision.equals(otherTour.ageDivision) &amp;&amp; otherTour.ageDivision != null) &amp;&amp;</b>
+<b class="fc"><i>357</i>&nbsp;                    (otherTour.dates != null &amp;&amp; dates.equals(otherTour.dates)) &amp;&amp;</b>
+<b class="fc"><i>358</i>&nbsp;                    (rounds.equals(otherTour.rounds) &amp;&amp; otherTour.rounds != null) &amp;&amp;</b>
+<b class="fc"><i>359</i>&nbsp;                    getMAX_TEAMS_NUMBER() == otherTour.getMAX_TEAMS_NUMBER())</b>
+<b class="fc"><i>360</i>&nbsp;                return true;</b>
+<i>361</i>&nbsp;        }
+<b class="fc"><i>362</i>&nbsp;        return false;</b>
+<i>363</i>&nbsp;    }
+<i>364</i>&nbsp;
+<i>365</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

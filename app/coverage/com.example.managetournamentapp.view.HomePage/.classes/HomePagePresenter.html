@@ -1,0 +1,166 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: HomePagePresenter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.HomePage</a> ]
+</div>
+
+<h1>Coverage Summary for Class: HomePagePresenter (com.example.managetournamentapp.view.HomePage)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">HomePagePresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (8/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (16/ 18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.HomePage;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;/**
+<i>5</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>6</i>&nbsp; * Athens University of Economics and Business
+<i>7</i>&nbsp; * 2020-2021
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;public class HomePagePresenter {
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    private HomePageView view;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    /**
+<i>15</i>&nbsp;     * Default constructor
+<i>16</i>&nbsp;     */
+<b class="fc"><i>17</i>&nbsp;    public HomePagePresenter() {</b>
+<b class="fc"><i>18</i>&nbsp;    }</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    /**
+<i>21</i>&nbsp;     * If the user is on the Home Page
+<i>22</i>&nbsp;     * and clicks on the connect button
+<i>23</i>&nbsp;     */
+<i>24</i>&nbsp;    public void onConnectAction() {
+<b class="fc"><i>25</i>&nbsp;        view.connectAction();</b>
+<b class="fc"><i>26</i>&nbsp;    }</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * If the user is on the Home Page
+<i>30</i>&nbsp;     * and clicks on the browse button
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    public void onBrowseAction() {
+<b class="fc"><i>33</i>&nbsp;        view.browseAction();</b>
+<b class="fc"><i>34</i>&nbsp;    }</b>
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    /**
+<i>37</i>&nbsp;     * If the user is on the Home Page
+<i>38</i>&nbsp;     * and clicks on the Log In button
+<i>39</i>&nbsp;     */
+<i>40</i>&nbsp;    public void onLogInAction() {
+<b class="fc"><i>41</i>&nbsp;        view.loginAction();</b>
+<b class="fc"><i>42</i>&nbsp;    }</b>
+<i>43</i>&nbsp;    /**
+<i>44</i>&nbsp;     * If the user is on the Home Page
+<i>45</i>&nbsp;     * and clicks on the Register button
+<i>46</i>&nbsp;     */
+<i>47</i>&nbsp;    public void onRegisterAction() {
+<b class="fc"><i>48</i>&nbsp;        view.registerAction();</b>
+<b class="fc"><i>49</i>&nbsp;    }</b>
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    /**
+<i>52</i>&nbsp;     * If the user is on the Home Page
+<i>53</i>&nbsp;     * and clicks on the Register button
+<i>54</i>&nbsp;     * and then chooses the organizer button
+<i>55</i>&nbsp;     */
+<i>56</i>&nbsp;    public void onOrganizerRegisterAction() {
+<b class="fc"><i>57</i>&nbsp;        view.organizerRegisterAction();</b>
+<b class="fc"><i>58</i>&nbsp;    }</b>
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    /**
+<i>61</i>&nbsp;     * If the user is on the Home Page
+<i>62</i>&nbsp;     * and clicks on the Register button
+<i>63</i>&nbsp;     * amd then chooses the player button
+<i>64</i>&nbsp;     */
+<i>65</i>&nbsp;    public void onPlayerRegisterAction() {
+<b class="fc"><i>66</i>&nbsp;        view.playerRegisterAction();</b>
+<b class="fc"><i>67</i>&nbsp;    }</b>
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    /**
+<i>70</i>&nbsp;     * Sets the view to the view specified
+<i>71</i>&nbsp;     */
+<i>72</i>&nbsp;    public void setView(HomePageView view) {
+<b class="fc"><i>73</i>&nbsp;        this.view = view;</b>
+<b class="fc"><i>74</i>&nbsp;    }</b>
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    /**
+<i>77</i>&nbsp;     * Sets the view to null
+<i>78</i>&nbsp;     */
+<i>79</i>&nbsp;    public void clearView() {
+<b class="nc"><i>80</i>&nbsp;        this.view = null;</b>
+<b class="nc"><i>81</i>&nbsp;    }</b>
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

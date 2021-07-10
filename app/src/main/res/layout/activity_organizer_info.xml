@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/appColor"
+    android:fillViewport="true">
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
+
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="@string/username"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_username"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="@string/password"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_password"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="@string/name"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="@string/surname"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_surname"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="@string/phone_number"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_phone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="@string/email"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_email"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="@string/title"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp" />
+
+
+            <TextView
+                android:id="@+id/text_organizer_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:text="@string/birth_date"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+
+            <TextView
+                android:id="@+id/text_birth_date"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:paddingRight="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="32dp"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/delete_organizer_button"
+                    android:text="@string/delete_organizer"
+                    android:textAllCaps="false"
+                    android:layout_width="140dp"
+                    android:layout_height="55dp"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="10dp"
+                    android:textSize="15dp"/>
+
+                <Button
+                    android:id="@+id/edit_organizer_button"
+                    android:text="@string/edit_organizer"
+                    android:textAllCaps="false"
+                    android:layout_width="140dp"
+                    android:layout_height="55dp"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:layout_toRightOf="@+id/delete_organizer_button"/>
+
+            </RelativeLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            ></TableRow>
+
+    </TableLayout>
+</ScrollView>

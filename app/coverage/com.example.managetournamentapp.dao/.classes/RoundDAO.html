@@ -1,0 +1,77 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: RoundDAO</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.dao</a> ]
+</div>
+
+<h1>Coverage Summary for Class: RoundDAO (com.example.managetournamentapp.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">RoundDAO</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.dao;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.domain.Round;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>8</i>&nbsp; * Athens University of Economics and Business
+<i>9</i>&nbsp; * 2020-2021
+<i>10</i>&nbsp; */
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;public interface RoundDAO {
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    /**
+<i>15</i>&nbsp;     * Saves a specific round.
+<i>16</i>&nbsp;     * @param entity Round to be saved.
+<i>17</i>&nbsp;     */
+<i>18</i>&nbsp;    void save(Round entity);
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    /**
+<i>21</i>&nbsp;     * Deletes a specific round.
+<i>22</i>&nbsp;     * @param entity
+<i>23</i>&nbsp;     */
+<i>24</i>&nbsp;    void delete(Round entity);
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    /**
+<i>27</i>&nbsp;     * Deletes all rounds.
+<i>28</i>&nbsp;     */
+<i>29</i>&nbsp;    void deleteAll();
+<i>30</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

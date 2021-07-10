@@ -1,0 +1,357 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: RegisterPlayerPresenter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.User.RegisterPlayer</a> ]
+</div>
+
+<h1>Coverage Summary for Class: RegisterPlayerPresenter (com.example.managetournamentapp.view.User.RegisterPlayer)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegisterPlayerPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93.8%
+  </span>
+  <span class="absValue">
+    (15/ 16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81.6%
+  </span>
+  <span class="absValue">
+    (93/ 114)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.User.RegisterPlayer;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.dao.LoggedInUser;
+<i>4</i>&nbsp;import com.example.managetournamentapp.dao.OrganizerDAO;
+<i>5</i>&nbsp;import com.example.managetournamentapp.dao.PlayerDAO;
+<i>6</i>&nbsp;import com.example.managetournamentapp.domain.Credentials;
+<i>7</i>&nbsp;import com.example.managetournamentapp.domain.Organizer;
+<i>8</i>&nbsp;import com.example.managetournamentapp.domain.Player;
+<i>9</i>&nbsp;import com.example.managetournamentapp.domain.Sport;
+<i>10</i>&nbsp;import com.example.managetournamentapp.domain.User;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import java.text.DateFormat;
+<i>13</i>&nbsp;import java.text.ParseException;
+<i>14</i>&nbsp;import java.text.SimpleDateFormat;
+<i>15</i>&nbsp;import java.time.LocalDate;
+<i>16</i>&nbsp;import java.time.format.DateTimeFormatter;
+<i>17</i>&nbsp;import java.time.temporal.ChronoUnit;
+<i>18</i>&nbsp;import java.util.ArrayList;
+<i>19</i>&nbsp;import java.util.regex.Matcher;
+<i>20</i>&nbsp;import java.util.regex.Pattern;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;/**
+<i>23</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>24</i>&nbsp; * Athens University of Economics and Business
+<i>25</i>&nbsp; * 2020-2021
+<i>26</i>&nbsp; */
+<i>27</i>&nbsp;public class RegisterPlayerPresenter {
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    private RegisterPlayerView view;
+<i>30</i>&nbsp;    private PlayerDAO playerDAO;
+<i>31</i>&nbsp;    private OrganizerDAO organizerDAO;
+<b class="fc"><i>32</i>&nbsp;    private Player connectedPlayer = null;</b>
+<i>33</i>&nbsp;    private LoggedInUser loggedInUser;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * default constructor
+<i>37</i>&nbsp;     */
+<b class="fc"><i>38</i>&nbsp;    public RegisterPlayerPresenter() {</b>
+<b class="fc"><i>39</i>&nbsp;    }</b>
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /**
+<i>42</i>&nbsp;     * show the previous info of the player, if we are on edit mode
+<i>43</i>&nbsp;     *
+<i>44</i>&nbsp;     * @param playerUsername the username of the player
+<i>45</i>&nbsp;     */
+<i>46</i>&nbsp;    public void showPreviousInfo(String playerUsername) {
+<b class="fc"><i>47</i>&nbsp;        if (playerUsername == null)</b>
+<b class="nc"><i>48</i>&nbsp;            return;</b>
+<b class="fc"><i>49</i>&nbsp;        connectedPlayer = playerDAO.find(playerUsername);</b>
+<b class="fc"><i>50</i>&nbsp;        if (connectedPlayer == null)</b>
+<b class="nc"><i>51</i>&nbsp;            return;</b>
+<i>52</i>&nbsp;
+<b class="fc"><i>53</i>&nbsp;        view.setName(connectedPlayer.getName());</b>
+<b class="fc"><i>54</i>&nbsp;        view.setSurname(connectedPlayer.getSurname());</b>
+<b class="fc"><i>55</i>&nbsp;        view.setUsername(connectedPlayer.getCredentials().getUsername());</b>
+<b class="fc"><i>56</i>&nbsp;        view.setPassword(connectedPlayer.getCredentials().getPassword());</b>
+<b class="fc"><i>57</i>&nbsp;        view.setPhoneNumber(connectedPlayer.getPhoneNumber());</b>
+<b class="fc"><i>58</i>&nbsp;        view.setEmail(connectedPlayer.getEmail());</b>
+<b class="fc"><i>59</i>&nbsp;        view.setBirthdate(connectedPlayer.getBirthDate().format(DateTimeFormatter.ofPattern(&quot;dd-MM-yyyy&quot;)).replace(&quot;-&quot;, &quot;/&quot;));</b>
+<b class="fc"><i>60</i>&nbsp;        view.setLocation(connectedPlayer.getLocation());</b>
+<b class="fc"><i>61</i>&nbsp;        view.setSportsInterest(connectedPlayer.getSportsInterested());</b>
+<b class="fc"><i>62</i>&nbsp;        view.lockFields();</b>
+<b class="fc"><i>63</i>&nbsp;    }</b>
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;    /**
+<i>66</i>&nbsp;     * handle the input fields
+<i>67</i>&nbsp;     * create or edit a Player object
+<i>68</i>&nbsp;     */
+<i>69</i>&nbsp;    public void handlePlayerData() {
+<b class="fc"><i>70</i>&nbsp;        String usename = view.getUsername();</b>
+<b class="fc"><i>71</i>&nbsp;        String password = view.getPassword();</b>
+<b class="fc"><i>72</i>&nbsp;        String name = view.getName();</b>
+<b class="fc"><i>73</i>&nbsp;        String surname = view.getSurname();</b>
+<b class="fc"><i>74</i>&nbsp;        String phoneNumber = view.getPhoneNumber();</b>
+<b class="fc"><i>75</i>&nbsp;        String email = view.getEmail();</b>
+<b class="fc"><i>76</i>&nbsp;        String birthDate = view.getBirthDate();</b>
+<b class="fc"><i>77</i>&nbsp;        String location = view.getLocation();</b>
+<b class="fc"><i>78</i>&nbsp;        ArrayList&lt;Sport&gt; sportsInterest = view.getSportsInterest();</b>
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;        // validate user data
+<b class="fc"><i>82</i>&nbsp;        if (usename.length() &lt; 5 || usename.length() &gt; 20)</b>
+<b class="nc"><i>83</i>&nbsp;            view.showPopUp(view, &quot;Username must be at least 5 chars and no longer than 20 chars!&quot;);</b>
+<b class="fc"><i>84</i>&nbsp;        else if (password.length() &lt; 5)</b>
+<b class="nc"><i>85</i>&nbsp;            view.showPopUp(view, &quot;Password must be at least 5 chars!&quot;);</b>
+<b class="fc"><i>86</i>&nbsp;        else if (name.length() &lt; 2 || !validateName(name))</b>
+<b class="nc"><i>87</i>&nbsp;            view.showPopUp(view, &quot;Name must be at least 2 chars and only alphabetical chars!&quot;);</b>
+<b class="fc"><i>88</i>&nbsp;        else if (surname.length() &lt; 2 || !validateName(surname))</b>
+<b class="nc"><i>89</i>&nbsp;            view.showPopUp(view, &quot;Surname must be at least 2 chars and only alphabetical chars!&quot;);</b>
+<b class="fc"><i>90</i>&nbsp;        else if (phoneNumber.length() != 10 || !validatePhone(phoneNumber))</b>
+<b class="nc"><i>91</i>&nbsp;            view.showPopUp(view, &quot;Phone number must contain 10 numbers!&quot;);</b>
+<b class="fc"><i>92</i>&nbsp;        else if (email.length() &lt; 2 || !checkEmail(email))</b>
+<b class="nc"><i>93</i>&nbsp;            view.showPopUp(view, &quot;Not valid email!&quot;);</b>
+<b class="fc"><i>94</i>&nbsp;        else if (location.length() &lt; 2 || !validateName(location))</b>
+<b class="nc"><i>95</i>&nbsp;            view.showPopUp(view, &quot;Location must be at least 2 chars and only alphabetical chars!&quot;);</b>
+<b class="fc"><i>96</i>&nbsp;        else if (!validateBirthdate(birthDate))</b>
+<b class="nc"><i>97</i>&nbsp;            view.showPopUp(view, &quot;Not valid date!&quot;);</b>
+<b class="fc"><i>98</i>&nbsp;        else if(!checkPlayerAge(birthDate))</b>
+<b class="nc"><i>99</i>&nbsp;            view.showPopUp(view, &quot;You must be over 7 years old!&quot;);</b>
+<i>100</i>&nbsp;
+<i>101</i>&nbsp;        else {
+<i>102</i>&nbsp;            // IF USER IS NEW!
+<b class="fc"><i>103</i>&nbsp;            if (connectedPlayer == null) {</b>
+<b class="fc"><i>104</i>&nbsp;                if (alreadyInUse(new Credentials(usename, password), connectedPlayer)) {</b>
+<b class="nc"><i>105</i>&nbsp;                    view.showPopUp(view, &quot;Username already in use! Try a new one.&quot;);</b>
+<b class="nc"><i>106</i>&nbsp;                    return;</b>
+<i>107</i>&nbsp;                }
+<b class="fc"><i>108</i>&nbsp;                Player player = new Player(name, surname, location, phoneNumber, email, LocalDate.parse(reformatBirthdate(birthDate)), new Credentials(usename, password));</b>
+<b class="fc"><i>109</i>&nbsp;                for (Sport sport : sportsInterest)</b>
+<b class="fc"><i>110</i>&nbsp;                    player.addSportInterested(sport);</b>
+<b class="fc"><i>111</i>&nbsp;                playerDAO.save(player);</b>
+<b class="fc"><i>112</i>&nbsp;                loggedInUser.setUser(player);</b>
+<i>113</i>&nbsp;
+<b class="fc"><i>114</i>&nbsp;            } else {</b>
+<b class="fc"><i>115</i>&nbsp;                if (alreadyInUse(new Credentials(usename, password), connectedPlayer)) {</b>
+<b class="nc"><i>116</i>&nbsp;                    view.showPopUp(view, &quot;Username already in use! Try a new one.&quot;);</b>
+<b class="nc"><i>117</i>&nbsp;                    return;</b>
+<i>118</i>&nbsp;                }
+<b class="fc"><i>119</i>&nbsp;                connectedPlayer.setName(name);</b>
+<b class="fc"><i>120</i>&nbsp;                connectedPlayer.setSurname(surname);</b>
+<b class="fc"><i>121</i>&nbsp;                connectedPlayer.setCredentials(new Credentials(usename, password));</b>
+<b class="fc"><i>122</i>&nbsp;                connectedPlayer.setBirthDate(LocalDate.parse(reformatBirthdate(birthDate)));</b>
+<b class="fc"><i>123</i>&nbsp;                connectedPlayer.setLocation(location);</b>
+<b class="fc"><i>124</i>&nbsp;                connectedPlayer.setPhoneNumber(phoneNumber);</b>
+<b class="fc"><i>125</i>&nbsp;                connectedPlayer.setEmail(email);</b>
+<b class="fc"><i>126</i>&nbsp;                connectedPlayer.clearSportsInterest();</b>
+<b class="fc"><i>127</i>&nbsp;                for (Sport sport : sportsInterest)</b>
+<b class="fc"><i>128</i>&nbsp;                    connectedPlayer.addSportInterested(sport);</b>
+<i>129</i>&nbsp;
+<i>130</i>&nbsp;            }
+<b class="fc"><i>131</i>&nbsp;            view.startPlayerPage(usename);</b>
+<i>132</i>&nbsp;        }
+<b class="fc"><i>133</i>&nbsp;    }</b>
+<i>134</i>&nbsp;
+<i>135</i>&nbsp;    /**
+<i>136</i>&nbsp;     * @param emailToCheck the email we want to check if it&#39;s valid.
+<i>137</i>&nbsp;     * @return true if the email is valid, else false.
+<i>138</i>&nbsp;     */
+<i>139</i>&nbsp;    public boolean checkEmail(String emailToCheck) {
+<b class="fc"><i>140</i>&nbsp;        String valid = &quot;^(.+)@(.+)$&quot;;</b>
+<b class="fc"><i>141</i>&nbsp;        Pattern pattern = Pattern.compile(valid);</b>
+<b class="fc"><i>142</i>&nbsp;        Matcher matcher = pattern.matcher(emailToCheck);</b>
+<b class="fc"><i>143</i>&nbsp;        return matcher.matches();</b>
+<i>144</i>&nbsp;    }
+<i>145</i>&nbsp;
+<i>146</i>&nbsp;    /**
+<i>147</i>&nbsp;     * @param name the email we want to check if it&#39;s valid.
+<i>148</i>&nbsp;     * @return true if the name is valid, else false.
+<i>149</i>&nbsp;     */
+<i>150</i>&nbsp;    public boolean validateName(String name) {
+<b class="fc"><i>151</i>&nbsp;        String valid = &quot;^[a-zA-Z]*$&quot;;</b>
+<b class="fc"><i>152</i>&nbsp;        Pattern pattern = Pattern.compile(valid);</b>
+<b class="fc"><i>153</i>&nbsp;        Matcher matcher = pattern.matcher(name);</b>
+<b class="fc"><i>154</i>&nbsp;        return matcher.matches();</b>
+<i>155</i>&nbsp;    }
+<i>156</i>&nbsp;
+<i>157</i>&nbsp;    /**
+<i>158</i>&nbsp;     * @param phone the email we want to check if it&#39;s valid.
+<i>159</i>&nbsp;     * @return true if the phone is valid, else false.
+<i>160</i>&nbsp;     */
+<i>161</i>&nbsp;    public boolean validatePhone(String phone) {
+<b class="fc"><i>162</i>&nbsp;        String valid = &quot;[0-9]+&quot;;</b>
+<b class="fc"><i>163</i>&nbsp;        Pattern pattern = Pattern.compile(valid);</b>
+<b class="fc"><i>164</i>&nbsp;        Matcher matcher = pattern.matcher(phone);</b>
+<b class="fc"><i>165</i>&nbsp;        return matcher.matches();</b>
+<i>166</i>&nbsp;    }
+<i>167</i>&nbsp;
+<i>168</i>&nbsp;    /**
+<i>169</i>&nbsp;     * reformatting the given string
+<i>170</i>&nbsp;     *
+<i>171</i>&nbsp;     * @param birthdate the birth date in the initial format
+<i>172</i>&nbsp;     * @return the reformatted birth date
+<i>173</i>&nbsp;     */
+<i>174</i>&nbsp;    public String reformatBirthdate(String birthdate) {
+<b class="fc"><i>175</i>&nbsp;        birthdate = birthdate.replace(&quot;/&quot;, &quot;-&quot;);</b>
+<b class="fc"><i>176</i>&nbsp;        String dateFormat = LocalDate.parse(birthdate, DateTimeFormatter.ofPattern(&quot;dd-MM-uuuu&quot;)).format(DateTimeFormatter.ofPattern(&quot;uuuu-MM-dd&quot;));</b>
+<b class="fc"><i>177</i>&nbsp;        return dateFormat;</b>
+<i>178</i>&nbsp;    }
+<i>179</i>&nbsp;
+<i>180</i>&nbsp;    /**
+<i>181</i>&nbsp;     * @param birthdate the birth date we want to check if it&#39;s valid.
+<i>182</i>&nbsp;     * @return true if the birth date is valid, else false.
+<i>183</i>&nbsp;     */
+<i>184</i>&nbsp;    public boolean validateBirthdate(String birthdate) {
+<b class="fc"><i>185</i>&nbsp;        DateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</b>
+<b class="fc"><i>186</i>&nbsp;        dateFormat.setLenient(false);</b>
+<i>187</i>&nbsp;        try {
+<b class="fc"><i>188</i>&nbsp;            dateFormat.parse(birthdate);</b>
+<b class="nc"><i>189</i>&nbsp;        } catch (ParseException e) {</b>
+<b class="nc"><i>190</i>&nbsp;            return false;</b>
+<b class="fc"><i>191</i>&nbsp;        }</b>
+<b class="fc"><i>192</i>&nbsp;        return true;</b>
+<i>193</i>&nbsp;    }
+<i>194</i>&nbsp;
+<i>195</i>&nbsp;    /**
+<i>196</i>&nbsp;     * @param birthdate the birth date we want to check if it&#39;s valid.
+<i>197</i>&nbsp;     * @return true if the birth date is valid, else false.
+<i>198</i>&nbsp;     */
+<i>199</i>&nbsp;    public boolean checkPlayerAge(String birthdate) {
+<b class="fc"><i>200</i>&nbsp;        LocalDate now = LocalDate.now();</b>
+<b class="fc"><i>201</i>&nbsp;        String format = reformatBirthdate(birthdate);</b>
+<b class="fc"><i>202</i>&nbsp;        int diff = (int) LocalDate.parse(format).until(now, ChronoUnit.YEARS);</b>
+<b class="fc"><i>203</i>&nbsp;        return diff &gt;= 7;</b>
+<i>204</i>&nbsp;    }
+<i>205</i>&nbsp;
+<i>206</i>&nbsp;
+<i>207</i>&nbsp;    /**
+<i>208</i>&nbsp;     * Check if there is another user who has these credentials
+<i>209</i>&nbsp;     *
+<i>210</i>&nbsp;     * @param credentials the user credentials to check in registration
+<i>211</i>&nbsp;     * @return true if credentials are existed in DAO
+<i>212</i>&nbsp;     */
+<i>213</i>&nbsp;    public boolean alreadyInUse(Credentials credentials, User user) {
+<b class="fc"><i>214</i>&nbsp;        boolean already = false;</b>
+<b class="fc"><i>215</i>&nbsp;        if (playerDAO.isUsedByAnother(credentials, user))</b>
+<b class="nc"><i>216</i>&nbsp;            already = true;</b>
+<b class="fc"><i>217</i>&nbsp;        if (organizerDAO.isUsedByAnother(credentials, user))</b>
+<b class="nc"><i>218</i>&nbsp;            already = true;</b>
+<b class="fc"><i>219</i>&nbsp;        return already;</b>
+<i>220</i>&nbsp;
+<i>221</i>&nbsp;    }
+<i>222</i>&nbsp;
+<i>223</i>&nbsp;    /**
+<i>224</i>&nbsp;     * get the loggedInUser
+<i>225</i>&nbsp;     *
+<i>226</i>&nbsp;     * @return the LoggedInUser object
+<i>227</i>&nbsp;     */
+<i>228</i>&nbsp;    public LoggedInUser getLoggedInUser() {
+<b class="fc"><i>229</i>&nbsp;        return loggedInUser;</b>
+<i>230</i>&nbsp;    }
+<i>231</i>&nbsp;
+<i>232</i>&nbsp;    /**
+<i>233</i>&nbsp;     * set the loggedInUser
+<i>234</i>&nbsp;     *
+<i>235</i>&nbsp;     * @param loggedInUser the new LoggedInUser
+<i>236</i>&nbsp;     */
+<i>237</i>&nbsp;    public void setLoggedInUser(LoggedInUser loggedInUser) {
+<b class="fc"><i>238</i>&nbsp;        this.loggedInUser = loggedInUser;</b>
+<b class="fc"><i>239</i>&nbsp;    }</b>
+<i>240</i>&nbsp;
+<i>241</i>&nbsp;    /**
+<i>242</i>&nbsp;     * set a new view
+<i>243</i>&nbsp;     *
+<i>244</i>&nbsp;     * @param view the new view
+<i>245</i>&nbsp;     */
+<i>246</i>&nbsp;    public void setView(RegisterPlayerView view) {
+<b class="fc"><i>247</i>&nbsp;        this.view = view;</b>
+<b class="fc"><i>248</i>&nbsp;    }</b>
+<i>249</i>&nbsp;
+<i>250</i>&nbsp;    /**
+<i>251</i>&nbsp;     * clear the view
+<i>252</i>&nbsp;     */
+<i>253</i>&nbsp;    public void clearView() {
+<b class="nc"><i>254</i>&nbsp;        this.view = null;</b>
+<b class="nc"><i>255</i>&nbsp;    }</b>
+<i>256</i>&nbsp;
+<i>257</i>&nbsp;    /**
+<i>258</i>&nbsp;     * set the playerDAO
+<i>259</i>&nbsp;     *
+<i>260</i>&nbsp;     * @param playerDAO the new PlayerDAO
+<i>261</i>&nbsp;     */
+<i>262</i>&nbsp;    public void setPlayerDAO(PlayerDAO playerDAO) {
+<b class="fc"><i>263</i>&nbsp;        this.playerDAO = playerDAO;</b>
+<b class="fc"><i>264</i>&nbsp;    }</b>
+<i>265</i>&nbsp;
+<i>266</i>&nbsp;    /**
+<i>267</i>&nbsp;     * set the organizerDAO
+<i>268</i>&nbsp;     *
+<i>269</i>&nbsp;     * @param organizerDAO the new OrganizerDAO
+<i>270</i>&nbsp;     */
+<i>271</i>&nbsp;    public void setOrganizerDAO(OrganizerDAO organizerDAO) {
+<b class="fc"><i>272</i>&nbsp;        this.organizerDAO = organizerDAO;</b>
+<b class="fc"><i>273</i>&nbsp;    }</b>
+<i>274</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

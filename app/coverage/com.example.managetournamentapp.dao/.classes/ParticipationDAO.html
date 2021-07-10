@@ -1,0 +1,94 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ParticipationDAO</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.dao</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ParticipationDAO (com.example.managetournamentapp.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ParticipationDAO</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.dao;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.domain.Participation;
+<i>4</i>&nbsp;import java.util.ArrayList;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>8</i>&nbsp; * Athens University of Economics and Business
+<i>9</i>&nbsp; * 2020-2021
+<i>10</i>&nbsp; */
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;public interface ParticipationDAO {
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    /**
+<i>15</i>&nbsp;     * Saves a specific participation.
+<i>16</i>&nbsp;     * @param entity Participation to be saved.
+<i>17</i>&nbsp;     */
+<i>18</i>&nbsp;    void save(Participation entity);
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    /**
+<i>21</i>&nbsp;     * Finds a specific participation.
+<i>22</i>&nbsp;     * @param teamName Name of team
+<i>23</i>&nbsp;     * @param tournamentName Name of tournament
+<i>24</i>&nbsp;     * @return Participation with the specific tournament and team
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    Participation find(String teamName, String tournamentName);
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * Finds all participations.
+<i>30</i>&nbsp;     * @return All participations.
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    ArrayList&lt;Participation&gt; findAll();
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * Deletes a specific participation.
+<i>36</i>&nbsp;     * @param entity Participation to be deleted.
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    void delete(Participation entity);
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /**
+<i>41</i>&nbsp;     * Deletes all participations.
+<i>42</i>&nbsp;     */
+<i>43</i>&nbsp;    void deleteAll();
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

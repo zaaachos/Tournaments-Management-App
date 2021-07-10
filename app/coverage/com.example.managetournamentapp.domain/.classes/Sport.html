@@ -1,0 +1,219 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Sport</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.domain</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Sport (com.example.managetournamentapp.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Sport</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.4%
+  </span>
+  <span class="absValue">
+    (37/ 38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.domain;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>5</i>&nbsp; * Athens University of Economics and Business
+<i>6</i>&nbsp; * 2020-2021
+<i>7</i>&nbsp; */
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;public class Sport {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    private String name;
+<i>12</i>&nbsp;    private int minimumPlayers;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    /**
+<i>15</i>&nbsp;     * the constructor of a sport
+<i>16</i>&nbsp;     * @param name the name(type) of the sport
+<i>17</i>&nbsp;     */
+<b class="fc"><i>18</i>&nbsp;    public Sport(String name) {</b>
+<b class="fc"><i>19</i>&nbsp;        boolean flag = checkSportName(name);</b>
+<b class="fc"><i>20</i>&nbsp;        if (flag) {</b>
+<b class="fc"><i>21</i>&nbsp;            this.name = name;</b>
+<b class="fc"><i>22</i>&nbsp;            setMinPlayers(name);</b>
+<i>23</i>&nbsp;        }
+<b class="fc"><i>24</i>&nbsp;    }</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    /**
+<i>27</i>&nbsp;     * check if the sport name given is included in supporteds sports
+<i>28</i>&nbsp;     * @param name the name of the sport
+<i>29</i>&nbsp;     * @return true if the name of the sport is valid
+<i>30</i>&nbsp;     */
+<i>31</i>&nbsp;    public boolean checkSportName(String name) {
+<b class="fc"><i>32</i>&nbsp;        for (TournamentType tt : TournamentType.values()) {</b>
+<b class="fc"><i>33</i>&nbsp;            if (tt.name().equals(name)) {</b>
+<b class="fc"><i>34</i>&nbsp;                return true;</b>
+<i>35</i>&nbsp;            }
+<i>36</i>&nbsp;        }
+<b class="fc"><i>37</i>&nbsp;        return false;</b>
+<i>38</i>&nbsp;    }
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /**
+<i>41</i>&nbsp;     * set the minimum number of players that are needed
+<i>42</i>&nbsp;     * for a game to take place
+<i>43</i>&nbsp;     * @param name the name of the sport
+<i>44</i>&nbsp;     */
+<i>45</i>&nbsp;    public void setMinPlayers(String name) {
+<b class="fc"><i>46</i>&nbsp;        switch (name) {</b>
+<i>47</i>&nbsp;            case &quot;Volleyball3v3&quot;:
+<i>48</i>&nbsp;            case &quot;Basketball3v3&quot;:
+<b class="fc"><i>49</i>&nbsp;                minimumPlayers = 6;</b>
+<b class="fc"><i>50</i>&nbsp;                break;</b>
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;            case &quot;Football5v5&quot;:
+<i>53</i>&nbsp;            case &quot;Basketball5v5&quot;:
+<b class="fc"><i>54</i>&nbsp;                minimumPlayers = 10;</b>
+<b class="fc"><i>55</i>&nbsp;                break;</b>
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;            case &quot;Football7v7&quot;:
+<b class="fc"><i>58</i>&nbsp;                minimumPlayers = 14;</b>
+<b class="fc"><i>59</i>&nbsp;                break;</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;            case &quot;Volleyball6v6&quot;:
+<b class="fc"><i>62</i>&nbsp;                minimumPlayers = 12;</b>
+<i>63</i>&nbsp;                break;
+<i>64</i>&nbsp;        }
+<i>65</i>&nbsp;
+<b class="fc"><i>66</i>&nbsp;    }</b>
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;    /**
+<i>69</i>&nbsp;     * Change sport selection
+<i>70</i>&nbsp;     * @param name the name of the new sport
+<i>71</i>&nbsp;     */
+<i>72</i>&nbsp;    public void changeSetup(String name) {
+<i>73</i>&nbsp;
+<b class="fc"><i>74</i>&nbsp;        boolean flag = checkSportName(name);</b>
+<b class="fc"><i>75</i>&nbsp;        if (flag) {</b>
+<b class="fc"><i>76</i>&nbsp;            this.name = name;</b>
+<b class="fc"><i>77</i>&nbsp;            setMinPlayers(name);</b>
+<i>78</i>&nbsp;        } else {
+<b class="nc"><i>79</i>&nbsp;            System.out.println(&quot;Wrong settings for the specific sport type selection.&quot;);</b>
+<i>80</i>&nbsp;        }
+<b class="fc"><i>81</i>&nbsp;    }</b>
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    /**
+<i>84</i>&nbsp;     * find the name(type) of the sport
+<i>85</i>&nbsp;     * @return the name of the sport
+<i>86</i>&nbsp;     */
+<i>87</i>&nbsp;    public String getName() {
+<b class="fc"><i>88</i>&nbsp;        return name;</b>
+<i>89</i>&nbsp;    }
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;    /**
+<i>92</i>&nbsp;     * the minimum number of players for a game of this sport
+<i>93</i>&nbsp;     * @return the minimum number of players
+<i>94</i>&nbsp;     */
+<i>95</i>&nbsp;    public int getMinimumPlayers() {
+<b class="fc"><i>96</i>&nbsp;        return minimumPlayers;</b>
+<i>97</i>&nbsp;    }
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;    /**
+<i>101</i>&nbsp;     * the string representation of the sport
+<i>102</i>&nbsp;     * @return the basic info of the sport to string
+<i>103</i>&nbsp;     */
+<i>104</i>&nbsp;    @Override
+<i>105</i>&nbsp;    public String toString() {
+<b class="fc"><i>106</i>&nbsp;        return &quot;Sport{&quot; +</b>
+<i>107</i>&nbsp;                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+<i>108</i>&nbsp;                &quot;, minimumPlayers=&quot; + minimumPlayers +
+<i>109</i>&nbsp;                &#39;}&#39;;
+<i>110</i>&nbsp;    }
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;    /**
+<i>113</i>&nbsp;     *check if two sports are equal
+<i>114</i>&nbsp;     * @param other is the other sport
+<i>115</i>&nbsp;     * @return if this sport is equal to the other sport
+<i>116</i>&nbsp;     */
+<i>117</i>&nbsp;    public boolean equals(Object other) {
+<i>118</i>&nbsp;
+<b class="fc"><i>119</i>&nbsp;        if (other == null) {</b>
+<b class="fc"><i>120</i>&nbsp;            return false;</b>
+<i>121</i>&nbsp;        }
+<b class="fc"><i>122</i>&nbsp;        if (!(other instanceof Sport)) {</b>
+<b class="fc"><i>123</i>&nbsp;            return false;</b>
+<i>124</i>&nbsp;        }
+<b class="fc"><i>125</i>&nbsp;        if (this == other) {</b>
+<b class="fc"><i>126</i>&nbsp;            return true;</b>
+<i>127</i>&nbsp;        }
+<b class="fc"><i>128</i>&nbsp;        Sport check = (Sport) other;</b>
+<b class="fc"><i>129</i>&nbsp;        if (!(name == null ? check.getName() == null : name.equals(check.getName()))) {</b>
+<b class="fc"><i>130</i>&nbsp;            return false;</b>
+<i>131</i>&nbsp;        }
+<b class="fc"><i>132</i>&nbsp;        return true;</b>
+<i>133</i>&nbsp;
+<i>134</i>&nbsp;    }
+<i>135</i>&nbsp;
+<i>136</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,348 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: RegisterOrganizerActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.User.RegisterOrganizer</a> ]
+</div>
+
+<h1>Coverage Summary for Class: RegisterOrganizerActivity (com.example.managetournamentapp.view.User.RegisterOrganizer)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegisterOrganizerActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 23)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 60)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.User.RegisterOrganizer;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.ActionBar;
+<i>4</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>5</i>&nbsp;import androidx.appcompat.app.AppCompatActivity;
+<i>6</i>&nbsp;import androidx.lifecycle.ViewModelProvider;
+<i>7</i>&nbsp;import android.content.Intent;
+<i>8</i>&nbsp;import android.os.Bundle;
+<i>9</i>&nbsp;import android.view.View;
+<i>10</i>&nbsp;import android.widget.Button;
+<i>11</i>&nbsp;import android.widget.EditText;
+<i>12</i>&nbsp;import android.widget.TextView;
+<i>13</i>&nbsp;import com.example.managetournamentapp.R;
+<i>14</i>&nbsp;import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;/**
+<i>18</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>19</i>&nbsp; * Athens University of Economics and Business
+<i>20</i>&nbsp; * 2020-2021
+<i>21</i>&nbsp; */
+<i>22</i>&nbsp;
+<b class="nc"><i>23</i>&nbsp;public class RegisterOrganizerActivity extends AppCompatActivity implements RegisterOrganizerView, View.OnClickListener {</b>
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    RegisterOrganizerViewModel viewModel;
+<i>26</i>&nbsp;    public static final String ORGANIZER_TITLE = &quot;organizer_title&quot;;
+<i>27</i>&nbsp;    private static final String ORGANIZER_TITLE_EXTRA = &quot;organizer_title_extra&quot;;
+<i>28</i>&nbsp;    private Button saveBtn;
+<i>29</i>&nbsp;    String organizerTitle;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    /**
+<i>32</i>&nbsp;     * Creates the layout and initializes the activity
+<i>33</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>34</i>&nbsp;     */
+<i>35</i>&nbsp;    @Override
+<i>36</i>&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<b class="nc"><i>37</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>38</i>&nbsp;        setContentView(R.layout.activity_register_organizer);</b>
+<i>39</i>&nbsp;
+<b class="nc"><i>40</i>&nbsp;        organizerTitle = this.getIntent().getStringExtra(ORGANIZER_TITLE);</b>
+<b class="nc"><i>41</i>&nbsp;        if(organizerTitle != null){</b>
+<b class="nc"><i>42</i>&nbsp;            ActionBar actionBar = getSupportActionBar();</b>
+<b class="nc"><i>43</i>&nbsp;            if(actionBar != null)</b>
+<i>44</i>&nbsp;            {
+<b class="nc"><i>45</i>&nbsp;                actionBar.setTitle(&quot;Organizer Edit&quot;);</b>
+<i>46</i>&nbsp;            }
+<i>47</i>&nbsp;        }
+<i>48</i>&nbsp;
+<b class="nc"><i>49</i>&nbsp;        viewModel = new ViewModelProvider(this).get(RegisterOrganizerViewModel.class);</b>
+<b class="nc"><i>50</i>&nbsp;        viewModel.getPresenter().setView(this);</b>
+<b class="nc"><i>51</i>&nbsp;        viewModel.getPresenter().showPreviousInfo(organizerTitle);</b>
+<b class="nc"><i>52</i>&nbsp;        saveBtn = findViewById(R.id.saveOrganizerBtn);</b>
+<b class="nc"><i>53</i>&nbsp;        saveBtn.setOnClickListener(this);</b>
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    /**
+<i>58</i>&nbsp;     *show a popup on the screen
+<i>59</i>&nbsp;     * @param view the view of the popup
+<i>60</i>&nbsp;     * @param msg the message that will be shown
+<i>61</i>&nbsp;     */
+<i>62</i>&nbsp;    public void showPopUp(RegisterOrganizerView view, String msg) {
+<b class="nc"><i>63</i>&nbsp;        AlertDialog.Builder builder = new AlertDialog.Builder(this);</b>
+<b class="nc"><i>64</i>&nbsp;        View customLayout = getLayoutInflater().inflate(R.layout.wrong_input_popup, null);</b>
+<b class="nc"><i>65</i>&nbsp;        builder.setView(customLayout);</b>
+<b class="nc"><i>66</i>&nbsp;        AlertDialog dialog = builder.create();</b>
+<b class="nc"><i>67</i>&nbsp;        Button OKbtn = (Button) customLayout.findViewById(R.id.OK_popup);</b>
+<b class="nc"><i>68</i>&nbsp;        TextView errorMsg = (TextView) customLayout.findViewById(R.id.error_messsage);      // display message we want.</b>
+<b class="nc"><i>69</i>&nbsp;        errorMsg.setText(msg);</b>
+<b class="nc"><i>70</i>&nbsp;        OKbtn.setOnClickListener(v -&gt; dialog.dismiss());</b>
+<b class="nc"><i>71</i>&nbsp;        dialog.show();</b>
+<i>72</i>&nbsp;    }
+<i>73</i>&nbsp;
+<i>74</i>&nbsp;    /**
+<i>75</i>&nbsp;     * what happens when a button is pressed
+<i>76</i>&nbsp;     * @param v the current view
+<i>77</i>&nbsp;     */
+<i>78</i>&nbsp;    @Override
+<i>79</i>&nbsp;    public void onClick(View v) {
+<b class="nc"><i>80</i>&nbsp;        if (v.getId() == R.id.saveOrganizerBtn) {</b>
+<b class="nc"><i>81</i>&nbsp;            viewModel.getPresenter().handleOrganizerData();</b>
+<i>82</i>&nbsp;        }
+<i>83</i>&nbsp;    }
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    /**
+<i>86</i>&nbsp;     * start the organizer page activity
+<i>87</i>&nbsp;     * @param title the title of the player
+<i>88</i>&nbsp;     */
+<i>89</i>&nbsp;    public void startOrganizerPage(String title) {
+<b class="nc"><i>90</i>&nbsp;        Intent intent = new Intent(this, OrganizerPageActivity.class);</b>
+<b class="nc"><i>91</i>&nbsp;        intent.putExtra(ORGANIZER_TITLE_EXTRA, title );</b>
+<b class="nc"><i>92</i>&nbsp;        startActivity(intent);</b>
+<i>93</i>&nbsp;    }
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;    /**
+<i>96</i>&nbsp;     * some fields can&#39;t be changed
+<i>97</i>&nbsp;     */
+<i>98</i>&nbsp;    @Override
+<i>99</i>&nbsp;    public void lockFields() {
+<b class="nc"><i>100</i>&nbsp;        findViewById(R.id.birthdate).setEnabled(false);</b>
+<i>101</i>&nbsp;    }
+<i>102</i>&nbsp;
+<i>103</i>&nbsp;    /**
+<i>104</i>&nbsp;     * get the contents of the edit text
+<i>105</i>&nbsp;     * @return the given username
+<i>106</i>&nbsp;     */
+<i>107</i>&nbsp;    @Override
+<i>108</i>&nbsp;    public String getUsername() {
+<b class="nc"><i>109</i>&nbsp;        EditText USERNAME = (EditText) findViewById(R.id.username);</b>
+<b class="nc"><i>110</i>&nbsp;        return USERNAME.getText().toString();</b>
+<i>111</i>&nbsp;    }
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;    /**
+<i>114</i>&nbsp;     * get the contents of the edit text
+<i>115</i>&nbsp;     * @return the given password
+<i>116</i>&nbsp;     */
+<i>117</i>&nbsp;    @Override
+<i>118</i>&nbsp;    public String getPassword() {
+<b class="nc"><i>119</i>&nbsp;        EditText PASSWORD = (EditText) findViewById(R.id.password);</b>
+<b class="nc"><i>120</i>&nbsp;        return PASSWORD.getText().toString();</b>
+<i>121</i>&nbsp;    }
+<i>122</i>&nbsp;
+<i>123</i>&nbsp;    /**
+<i>124</i>&nbsp;     * get the contents of the edit text
+<i>125</i>&nbsp;     * @return the given name
+<i>126</i>&nbsp;     */
+<i>127</i>&nbsp;    @Override
+<i>128</i>&nbsp;    public String getName() {
+<b class="nc"><i>129</i>&nbsp;        EditText NAME = (EditText) findViewById(R.id.name);</b>
+<b class="nc"><i>130</i>&nbsp;        return NAME.getText().toString();</b>
+<i>131</i>&nbsp;    }
+<i>132</i>&nbsp;
+<i>133</i>&nbsp;    /**
+<i>134</i>&nbsp;     * get the contents of the edit text
+<i>135</i>&nbsp;     * @return the given surname
+<i>136</i>&nbsp;     */
+<i>137</i>&nbsp;    @Override
+<i>138</i>&nbsp;    public String getSurname() {
+<b class="nc"><i>139</i>&nbsp;        EditText SURNAME = (EditText) findViewById(R.id.surname);</b>
+<b class="nc"><i>140</i>&nbsp;        return SURNAME.getText().toString();</b>
+<i>141</i>&nbsp;    }
+<i>142</i>&nbsp;
+<i>143</i>&nbsp;    /**
+<i>144</i>&nbsp;     * get the contents of the edit text
+<i>145</i>&nbsp;     * @return the name given
+<i>146</i>&nbsp;     */
+<i>147</i>&nbsp;    @Override
+<i>148</i>&nbsp;    public String getPhoneNumber() {
+<b class="nc"><i>149</i>&nbsp;        EditText PHONE = (EditText) findViewById(R.id.phone);</b>
+<b class="nc"><i>150</i>&nbsp;        return PHONE.getText().toString();</b>
+<i>151</i>&nbsp;    }
+<i>152</i>&nbsp;
+<i>153</i>&nbsp;    /**
+<i>154</i>&nbsp;     * get the contents of the edit text
+<i>155</i>&nbsp;     * @return the given email
+<i>156</i>&nbsp;     */
+<i>157</i>&nbsp;    @Override
+<i>158</i>&nbsp;    public String getEmail() {
+<b class="nc"><i>159</i>&nbsp;        EditText EMAIL = (EditText) findViewById(R.id.email);</b>
+<b class="nc"><i>160</i>&nbsp;        return EMAIL.getText().toString();</b>
+<i>161</i>&nbsp;    }
+<i>162</i>&nbsp;
+<i>163</i>&nbsp;    /**
+<i>164</i>&nbsp;     * get the contents of the edit text
+<i>165</i>&nbsp;     * @return the given birth date
+<i>166</i>&nbsp;     */
+<i>167</i>&nbsp;    @Override
+<i>168</i>&nbsp;    public String getBirthDate() {
+<b class="nc"><i>169</i>&nbsp;        EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);</b>
+<b class="nc"><i>170</i>&nbsp;        return BIRTHDATE.getText().toString();</b>
+<i>171</i>&nbsp;    }
+<i>172</i>&nbsp;
+<i>173</i>&nbsp;    /**
+<i>174</i>&nbsp;     * get the contents of the edit text
+<i>175</i>&nbsp;     * @return the given title
+<i>176</i>&nbsp;     */
+<i>177</i>&nbsp;    @Override
+<i>178</i>&nbsp;    public String getOrganizerTitle() {
+<b class="nc"><i>179</i>&nbsp;        EditText TITLE = (EditText) findViewById(R.id.organizer_title);</b>
+<b class="nc"><i>180</i>&nbsp;        return TITLE.getText().toString();</b>
+<i>181</i>&nbsp;    }
+<i>182</i>&nbsp;
+<i>183</i>&nbsp;    /**
+<i>184</i>&nbsp;     * set the contents in the username edit text
+<i>185</i>&nbsp;     * @param username the new username
+<i>186</i>&nbsp;     */
+<i>187</i>&nbsp;    @Override
+<i>188</i>&nbsp;    public void setUsername(String username) {
+<b class="nc"><i>189</i>&nbsp;        EditText USERNAME = (EditText) findViewById(R.id.username);</b>
+<b class="nc"><i>190</i>&nbsp;        USERNAME.setText(username);</b>
+<i>191</i>&nbsp;    }
+<i>192</i>&nbsp;
+<i>193</i>&nbsp;    /**
+<i>194</i>&nbsp;     * set the contents in the password edit text
+<i>195</i>&nbsp;     * @param password the new password
+<i>196</i>&nbsp;     */
+<i>197</i>&nbsp;    @Override
+<i>198</i>&nbsp;    public void setPassword(String password) {
+<b class="nc"><i>199</i>&nbsp;        EditText PASSWORD = (EditText) findViewById(R.id.password);</b>
+<b class="nc"><i>200</i>&nbsp;        PASSWORD.setText(password);</b>
+<i>201</i>&nbsp;    }
+<i>202</i>&nbsp;
+<i>203</i>&nbsp;    /**
+<i>204</i>&nbsp;     * set the contents in the name edit text
+<i>205</i>&nbsp;     * @param name the new name
+<i>206</i>&nbsp;     */
+<i>207</i>&nbsp;    @Override
+<i>208</i>&nbsp;    public void setName(String name) {
+<b class="nc"><i>209</i>&nbsp;        EditText NAME = (EditText) findViewById(R.id.name);</b>
+<b class="nc"><i>210</i>&nbsp;        NAME.setText(name);</b>
+<i>211</i>&nbsp;    }
+<i>212</i>&nbsp;
+<i>213</i>&nbsp;    /**
+<i>214</i>&nbsp;     * set the contents in the surname edit text
+<i>215</i>&nbsp;     * @param surname the new surname
+<i>216</i>&nbsp;     */
+<i>217</i>&nbsp;    @Override
+<i>218</i>&nbsp;    public void setSurname(String surname) {
+<b class="nc"><i>219</i>&nbsp;        EditText SURNAME = (EditText) findViewById(R.id.surname);</b>
+<b class="nc"><i>220</i>&nbsp;        SURNAME.setText(surname);</b>
+<i>221</i>&nbsp;    }
+<i>222</i>&nbsp;
+<i>223</i>&nbsp;    /**
+<i>224</i>&nbsp;     * set the contents in the phone number edit text
+<i>225</i>&nbsp;     * @param phoneNumber the new phone number
+<i>226</i>&nbsp;     */
+<i>227</i>&nbsp;    @Override
+<i>228</i>&nbsp;    public void setPhoneNumber(String phoneNumber) {
+<b class="nc"><i>229</i>&nbsp;        EditText PHONE = (EditText) findViewById(R.id.phone);</b>
+<b class="nc"><i>230</i>&nbsp;        PHONE.setText(phoneNumber);</b>
+<i>231</i>&nbsp;    }
+<i>232</i>&nbsp;
+<i>233</i>&nbsp;    /**
+<i>234</i>&nbsp;     * set the contents in the email edit text
+<i>235</i>&nbsp;     * @param email the new email
+<i>236</i>&nbsp;     */
+<i>237</i>&nbsp;    @Override
+<i>238</i>&nbsp;    public void setEmail(String email) {
+<b class="nc"><i>239</i>&nbsp;        EditText EMAIL = (EditText) findViewById(R.id.email);</b>
+<b class="nc"><i>240</i>&nbsp;        EMAIL.setText(email);</b>
+<i>241</i>&nbsp;    }
+<i>242</i>&nbsp;
+<i>243</i>&nbsp;    /**
+<i>244</i>&nbsp;     * set the contents in the birth date edit text
+<i>245</i>&nbsp;     * @param birthdate the new birth date
+<i>246</i>&nbsp;     */
+<i>247</i>&nbsp;    @Override
+<i>248</i>&nbsp;    public void setBirthdate(String birthdate) {
+<b class="nc"><i>249</i>&nbsp;        EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);</b>
+<b class="nc"><i>250</i>&nbsp;        BIRTHDATE.setText(birthdate);</b>
+<i>251</i>&nbsp;    }
+<i>252</i>&nbsp;
+<i>253</i>&nbsp;
+<i>254</i>&nbsp;    /**
+<i>255</i>&nbsp;     * set the contents in the title edit text
+<i>256</i>&nbsp;     * @param title the new title
+<i>257</i>&nbsp;     */
+<i>258</i>&nbsp;    @Override
+<i>259</i>&nbsp;    public void setTitle(String title) {
+<b class="nc"><i>260</i>&nbsp;        EditText TITLE = (EditText) findViewById(R.id.organizer_title);</b>
+<b class="nc"><i>261</i>&nbsp;        TITLE.setText(title);</b>
+<i>262</i>&nbsp;    }
+<i>263</i>&nbsp;
+<i>264</i>&nbsp;
+<i>265</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

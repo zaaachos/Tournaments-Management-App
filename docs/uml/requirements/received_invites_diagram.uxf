@@ -1,0 +1,53 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>890</x><y>200</y><w>390</w><h>120</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; ReceivedInvitesView
+--
+getInvitationsList() : ArrayList&lt;Invitation&gt;
+startTeamPgae() : void
+showPopUp(int layoutId, String msg, int btn1, int btn2) : AlertDialog
+backToHomePage() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>150</y><w>470</w><h>270</h></coordinates><panel_attributes>ReceivedInvitesActivity
+--
+- invitationSelected : Invitation
+- playerUsername : String
+~ btnHome : ImageButton
+_- PLAYER_USERNAME_EXTRA: String_
+_- TEAM_NAME_EXTRA: String_
+- POPUP_ACTION : AlertDialog
+--
+# onCreate(Bundle savedInstanceState) : void
++ getInvitationsList() : ArrayList&lt;Invitation&gt;
++ startTeamPgae() : void
++ showPopUp(int layoutId, String msg, int btn1, int btn2) : AlertDialog
++ onClick(v : View) : void
++ onListFragmentInteraction(item : Invitation) : void
++ getInvitationList() : ArrayList&lt;Invitation&gt;
++ backToHomePage() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>600</y><w>330</w><h>100</h></coordinates><panel_attributes>ReceivedInvitesViewModel
+--
++ ReceivedInvitesViewModel()
++ getPresenter() : ReceivedInvitesPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>500</y><w>420</w><h>310</h></coordinates><panel_attributes>ReceivedInvitesPresenter
+--
+- teamsInvites : ArrayList&lt;Team&gt;
+- invites: ArrayList&lt;Invitation&gt;
+- player : Player
+--
++ ReceivedInvitesPresenter()
++ findInvites(playerUsername : String) : void
++ getPlayerName() : String
++ getInvites() : ArrayList&lt;Invitation&gt;
++ getTeamsInvites() : ArrayList&lt;Team&gt;
++ declineInvitation( invitation : Invitation) : void
++ acceptInvitation( invitation : Invitation) : void
++ setTeamDAO(teamDAO : TeamDAO) : void
++ setPlayerDAO(playerDAO : PlayerDAO) : void
++ setLoggedInUser(loggedInUser : LoggedInUser) : void
++ onTeamPageClick() : void
++ onHomePage() : void
++ setView(view : ReceivedInvitesView) : void
++ clearView() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>30</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>618</y><w>280</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>260;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>408</y><w>70</w><h>210</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;190;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>510</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>100</x><y>548</y><w>160</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;102</additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>248</y><w>240</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>220;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>308</y><w>70</w><h>210</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;190</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1320</x><y>410</y><w>150</w><h>40</h></coordinates><panel_attributes>PlayerDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>428</y><w>110</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>90;10;10;72</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>520</y><w>150</w><h>40</h></coordinates><panel_attributes>LoggedInUser</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>518</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>120;20;10;22</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>610</y><w>150</w><h>40</h></coordinates><panel_attributes>TeamDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>608</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>120;20;10;22</additional_attributes></element></diagram>

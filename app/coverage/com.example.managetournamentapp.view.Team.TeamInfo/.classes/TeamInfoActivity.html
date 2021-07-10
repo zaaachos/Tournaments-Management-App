@@ -1,0 +1,235 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TeamInfoActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Team.TeamInfo</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TeamInfoActivity (com.example.managetournamentapp.view.Team.TeamInfo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TeamInfoActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Team.TeamInfo;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.content.Intent;
+<i>4</i>&nbsp;import android.os.Bundle;
+<i>5</i>&nbsp;import android.view.View;
+<i>6</i>&nbsp;import android.widget.Button;
+<i>7</i>&nbsp;import android.widget.ImageButton;
+<i>8</i>&nbsp;import android.widget.TextView;
+<i>9</i>&nbsp;import android.widget.Toast;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;import androidx.appcompat.app.AppCompatActivity;
+<i>12</i>&nbsp;import androidx.lifecycle.ViewModelProvider;
+<i>13</i>&nbsp;import com.example.managetournamentapp.R;
+<i>14</i>&nbsp;import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+<i>15</i>&nbsp;import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
+<i>16</i>&nbsp;import com.example.managetournamentapp.view.Player.CreateTeam.CreateTeamActivity;
+<i>17</i>&nbsp;import com.example.managetournamentapp.view.Player.JoinedTeams.JoinedTeamsActivity;
+<i>18</i>&nbsp;import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;
+<b class="nc"><i>21</i>&nbsp;public class TeamInfoActivity  extends AppCompatActivity implements TeamInfoView {</b>
+<i>22</i>&nbsp;    private TeamInfoViewModel viewModel;
+<i>23</i>&nbsp;    public static final String TEAM_NAME_EXTRA = &quot;team_name_extra&quot;;
+<i>24</i>&nbsp;    private static final String PLAYER_USERNAME_EXTRA = &quot;player_username_extra&quot;;
+<i>25</i>&nbsp;    private static final String ORGANIZER_TITLE_EXTRA = &quot;organizer_title_extra&quot;;
+<i>26</i>&nbsp;    String teamName;
+<i>27</i>&nbsp;    Button btnEditTeam;
+<i>28</i>&nbsp;    Button btnDeleteTeam;
+<i>29</i>&nbsp;    ImageButton btnHome;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    /**
+<i>32</i>&nbsp;     * Creates the layout and initializes the activity
+<i>33</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>34</i>&nbsp;     */
+<i>35</i>&nbsp;    @Override
+<i>36</i>&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<i>37</i>&nbsp;
+<b class="nc"><i>38</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>39</i>&nbsp;        setContentView(R.layout.activity_team_info);</b>
+<i>40</i>&nbsp;
+<b class="nc"><i>41</i>&nbsp;        teamName =  this.getIntent().getStringExtra(TEAM_NAME_EXTRA);</b>
+<b class="nc"><i>42</i>&nbsp;        viewModel = new ViewModelProvider(this).get(TeamInfoViewModel.class);</b>
+<b class="nc"><i>43</i>&nbsp;        viewModel.getPresenter().setView(this);</b>
+<b class="nc"><i>44</i>&nbsp;        viewModel.getPresenter().findTeamInfo(teamName);</b>
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;
+<b class="nc"><i>47</i>&nbsp;        btnEditTeam = findViewById(R.id.edit_team_button);</b>
+<b class="nc"><i>48</i>&nbsp;        btnDeleteTeam = findViewById(R.id.delete_team_button);</b>
+<b class="nc"><i>49</i>&nbsp;        btnHome = findViewById(R.id.imageButton);</b>
+<i>50</i>&nbsp;
+<b class="nc"><i>51</i>&nbsp;        btnEditTeam.setOnClickListener(v -&gt; viewModel.getPresenter().onEditTeam());</b>
+<b class="nc"><i>52</i>&nbsp;        btnDeleteTeam.setOnClickListener(v -&gt; viewModel.getPresenter().onDeleteTeam());</b>
+<i>53</i>&nbsp;//        btnHome.setOnClickListener(v -&gt; viewModel.getPresenter().onHomePage());
+<b class="nc"><i>54</i>&nbsp;        viewModel.getPresenter().findAccess();</b>
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    /**
+<i>58</i>&nbsp;     * set the contents in the name edit text
+<i>59</i>&nbsp;     * @param name name of the team
+<i>60</i>&nbsp;     */
+<i>61</i>&nbsp;    @Override
+<i>62</i>&nbsp;    public void setTeamName(String name) {
+<b class="nc"><i>63</i>&nbsp;        ((TextView)findViewById(R.id.team_name)).setText(name);</b>
+<i>64</i>&nbsp;    }
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    /**
+<i>67</i>&nbsp;     * set the contents in the colors edit text
+<i>68</i>&nbsp;     * @param colors colors of the team
+<i>69</i>&nbsp;     */
+<i>70</i>&nbsp;    @Override
+<i>71</i>&nbsp;    public void setColors(String colors) {
+<b class="nc"><i>72</i>&nbsp;        ((TextView)findViewById(R.id.team_colors)).setText(colors);</b>
+<i>73</i>&nbsp;    }
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;    /**
+<i>76</i>&nbsp;     * set the contents in the division edit text
+<i>77</i>&nbsp;     * @param division division of the team
+<i>78</i>&nbsp;     */
+<i>79</i>&nbsp;    @Override
+<i>80</i>&nbsp;    public void setAgeDivision(String division) {
+<b class="nc"><i>81</i>&nbsp;        ((TextView)findViewById(R.id.age_division)).setText(division);</b>
+<i>82</i>&nbsp;    }
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    /**
+<i>85</i>&nbsp;     * set the contents in the sport edit text
+<i>86</i>&nbsp;     * @param sport sport of the team
+<i>87</i>&nbsp;     */
+<i>88</i>&nbsp;    @Override
+<i>89</i>&nbsp;    public void setSport(String sport) {
+<b class="nc"><i>90</i>&nbsp;        ((TextView)findViewById(R.id.sport_type)).setText(sport);</b>
+<i>91</i>&nbsp;    }
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;    /**
+<i>94</i>&nbsp;     * when the captain decides to edit this team
+<i>95</i>&nbsp;     * the create team activity is started
+<i>96</i>&nbsp;     */
+<i>97</i>&nbsp;    @Override
+<i>98</i>&nbsp;    public void startEditTeam() {
+<b class="nc"><i>99</i>&nbsp;        Intent intent = new Intent(TeamInfoActivity.this, CreateTeamActivity.class);</b>
+<b class="nc"><i>100</i>&nbsp;        intent.putExtra(TEAM_NAME_EXTRA, teamName);</b>
+<b class="nc"><i>101</i>&nbsp;        startActivity(intent);</b>
+<i>102</i>&nbsp;    }
+<i>103</i>&nbsp;
+<i>104</i>&nbsp;    /**
+<i>105</i>&nbsp;     * when the captain decides to delete this team
+<i>106</i>&nbsp;     * @param playerUsername the player&#39;s username
+<i>107</i>&nbsp;     */
+<i>108</i>&nbsp;    @Override
+<i>109</i>&nbsp;    public void startDeleteTeam(String playerUsername) {
+<b class="nc"><i>110</i>&nbsp;        Intent intent = new Intent(TeamInfoActivity.this, PlayerPageActivity.class);</b>
+<b class="nc"><i>111</i>&nbsp;        intent.putExtra(PLAYER_USERNAME_EXTRA, playerUsername);</b>
+<b class="nc"><i>112</i>&nbsp;        startActivity(intent);</b>
+<i>113</i>&nbsp;    }
+<i>114</i>&nbsp;
+<i>115</i>&nbsp;    /**
+<i>116</i>&nbsp;     * show a toast on the screen
+<i>117</i>&nbsp;     * @param txt the message of the toast
+<i>118</i>&nbsp;     */
+<i>119</i>&nbsp;    @Override
+<i>120</i>&nbsp;    public void showToast(String txt) {
+<i>121</i>&nbsp;
+<b class="nc"><i>122</i>&nbsp;        Toast.makeText(this,txt, Toast.LENGTH_SHORT).show();</b>
+<i>123</i>&nbsp;    }
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;    /**
+<i>126</i>&nbsp;     * only the captain can edit and delete the team
+<i>127</i>&nbsp;     */
+<i>128</i>&nbsp;    @Override
+<i>129</i>&nbsp;    public void changesOfAccess() {
+<b class="nc"><i>130</i>&nbsp;        btnEditTeam.setVisibility(View.GONE);</b>
+<b class="nc"><i>131</i>&nbsp;        btnDeleteTeam.setVisibility(View.GONE);</b>
+<i>132</i>&nbsp;    }
+<i>133</i>&nbsp;
+<i>134</i>&nbsp;    /**
+<i>135</i>&nbsp;     * what happens when the homepage button is pressed
+<i>136</i>&nbsp;     * @param isPlayer true if the logged in user is a player
+<i>137</i>&nbsp;     * @param name is the name of a player. or the title of an organizer
+<i>138</i>&nbsp;     */
+<i>139</i>&nbsp;    @Override
+<i>140</i>&nbsp;    public void backToHomePage(boolean isPlayer, String name) {
+<b class="nc"><i>141</i>&nbsp;        if (isPlayer){</b>
+<b class="nc"><i>142</i>&nbsp;            Intent intent = new Intent(this, PlayerPageActivity.class);</b>
+<b class="nc"><i>143</i>&nbsp;            intent.putExtra(PLAYER_USERNAME_EXTRA,name);</b>
+<b class="nc"><i>144</i>&nbsp;            startActivity(intent);</b>
+<b class="nc"><i>145</i>&nbsp;        }</b>
+<i>146</i>&nbsp;        else{
+<b class="nc"><i>147</i>&nbsp;            Intent intent = new Intent (this, OrganizerPageActivity.class);</b>
+<b class="nc"><i>148</i>&nbsp;            intent.putExtra(ORGANIZER_TITLE_EXTRA, name);</b>
+<b class="nc"><i>149</i>&nbsp;            startActivity(intent);</b>
+<i>150</i>&nbsp;        }
+<i>151</i>&nbsp;    }
+<i>152</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,372 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: JoinedPlayersActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Team.JoinedPlayers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: JoinedPlayersActivity (com.example.managetournamentapp.view.Team.JoinedPlayers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">JoinedPlayersActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 19)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 87)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Team.JoinedPlayers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>4</i>&nbsp;import androidx.appcompat.app.AppCompatActivity;
+<i>5</i>&nbsp;import androidx.lifecycle.ViewModelProvider;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import android.content.Intent;
+<i>8</i>&nbsp;import android.os.Bundle;
+<i>9</i>&nbsp;import android.view.View;
+<i>10</i>&nbsp;import android.widget.Button;
+<i>11</i>&nbsp;import android.widget.ImageButton;
+<i>12</i>&nbsp;import android.widget.TextView;
+<i>13</i>&nbsp;import android.widget.Toast;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;import com.example.managetournamentapp.R;
+<i>16</i>&nbsp;import com.example.managetournamentapp.domain.Player;
+<i>17</i>&nbsp;import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+<i>18</i>&nbsp;import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
+<i>19</i>&nbsp;import com.example.managetournamentapp.view.Player.PlayerInfo.PlayerInfoActivity;
+<i>20</i>&nbsp;import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+<i>21</i>&nbsp;import com.example.managetournamentapp.view.Team.InvitePlayers.InvitePlayersActivity;
+<i>22</i>&nbsp;import com.example.managetournamentapp.view.Team.InvitePlayers.fragment.PlayersListFragment;
+<i>23</i>&nbsp;import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
+<i>24</i>&nbsp;import com.google.android.material.floatingactionbutton.FloatingActionButton;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;import java.util.ArrayList;
+<i>28</i>&nbsp;
+<b class="nc"><i>29</i>&nbsp;public class JoinedPlayersActivity extends AppCompatActivity implements PlayersListFragment.OnListFragmentInteractionListener, View.OnClickListener, JoinedPlayersView {</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    JoinedPlayersViewModel viewModel;
+<i>32</i>&nbsp;    private static final String PLAYER_USERNAME_EXTRA = &quot;player_username_extra&quot;;
+<i>33</i>&nbsp;    private static final String ORGANIZER_TITLE_EXTRA = &quot;organizer_title_extra&quot;;
+<i>34</i>&nbsp;    public static final String TEAM_NAME_EXTRA = &quot;team_name_extra&quot;;
+<b class="nc"><i>35</i>&nbsp;    private static boolean removeActionPopup = false;</b>
+<i>36</i>&nbsp;    private static AlertDialog POPUP_ACTION;
+<i>37</i>&nbsp;    private static AlertDialog POPUP_DELETION;
+<i>38</i>&nbsp;    private static Player playerSelected;
+<i>39</i>&nbsp;    private boolean captain;
+<i>40</i>&nbsp;    private boolean player;
+<i>41</i>&nbsp;    private String teamName;
+<i>42</i>&nbsp;    private FloatingActionButton inviteNewBtn;
+<i>43</i>&nbsp;    ImageButton btnHome;
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    /**
+<i>47</i>&nbsp;     * Creates the layout and initializes the activity
+<i>48</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>49</i>&nbsp;     */
+<i>50</i>&nbsp;    @Override
+<i>51</i>&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<i>52</i>&nbsp;
+<b class="nc"><i>53</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>54</i>&nbsp;        teamName = this.getIntent().getStringExtra(TEAM_NAME_EXTRA);</b>
+<b class="nc"><i>55</i>&nbsp;        setContentView(R.layout.activity_joined_players);</b>
+<b class="nc"><i>56</i>&nbsp;        viewModel = new ViewModelProvider(this).get(JoinedPlayersViewModel.class);</b>
+<b class="nc"><i>57</i>&nbsp;        viewModel.getPresenter().setView(this);</b>
+<i>58</i>&nbsp;
+<b class="nc"><i>59</i>&nbsp;        viewModel.getPresenter().findPlayers(teamName);</b>
+<b class="nc"><i>60</i>&nbsp;        inviteNewBtn = (FloatingActionButton) findViewById(R.id.invite_new_players_button);</b>
+<b class="nc"><i>61</i>&nbsp;        btnHome = findViewById(R.id.imageButton);</b>
+<b class="nc"><i>62</i>&nbsp;        inviteNewBtn.setOnClickListener(this);</b>
+<b class="nc"><i>63</i>&nbsp;        btnHome.setOnClickListener(v -&gt; viewModel.getPresenter().onHomePage());</b>
+<i>64</i>&nbsp;
+<b class="nc"><i>65</i>&nbsp;        viewModel.getPresenter().findAccess();</b>
+<i>66</i>&nbsp;
+<b class="nc"><i>67</i>&nbsp;        if (findViewById(R.id.fragment_container) != null) {</b>
+<b class="nc"><i>68</i>&nbsp;            if (savedInstanceState != null) {</b>
+<i>69</i>&nbsp;                return;
+<i>70</i>&nbsp;            }
+<i>71</i>&nbsp;
+<b class="nc"><i>72</i>&nbsp;            PlayersListFragment playersListFragment = PlayersListFragment.newInstance(1);</b>
+<b class="nc"><i>73</i>&nbsp;            getSupportFragmentManager().beginTransaction()</b>
+<b class="nc"><i>74</i>&nbsp;                    .add(R.id.fragment_container, playersListFragment)</b>
+<b class="nc"><i>75</i>&nbsp;                    .commit();</b>
+<i>76</i>&nbsp;        }
+<i>77</i>&nbsp;    }
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    /**
+<i>81</i>&nbsp;     * what happens when the user presses on a player
+<i>82</i>&nbsp;     * @param item the player
+<i>83</i>&nbsp;     */
+<i>84</i>&nbsp;    @Override
+<i>85</i>&nbsp;    public void onListFragmentInteraction(Player item) {
+<b class="nc"><i>86</i>&nbsp;        playerSelected = item;</b>
+<i>87</i>&nbsp;
+<b class="nc"><i>88</i>&nbsp;        if (!player || item.equals((new MemoryLoggedInUser()).getUser())) {</b>
+<b class="nc"><i>89</i>&nbsp;            startPlayerInfo();</b>
+<i>90</i>&nbsp;        } else {
+<b class="nc"><i>91</i>&nbsp;            if (captain) {</b>
+<b class="nc"><i>92</i>&nbsp;                displayPopUpAction(R.layout.player_action_popup, &quot;Name: &quot; + item.getName() + &quot;\nSurname: &quot; + item.getSurname(), R.id.remove_player_popup, R.id.account_player_popup);</b>
+<i>93</i>&nbsp;            } else {
+<b class="nc"><i>94</i>&nbsp;                startPlayerInfo();</b>
+<i>95</i>&nbsp;            }
+<i>96</i>&nbsp;        }
+<i>97</i>&nbsp;    }
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    /**
+<i>100</i>&nbsp;     * get the players that have joined the team
+<i>101</i>&nbsp;     * @return the ArrayList of players
+<i>102</i>&nbsp;     */
+<i>103</i>&nbsp;    @Override
+<i>104</i>&nbsp;    public ArrayList&lt;Player&gt; getPlayerList() {
+<b class="nc"><i>105</i>&nbsp;        return viewModel.getPresenter().getResults();</b>
+<i>106</i>&nbsp;    }
+<i>107</i>&nbsp;
+<i>108</i>&nbsp;    /**
+<i>109</i>&nbsp;     * what happens when a button is pressed
+<i>110</i>&nbsp;     * @param v the current view
+<i>111</i>&nbsp;     */
+<i>112</i>&nbsp;    @Override
+<i>113</i>&nbsp;    public void onClick(View v) {
+<b class="nc"><i>114</i>&nbsp;        if (removeActionPopup) {</b>
+<b class="nc"><i>115</i>&nbsp;            if (v.getId() == R.id.no_delete) {</b>
+<b class="nc"><i>116</i>&nbsp;                removeActionPopup = false;</b>
+<b class="nc"><i>117</i>&nbsp;                dismissPopUpDeletion();</b>
+<b class="nc"><i>118</i>&nbsp;                dismissPopUpAction();</b>
+<b class="nc"><i>119</i>&nbsp;            } else if (v.getId() == R.id.yes_delete) {</b>
+<b class="nc"><i>120</i>&nbsp;                viewModel.getPresenter().removePlayer(teamName, playerSelected);</b>
+<b class="nc"><i>121</i>&nbsp;                dismissPopUpDeletion();</b>
+<b class="nc"><i>122</i>&nbsp;                dismissPopUpAction();</b>
+<b class="nc"><i>123</i>&nbsp;                resetPopUps();</b>
+<b class="nc"><i>124</i>&nbsp;                restartActivity();</b>
+<i>125</i>&nbsp;            }
+<i>126</i>&nbsp;        }
+<b class="nc"><i>127</i>&nbsp;        if (v.getId() == R.id.remove_player_popup) {</b>
+<b class="nc"><i>128</i>&nbsp;            removeActionPopup = true;</b>
+<b class="nc"><i>129</i>&nbsp;            displayPopUpDeletion(R.layout.player_delete_popup, &quot;Do you really want to delete this player?&quot;, R.id.no_delete, R.id.yes_delete);</b>
+<i>130</i>&nbsp;        }
+<b class="nc"><i>131</i>&nbsp;        if (v.getId() == R.id.account_player_popup) {</b>
+<b class="nc"><i>132</i>&nbsp;            startPlayerInfo();</b>
+<i>133</i>&nbsp;        }
+<b class="nc"><i>134</i>&nbsp;        if (v.getId() == R.id.invite_new_players_button) {</b>
+<b class="nc"><i>135</i>&nbsp;            startInvitePlayerPage();</b>
+<i>136</i>&nbsp;        }
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;    /**
+<i>140</i>&nbsp;     * show the invite and delete buttons only to the captain
+<i>141</i>&nbsp;     * @param captain true if the logged in user is the captain of the team
+<i>142</i>&nbsp;     * @param player true if the player has joined the team
+<i>143</i>&nbsp;     */
+<i>144</i>&nbsp;    @Override
+<i>145</i>&nbsp;    public void changesOfAccess(boolean captain, boolean player) {
+<b class="nc"><i>146</i>&nbsp;        this.captain = captain;</b>
+<b class="nc"><i>147</i>&nbsp;        this.player = player;</b>
+<b class="nc"><i>148</i>&nbsp;        if (!captain) {</b>
+<b class="nc"><i>149</i>&nbsp;            inviteNewBtn.setVisibility(View.GONE);</b>
+<i>150</i>&nbsp;        }
+<i>151</i>&nbsp;    }
+<i>152</i>&nbsp;
+<i>153</i>&nbsp;    /**
+<i>154</i>&nbsp;     * @param layoutId the layout of the popup
+<i>155</i>&nbsp;     * @param msg the message of the popup
+<i>156</i>&nbsp;     * @param btn1 the first button
+<i>157</i>&nbsp;     * @param btn2 the second button
+<i>158</i>&nbsp;     * @return the AlertDialog that will be shown
+<i>159</i>&nbsp;     */
+<i>160</i>&nbsp;    @Override
+<i>161</i>&nbsp;    public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
+<b class="nc"><i>162</i>&nbsp;        AlertDialog.Builder builder = new AlertDialog.Builder(this);</b>
+<b class="nc"><i>163</i>&nbsp;        View customLayout = getLayoutInflater().inflate(layoutId, null);</b>
+<b class="nc"><i>164</i>&nbsp;        builder.setView(customLayout);</b>
+<b class="nc"><i>165</i>&nbsp;        AlertDialog dialog = builder.create();</b>
+<i>166</i>&nbsp;
+<b class="nc"><i>167</i>&nbsp;        TextView textMsg = (TextView) customLayout.findViewById(R.id.action_message);</b>
+<b class="nc"><i>168</i>&nbsp;        Button firstButton = (Button) customLayout.findViewById(btn1);</b>
+<b class="nc"><i>169</i>&nbsp;        Button secondButton = (Button) customLayout.findViewById(btn2);</b>
+<b class="nc"><i>170</i>&nbsp;        textMsg.setText(msg);</b>
+<b class="nc"><i>171</i>&nbsp;        firstButton.setOnClickListener(this);</b>
+<b class="nc"><i>172</i>&nbsp;        secondButton.setOnClickListener(this);</b>
+<b class="nc"><i>173</i>&nbsp;        return dialog;</b>
+<i>174</i>&nbsp;    }
+<i>175</i>&nbsp;
+<i>176</i>&nbsp;    /**
+<i>177</i>&nbsp;     * show the info page of the player
+<i>178</i>&nbsp;     */
+<i>179</i>&nbsp;    @Override
+<i>180</i>&nbsp;    public void startPlayerInfo() {
+<b class="nc"><i>181</i>&nbsp;        Intent intent = new Intent(this, PlayerInfoActivity.class);</b>
+<b class="nc"><i>182</i>&nbsp;        intent.putExtra(PLAYER_USERNAME_EXTRA, playerSelected.getCredentials().getUsername());</b>
+<b class="nc"><i>183</i>&nbsp;        startActivity(intent);</b>
+<i>184</i>&nbsp;
+<i>185</i>&nbsp;    }
+<i>186</i>&nbsp;
+<i>187</i>&nbsp;    /**
+<i>188</i>&nbsp;     * show the page where invites are sent
+<i>189</i>&nbsp;     */
+<i>190</i>&nbsp;    @Override
+<i>191</i>&nbsp;    public void startInvitePlayerPage() {
+<b class="nc"><i>192</i>&nbsp;        Intent intent = new Intent(this, InvitePlayersActivity.class);</b>
+<b class="nc"><i>193</i>&nbsp;        intent.putExtra(TEAM_NAME_EXTRA, teamName);</b>
+<b class="nc"><i>194</i>&nbsp;        startActivity(intent);</b>
+<i>195</i>&nbsp;    }
+<i>196</i>&nbsp;
+<i>197</i>&nbsp;    /**
+<i>198</i>&nbsp;     * show the possible actions popup
+<i>199</i>&nbsp;     * @param layout the layout of the popup
+<i>200</i>&nbsp;     * @param msg the message of the popup
+<i>201</i>&nbsp;     * @param btn1 the first button
+<i>202</i>&nbsp;     * @param btn2 the second button
+<i>203</i>&nbsp;     */
+<i>204</i>&nbsp;    @Override
+<i>205</i>&nbsp;    public void displayPopUpAction(int layout, String msg, int btn1, int btn2) {
+<b class="nc"><i>206</i>&nbsp;        POPUP_ACTION = showPopUp(layout, msg, btn1, btn2);</b>
+<b class="nc"><i>207</i>&nbsp;        POPUP_ACTION.show();</b>
+<i>208</i>&nbsp;    }
+<i>209</i>&nbsp;
+<i>210</i>&nbsp;    /**
+<i>211</i>&nbsp;     * show the deletion popup
+<i>212</i>&nbsp;     * @param layout the layout of the popup
+<i>213</i>&nbsp;     * @param msg the message of the popup
+<i>214</i>&nbsp;     * @param btn1 the first button
+<i>215</i>&nbsp;     * @param btn2 the second button
+<i>216</i>&nbsp;     */
+<i>217</i>&nbsp;    @Override
+<i>218</i>&nbsp;    public void displayPopUpDeletion(int layout, String msg, int btn1, int btn2) {
+<b class="nc"><i>219</i>&nbsp;        POPUP_DELETION = showPopUp(layout, msg, btn1, btn2);</b>
+<b class="nc"><i>220</i>&nbsp;        POPUP_DELETION.show();</b>
+<i>221</i>&nbsp;    }
+<i>222</i>&nbsp;
+<i>223</i>&nbsp;    /**
+<i>224</i>&nbsp;     * close the possible actions popup
+<i>225</i>&nbsp;     */
+<i>226</i>&nbsp;    @Override
+<i>227</i>&nbsp;    public void dismissPopUpAction() {
+<b class="nc"><i>228</i>&nbsp;        POPUP_ACTION.dismiss();</b>
+<i>229</i>&nbsp;    }
+<i>230</i>&nbsp;
+<i>231</i>&nbsp;    /**
+<i>232</i>&nbsp;     * close the deletion popup
+<i>233</i>&nbsp;     */
+<i>234</i>&nbsp;    @Override
+<i>235</i>&nbsp;    public void dismissPopUpDeletion() {
+<b class="nc"><i>236</i>&nbsp;        POPUP_DELETION.dismiss();</b>
+<i>237</i>&nbsp;    }
+<i>238</i>&nbsp;
+<i>239</i>&nbsp;    /**
+<i>240</i>&nbsp;     * reset the popups of this activity
+<i>241</i>&nbsp;     */
+<i>242</i>&nbsp;    @Override
+<i>243</i>&nbsp;    public void resetPopUps() {
+<b class="nc"><i>244</i>&nbsp;        POPUP_DELETION = null;</b>
+<b class="nc"><i>245</i>&nbsp;        POPUP_ACTION = null;</b>
+<i>246</i>&nbsp;    }
+<i>247</i>&nbsp;
+<i>248</i>&nbsp;    /**
+<i>249</i>&nbsp;     * what happens when the homepage button is pressed
+<i>250</i>&nbsp;     * @param noLogin boolean parameter, if true the user has not logged in
+<i>251</i>&nbsp;     * @param isPlayer boolean parameter,if true the user is a player
+<i>252</i>&nbsp;     * @param name name of the player or title of the organizer
+<i>253</i>&nbsp;     */
+<i>254</i>&nbsp;    @Override
+<i>255</i>&nbsp;    public void backToHomePage(boolean noLogin, boolean isPlayer, String name) {
+<b class="nc"><i>256</i>&nbsp;        if (noLogin){</b>
+<b class="nc"><i>257</i>&nbsp;            Intent intent = new Intent(this, BrowsingActivity.class);</b>
+<b class="nc"><i>258</i>&nbsp;            startActivity(intent);</b>
+<b class="nc"><i>259</i>&nbsp;        }</b>
+<b class="nc"><i>260</i>&nbsp;        else if (isPlayer){</b>
+<b class="nc"><i>261</i>&nbsp;            Intent intent = new Intent(this, PlayerPageActivity.class);</b>
+<b class="nc"><i>262</i>&nbsp;            intent.putExtra(PLAYER_USERNAME_EXTRA,name);</b>
+<b class="nc"><i>263</i>&nbsp;            startActivity(intent);</b>
+<b class="nc"><i>264</i>&nbsp;        }</b>
+<i>265</i>&nbsp;
+<i>266</i>&nbsp;        else{
+<b class="nc"><i>267</i>&nbsp;            Intent intent = new Intent (this, OrganizerPageActivity.class);</b>
+<b class="nc"><i>268</i>&nbsp;            intent.putExtra(ORGANIZER_TITLE_EXTRA, name);</b>
+<b class="nc"><i>269</i>&nbsp;            startActivity(intent);</b>
+<i>270</i>&nbsp;        }
+<i>271</i>&nbsp;    }
+<i>272</i>&nbsp;
+<i>273</i>&nbsp;    /**
+<i>274</i>&nbsp;     * refresh the current activity
+<i>275</i>&nbsp;     */
+<i>276</i>&nbsp;    @Override
+<i>277</i>&nbsp;    public void restartActivity() {
+<b class="nc"><i>278</i>&nbsp;        this.recreate();</b>
+<i>279</i>&nbsp;    }
+<i>280</i>&nbsp;
+<i>281</i>&nbsp;    /**
+<i>282</i>&nbsp;     * show a toast on the screen
+<i>283</i>&nbsp;     * @param txt the message of the toast
+<i>284</i>&nbsp;     */
+<i>285</i>&nbsp;    @Override
+<i>286</i>&nbsp;    public void showToast(String txt) {
+<b class="nc"><i>287</i>&nbsp;        Toast.makeText(this,txt, Toast.LENGTH_SHORT).show();</b>
+<i>288</i>&nbsp;    }
+<i>289</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

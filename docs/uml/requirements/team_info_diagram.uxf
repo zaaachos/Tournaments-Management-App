@@ -1,0 +1,55 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>860</x><y>230</y><w>330</w><h>200</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; TeamInfoView
+--
+setTeamName(name : String) : void
+setColors(colors : String) : void
+setAgeDivision(division : String) : void
+setSport(sport : String) : void
+startEditTeam() : void
+startDeleteTeam() : void
+showToast(txt : String) : void
+changesOfAccess() : void
+backToHomePage(flag: voolean, name : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>150</y><w>470</w><h>340</h></coordinates><panel_attributes>TeamInfoActivity
+--
+~ btnHome : ImageButton
+~ btnDeleteTeam : Button
+~ btnEditTeam : Button
+~ teamName : String
+_- PLAYER_USERNAME_EXTRA: String_
+_- ORGANIZER_TITLE_EXTRA: String_
+_- TEAM_NAME_EXTRA: String_
+--
+# onCreate(Bundle savedInstanceState) : void
++ onClick(v : View) : void
++ setTeamName(name : String) : void
++ setColors(colors : String) : void
++ setAgeDivision(division : String) : void
++ setSport(sport : String) : void
++ startEditTeam() : void
++ startDeleteTeam() : void
++ showToast(txt : String) : void
++ changesOfAccess() : void
++ backToHomePage(isPlayer : voolean, name : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>670</y><w>330</w><h>100</h></coordinates><panel_attributes>TeamInfoViewModel
+--
++ TeamInfoViewModel()
++ getPresenter() : TeamInfoPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>790</x><y>570</y><w>420</w><h>240</h></coordinates><panel_attributes>TeamInfoPresenter
+--
+- team : Team
+--
++ TeamInfoPresenter()
++ findTeamInfo(teamName: String) : void
++ findAccess() : void
++ setLoggedInUser( loggedInUser : LoggedInUser ) :void
++ setTeamDAO(teamDAO : TeamDAO) : void
++ onEditTeam() : void
++ onDeleteTeam() : void
++ onHomePage() : void
++ setView(view : TeamInfoView) : void
++ clearView() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>30</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>688</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>280;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>478</y><w>70</w><h>210</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;190;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>560</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>588</y><w>120</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;82</additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>288</y><w>260</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>240;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>418</y><w>70</w><h>170</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;150</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1340</x><y>680</y><w>150</w><h>40</h></coordinates><panel_attributes>TeamDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1200</x><y>678</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>140;20;10;22</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1340</x><y>530</y><w>150</w><h>40</h></coordinates><panel_attributes>LoggedInUser</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1190</x><y>548</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>150;20;10;22</additional_attributes></element></diagram>

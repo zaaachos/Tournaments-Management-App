@@ -1,0 +1,121 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: OrganizerPageView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Organizer.OrganizerPage</a> ]
+</div>
+
+<h1>Coverage Summary for Class: OrganizerPageView (com.example.managetournamentapp.view.Organizer.OrganizerPage)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">OrganizerPageView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Organizer.OrganizerPage;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>7</i>&nbsp; * Athens University of Economics and Business
+<i>8</i>&nbsp; * 2020-2021
+<i>9</i>&nbsp; */
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public interface OrganizerPageView {
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * Starts Organizer&#39;s Account Activity
+<i>14</i>&nbsp;     * when &quot;Account&quot; button is pressed
+<i>15</i>&nbsp;     */
+<i>16</i>&nbsp;    void toOrganizerAccount();
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    /**
+<i>19</i>&nbsp;     * Starts organizer&#39;s tournaments activity
+<i>20</i>&nbsp;     * when &quot;My tournaments&quot; button is pressed
+<i>21</i>&nbsp;     * @param title organizer&#39;s title is passed as an extra to the activity
+<i>22</i>&nbsp;     */
+<i>23</i>&nbsp;    void toOrganizerTournaments(String title);
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    /**
+<i>26</i>&nbsp;     * Sets organizer title in the layout to the title of the organizer we specify
+<i>27</i>&nbsp;     * @param title organizer title that will be showed
+<i>28</i>&nbsp;     */
+<i>29</i>&nbsp;    void setTitle(String title);
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    /**
+<i>32</i>&nbsp;     * When the user logs out
+<i>33</i>&nbsp;     *  Goes Back to log in screen
+<i>34</i>&nbsp;     */
+<i>35</i>&nbsp;    void logOut();
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    /**
+<i>38</i>&nbsp;     * Displays the desired pop up
+<i>39</i>&nbsp;     * @param layout the layout of the popup
+<i>40</i>&nbsp;     * @param msg the message of the popup
+<i>41</i>&nbsp;     * @param btn1 the first button
+<i>42</i>&nbsp;     * @param btn2 the second button
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;    void displayPopUpAction(int layout, String msg, int btn1, int btn2);
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    /**
+<i>47</i>&nbsp;     * The pop up dismisses
+<i>48</i>&nbsp;     */
+<i>49</i>&nbsp;    void dismissPopUpAction();
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    /**
+<i>52</i>&nbsp;     * Shows a popup
+<i>53</i>&nbsp;     * @param layoutId the layout of the popup
+<i>54</i>&nbsp;     * @param msg the message of the popup
+<i>55</i>&nbsp;     * @param btn1 the first button
+<i>56</i>&nbsp;     * @param btn2 the second button
+<i>57</i>&nbsp;     * @return the AlertDialog that will be shown
+<i>58</i>&nbsp;     */
+<i>59</i>&nbsp;    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2);
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    /**
+<i>62</i>&nbsp;     * When the user presses log out
+<i>63</i>&nbsp;     * a pop up shows asking for confirmation
+<i>64</i>&nbsp;     */
+<i>65</i>&nbsp;    void logOutConfirmation();
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * When the user presses no to the log out pop up
+<i>69</i>&nbsp;     * the pop up message dismisses
+<i>70</i>&nbsp;     */
+<i>71</i>&nbsp;    void noLogOut();
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;
+<i>74</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

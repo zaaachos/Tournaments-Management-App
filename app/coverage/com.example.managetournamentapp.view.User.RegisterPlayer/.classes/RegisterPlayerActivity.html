@@ -1,0 +1,460 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: RegisterPlayerActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.User.RegisterPlayer</a> ]
+</div>
+
+<h1>Coverage Summary for Class: RegisterPlayerActivity (com.example.managetournamentapp.view.User.RegisterPlayer)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegisterPlayerActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 26)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 103)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.User.RegisterPlayer;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.ActionBar;
+<i>4</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>5</i>&nbsp;import androidx.appcompat.app.AppCompatActivity;
+<i>6</i>&nbsp;import androidx.lifecycle.ViewModelProvider;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import android.content.Intent;
+<i>9</i>&nbsp;import android.os.Bundle;
+<i>10</i>&nbsp;import android.view.View;
+<i>11</i>&nbsp;import android.widget.Button;
+<i>12</i>&nbsp;import android.widget.CheckBox;
+<i>13</i>&nbsp;import android.widget.EditText;
+<i>14</i>&nbsp;import android.widget.TextView;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;import com.example.managetournamentapp.R;
+<i>17</i>&nbsp;import com.example.managetournamentapp.domain.AgeDivision;
+<i>18</i>&nbsp;import com.example.managetournamentapp.domain.Sport;
+<i>19</i>&nbsp;import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;import java.util.ArrayList;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;/**
+<i>24</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>25</i>&nbsp; * Athens University of Economics and Business
+<i>26</i>&nbsp; * 2020-2021
+<i>27</i>&nbsp; */
+<i>28</i>&nbsp;
+<b class="nc"><i>29</i>&nbsp;public class RegisterPlayerActivity extends AppCompatActivity implements RegisterPlayerView, View.OnClickListener {</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    RegisterPlayerViewModel viewModel;
+<i>32</i>&nbsp;    private static final String PLAYER_USERNAME_EXTRA = &quot;player_username_extra&quot;;
+<i>33</i>&nbsp;    private Button saveBtn;
+<i>34</i>&nbsp;    private CheckBox checkBox1;
+<i>35</i>&nbsp;    private CheckBox checkBox2;
+<i>36</i>&nbsp;    private CheckBox checkBox3;
+<i>37</i>&nbsp;    private CheckBox checkBox4;
+<i>38</i>&nbsp;    private CheckBox checkBox5;
+<i>39</i>&nbsp;    private CheckBox checkBox6;
+<i>40</i>&nbsp;    String playerUsername;
+<b class="nc"><i>41</i>&nbsp;    private ArrayList&lt;Sport&gt; sportsInterest = new ArrayList&lt;&gt;();</b>
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    /**
+<i>45</i>&nbsp;     * Creates the layout and initializes the activity
+<i>46</i>&nbsp;     *
+<i>47</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>48</i>&nbsp;     */
+<i>49</i>&nbsp;    @Override
+<i>50</i>&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<b class="nc"><i>51</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>52</i>&nbsp;        setContentView(R.layout.activity_register_player);</b>
+<b class="nc"><i>53</i>&nbsp;        System.out.println(&quot;PLAYER REGISTRATION CURRENT PAGE&quot;);</b>
+<b class="nc"><i>54</i>&nbsp;        playerUsername = this.getIntent().getStringExtra(PLAYER_USERNAME_EXTRA);</b>
+<i>55</i>&nbsp;
+<b class="nc"><i>56</i>&nbsp;        if (playerUsername != null) {</b>
+<b class="nc"><i>57</i>&nbsp;            ActionBar actionBar = getSupportActionBar();</b>
+<b class="nc"><i>58</i>&nbsp;            if (actionBar != null) {</b>
+<b class="nc"><i>59</i>&nbsp;                actionBar.setTitle(&quot;Player Edit&quot;);</b>
+<i>60</i>&nbsp;            }
+<i>61</i>&nbsp;        }
+<i>62</i>&nbsp;
+<b class="nc"><i>63</i>&nbsp;        viewModel = new ViewModelProvider(this).get(RegisterPlayerViewModel.class);</b>
+<b class="nc"><i>64</i>&nbsp;        viewModel.getPresenter().setView(this);</b>
+<i>65</i>&nbsp;
+<b class="nc"><i>66</i>&nbsp;        saveBtn = (Button) findViewById(R.id.savePlayerBtn);</b>
+<b class="nc"><i>67</i>&nbsp;        saveBtn.setOnClickListener(this);</b>
+<i>68</i>&nbsp;
+<b class="nc"><i>69</i>&nbsp;        checkBox1 = (CheckBox) findViewById(R.id.radio_button_basketball3v3);</b>
+<b class="nc"><i>70</i>&nbsp;        checkBox2 = (CheckBox) findViewById(R.id.radio_button_basketball5v5);</b>
+<b class="nc"><i>71</i>&nbsp;        checkBox3 = (CheckBox) findViewById(R.id.radio_button_football5v5);</b>
+<b class="nc"><i>72</i>&nbsp;        checkBox4 = (CheckBox) findViewById(R.id.radio_button_football7v7);</b>
+<b class="nc"><i>73</i>&nbsp;        checkBox5 = (CheckBox) findViewById(R.id.radio_button_volleyball3v3);</b>
+<b class="nc"><i>74</i>&nbsp;        checkBox6 = (CheckBox) findViewById(R.id.radio_button_volleyball6v6);</b>
+<i>75</i>&nbsp;
+<b class="nc"><i>76</i>&nbsp;        viewModel.getPresenter().showPreviousInfo(playerUsername);</b>
+<i>77</i>&nbsp;    }
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    /**
+<i>81</i>&nbsp;     * show a popup on the screen
+<i>82</i>&nbsp;     *
+<i>83</i>&nbsp;     * @param view the view of the popup
+<i>84</i>&nbsp;     * @param msg  the message that will be shown
+<i>85</i>&nbsp;     */
+<i>86</i>&nbsp;    @Override
+<i>87</i>&nbsp;    public void showPopUp(RegisterPlayerView view, String msg) {
+<b class="nc"><i>88</i>&nbsp;        AlertDialog.Builder builder = new AlertDialog.Builder(this);</b>
+<b class="nc"><i>89</i>&nbsp;        View customLayout = getLayoutInflater().inflate(R.layout.wrong_input_popup, null);</b>
+<b class="nc"><i>90</i>&nbsp;        builder.setView(customLayout);</b>
+<b class="nc"><i>91</i>&nbsp;        AlertDialog dialog = builder.create();</b>
+<b class="nc"><i>92</i>&nbsp;        Button OKbtn = (Button) customLayout.findViewById(R.id.OK_popup);</b>
+<b class="nc"><i>93</i>&nbsp;        TextView errorMsg = (TextView) customLayout.findViewById(R.id.error_messsage);      // display message we want.</b>
+<b class="nc"><i>94</i>&nbsp;        errorMsg.setText(msg);</b>
+<b class="nc"><i>95</i>&nbsp;        OKbtn.setOnClickListener(v -&gt; dialog.dismiss());</b>
+<b class="nc"><i>96</i>&nbsp;        dialog.show();</b>
+<i>97</i>&nbsp;    }
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    /**
+<i>100</i>&nbsp;     * what happens when a button is pressed
+<i>101</i>&nbsp;     *
+<i>102</i>&nbsp;     * @param v
+<i>103</i>&nbsp;     */
+<i>104</i>&nbsp;    @Override
+<i>105</i>&nbsp;    public void onClick(View v) {
+<b class="nc"><i>106</i>&nbsp;        if (v.getId() == R.id.savePlayerBtn) {</b>
+<b class="nc"><i>107</i>&nbsp;            System.out.println(&quot;SAVE BUTTON PRESSED!&quot;);</b>
+<b class="nc"><i>108</i>&nbsp;            handleSportsInterest();</b>
+<b class="nc"><i>109</i>&nbsp;            viewModel.getPresenter().handlePlayerData();</b>
+<i>110</i>&nbsp;        }
+<i>111</i>&nbsp;    }
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;    /**
+<i>114</i>&nbsp;     * start the player page activity
+<i>115</i>&nbsp;     *
+<i>116</i>&nbsp;     * @param username the username of the player
+<i>117</i>&nbsp;     */
+<i>118</i>&nbsp;    public void startPlayerPage(String username) {
+<b class="nc"><i>119</i>&nbsp;        Intent intent = new Intent(this, PlayerPageActivity.class);</b>
+<b class="nc"><i>120</i>&nbsp;        intent.putExtra(PLAYER_USERNAME_EXTRA, username);</b>
+<b class="nc"><i>121</i>&nbsp;        startActivity(intent);</b>
+<i>122</i>&nbsp;    }
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;    @Override
+<i>125</i>&nbsp;    public void lockFields() {
+<b class="nc"><i>126</i>&nbsp;        findViewById(R.id.birthdate).setEnabled(false);</b>
+<i>127</i>&nbsp;    }
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;    /**
+<i>130</i>&nbsp;     * get the contents of the edit text
+<i>131</i>&nbsp;     *
+<i>132</i>&nbsp;     * @return the given username
+<i>133</i>&nbsp;     */
+<i>134</i>&nbsp;    @Override
+<i>135</i>&nbsp;    public String getUsername() {
+<b class="nc"><i>136</i>&nbsp;        EditText USERNAME = (EditText) findViewById(R.id.username);</b>
+<b class="nc"><i>137</i>&nbsp;        return USERNAME.getText().toString();</b>
+<i>138</i>&nbsp;    }
+<i>139</i>&nbsp;
+<i>140</i>&nbsp;    /**
+<i>141</i>&nbsp;     * get the contents of the edit text
+<i>142</i>&nbsp;     *
+<i>143</i>&nbsp;     * @return the given password
+<i>144</i>&nbsp;     */
+<i>145</i>&nbsp;    @Override
+<i>146</i>&nbsp;    public String getPassword() {
+<b class="nc"><i>147</i>&nbsp;        EditText PASSWORD = (EditText) findViewById(R.id.password);</b>
+<b class="nc"><i>148</i>&nbsp;        return PASSWORD.getText().toString();</b>
+<i>149</i>&nbsp;    }
+<i>150</i>&nbsp;
+<i>151</i>&nbsp;    /**
+<i>152</i>&nbsp;     * get the contents of the edit text
+<i>153</i>&nbsp;     *
+<i>154</i>&nbsp;     * @return the given name
+<i>155</i>&nbsp;     */
+<i>156</i>&nbsp;    @Override
+<i>157</i>&nbsp;    public String getName() {
+<b class="nc"><i>158</i>&nbsp;        EditText NAME = (EditText) findViewById(R.id.name);</b>
+<b class="nc"><i>159</i>&nbsp;        return NAME.getText().toString();</b>
+<i>160</i>&nbsp;    }
+<i>161</i>&nbsp;
+<i>162</i>&nbsp;    /**
+<i>163</i>&nbsp;     * get the contents of the edit text
+<i>164</i>&nbsp;     *
+<i>165</i>&nbsp;     * @return the given surname
+<i>166</i>&nbsp;     */
+<i>167</i>&nbsp;    @Override
+<i>168</i>&nbsp;    public String getSurname() {
+<b class="nc"><i>169</i>&nbsp;        EditText SURNAME = (EditText) findViewById(R.id.surname);</b>
+<b class="nc"><i>170</i>&nbsp;        return SURNAME.getText().toString();</b>
+<i>171</i>&nbsp;    }
+<i>172</i>&nbsp;
+<i>173</i>&nbsp;    /**
+<i>174</i>&nbsp;     * get the contents of the edit text
+<i>175</i>&nbsp;     *
+<i>176</i>&nbsp;     * @return the name given
+<i>177</i>&nbsp;     */
+<i>178</i>&nbsp;    @Override
+<i>179</i>&nbsp;    public String getPhoneNumber() {
+<b class="nc"><i>180</i>&nbsp;        EditText PHONE = (EditText) findViewById(R.id.phone);</b>
+<b class="nc"><i>181</i>&nbsp;        return PHONE.getText().toString();</b>
+<i>182</i>&nbsp;    }
+<i>183</i>&nbsp;
+<i>184</i>&nbsp;    /**
+<i>185</i>&nbsp;     * get the contents of the edit text
+<i>186</i>&nbsp;     *
+<i>187</i>&nbsp;     * @return the given birth date
+<i>188</i>&nbsp;     */
+<i>189</i>&nbsp;    @Override
+<i>190</i>&nbsp;    public String getEmail() {
+<b class="nc"><i>191</i>&nbsp;        EditText EMAIL = (EditText) findViewById(R.id.email);</b>
+<b class="nc"><i>192</i>&nbsp;        return EMAIL.getText().toString();</b>
+<i>193</i>&nbsp;    }
+<i>194</i>&nbsp;
+<i>195</i>&nbsp;    /**
+<i>196</i>&nbsp;     * get the contents of the edit text
+<i>197</i>&nbsp;     *
+<i>198</i>&nbsp;     * @return the birth date
+<i>199</i>&nbsp;     */
+<i>200</i>&nbsp;    @Override
+<i>201</i>&nbsp;    public String getBirthDate() {
+<b class="nc"><i>202</i>&nbsp;        EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);</b>
+<b class="nc"><i>203</i>&nbsp;        return BIRTHDATE.getText().toString();</b>
+<i>204</i>&nbsp;    }
+<i>205</i>&nbsp;
+<i>206</i>&nbsp;    /**
+<i>207</i>&nbsp;     * get the contents of the edit text
+<i>208</i>&nbsp;     *
+<i>209</i>&nbsp;     * @return the given location
+<i>210</i>&nbsp;     */
+<i>211</i>&nbsp;    @Override
+<i>212</i>&nbsp;    public String getLocation() {
+<b class="nc"><i>213</i>&nbsp;        EditText LOCATION = (EditText) findViewById(R.id.location);</b>
+<b class="nc"><i>214</i>&nbsp;        return LOCATION.getText().toString();</b>
+<i>215</i>&nbsp;    }
+<i>216</i>&nbsp;
+<i>217</i>&nbsp;    /**
+<i>218</i>&nbsp;     * set the contents in the username edit text
+<i>219</i>&nbsp;     *
+<i>220</i>&nbsp;     * @param username the new username
+<i>221</i>&nbsp;     */
+<i>222</i>&nbsp;    @Override
+<i>223</i>&nbsp;    public void setUsername(String username) {
+<b class="nc"><i>224</i>&nbsp;        EditText USERNAME = (EditText) findViewById(R.id.username);</b>
+<b class="nc"><i>225</i>&nbsp;        USERNAME.setText(username);</b>
+<i>226</i>&nbsp;    }
+<i>227</i>&nbsp;
+<i>228</i>&nbsp;    /**
+<i>229</i>&nbsp;     * set the contents in the password edit text
+<i>230</i>&nbsp;     *
+<i>231</i>&nbsp;     * @param password the new password
+<i>232</i>&nbsp;     */
+<i>233</i>&nbsp;    @Override
+<i>234</i>&nbsp;    public void setPassword(String password) {
+<b class="nc"><i>235</i>&nbsp;        EditText PASSWORD = (EditText) findViewById(R.id.password);</b>
+<b class="nc"><i>236</i>&nbsp;        PASSWORD.setText(password);</b>
+<i>237</i>&nbsp;    }
+<i>238</i>&nbsp;
+<i>239</i>&nbsp;    /**
+<i>240</i>&nbsp;     * set the contents in the name edit text
+<i>241</i>&nbsp;     *
+<i>242</i>&nbsp;     * @param name the new name
+<i>243</i>&nbsp;     */
+<i>244</i>&nbsp;    @Override
+<i>245</i>&nbsp;    public void setName(String name) {
+<b class="nc"><i>246</i>&nbsp;        EditText NAME = (EditText) findViewById(R.id.name);</b>
+<b class="nc"><i>247</i>&nbsp;        NAME.setText(name);</b>
+<i>248</i>&nbsp;    }
+<i>249</i>&nbsp;
+<i>250</i>&nbsp;    /**
+<i>251</i>&nbsp;     * set the contents in the surname edit text
+<i>252</i>&nbsp;     *
+<i>253</i>&nbsp;     * @param surname the new surname
+<i>254</i>&nbsp;     */
+<i>255</i>&nbsp;    @Override
+<i>256</i>&nbsp;    public void setSurname(String surname) {
+<b class="nc"><i>257</i>&nbsp;        EditText SURNAME = (EditText) findViewById(R.id.surname);</b>
+<b class="nc"><i>258</i>&nbsp;        SURNAME.setText(surname);</b>
+<i>259</i>&nbsp;    }
+<i>260</i>&nbsp;
+<i>261</i>&nbsp;    /**
+<i>262</i>&nbsp;     * set the contents in the phone number edit text
+<i>263</i>&nbsp;     *
+<i>264</i>&nbsp;     * @param phoneNumber the new phone number
+<i>265</i>&nbsp;     */
+<i>266</i>&nbsp;    @Override
+<i>267</i>&nbsp;    public void setPhoneNumber(String phoneNumber) {
+<b class="nc"><i>268</i>&nbsp;        EditText PHONE = (EditText) findViewById(R.id.phone);</b>
+<b class="nc"><i>269</i>&nbsp;        PHONE.setText(phoneNumber);</b>
+<i>270</i>&nbsp;    }
+<i>271</i>&nbsp;
+<i>272</i>&nbsp;    /**
+<i>273</i>&nbsp;     * set the contents in the email edit text
+<i>274</i>&nbsp;     *
+<i>275</i>&nbsp;     * @param email the new email
+<i>276</i>&nbsp;     */
+<i>277</i>&nbsp;    @Override
+<i>278</i>&nbsp;    public void setEmail(String email) {
+<b class="nc"><i>279</i>&nbsp;        EditText EMAIL = (EditText) findViewById(R.id.email);</b>
+<b class="nc"><i>280</i>&nbsp;        EMAIL.setText(email);</b>
+<i>281</i>&nbsp;    }
+<i>282</i>&nbsp;
+<i>283</i>&nbsp;    /**
+<i>284</i>&nbsp;     * set the contents in the birth date edit text
+<i>285</i>&nbsp;     *
+<i>286</i>&nbsp;     * @param birthdate the new birth date
+<i>287</i>&nbsp;     */
+<i>288</i>&nbsp;    @Override
+<i>289</i>&nbsp;    public void setBirthdate(String birthdate) {
+<b class="nc"><i>290</i>&nbsp;        EditText BIRTHDATE = (EditText) findViewById(R.id.birthdate);</b>
+<b class="nc"><i>291</i>&nbsp;        BIRTHDATE.setText(birthdate);</b>
+<i>292</i>&nbsp;    }
+<i>293</i>&nbsp;
+<i>294</i>&nbsp;    /**
+<i>295</i>&nbsp;     * set the contents in the location edit text
+<i>296</i>&nbsp;     *
+<i>297</i>&nbsp;     * @param location the new location
+<i>298</i>&nbsp;     */
+<i>299</i>&nbsp;    @Override
+<i>300</i>&nbsp;    public void setLocation(String location) {
+<b class="nc"><i>301</i>&nbsp;        EditText LOCATION = (EditText) findViewById(R.id.location);</b>
+<b class="nc"><i>302</i>&nbsp;        LOCATION.setText(location);</b>
+<i>303</i>&nbsp;    }
+<i>304</i>&nbsp;
+<i>305</i>&nbsp;    /**
+<i>306</i>&nbsp;     * get the sports that the player has selected
+<i>307</i>&nbsp;     *
+<i>308</i>&nbsp;     * @return the arraylist of sports
+<i>309</i>&nbsp;     */
+<i>310</i>&nbsp;    @Override
+<i>311</i>&nbsp;    public ArrayList&lt;Sport&gt; getSportsInterest() {
+<b class="nc"><i>312</i>&nbsp;        return this.sportsInterest;</b>
+<i>313</i>&nbsp;
+<i>314</i>&nbsp;    }
+<i>315</i>&nbsp;
+<i>316</i>&nbsp;    /**
+<i>317</i>&nbsp;     * checks the correct checkboxes
+<i>318</i>&nbsp;     */
+<i>319</i>&nbsp;    public void handleSportsInterest() {
+<b class="nc"><i>320</i>&nbsp;        if (checkBox1.isChecked())</b>
+<b class="nc"><i>321</i>&nbsp;            sportsInterest.add(new Sport(&quot;Basketball3v3&quot;));</b>
+<i>322</i>&nbsp;        else {
+<b class="nc"><i>323</i>&nbsp;            sportsInterest.remove(new Sport(&quot;Basketball3v3&quot;));</b>
+<i>324</i>&nbsp;        }
+<b class="nc"><i>325</i>&nbsp;        if (checkBox2.isChecked())</b>
+<b class="nc"><i>326</i>&nbsp;            sportsInterest.add(new Sport(&quot;Basketball5v5&quot;));</b>
+<i>327</i>&nbsp;        else {
+<b class="nc"><i>328</i>&nbsp;            sportsInterest.remove(new Sport(&quot;Basketball5v5&quot;));</b>
+<i>329</i>&nbsp;        }
+<b class="nc"><i>330</i>&nbsp;        if (checkBox3.isChecked())</b>
+<b class="nc"><i>331</i>&nbsp;            sportsInterest.add(new Sport(&quot;Football5v5&quot;));</b>
+<i>332</i>&nbsp;        else {
+<b class="nc"><i>333</i>&nbsp;            sportsInterest.remove(new Sport(&quot;Football5v5&quot;));</b>
+<i>334</i>&nbsp;        }
+<b class="nc"><i>335</i>&nbsp;        if (checkBox4.isChecked())</b>
+<b class="nc"><i>336</i>&nbsp;            sportsInterest.add(new Sport(&quot;Football7v7&quot;));</b>
+<i>337</i>&nbsp;        else {
+<b class="nc"><i>338</i>&nbsp;            sportsInterest.remove(new Sport(&quot;Football7v7&quot;));</b>
+<i>339</i>&nbsp;        }
+<b class="nc"><i>340</i>&nbsp;        if (checkBox5.isChecked())</b>
+<b class="nc"><i>341</i>&nbsp;            sportsInterest.add(new Sport(&quot;Volleyball3v3&quot;));</b>
+<i>342</i>&nbsp;        else {
+<b class="nc"><i>343</i>&nbsp;            sportsInterest.remove(new Sport(&quot;Volleyball3v3&quot;));</b>
+<i>344</i>&nbsp;        }
+<b class="nc"><i>345</i>&nbsp;        if (checkBox6.isChecked())</b>
+<b class="nc"><i>346</i>&nbsp;            sportsInterest.add(new Sport(&quot;Volleyball6v6&quot;));</b>
+<i>347</i>&nbsp;        else {
+<b class="nc"><i>348</i>&nbsp;            sportsInterest.remove(new Sport(&quot;Volleyball6v6&quot;));</b>
+<i>349</i>&nbsp;        }
+<b class="nc"><i>350</i>&nbsp;        System.out.println(&quot;Handle: &quot; + sportsInterest);</b>
+<i>351</i>&nbsp;    }
+<i>352</i>&nbsp;
+<i>353</i>&nbsp;    /**
+<i>354</i>&nbsp;     * set the contents in the sport checkboxes
+<i>355</i>&nbsp;     *
+<i>356</i>&nbsp;     * @param sports the arraylist of sports that the player is interested in
+<i>357</i>&nbsp;     */
+<i>358</i>&nbsp;    @Override
+<i>359</i>&nbsp;    public void setSportsInterest(ArrayList&lt;Sport&gt; sports) {
+<b class="nc"><i>360</i>&nbsp;        System.out.println(&quot;Set sport: &quot; + sports);</b>
+<b class="nc"><i>361</i>&nbsp;        if (sports.contains(new Sport(&quot;Basketball3v3&quot;)))</b>
+<b class="nc"><i>362</i>&nbsp;            checkBox1.setChecked(true);</b>
+<b class="nc"><i>363</i>&nbsp;        if (sports.contains(new Sport(&quot;Basketball5v5&quot;)))</b>
+<b class="nc"><i>364</i>&nbsp;            checkBox2.setChecked(true);</b>
+<b class="nc"><i>365</i>&nbsp;        if (sports.contains(new Sport(&quot;Football5v5&quot;)))</b>
+<b class="nc"><i>366</i>&nbsp;            checkBox3.setChecked(true);</b>
+<b class="nc"><i>367</i>&nbsp;        if (sports.contains(new Sport(&quot;Football7v7&quot;)))</b>
+<b class="nc"><i>368</i>&nbsp;            checkBox4.setChecked(true);</b>
+<b class="nc"><i>369</i>&nbsp;        if (sports.contains(new Sport(&quot;Volleyball3v3&quot;)))</b>
+<b class="nc"><i>370</i>&nbsp;            checkBox5.setChecked(true);</b>
+<b class="nc"><i>371</i>&nbsp;        if (sports.contains(new Sport(&quot;Volleyball6v6&quot;)))</b>
+<b class="nc"><i>372</i>&nbsp;            checkBox6.setChecked(true);</b>
+<i>373</i>&nbsp;
+<i>374</i>&nbsp;
+<i>375</i>&nbsp;    }
+<i>376</i>&nbsp;
+<i>377</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BrowsingPresenter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.User.Browsing</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BrowsingPresenter (com.example.managetournamentapp.view.User.Browsing)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BrowsingPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    86.7%
+  </span>
+  <span class="absValue">
+    (13/ 15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.User.Browsing;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.dao.TournamentDAO;
+<i>4</i>&nbsp;import com.example.managetournamentapp.domain.Tournament;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.util.ArrayList;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;/**
+<i>9</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>10</i>&nbsp; * Athens University of Economics and Business
+<i>11</i>&nbsp; * 2020-2021
+<i>12</i>&nbsp; */
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;public class BrowsingPresenter {
+<i>15</i>&nbsp;    private BrowsingView view;
+<i>16</i>&nbsp;    private TournamentDAO tournamentDAO;
+<b class="fc"><i>17</i>&nbsp;    private ArrayList&lt;Tournament&gt; results = new ArrayList&lt;&gt;();</b>
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * default constructor
+<i>21</i>&nbsp;     */
+<b class="fc"><i>22</i>&nbsp;    public BrowsingPresenter() {</b>
+<b class="fc"><i>23</i>&nbsp;    }</b>
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    /**
+<i>26</i>&nbsp;     * find all the tournaments
+<i>27</i>&nbsp;     */
+<i>28</i>&nbsp;    public void findAllTournaments() {
+<b class="fc"><i>29</i>&nbsp;        results.clear();</b>
+<b class="fc"><i>30</i>&nbsp;        results = tournamentDAO.findAll();</b>
+<b class="fc"><i>31</i>&nbsp;    }</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    /**
+<i>34</i>&nbsp;     * start the tournament page activity
+<i>35</i>&nbsp;     * @param tournament the tournament
+<i>36</i>&nbsp;     */
+<i>37</i>&nbsp;    public void startTournamentPage(Tournament tournament) {
+<b class="fc"><i>38</i>&nbsp;        view.startTournamentPage(tournament.getTitle());</b>
+<b class="fc"><i>39</i>&nbsp;    }</b>
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /**
+<i>42</i>&nbsp;     * get all the tournaments
+<i>43</i>&nbsp;     * @return the arraylist of tournaments
+<i>44</i>&nbsp;     */
+<i>45</i>&nbsp;    public ArrayList&lt;Tournament&gt; getResults() {
+<b class="fc"><i>46</i>&nbsp;        return results;</b>
+<i>47</i>&nbsp;    }
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    /**
+<i>50</i>&nbsp;     * set a new view
+<i>51</i>&nbsp;     * @param view the new view
+<i>52</i>&nbsp;     */
+<i>53</i>&nbsp;    public void setView(BrowsingView view) {
+<b class="fc"><i>54</i>&nbsp;        this.view = view;</b>
+<b class="fc"><i>55</i>&nbsp;    }</b>
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    /**
+<i>58</i>&nbsp;     * clear the view
+<i>59</i>&nbsp;     */
+<i>60</i>&nbsp;    public void clearView() {
+<b class="nc"><i>61</i>&nbsp;        this.view = null;</b>
+<b class="nc"><i>62</i>&nbsp;    }</b>
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    /**
+<i>65</i>&nbsp;     * set the tournamentDAO
+<i>66</i>&nbsp;     * @param tournamentDAO the new TournamentDAO
+<i>67</i>&nbsp;     */
+<i>68</i>&nbsp;    public void setTournamentDAO(TournamentDAO tournamentDAO) {
+<b class="fc"><i>69</i>&nbsp;        this.tournamentDAO = tournamentDAO;</b>
+<b class="fc"><i>70</i>&nbsp;    }</b>
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

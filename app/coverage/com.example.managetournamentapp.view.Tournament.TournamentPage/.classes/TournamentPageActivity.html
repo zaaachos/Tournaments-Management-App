@@ -1,0 +1,199 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TournamentPageActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Tournament.TournamentPage</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TournamentPageActivity (com.example.managetournamentapp.view.Tournament.TournamentPage)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TournamentPageActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 37)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Tournament.TournamentPage;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.content.Intent;
+<i>4</i>&nbsp;import android.os.Bundle;
+<i>5</i>&nbsp;import android.widget.Button;
+<i>6</i>&nbsp;import android.widget.ImageButton;
+<i>7</i>&nbsp;import android.widget.TextView;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import androidx.appcompat.app.AppCompatActivity;
+<i>10</i>&nbsp;import androidx.lifecycle.ViewModelProvider;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import com.example.managetournamentapp.R;
+<i>13</i>&nbsp;import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
+<i>14</i>&nbsp;import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+<i>15</i>&nbsp;import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.ParticipatingTeamsActivity;
+<i>16</i>&nbsp;import com.example.managetournamentapp.view.Tournament.TournamentInfo.TournamentInfoActivity;
+<i>17</i>&nbsp;import com.example.managetournamentapp.view.Tournament.TournamentRounds.TournamentRoundsActivity;
+<i>18</i>&nbsp;import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
+<i>19</i>&nbsp;
+<b class="nc"><i>20</i>&nbsp;public class TournamentPageActivity extends AppCompatActivity implements TournamentPageView {</b>
+<i>21</i>&nbsp;    public static final String TOURNAMENT_TITLE_EXTRA = &quot;tournament_title_extra&quot;;
+<i>22</i>&nbsp;    private static final String PLAYER_USERNAME_EXTRA = &quot;player_username_extra&quot;;
+<i>23</i>&nbsp;    private static final String ORGANIZER_TITLE_EXTRA = &quot;organizer_title_extra&quot;;
+<i>24</i>&nbsp;    String tournamentName;
+<i>25</i>&nbsp;    private TournamentPageViewModel viewModel;
+<i>26</i>&nbsp;    TextView txtTournamentName;
+<i>27</i>&nbsp;    Button btnTournamentInfo;
+<i>28</i>&nbsp;    Button btnTournamentTeams;
+<i>29</i>&nbsp;    Button btnTournamentGames;
+<i>30</i>&nbsp;    ImageButton btnHome;
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    /**
+<i>33</i>&nbsp;     * Creates the layout and initializes the activity
+<i>34</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>35</i>&nbsp;     */
+<i>36</i>&nbsp;    @Override
+<i>37</i>&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<i>38</i>&nbsp;
+<b class="nc"><i>39</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>40</i>&nbsp;        tournamentName = this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA);</b>
+<b class="nc"><i>41</i>&nbsp;        setContentView(R.layout.activity_tournament_page);</b>
+<i>42</i>&nbsp;
+<b class="nc"><i>43</i>&nbsp;        viewModel = new ViewModelProvider(this).get(TournamentPageViewModel.class);</b>
+<b class="nc"><i>44</i>&nbsp;        viewModel.getPresenter().setView(this);</b>
+<i>45</i>&nbsp;
+<b class="nc"><i>46</i>&nbsp;        txtTournamentName = findViewById(R.id.text_tournament_name);</b>
+<b class="nc"><i>47</i>&nbsp;        btnTournamentInfo = findViewById(R.id.tournament_info_button);</b>
+<b class="nc"><i>48</i>&nbsp;        btnTournamentTeams = findViewById(R.id.tournament_teams_button);</b>
+<b class="nc"><i>49</i>&nbsp;        btnTournamentGames = findViewById(R.id.tournament_games_button);</b>
+<b class="nc"><i>50</i>&nbsp;        btnHome = findViewById(R.id.imageButton);</b>
+<i>51</i>&nbsp;
+<b class="nc"><i>52</i>&nbsp;        txtTournamentName.setText(tournamentName);</b>
+<b class="nc"><i>53</i>&nbsp;        btnTournamentInfo.setOnClickListener(v -&gt; viewModel.getPresenter().onTournamentInfo());</b>
+<b class="nc"><i>54</i>&nbsp;        btnTournamentGames.setOnClickListener(v -&gt; viewModel.getPresenter().onTournamentGames());</b>
+<b class="nc"><i>55</i>&nbsp;        btnTournamentTeams.setOnClickListener(v -&gt; viewModel.getPresenter().onTournamentTeams());</b>
+<b class="nc"><i>56</i>&nbsp;        btnHome.setOnClickListener(v -&gt; viewModel.getPresenter().onHomePage());</b>
+<i>57</i>&nbsp;    }
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    /**
+<i>60</i>&nbsp;     * when the &quot;info&quot; button is pressed
+<i>61</i>&nbsp;     * the tournament info activity starts
+<i>62</i>&nbsp;     */
+<i>63</i>&nbsp;    @Override
+<i>64</i>&nbsp;    public void startTournamentInfo() {
+<b class="nc"><i>65</i>&nbsp;        Intent intent = new Intent(TournamentPageActivity.this, TournamentInfoActivity.class);</b>
+<b class="nc"><i>66</i>&nbsp;        intent.putExtra(TOURNAMENT_TITLE_EXTRA,tournamentName);</b>
+<b class="nc"><i>67</i>&nbsp;        startActivity(intent);</b>
+<i>68</i>&nbsp;    }
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    /**
+<i>71</i>&nbsp;     * when the &quot;teams&quot; button is pressed
+<i>72</i>&nbsp;     * the participating teams activity starts
+<i>73</i>&nbsp;     */
+<i>74</i>&nbsp;    @Override
+<i>75</i>&nbsp;    public void startTeamsParticipating() {
+<b class="nc"><i>76</i>&nbsp;        Intent intent = new Intent(TournamentPageActivity.this, ParticipatingTeamsActivity.class);</b>
+<b class="nc"><i>77</i>&nbsp;        intent.putExtra(TOURNAMENT_TITLE_EXTRA,tournamentName);</b>
+<b class="nc"><i>78</i>&nbsp;        startActivity(intent);</b>
+<i>79</i>&nbsp;    }
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;    /**
+<i>82</i>&nbsp;     * when the &quot;games&quot; button is pressed
+<i>83</i>&nbsp;     * the tournament rounds activity starts
+<i>84</i>&nbsp;     */
+<i>85</i>&nbsp;    @Override
+<i>86</i>&nbsp;    public void startTournamentGames() {
+<b class="nc"><i>87</i>&nbsp;        Intent intent = new Intent(TournamentPageActivity.this, TournamentRoundsActivity.class);</b>
+<b class="nc"><i>88</i>&nbsp;        intent.putExtra(TOURNAMENT_TITLE_EXTRA,tournamentName);</b>
+<b class="nc"><i>89</i>&nbsp;        startActivity(intent);</b>
+<i>90</i>&nbsp;    }
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    /**
+<i>93</i>&nbsp;     * what happens when the homepage button is pressed
+<i>94</i>&nbsp;     * @param noLogin boolean parameter, if true the user has not logged in
+<i>95</i>&nbsp;     * @param isPlayer boolean parameter,if true the user is a player
+<i>96</i>&nbsp;     * @param name name of the player or title of the organizer
+<i>97</i>&nbsp;     */
+<i>98</i>&nbsp;    @Override
+<i>99</i>&nbsp;    public void backToHomePage(boolean noLogin, boolean isPlayer, String name) {
+<b class="nc"><i>100</i>&nbsp;        if (noLogin){</b>
+<b class="nc"><i>101</i>&nbsp;            Intent intent = new Intent(this, BrowsingActivity.class);</b>
+<b class="nc"><i>102</i>&nbsp;            startActivity(intent);</b>
+<b class="nc"><i>103</i>&nbsp;        }</b>
+<b class="nc"><i>104</i>&nbsp;        else if (isPlayer){</b>
+<b class="nc"><i>105</i>&nbsp;            Intent intent = new Intent(this, PlayerPageActivity.class);</b>
+<b class="nc"><i>106</i>&nbsp;            intent.putExtra(PLAYER_USERNAME_EXTRA,name);</b>
+<b class="nc"><i>107</i>&nbsp;            startActivity(intent);</b>
+<b class="nc"><i>108</i>&nbsp;        }</b>
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;        else{
+<b class="nc"><i>111</i>&nbsp;            Intent intent = new Intent (this, OrganizerPageActivity.class);</b>
+<b class="nc"><i>112</i>&nbsp;            intent.putExtra(ORGANIZER_TITLE_EXTRA, name);</b>
+<b class="nc"><i>113</i>&nbsp;            startActivity(intent);</b>
+<i>114</i>&nbsp;        }
+<i>115</i>&nbsp;    }
+<i>116</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

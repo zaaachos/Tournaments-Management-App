@@ -1,0 +1,83 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TournamentRoundsView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Tournament.TournamentRounds</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TournamentRoundsView (com.example.managetournamentapp.view.Tournament.TournamentRounds)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">TournamentRoundsView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Tournament.TournamentRounds;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;public interface TournamentRoundsView {
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;    /**
+<i>6</i>&nbsp;     * hide the button of a round
+<i>7</i>&nbsp;     * if this round doesn&#39;t exist in the tournament
+<i>8</i>&nbsp;     * @param teamsNumber the number of teams in the tournament
+<i>9</i>&nbsp;     */
+<i>10</i>&nbsp;    void changesOfAccess(int teamsNumber);
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * when the &quot;groups&quot; button is pressed,
+<i>14</i>&nbsp;     * the user wants to explore the &quot;group&quot; stage (1st round)
+<i>15</i>&nbsp;     * the tournament groups activity starts
+<i>16</i>&nbsp;     */
+<i>17</i>&nbsp;    void showGroups(String tournamentTitle, int roundTeamsNumber);
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * when a player presses on the button of a round
+<i>21</i>&nbsp;     * apart from the group stage round
+<i>22</i>&nbsp;     * @param tournamentTitle the title of the tournament
+<i>23</i>&nbsp;     * @param roundTeamsNumber the number of teams in the round
+<i>24</i>&nbsp;     */
+<i>25</i>&nbsp;    void showRoundGames(String tournamentTitle, int roundTeamsNumber);
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    /**
+<i>28</i>&nbsp;     * what happens when the homepage button is pressed
+<i>29</i>&nbsp;     * @param noLogin boolean parameter, if true the user has not logged in
+<i>30</i>&nbsp;     * @param isPlayer boolean parameter,if true the user is a player
+<i>31</i>&nbsp;     * @param name name of the player or title of the organizer
+<i>32</i>&nbsp;     */
+<i>33</i>&nbsp;    void backToHomePage(boolean noLogin, boolean isPlayer, String name);
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

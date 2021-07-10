@@ -1,0 +1,92 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: GroupDAO</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.dao</a> ]
+</div>
+
+<h1>Coverage Summary for Class: GroupDAO (com.example.managetournamentapp.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">GroupDAO</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.dao;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.domain.Group;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.util.ArrayList;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;/**
+<i>9</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>10</i>&nbsp; * Athens University of Economics and Business
+<i>11</i>&nbsp; * 2020-2021
+<i>12</i>&nbsp; */
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;public interface GroupDAO {
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    /**
+<i>17</i>&nbsp;     * Saves a specific group.
+<i>18</i>&nbsp;     * @param entity
+<i>19</i>&nbsp;     */
+<i>20</i>&nbsp;    void save(Group entity);
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    /**
+<i>23</i>&nbsp;     * Finds a game.
+<i>24</i>&nbsp;     * @return Returns the specified game.
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    Group find();
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * Finds all groups.
+<i>30</i>&nbsp;     * @return All groups.
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    ArrayList&lt;Group&gt; findAll();
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * Deletes a specific group.
+<i>36</i>&nbsp;     * @param entity Group to be deleted.
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    void delete(Group entity);
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /**
+<i>41</i>&nbsp;     * Deletes all groups.
+<i>42</i>&nbsp;     */
+<i>43</i>&nbsp;    void deleteAll();
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

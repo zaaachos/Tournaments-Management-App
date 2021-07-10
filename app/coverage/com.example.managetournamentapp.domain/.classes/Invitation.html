@@ -1,0 +1,181 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Invitation</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.domain</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Invitation (com.example.managetournamentapp.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Invitation</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (23/ 23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.domain;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.time.LocalDate;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>8</i>&nbsp; * Athens University of Economics and Business
+<i>9</i>&nbsp; * 2020-2021
+<i>10</i>&nbsp; */
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;public class Invitation {
+<i>13</i>&nbsp;    private Team team;
+<b class="fc"><i>14</i>&nbsp;    private boolean pending,accepted=false;</b>
+<i>15</i>&nbsp;    private LocalDate date;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * constructor of an Invitation object
+<i>19</i>&nbsp;     * @param team the team that sends the invite
+<i>20</i>&nbsp;     */
+<b class="fc"><i>21</i>&nbsp;    public Invitation(Team team){</b>
+<b class="fc"><i>22</i>&nbsp;        this.team = team;</b>
+<b class="fc"><i>23</i>&nbsp;        this.pending = true;</b>
+<b class="fc"><i>24</i>&nbsp;        date = LocalDate.now();</b>
+<b class="fc"><i>25</i>&nbsp;    }</b>
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    /**
+<i>28</i>&nbsp;     * find out if the Invitation has been answered (accepted or rejected)
+<i>29</i>&nbsp;     * @return true if the Invitation is pending
+<i>30</i>&nbsp;     */
+<i>31</i>&nbsp;    public boolean getPending() {
+<b class="fc"><i>32</i>&nbsp;        return pending;</b>
+<i>33</i>&nbsp;    }
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * find out if the player has accepted the Invitation of this team
+<i>37</i>&nbsp;     * @return true if the Invitation has been accepted by the player
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    public Boolean getAccepted() {
+<b class="fc"><i>40</i>&nbsp;        return accepted;</b>
+<i>41</i>&nbsp;    }
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    /**
+<i>44</i>&nbsp;     * set set the Invitation as accepted if the player agrees to join the team
+<i>45</i>&nbsp;     * @param accepted is true if the Invitation is accepted
+<i>46</i>&nbsp;     */
+<i>47</i>&nbsp;    public void setAccepted(boolean accepted) {
+<b class="fc"><i>48</i>&nbsp;        if (pending){</b>
+<b class="fc"><i>49</i>&nbsp;            this.accepted = accepted;</b>
+<b class="fc"><i>50</i>&nbsp;            pending = false;</b>
+<i>51</i>&nbsp;        }
+<b class="fc"><i>52</i>&nbsp;    }</b>
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    /**
+<i>55</i>&nbsp;     * get the date that the Invitation was sent
+<i>56</i>&nbsp;     * @return the LocalDate representation of the date
+<i>57</i>&nbsp;     */
+<i>58</i>&nbsp;     public LocalDate getDate() {
+<b class="fc"><i>59</i>&nbsp;        return date;</b>
+<i>60</i>&nbsp;    }
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    /**
+<i>63</i>&nbsp;     * get the team that sent the Invitation to a player
+<i>64</i>&nbsp;     * @return the team that sent the Invitation
+<i>65</i>&nbsp;     */
+<i>66</i>&nbsp;    public Team getTeam() {
+<b class="fc"><i>67</i>&nbsp;        return team;</b>
+<i>68</i>&nbsp;    }
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    /**
+<i>71</i>&nbsp;     * set the team that sents the Invitation to a player
+<i>72</i>&nbsp;     * @param team the team that sends the Invitation
+<i>73</i>&nbsp;     */
+<i>74</i>&nbsp;    public void setTeam(Team team) {
+<b class="fc"><i>75</i>&nbsp;        this.team = team;</b>
+<b class="fc"><i>76</i>&nbsp;    }</b>
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;    /**
+<i>79</i>&nbsp;     *check the equality of two Invitation objects
+<i>80</i>&nbsp;     * @param other the other invite
+<i>81</i>&nbsp;     * @return true if this invite is equal to the other invite
+<i>82</i>&nbsp;     */
+<i>83</i>&nbsp;    public boolean equals(Object other) {
+<b class="fc"><i>84</i>&nbsp;        if (this == other){</b>
+<b class="fc"><i>85</i>&nbsp;            return true;</b>
+<i>86</i>&nbsp;        }
+<b class="fc"><i>87</i>&nbsp;        if (other instanceof Invitation) {</b>
+<b class="fc"><i>88</i>&nbsp;            Invitation otherInvite = (Invitation) other;</b>
+<b class="fc"><i>89</i>&nbsp;            if (team.equals(otherInvite.team) &amp;&amp; date.equals(otherInvite.date)) {</b>
+<b class="fc"><i>90</i>&nbsp;                return true;</b>
+<i>91</i>&nbsp;            }
+<i>92</i>&nbsp;        }
+<b class="fc"><i>93</i>&nbsp;        return false;</b>
+<i>94</i>&nbsp;    }
+<i>95</i>&nbsp;
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

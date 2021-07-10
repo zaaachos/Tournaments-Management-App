@@ -1,0 +1,404 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Team</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.domain</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Team (com.example.managetournamentapp.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Team</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (23/ 23)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.9%
+  </span>
+  <span class="absValue">
+    (100/ 110)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.domain;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.time.LocalDate;
+<i>4</i>&nbsp;import java.util.ArrayList;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>8</i>&nbsp; * Athens University of Economics and Business
+<i>9</i>&nbsp; * 2020-2021
+<i>10</i>&nbsp; */
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;public class Team {
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    private String name, colors;
+<i>15</i>&nbsp;    private Sport sportType;
+<i>16</i>&nbsp;    private AgeDivision ageDivision;
+<i>17</i>&nbsp;    private Player captain;
+<b class="fc"><i>18</i>&nbsp;    private ArrayList&lt;Player&gt; players = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>19</i>&nbsp;    private ArrayList&lt;Participation&gt; participations = new ArrayList&lt;&gt;();</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    /**
+<i>22</i>&nbsp;     * default contructor of a team
+<i>23</i>&nbsp;     */
+<b class="fc"><i>24</i>&nbsp;    public Team() {</b>
+<b class="fc"><i>25</i>&nbsp;    }</b>
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    /**
+<i>28</i>&nbsp;     *the full constructor of the team
+<i>29</i>&nbsp;     * @param name of the team
+<i>30</i>&nbsp;     * @param sportType of the team
+<i>31</i>&nbsp;     * @param ageDivision of the team
+<i>32</i>&nbsp;     * @param captain of the team
+<i>33</i>&nbsp;     * @param colors of the team
+<i>34</i>&nbsp;     */
+<b class="fc"><i>35</i>&nbsp;    public Team(String name, Sport sportType, AgeDivision ageDivision, Player captain, String colors) {</b>
+<b class="fc"><i>36</i>&nbsp;        this.name = name;</b>
+<b class="fc"><i>37</i>&nbsp;        this.sportType = sportType;</b>
+<b class="fc"><i>38</i>&nbsp;        this.ageDivision = ageDivision;</b>
+<b class="fc"><i>39</i>&nbsp;        this.colors = colors;</b>
+<b class="fc"><i>40</i>&nbsp;        this.captain = captain;</b>
+<b class="fc"><i>41</i>&nbsp;        addPlayer(captain);</b>
+<b class="fc"><i>42</i>&nbsp;    }</b>
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    /**
+<i>45</i>&nbsp;     * get the players that have joined this team
+<i>46</i>&nbsp;     * @return a copy of arraylist of players in this team
+<i>47</i>&nbsp;     */
+<i>48</i>&nbsp;    public ArrayList&lt;Player&gt; getPlayers() {
+<b class="fc"><i>49</i>&nbsp;        return new ArrayList&lt;&gt;(players);</b>
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    /**
+<i>53</i>&nbsp;     * get the players that have joined this team
+<i>54</i>&nbsp;     * @return the arraylist of players in this team
+<i>55</i>&nbsp;     */
+<i>56</i>&nbsp;    protected ArrayList&lt;Player&gt; friendGetPlayers(){
+<b class="fc"><i>57</i>&nbsp;        return players;</b>
+<i>58</i>&nbsp;    }
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    /**
+<i>61</i>&nbsp;     * add a new player in the team
+<i>62</i>&nbsp;     * @param player the player that will be added
+<i>63</i>&nbsp;     */
+<i>64</i>&nbsp;    public void addPlayer(Player player) {
+<b class="fc"><i>65</i>&nbsp;        if (player == null) {</b>
+<b class="fc"><i>66</i>&nbsp;            return;</b>
+<i>67</i>&nbsp;        }
+<b class="fc"><i>68</i>&nbsp;        player.addJoinedTeam(this);</b>
+<b class="fc"><i>69</i>&nbsp;    }</b>
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    /**
+<i>72</i>&nbsp;     * remove a player from the team
+<i>73</i>&nbsp;     * @param player that will be removed
+<i>74</i>&nbsp;     */
+<i>75</i>&nbsp;    public void removePlayer(Player player) {
+<b class="fc"><i>76</i>&nbsp;        if (player == null) {</b>
+<b class="fc"><i>77</i>&nbsp;            return;</b>
+<i>78</i>&nbsp;        }
+<b class="fc"><i>79</i>&nbsp;        player.removeJoinedTeam(this);</b>
+<b class="fc"><i>80</i>&nbsp;    }</b>
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    /**
+<i>84</i>&nbsp;     * find if the team has participations that are happening right now
+<i>85</i>&nbsp;     * @return true if the team is currently participating in a tournament
+<i>86</i>&nbsp;     */
+<i>87</i>&nbsp;    public boolean hasAnyActivePart() {
+<i>88</i>&nbsp;        //check if there is any running participation
+<b class="fc"><i>89</i>&nbsp;        for (Participation participation : participations) {</b>
+<b class="fc"><i>90</i>&nbsp;            if (participation.getStartDate().isBefore(LocalDate.now()) &amp;&amp; participation.getFinishDate().isAfter(LocalDate.now())) {</b>
+<b class="nc"><i>91</i>&nbsp;                return true;</b>
+<i>92</i>&nbsp;            }
+<b class="fc"><i>93</i>&nbsp;        }</b>
+<b class="fc"><i>94</i>&nbsp;        return false;</b>
+<i>95</i>&nbsp;    }
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;    /**
+<i>98</i>&nbsp;     * set a member of the team as the new captain
+<i>99</i>&nbsp;     * @param player the new captain
+<i>100</i>&nbsp;     */
+<i>101</i>&nbsp;    public void setCaptain(Player player) {
+<b class="fc"><i>102</i>&nbsp;        if (player == null) {</b>
+<b class="fc"><i>103</i>&nbsp;            return;</b>
+<i>104</i>&nbsp;        }
+<b class="fc"><i>105</i>&nbsp;        captain.removeCaptainInTeams(this);</b>
+<b class="fc"><i>106</i>&nbsp;        player.addCaptainInTeams(this);</b>
+<b class="fc"><i>107</i>&nbsp;        captain = player;</b>
+<b class="fc"><i>108</i>&nbsp;    }</b>
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;    /**
+<i>111</i>&nbsp;     * get the current captain of the team
+<i>112</i>&nbsp;     * @return the captain
+<i>113</i>&nbsp;     */
+<i>114</i>&nbsp;    public Player getCaptain() {
+<b class="fc"><i>115</i>&nbsp;        return captain;</b>
+<i>116</i>&nbsp;    }
+<i>117</i>&nbsp;
+<i>118</i>&nbsp;    /**
+<i>119</i>&nbsp;     * send an invitation to a player
+<i>120</i>&nbsp;     * @param player the player who is invited
+<i>121</i>&nbsp;     */
+<i>122</i>&nbsp;    public void invitePlayer(Player player) {
+<b class="fc"><i>123</i>&nbsp;        if (player == null || players.contains(player)) {</b>
+<b class="nc"><i>124</i>&nbsp;            return;</b>
+<i>125</i>&nbsp;        }
+<b class="fc"><i>126</i>&nbsp;        if (!player.canJoin(this)) {</b>
+<b class="nc"><i>127</i>&nbsp;            return;</b>
+<i>128</i>&nbsp;        }
+<b class="fc"><i>129</i>&nbsp;        player.addInvite(new Invitation(this));</b>
+<b class="fc"><i>130</i>&nbsp;    }</b>
+<i>131</i>&nbsp;
+<i>132</i>&nbsp;
+<i>133</i>&nbsp;    /**
+<i>134</i>&nbsp;     *  add a new participation - the team
+<i>135</i>&nbsp;     *  participates in a new tournament
+<i>136</i>&nbsp;     * @param participation the new participation
+<i>137</i>&nbsp;     */
+<i>138</i>&nbsp;    public void addParticipation(Participation participation) {
+<b class="fc"><i>139</i>&nbsp;        if (participation == null) {</b>
+<b class="fc"><i>140</i>&nbsp;            return;</b>
+<i>141</i>&nbsp;        }
+<b class="fc"><i>142</i>&nbsp;        if (participations.contains(participation)) {</b>
+<b class="fc"><i>143</i>&nbsp;            return;</b>
+<i>144</i>&nbsp;        }
+<b class="fc"><i>145</i>&nbsp;        if (canParticipate(participation)) {</b>
+<b class="fc"><i>146</i>&nbsp;            participations.add(participation);</b>
+<b class="fc"><i>147</i>&nbsp;            participation.getTournament().friendGetParticipations().add(participation);</b>
+<b class="fc"><i>148</i>&nbsp;            participation.getTournament().checkIfStarts();</b>
+<i>149</i>&nbsp;        }
+<b class="fc"><i>150</i>&nbsp;    }</b>
+<i>151</i>&nbsp;
+<i>152</i>&nbsp;    /**
+<i>153</i>&nbsp;     *  remove a participation - the team
+<i>154</i>&nbsp;     *  exits a tournament
+<i>155</i>&nbsp;     * @param participation the participation
+<i>156</i>&nbsp;     */
+<i>157</i>&nbsp;    public void removeParticipation(Participation participation) {
+<b class="fc"><i>158</i>&nbsp;        if (participation == null) {</b>
+<b class="fc"><i>159</i>&nbsp;            return;</b>
+<i>160</i>&nbsp;        }
+<b class="fc"><i>161</i>&nbsp;        if (!participations.contains(participation)) {</b>
+<b class="fc"><i>162</i>&nbsp;            return;</b>
+<i>163</i>&nbsp;        }
+<b class="fc"><i>164</i>&nbsp;        participations.remove(participation);</b>
+<b class="fc"><i>165</i>&nbsp;        participation.getTournament().friendGetParticipations().remove(participation);</b>
+<b class="fc"><i>166</i>&nbsp;    }</b>
+<i>167</i>&nbsp;
+<i>168</i>&nbsp;
+<i>169</i>&nbsp;    /**
+<i>170</i>&nbsp;     * find if this participation is valid
+<i>171</i>&nbsp;     * @param participation the participation which is checked
+<i>172</i>&nbsp;     * @return true if this participation can actually happen
+<i>173</i>&nbsp;     */
+<i>174</i>&nbsp;    public boolean canParticipate(Participation participation) {
+<b class="fc"><i>175</i>&nbsp;        Tournament tournToJoin = participation.getTournament();</b>
+<i>176</i>&nbsp;
+<b class="fc"><i>177</i>&nbsp;        if (!getAgeDivision().equals(tournToJoin.getAgeDivision())) {</b>
+<b class="fc"><i>178</i>&nbsp;            return false;</b>
+<i>179</i>&nbsp;        }
+<b class="fc"><i>180</i>&nbsp;        if (hasAnyActivePart()) {</b>
+<b class="nc"><i>181</i>&nbsp;            return false;</b>
+<i>182</i>&nbsp;        }
+<i>183</i>&nbsp;
+<b class="fc"><i>184</i>&nbsp;        if (!tournToJoin.getSportType().equals(sportType)) {</b>
+<b class="fc"><i>185</i>&nbsp;            return false;</b>
+<i>186</i>&nbsp;        }
+<b class="fc"><i>187</i>&nbsp;        if (tournToJoin.isFull()) {</b>
+<b class="fc"><i>188</i>&nbsp;            return false;</b>
+<i>189</i>&nbsp;        }
+<b class="fc"><i>190</i>&nbsp;        if (players.size() &lt; (sportType.getMinimumPlayers() / 2)) {</b>
+<b class="fc"><i>191</i>&nbsp;            return false;</b>
+<i>192</i>&nbsp;        }
+<i>193</i>&nbsp;        //if there is a player that participates in the specific tournament
+<i>194</i>&nbsp;        //with another team, then this team can&#39;t join the tournament
+<b class="fc"><i>195</i>&nbsp;        for (Player player : players) {</b>
+<b class="fc"><i>196</i>&nbsp;            for (Participation playerPart : player.getUndoneParticipations()) {</b>
+<b class="nc"><i>197</i>&nbsp;                if (playerPart.inSameTournament(participation)) {</b>
+<b class="nc"><i>198</i>&nbsp;                    return false;</b>
+<i>199</i>&nbsp;                }
+<b class="nc"><i>200</i>&nbsp;            }</b>
+<b class="fc"><i>201</i>&nbsp;        }</b>
+<b class="fc"><i>202</i>&nbsp;        for (Participation part : participations) {</b>
+<b class="nc"><i>203</i>&nbsp;            if (participation.isSimultaneous(part))</b>
+<b class="nc"><i>204</i>&nbsp;                return false;</b>
+<b class="nc"><i>205</i>&nbsp;        }</b>
+<b class="fc"><i>206</i>&nbsp;        return true;</b>
+<i>207</i>&nbsp;    }
+<i>208</i>&nbsp;
+<i>209</i>&nbsp;    /**
+<i>210</i>&nbsp;     * get all the participations of this team
+<i>211</i>&nbsp;     * @return a copy of the participations arraylist
+<i>212</i>&nbsp;     */
+<i>213</i>&nbsp;    public ArrayList&lt;Participation&gt; getParticipations() {
+<b class="fc"><i>214</i>&nbsp;        return new ArrayList&lt;&gt;(participations);</b>
+<i>215</i>&nbsp;    }
+<i>216</i>&nbsp;
+<i>217</i>&nbsp;    /**
+<i>218</i>&nbsp;     * find the participations that are either happening now or are scheduled
+<i>219</i>&nbsp;     * @return the participations of this team, that are not finished
+<i>220</i>&nbsp;     */
+<i>221</i>&nbsp;    public ArrayList&lt;Participation&gt; getUndoneParticipations() {
+<b class="fc"><i>222</i>&nbsp;        ArrayList&lt;Participation&gt; runningParticipations = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>223</i>&nbsp;        for (Participation p : participations) {</b>
+<b class="fc"><i>224</i>&nbsp;            if (!p.isPast())</b>
+<b class="fc"><i>225</i>&nbsp;                runningParticipations.add(p);</b>
+<b class="fc"><i>226</i>&nbsp;        }</b>
+<b class="fc"><i>227</i>&nbsp;        return runningParticipations;</b>
+<i>228</i>&nbsp;    }
+<i>229</i>&nbsp;
+<i>230</i>&nbsp;    /**
+<i>231</i>&nbsp;     * get the name of this team
+<i>232</i>&nbsp;     * @return the name of the team
+<i>233</i>&nbsp;     */
+<i>234</i>&nbsp;    public String getName() {
+<b class="fc"><i>235</i>&nbsp;        return name;</b>
+<i>236</i>&nbsp;    }
+<i>237</i>&nbsp;
+<i>238</i>&nbsp;    /**
+<i>239</i>&nbsp;     * set a new name for this team
+<i>240</i>&nbsp;     * @param name is the new name
+<i>241</i>&nbsp;     */
+<i>242</i>&nbsp;    public void setName(String name) {
+<b class="fc"><i>243</i>&nbsp;        if (name == null || !getUndoneParticipations().isEmpty()) {</b>
+<b class="fc"><i>244</i>&nbsp;            return;</b>
+<i>245</i>&nbsp;        }
+<b class="fc"><i>246</i>&nbsp;        this.name = name;</b>
+<b class="fc"><i>247</i>&nbsp;    }</b>
+<i>248</i>&nbsp;
+<i>249</i>&nbsp;    /**
+<i>250</i>&nbsp;     * get the colors of this team
+<i>251</i>&nbsp;     * @return the colors of the team
+<i>252</i>&nbsp;     */
+<i>253</i>&nbsp;    public String getColors() {
+<b class="fc"><i>254</i>&nbsp;        return colors;</b>
+<i>255</i>&nbsp;    }
+<i>256</i>&nbsp;
+<i>257</i>&nbsp;    /**
+<i>258</i>&nbsp;     * set new colors for this team
+<i>259</i>&nbsp;     * @param colors is the new name
+<i>260</i>&nbsp;     */
+<i>261</i>&nbsp;    public void setColors(String colors) {
+<b class="fc"><i>262</i>&nbsp;        if (colors == null || !getUndoneParticipations().isEmpty()) {</b>
+<b class="fc"><i>263</i>&nbsp;            return;</b>
+<i>264</i>&nbsp;        }
+<b class="fc"><i>265</i>&nbsp;        this.colors = colors;</b>
+<b class="fc"><i>266</i>&nbsp;    }</b>
+<i>267</i>&nbsp;
+<i>268</i>&nbsp;    /**
+<i>269</i>&nbsp;     * get the sport of this team
+<i>270</i>&nbsp;     * @return the Sport of the team
+<i>271</i>&nbsp;     */
+<i>272</i>&nbsp;    public Sport getSportType() {
+<b class="fc"><i>273</i>&nbsp;        return sportType;</b>
+<i>274</i>&nbsp;    }
+<i>275</i>&nbsp;
+<i>276</i>&nbsp;    /**
+<i>277</i>&nbsp;     * get the age division that this team competes in
+<i>278</i>&nbsp;     * @return the age division of the team
+<i>279</i>&nbsp;     */
+<i>280</i>&nbsp;    public AgeDivision getAgeDivision() {
+<b class="fc"><i>281</i>&nbsp;        return ageDivision;</b>
+<i>282</i>&nbsp;    }
+<i>283</i>&nbsp;
+<i>284</i>&nbsp;    /**
+<i>285</i>&nbsp;     * the string representation of the team
+<i>286</i>&nbsp;     * @return the basic info of the team in a string
+<i>287</i>&nbsp;     */
+<i>288</i>&nbsp;    @Override
+<i>289</i>&nbsp;    public String toString() {
+<b class="fc"><i>290</i>&nbsp;        return &quot;Team{&quot; +</b>
+<i>291</i>&nbsp;                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+<i>292</i>&nbsp;                &quot;, sportType=&quot; + sportType +
+<i>293</i>&nbsp;                &quot;, ageDivision=&quot; + ageDivision +
+<i>294</i>&nbsp;                &#39;}&#39;;
+<i>295</i>&nbsp;    }
+<i>296</i>&nbsp;
+<i>297</i>&nbsp;
+<i>298</i>&nbsp;    /**
+<i>299</i>&nbsp;     *check if two teams are equal
+<i>300</i>&nbsp;     * @param other is the other team
+<i>301</i>&nbsp;     * @return if this team is equal to the other team
+<i>302</i>&nbsp;     */
+<i>303</i>&nbsp;    public boolean equals(Object other) {
+<b class="fc"><i>304</i>&nbsp;        if (this == other){</b>
+<b class="fc"><i>305</i>&nbsp;            return true;</b>
+<i>306</i>&nbsp;        }
+<b class="fc"><i>307</i>&nbsp;        if (other instanceof Team) {</b>
+<b class="fc"><i>308</i>&nbsp;            Team otherTeam = (Team) other;</b>
+<b class="fc"><i>309</i>&nbsp;            if (name.equals(otherTeam.name) &amp;&amp;</b>
+<b class="fc"><i>310</i>&nbsp;                    sportType.equals(otherTeam.sportType)</b>
+<b class="fc"><i>311</i>&nbsp;                    &amp;&amp; colors.equals(otherTeam.colors)</b>
+<b class="fc"><i>312</i>&nbsp;                    &amp;&amp; players.equals(otherTeam.players)</b>
+<b class="fc"><i>313</i>&nbsp;                    &amp;&amp; ageDivision.equals(otherTeam.getAgeDivision())</b>
+<b class="fc"><i>314</i>&nbsp;                    &amp;&amp; captain.equals(otherTeam.captain))</b>
+<i>315</i>&nbsp;//                    &amp;&amp; participations.equals(otherTeam.participations))
+<b class="fc"><i>316</i>&nbsp;                return true;</b>
+<i>317</i>&nbsp;        }
+<b class="fc"><i>318</i>&nbsp;        return false;</b>
+<i>319</i>&nbsp;    }
+<i>320</i>&nbsp;
+<i>321</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ReceivedInvitesView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Player.ReceivedInvites</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ReceivedInvitesView (com.example.managetournamentapp.view.Player.ReceivedInvites)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ReceivedInvitesView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Player.ReceivedInvites;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import com.example.managetournamentapp.domain.Invitation;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import java.util.ArrayList;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;public interface ReceivedInvitesView {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    /** show the popup when the player selects an invitation
+<i>12</i>&nbsp;     * @param layoutId the layout of the popup
+<i>13</i>&nbsp;     * @param msg the message of the popup
+<i>14</i>&nbsp;     * @param btn1 the first button
+<i>15</i>&nbsp;     * @param btn2 the second button
+<i>16</i>&nbsp;     * @param btn3 the third button
+<i>17</i>&nbsp;     * @param flag is true when the second version of the popup is shown
+<i>18</i>&nbsp;     * @return
+<i>19</i>&nbsp;     */
+<i>20</i>&nbsp;    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2, int btn3,boolean flag);
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    /**
+<i>23</i>&nbsp;     * when the player wants to see the info of the team
+<i>24</i>&nbsp;     * that invited him
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    void startTeamPage();
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * get the invites that the player has received
+<i>30</i>&nbsp;     * @return the ArrayList of invites
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    ArrayList&lt;Invitation&gt; getInvitationsList();
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * what happens when the homepage button is pressed
+<i>36</i>&nbsp;     */
+<i>37</i>&nbsp;    void backToHomePage();
+<i>38</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

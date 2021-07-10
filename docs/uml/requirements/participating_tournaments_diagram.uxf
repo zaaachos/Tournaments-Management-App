@@ -1,0 +1,48 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>880</x><y>230</y><w>330</w><h>120</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; ParticipatingTournamentsView
+--
+startAddParticipation() : void
+changesOfAccess() : void
+backToHomePage(name : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>150</y><w>470</w><h>260</h></coordinates><panel_attributes>ParticipatingTournamentsActivity
+--
+~ btnHome : ImageButton
+- addBtn : FloatingActionButton
+- teamName : String
+_- PLAYER_USERNAME_EXTRA: String_
+_- TOURNAMENT_TITLE_EXTRA: String_
+_- TEAM_NAME_EXTRA: String_
+--
+# onCreate(Bundle savedInstanceState) : void
++ onClick(v : View) : void
++ onListFragmentInteraction(item : Tournament) : void
++ getTournamentList() : ArrayList&lt;Tournament&gt;
++ startAddParticipation() : void
++ changesOfAccess() : void
++ backToHomePage(name : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>670</y><w>330</w><h>100</h></coordinates><panel_attributes>ParticipatingTournamentsViewModel
+--
++ JParticipatingTournamentsViewModel()
++ getPresenter() : ParticipatingTournamentsPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>570</y><w>420</w><h>260</h></coordinates><panel_attributes>ParticipatingTournamentsPresenter
+--
+- team : Team
+- results: ArrayList&lt;Tournament&gt;
+--
++ ParticipatingTournamentsPresenter()
++ findParticipatingTournaments(teamName: String) : void
++ removePlayer(teamName : String, player : Player) : void
++ findAccess() : void
++ getResults() : ArrayList&lt;Player&gt;
++ setLoggedInUser( loggedInUser : LoggedInUser ) :void
++ setTeamDAO(teamDAO : TeamDAO) : void
++ setTournamentDAO(tournamentDAO: TournamentDAO) : void
++ onAddParticipation() : void
++ onHomePage() : void
++ setView(view : ParticipatingTournamentsView) : void
++ clearView() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>170</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>30</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>688</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>280;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>398</y><w>70</w><h>290</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;270;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>550</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>578</y><w>110</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;92</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>288</y><w>260</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>240;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>338</y><w>70</w><h>250</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>590</y><w>150</w><h>40</h></coordinates><panel_attributes>TournamentDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1220</x><y>588</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>130;20;10;22</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1340</x><y>680</y><w>150</w><h>40</h></coordinates><panel_attributes>TeamDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1220</x><y>678</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>120;20;10;22</additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>10</y><w>240</w><h>40</h></coordinates><panel_attributes>fragment.TournamentListFragment</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>38</y><w>40</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>20;12;10;112</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1320</x><y>480</y><w>150</w><h>40</h></coordinates><panel_attributes>LoggedInUser</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>508</y><w>130</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>110;10;10;62</additional_attributes></element></diagram>

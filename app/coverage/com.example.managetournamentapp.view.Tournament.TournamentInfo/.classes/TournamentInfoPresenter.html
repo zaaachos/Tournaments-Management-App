@@ -1,0 +1,215 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TournamentInfoPresenter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Tournament.TournamentInfo</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TournamentInfoPresenter (com.example.managetournamentapp.view.Tournament.TournamentInfo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TournamentInfoPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.9%
+  </span>
+  <span class="absValue">
+    (10/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    89.4%
+  </span>
+  <span class="absValue">
+    (42/ 47)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Tournament.TournamentInfo;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.dao.LoggedInUser;
+<i>4</i>&nbsp;import com.example.managetournamentapp.dao.TournamentDAO;
+<i>5</i>&nbsp;import com.example.managetournamentapp.domain.Organizer;
+<i>6</i>&nbsp;import com.example.managetournamentapp.domain.Tournament;
+<i>7</i>&nbsp;import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import java.time.format.DateTimeFormatter;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public class TournamentInfoPresenter {
+<i>12</i>&nbsp;    private TournamentInfoView view;
+<i>13</i>&nbsp;    private Tournament tournament;
+<i>14</i>&nbsp;    private TournamentDAO tournamentDAO;
+<i>15</i>&nbsp;    private LoggedInUser loggedInUser;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * default constructor
+<i>19</i>&nbsp;     */
+<b class="fc"><i>20</i>&nbsp;    public TournamentInfoPresenter(){}</b>
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    /**
+<i>23</i>&nbsp;     * show the info of the tournament
+<i>24</i>&nbsp;     * @param tournamentTitle the title of the tournament
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    public void findTournamentInfo(String tournamentTitle){
+<b class="fc"><i>27</i>&nbsp;        if(tournamentTitle ==null){</b>
+<b class="nc"><i>28</i>&nbsp;            return;</b>
+<i>29</i>&nbsp;        }
+<b class="fc"><i>30</i>&nbsp;        tournament = tournamentDAO.find(tournamentTitle);</b>
+<b class="fc"><i>31</i>&nbsp;        if( tournament == null )</b>
+<b class="nc"><i>32</i>&nbsp;            return;</b>
+<b class="fc"><i>33</i>&nbsp;        view.setTitle(tournament.getTitle());</b>
+<b class="fc"><i>34</i>&nbsp;        view.setLocation(tournament.getLocation());</b>
+<b class="fc"><i>35</i>&nbsp;        view.setStartDate(tournament.getStartDate().format(DateTimeFormatter.ofPattern(&quot;dd-MM-yyyy&quot;)).replace(&quot;-&quot;,&quot;/&quot;));</b>
+<b class="fc"><i>36</i>&nbsp;        view.setFinishDate(tournament.getFinishDate().format(DateTimeFormatter.ofPattern(&quot;dd-MM-yyyy&quot;)).replace(&quot;-&quot;,&quot;/&quot;));</b>
+<b class="fc"><i>37</i>&nbsp;        view.setLocation(tournament.getLocation());</b>
+<b class="fc"><i>38</i>&nbsp;        view.setsportType(tournament.getSportType().getName());</b>
+<b class="fc"><i>39</i>&nbsp;        view.setTeamsNumber(String.valueOf(tournament.getMAX_TEAMS_NUMBER()));</b>
+<b class="fc"><i>40</i>&nbsp;        view.setAgeDivision(tournament.getAgeDivision().toString());</b>
+<b class="fc"><i>41</i>&nbsp;        view.setDescription(tournament.getDescription());</b>
+<i>42</i>&nbsp;
+<b class="fc"><i>43</i>&nbsp;    }</b>
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    /**
+<i>46</i>&nbsp;     * hide the edit and delete buttons
+<i>47</i>&nbsp;     * if the user viewing the page is not
+<i>48</i>&nbsp;     * the organizer of this tournament
+<i>49</i>&nbsp;     */
+<i>50</i>&nbsp;    public void findAccess(){
+<b class="fc"><i>51</i>&nbsp;        if ( loggedInUser.getUser() != null )</b>
+<b class="fc"><i>52</i>&nbsp;            if (loggedInUser.getUser() instanceof Organizer)</b>
+<b class="fc"><i>53</i>&nbsp;                if ( ((Organizer)loggedInUser.getUser()).getTournaments().contains(tournament) )</b>
+<b class="nc"><i>54</i>&nbsp;                    return;</b>
+<b class="fc"><i>55</i>&nbsp;        view.changesOfAccess();</b>
+<b class="fc"><i>56</i>&nbsp;    }</b>
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    /**
+<i>59</i>&nbsp;     * when the organizer chooses to edit this tournament
+<i>60</i>&nbsp;     * the create tournament activity is started
+<i>61</i>&nbsp;     */
+<i>62</i>&nbsp;    public void onEditTournament(){
+<b class="fc"><i>63</i>&nbsp;        if (!tournament.getParticipations().isEmpty()){</b>
+<b class="fc"><i>64</i>&nbsp;            view.showToast(&quot;CAN&#39;T EDIT: THERE ARE ACTIVE PARTICIPATIONS&quot;);</b>
+<b class="fc"><i>65</i>&nbsp;            return;</b>
+<i>66</i>&nbsp;        }
+<b class="fc"><i>67</i>&nbsp;        view.startEditTournament();</b>
+<b class="fc"><i>68</i>&nbsp;    }</b>
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    /**
+<i>71</i>&nbsp;     * when the organizer tries to delete a tournament
+<i>72</i>&nbsp;     * we check if this tournament can be deleted
+<i>73</i>&nbsp;     * and then we ask for a confirmation
+<i>74</i>&nbsp;     */
+<i>75</i>&nbsp;    public void onDeleteTournament(){
+<b class="fc"><i>76</i>&nbsp;        if (!tournament.getParticipations().isEmpty()){</b>
+<b class="fc"><i>77</i>&nbsp;            view.showToast(&quot;CAN&#39;T DELETE: THERE ARE ACTIVE PARTICIPATIONS&quot;);</b>
+<b class="fc"><i>78</i>&nbsp;            return;</b>
+<i>79</i>&nbsp;        }
+<b class="fc"><i>80</i>&nbsp;        ((Organizer)loggedInUser.getUser()).deleteTournament(tournament);</b>
+<b class="fc"><i>81</i>&nbsp;        tournamentDAO.delete(tournament);</b>
+<b class="fc"><i>82</i>&nbsp;        view.deleteConfirmation();</b>
+<b class="fc"><i>83</i>&nbsp;    }</b>
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    /**
+<i>86</i>&nbsp;     * when the organizer presses
+<i>87</i>&nbsp;     * &quot;yes&quot; on the confirmation
+<i>88</i>&nbsp;     */
+<i>89</i>&nbsp;    public void onYesDeleteTournament(){
+<b class="fc"><i>90</i>&nbsp;        Organizer organizer = (Organizer) loggedInUser.getUser();</b>
+<b class="fc"><i>91</i>&nbsp;        view.yesDeleteTournament(organizer.getTitle());</b>
+<b class="fc"><i>92</i>&nbsp;    }</b>
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;    /**
+<i>95</i>&nbsp;     * when the organizer presses
+<i>96</i>&nbsp;     * &quot;no&quot; on the confirmation
+<i>97</i>&nbsp;     */
+<i>98</i>&nbsp;    public void onNoDeleteTournament(){
+<b class="fc"><i>99</i>&nbsp;        view.noDeleteTournament();</b>
+<b class="fc"><i>100</i>&nbsp;    }</b>
+<i>101</i>&nbsp;
+<i>102</i>&nbsp;    /**
+<i>103</i>&nbsp;     * set the loggedInUser
+<i>104</i>&nbsp;     * @param loggedInUser the new LoggedInUser
+<i>105</i>&nbsp;     */
+<i>106</i>&nbsp;    public void setLoggedInUser(LoggedInUser loggedInUser) {
+<b class="fc"><i>107</i>&nbsp;        this.loggedInUser = loggedInUser;</b>
+<b class="fc"><i>108</i>&nbsp;    }</b>
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;    /**
+<i>111</i>&nbsp;     * set the tournamentDAO
+<i>112</i>&nbsp;     * @param tournamentDAO the new TournamentDAO
+<i>113</i>&nbsp;     */
+<i>114</i>&nbsp;    public void setTournamentDAO(TournamentDAO tournamentDAO) {
+<b class="fc"><i>115</i>&nbsp;        this.tournamentDAO = tournamentDAO;</b>
+<b class="fc"><i>116</i>&nbsp;    }</b>
+<i>117</i>&nbsp;
+<i>118</i>&nbsp;    /**
+<i>119</i>&nbsp;     * set a new view
+<i>120</i>&nbsp;     * @param view the new view
+<i>121</i>&nbsp;     */
+<i>122</i>&nbsp;    public void setView(TournamentInfoView view) {
+<b class="fc"><i>123</i>&nbsp;        this.view = view;</b>
+<b class="fc"><i>124</i>&nbsp;    }</b>
+<i>125</i>&nbsp;
+<i>126</i>&nbsp;    /**
+<i>127</i>&nbsp;     * clear the view
+<i>128</i>&nbsp;     */
+<i>129</i>&nbsp;    public void clearView(){
+<b class="nc"><i>130</i>&nbsp;        this.view = null;</b>
+<b class="nc"><i>131</i>&nbsp;    }</b>
+<i>132</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: RegisterPlayerView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.User.RegisterPlayer</a> ]
+</div>
+
+<h1>Coverage Summary for Class: RegisterPlayerView (com.example.managetournamentapp.view.User.RegisterPlayer)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">RegisterPlayerView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.User.RegisterPlayer;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.domain.AgeDivision;
+<i>4</i>&nbsp;import com.example.managetournamentapp.domain.Sport;
+<i>5</i>&nbsp;import java.util.ArrayList;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;/**
+<i>8</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>9</i>&nbsp; * Athens University of Economics and Business
+<i>10</i>&nbsp; * 2020-2021
+<i>11</i>&nbsp; */
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;public interface RegisterPlayerView {
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    /**
+<i>16</i>&nbsp;     * get the contents of the edit text
+<i>17</i>&nbsp;     * @return the given username
+<i>18</i>&nbsp;     */
+<i>19</i>&nbsp;    String getUsername();
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    /**
+<i>22</i>&nbsp;     * get the contents of the edit text
+<i>23</i>&nbsp;     * @return the given password
+<i>24</i>&nbsp;     */
+<i>25</i>&nbsp;    String getPassword();
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    /**
+<i>28</i>&nbsp;     * get the contents of the edit text
+<i>29</i>&nbsp;     * @return the given name
+<i>30</i>&nbsp;     */
+<i>31</i>&nbsp;    String getName();
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    /**
+<i>34</i>&nbsp;     * get the contents of the edit text
+<i>35</i>&nbsp;     * @return the given surname
+<i>36</i>&nbsp;     */
+<i>37</i>&nbsp;    String getSurname();
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    /**
+<i>40</i>&nbsp;     * get the contents of the edit text
+<i>41</i>&nbsp;     * @return the name given
+<i>42</i>&nbsp;     */
+<i>43</i>&nbsp;    String getPhoneNumber();
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    /**
+<i>46</i>&nbsp;     * get the contents of the edit text
+<i>47</i>&nbsp;     * @return the given birth date
+<i>48</i>&nbsp;     */
+<i>49</i>&nbsp;    String getEmail();
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    /**
+<i>52</i>&nbsp;     * get the contents of the edit text
+<i>53</i>&nbsp;     * @return the birth date
+<i>54</i>&nbsp;     */
+<i>55</i>&nbsp;    String getBirthDate();
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    /**
+<i>58</i>&nbsp;     * get the contents of the edit text
+<i>59</i>&nbsp;     * @return the given location
+<i>60</i>&nbsp;     */
+<i>61</i>&nbsp;    String getLocation();
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    /**
+<i>65</i>&nbsp;     * set the contents in the username edit text
+<i>66</i>&nbsp;     * @param username the new username
+<i>67</i>&nbsp;     */
+<i>68</i>&nbsp;    void setUsername(String username);
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    /**
+<i>71</i>&nbsp;     * set the contents in the password edit text
+<i>72</i>&nbsp;     * @param password the new password
+<i>73</i>&nbsp;     */
+<i>74</i>&nbsp;    void setPassword(String password);
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    /**
+<i>77</i>&nbsp;     * set the contents in the name edit text
+<i>78</i>&nbsp;     * @param name the new name
+<i>79</i>&nbsp;     */
+<i>80</i>&nbsp;    void setName(String name);
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;    /**
+<i>83</i>&nbsp;     * set the contents in the surname edit text
+<i>84</i>&nbsp;     * @param surname the new surname
+<i>85</i>&nbsp;     */
+<i>86</i>&nbsp;    void setSurname(String surname);
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;    /**
+<i>89</i>&nbsp;     * set the contents in the phone number edit text
+<i>90</i>&nbsp;     * @param phoneNumber the new phone number
+<i>91</i>&nbsp;     */
+<i>92</i>&nbsp;    void setPhoneNumber(String phoneNumber);
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;    /**
+<i>95</i>&nbsp;     * set the contents in the email edit text
+<i>96</i>&nbsp;     * @param email the new email
+<i>97</i>&nbsp;     */
+<i>98</i>&nbsp;    void setEmail(String email);
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;    /**
+<i>101</i>&nbsp;     * set the contents in the birth date edit text
+<i>102</i>&nbsp;     * @param birthdate the new birth date
+<i>103</i>&nbsp;     */
+<i>104</i>&nbsp;    void setBirthdate(String birthdate);
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;    /**
+<i>107</i>&nbsp;     * set the contents in the location edit text
+<i>108</i>&nbsp;     * @param location the new location
+<i>109</i>&nbsp;     */
+<i>110</i>&nbsp;    void setLocation(String location);
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;    /**
+<i>113</i>&nbsp;     * get the sports that the player has selected
+<i>114</i>&nbsp;     * @return the arraylist of sports
+<i>115</i>&nbsp;     */
+<i>116</i>&nbsp;    ArrayList&lt;Sport&gt; getSportsInterest();
+<i>117</i>&nbsp;
+<i>118</i>&nbsp;    /**
+<i>119</i>&nbsp;     * set the contents in the sport checkboxes
+<i>120</i>&nbsp;     * @param sports the arraylist of sports that the player is interested in
+<i>121</i>&nbsp;     */
+<i>122</i>&nbsp;    void setSportsInterest(ArrayList&lt;Sport&gt; sports);
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;    /**
+<i>125</i>&nbsp;     *show a popup on the screen
+<i>126</i>&nbsp;     * @param view the view of the popup
+<i>127</i>&nbsp;     * @param msg the message that will be shown
+<i>128</i>&nbsp;     */
+<i>129</i>&nbsp;    void showPopUp(RegisterPlayerView view, String msg);
+<i>130</i>&nbsp;
+<i>131</i>&nbsp;    /**
+<i>132</i>&nbsp;     * start the player page activity
+<i>133</i>&nbsp;     * @param username the username of the player
+<i>134</i>&nbsp;     */
+<i>135</i>&nbsp;    void startPlayerPage(String username);
+<i>136</i>&nbsp;
+<i>137</i>&nbsp;    /**
+<i>138</i>&nbsp;     * some fields can&#39;t be changed
+<i>139</i>&nbsp;     */
+<i>140</i>&nbsp;    void lockFields();
+<i>141</i>&nbsp;
+<i>142</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

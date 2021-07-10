@@ -1,0 +1,216 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Organizer</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.domain</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Organizer (com.example.managetournamentapp.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Organizer</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85%
+  </span>
+  <span class="absValue">
+    (34/ 40)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.domain;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.time.LocalDate;
+<i>4</i>&nbsp;import java.util.ArrayList;
+<i>5</i>&nbsp;import java.util.Iterator;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;/**
+<i>8</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>9</i>&nbsp; * Athens University of Economics and Business
+<i>10</i>&nbsp; * 2020-2021
+<i>11</i>&nbsp; */
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;public class Organizer extends User {
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    private String title;
+<b class="fc"><i>16</i>&nbsp;    private ArrayList&lt;Tournament&gt; tournaments = new ArrayList&lt;&gt;();</b>
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    /**
+<i>19</i>&nbsp;     * the default constructor of the organizer
+<i>20</i>&nbsp;     */
+<i>21</i>&nbsp;    public Organizer() {
+<b class="fc"><i>22</i>&nbsp;        super();</b>
+<b class="fc"><i>23</i>&nbsp;        this.title = &quot;&quot;;</b>
+<b class="fc"><i>24</i>&nbsp;    }</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    /**
+<i>27</i>&nbsp;     * the full constructor of an organizer
+<i>28</i>&nbsp;     * @param name is the manager&#39;s name
+<i>29</i>&nbsp;     * @param surname is the manager&#39;s surname
+<i>30</i>&nbsp;     * @param phoneNumber is the contact phone number
+<i>31</i>&nbsp;     * @param email  is the contact email
+<i>32</i>&nbsp;     * @param birthDate is the date of birth of the manager
+<i>33</i>&nbsp;     * @param credentials are the login credentials of the organizer&#39;s account
+<i>34</i>&nbsp;     * @param title get the title of the organizer (for example UEFA)
+<i>35</i>&nbsp;     */
+<i>36</i>&nbsp;    public Organizer(String name, String surname, String phoneNumber, String email, LocalDate birthDate, Credentials credentials, String title) {
+<b class="fc"><i>37</i>&nbsp;        super(name, surname, phoneNumber, email, birthDate, credentials);</b>
+<b class="fc"><i>38</i>&nbsp;        this.title = title;</b>
+<i>39</i>&nbsp;
+<b class="fc"><i>40</i>&nbsp;    }</b>
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    /**
+<i>43</i>&nbsp;     * get the title that the organizer uses
+<i>44</i>&nbsp;     * @return the title of the organizer
+<i>45</i>&nbsp;     */
+<i>46</i>&nbsp;    public String getTitle() {
+<b class="fc"><i>47</i>&nbsp;        return title;</b>
+<i>48</i>&nbsp;    }
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    /**
+<i>51</i>&nbsp;     * set the title of the organizer
+<i>52</i>&nbsp;     * @param title is the new title of the organizer
+<i>53</i>&nbsp;     */
+<i>54</i>&nbsp;    public void setTitle(String title) {
+<b class="fc"><i>55</i>&nbsp;        this.title = title;</b>
+<b class="fc"><i>56</i>&nbsp;    }</b>
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    /**
+<i>59</i>&nbsp;     * get all the tournaments that the organizer has ever created
+<i>60</i>&nbsp;     * @return the arraylist of the organizer&#39;s tournaments
+<i>61</i>&nbsp;     */
+<i>62</i>&nbsp;    public ArrayList&lt;Tournament&gt; getTournaments() {
+<b class="fc"><i>63</i>&nbsp;        return new ArrayList&lt;&gt;(tournaments);</b>
+<i>64</i>&nbsp;    }
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    /**
+<i>67</i>&nbsp;     * add a new tournament in the organizer&#39;s created tournaments
+<i>68</i>&nbsp;     * @param tour is the new tournament
+<i>69</i>&nbsp;     */
+<i>70</i>&nbsp;    public void addTournament(Tournament tour) {
+<b class="fc"><i>71</i>&nbsp;        if (tour == null) {</b>
+<b class="fc"><i>72</i>&nbsp;            return;</b>
+<i>73</i>&nbsp;        }
+<b class="fc"><i>74</i>&nbsp;        if (!tournaments.contains(tour)) {</b>
+<b class="fc"><i>75</i>&nbsp;            tournaments.add(tour);</b>
+<i>76</i>&nbsp;        }
+<b class="fc"><i>77</i>&nbsp;    }</b>
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;    /**
+<i>80</i>&nbsp;     * delete a tournament from the organizer&#39;s created tournaments
+<i>81</i>&nbsp;     * @param tour is the tournament that will be deleted
+<i>82</i>&nbsp;     */
+<i>83</i>&nbsp;    public void deleteTournament(Tournament tour) {
+<b class="fc"><i>84</i>&nbsp;        if (tour == null) {</b>
+<b class="fc"><i>85</i>&nbsp;            return;</b>
+<i>86</i>&nbsp;        }
+<b class="fc"><i>87</i>&nbsp;        if (!tournaments.contains(tour)) {</b>
+<b class="fc"><i>88</i>&nbsp;            return;</b>
+<i>89</i>&nbsp;        }
+<i>90</i>&nbsp;
+<b class="fc"><i>91</i>&nbsp;        if (tour.isRunning()) {</b>
+<b class="nc"><i>92</i>&nbsp;            return;</b>
+<i>93</i>&nbsp;        }
+<i>94</i>&nbsp;
+<b class="fc"><i>95</i>&nbsp;        Iterator&lt;Participation&gt; iter = tour.friendGetParticipations().iterator();</b>
+<b class="fc"><i>96</i>&nbsp;        while (iter.hasNext()) {</b>
+<b class="nc"><i>97</i>&nbsp;            Participation participation = iter.next();</b>
+<b class="nc"><i>98</i>&nbsp;            Team team = participation.getTeam();</b>
+<b class="nc"><i>99</i>&nbsp;            team.removeParticipation(participation);</b>
+<b class="nc"><i>100</i>&nbsp;        }</b>
+<b class="fc"><i>101</i>&nbsp;        tournaments.remove(tour);</b>
+<b class="fc"><i>102</i>&nbsp;    }</b>
+<i>103</i>&nbsp;
+<i>104</i>&nbsp;    /**
+<i>105</i>&nbsp;     * the string representation of the organizer
+<i>106</i>&nbsp;     * @return the basic info of the organizer to string
+<i>107</i>&nbsp;     */
+<i>108</i>&nbsp;    @Override
+<i>109</i>&nbsp;    public String toString() {
+<b class="fc"><i>110</i>&nbsp;        return &quot;Organizer{&quot; +</b>
+<i>111</i>&nbsp;                &quot;title=&#39;&quot; + title + &#39;\&#39;&#39; +
+<i>112</i>&nbsp;                &quot;, sportType=&#39;&quot; + &#39;\&#39;&#39; +
+<i>113</i>&nbsp;                &#39;}&#39;;
+<i>114</i>&nbsp;    }
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;    /**
+<i>117</i>&nbsp;     *check if two organizers are equal
+<i>118</i>&nbsp;     * @param other the other organizer
+<i>119</i>&nbsp;     * @return if this organizer is equal to the other organizer
+<i>120</i>&nbsp;     */
+<i>121</i>&nbsp;    public boolean equals(Object other) {
+<b class="fc"><i>122</i>&nbsp;        if (other == this)</b>
+<b class="fc"><i>123</i>&nbsp;            return true;</b>
+<b class="fc"><i>124</i>&nbsp;        if (other == null)</b>
+<b class="nc"><i>125</i>&nbsp;            return false;</b>
+<b class="fc"><i>126</i>&nbsp;        if (other instanceof Organizer) {</b>
+<b class="fc"><i>127</i>&nbsp;            Organizer otherOrganizer = (Organizer) other;</b>
+<b class="fc"><i>128</i>&nbsp;            if (title.equals(otherOrganizer.title) &amp;&amp; otherOrganizer.title != null)         // each Organizer has a unique Title. EK15!</b>
+<b class="fc"><i>129</i>&nbsp;                return true;</b>
+<i>130</i>&nbsp;        }
+<b class="fc"><i>131</i>&nbsp;        return false;</b>
+<i>132</i>&nbsp;    }
+<i>133</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

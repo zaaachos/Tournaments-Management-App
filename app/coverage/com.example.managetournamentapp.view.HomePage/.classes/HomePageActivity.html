@@ -1,0 +1,319 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: HomePageActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.HomePage</a> ]
+</div>
+
+<h1>Coverage Summary for Class: HomePageActivity (com.example.managetournamentapp.view.HomePage)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">HomePageActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 50)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">HomePageActivity$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">HomePageActivity$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 56)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.HomePage;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>4</i>&nbsp;import androidx.appcompat.app.AppCompatActivity;
+<i>5</i>&nbsp;import androidx.lifecycle.ViewModelProvider;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import android.content.DialogInterface;
+<i>8</i>&nbsp;import android.content.Intent;
+<i>9</i>&nbsp;import android.os.Bundle;
+<i>10</i>&nbsp;import android.view.View;
+<i>11</i>&nbsp;import android.widget.Button;
+<i>12</i>&nbsp;import android.widget.Toast;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import com.example.managetournamentapp.R;
+<i>15</i>&nbsp;import com.example.managetournamentapp.memoryDao.MemoryInitializer;
+<i>16</i>&nbsp;import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
+<i>17</i>&nbsp;import com.example.managetournamentapp.view.User.Login.LoginActivity;
+<i>18</i>&nbsp;import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrganizerActivity;
+<i>19</i>&nbsp;import com.example.managetournamentapp.view.User.RegisterPlayer.RegisterPlayerActivity;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;/**
+<i>23</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>24</i>&nbsp; * Athens University of Economics and Business
+<i>25</i>&nbsp; * 2020-2021
+<i>26</i>&nbsp; */
+<i>27</i>&nbsp;
+<b class="nc"><i>28</i>&nbsp;public class HomePageActivity extends AppCompatActivity implements HomePageView {</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    private Button connectBtn;
+<i>31</i>&nbsp;    private Button browseBtn;
+<i>32</i>&nbsp;    HomePageViewModel viewModel;
+<b class="nc"><i>33</i>&nbsp;    private static boolean first = true;</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * Creates the layout and initializes the activity
+<i>37</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    @Override
+<i>40</i>&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;        //Memory Initialization
+<b class="nc"><i>43</i>&nbsp;        if (first) {</b>
+<b class="nc"><i>44</i>&nbsp;            new MemoryInitializer().prepareData();</b>
+<b class="nc"><i>45</i>&nbsp;            first = false;</b>
+<i>46</i>&nbsp;        }
+<i>47</i>&nbsp;
+<b class="nc"><i>48</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>49</i>&nbsp;        setContentView(R.layout.activity_home_page);</b>
+<b class="nc"><i>50</i>&nbsp;        viewModel = new ViewModelProvider(this).get(HomePageViewModel.class);</b>
+<b class="nc"><i>51</i>&nbsp;        viewModel.getPresenter().setView(this);</b>
+<i>52</i>&nbsp;
+<b class="nc"><i>53</i>&nbsp;        connectBtn = (Button) findViewById(R.id.connect_button);</b>
+<b class="nc"><i>54</i>&nbsp;        browseBtn = (Button) findViewById(R.id.browse_button);</b>
+<b class="nc"><i>55</i>&nbsp;        connectBtn.setOnClickListener(v -&gt; viewModel.getPresenter().onConnectAction());</b>
+<b class="nc"><i>56</i>&nbsp;        browseBtn.setOnClickListener(v -&gt; viewModel.getPresenter().onBrowseAction());</b>
+<i>57</i>&nbsp;    }
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    /**
+<i>61</i>&nbsp;     * Shows pop up message with two buttons
+<i>62</i>&nbsp;     * @param layoutId layouf of the popup message
+<i>63</i>&nbsp;     * @param btn1 id of the first button
+<i>64</i>&nbsp;     * @param btn2 if of the second button
+<i>65</i>&nbsp;     * @param firstPopup boolean variable to inform us if this is the second popup we want to show
+<i>66</i>&nbsp;     */
+<i>67</i>&nbsp;    public void showPopUp(int layoutId, int btn1, int btn2, boolean firstPopup) {
+<b class="nc"><i>68</i>&nbsp;        AlertDialog.Builder builder = new AlertDialog.Builder(this);</b>
+<b class="nc"><i>69</i>&nbsp;        View customLayout = getLayoutInflater().inflate(layoutId, null);</b>
+<b class="nc"><i>70</i>&nbsp;        builder.setView(customLayout);</b>
+<b class="nc"><i>71</i>&nbsp;        AlertDialog dialog = builder.create();</b>
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;        //log in button or org register button
+<b class="nc"><i>74</i>&nbsp;        Button firstButton = (Button) customLayout.findViewById(btn1);</b>
+<i>75</i>&nbsp;        //register button or player register button
+<b class="nc"><i>76</i>&nbsp;        Button secondButton = (Button) customLayout.findViewById(btn2);</b>
+<i>77</i>&nbsp;
+<b class="nc"><i>78</i>&nbsp;        if (firstPopup) {</b>
+<b class="nc"><i>79</i>&nbsp;            firstButton.setOnClickListener(v -&gt; viewModel.getPresenter().onLogInAction());</b>
+<b class="nc"><i>80</i>&nbsp;            secondButton.setOnClickListener(v -&gt; viewModel.getPresenter().onRegisterAction());</b>
+<i>81</i>&nbsp;        } else {
+<b class="nc"><i>82</i>&nbsp;            firstButton.setOnClickListener(v -&gt; viewModel.getPresenter().onOrganizerRegisterAction());</b>
+<b class="nc"><i>83</i>&nbsp;            secondButton.setOnClickListener(v -&gt; viewModel.getPresenter().onPlayerRegisterAction());</b>
+<i>84</i>&nbsp;        }
+<b class="nc"><i>85</i>&nbsp;        dialog.show();</b>
+<i>86</i>&nbsp;    }
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;    /**
+<i>89</i>&nbsp;     * Shows a pop up that prompts the user
+<i>90</i>&nbsp;     * to press appropriate buttons (register, login, etc)
+<i>91</i>&nbsp;     */
+<i>92</i>&nbsp;    @Override
+<i>93</i>&nbsp;    public void connectAction() {
+<b class="nc"><i>94</i>&nbsp;        showPopUp(R.layout.register_login, R.id.login_button, R.id.register_button, true);</b>
+<i>95</i>&nbsp;    }
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;    /**
+<i>98</i>&nbsp;     * Starts the login activity.
+<i>99</i>&nbsp;     * This method is called when the user
+<i>100</i>&nbsp;     * clicks on the login button
+<i>101</i>&nbsp;     */
+<i>102</i>&nbsp;    @Override
+<i>103</i>&nbsp;    public void loginAction() {
+<b class="nc"><i>104</i>&nbsp;        Intent intent = new Intent(this, LoginActivity.class);</b>
+<b class="nc"><i>105</i>&nbsp;        startActivity(intent);</b>
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;    }
+<i>108</i>&nbsp;
+<i>109</i>&nbsp;    /**
+<i>110</i>&nbsp;     This method is called when the user presses
+<i>111</i>&nbsp;     the register button. It is used to show a pop up
+<i>112</i>&nbsp;     from which the user chooses to register either as
+<i>113</i>&nbsp;     a player or an organizer
+<i>114</i>&nbsp;     */
+<i>115</i>&nbsp;    @Override
+<i>116</i>&nbsp;    public void registerAction() {
+<b class="nc"><i>117</i>&nbsp;        Toast.makeText(this,</b>
+<i>118</i>&nbsp;                &quot;REGISTER&quot;,
+<i>119</i>&nbsp;                Toast.LENGTH_SHORT)
+<b class="nc"><i>120</i>&nbsp;                .show();</b>
+<b class="nc"><i>121</i>&nbsp;        showPopUp(R.layout.register_selection, R.id.organizer_register, R.id.player_register, false);</b>
+<i>122</i>&nbsp;    }
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;    /**
+<i>125</i>&nbsp;     * Starts the organizer registration activity.
+<i>126</i>&nbsp;     * This method is called when the user
+<i>127</i>&nbsp;     * clicks on the register (organizer) button
+<i>128</i>&nbsp;     */
+<i>129</i>&nbsp;    @Override
+<i>130</i>&nbsp;    public void organizerRegisterAction() {
+<b class="nc"><i>131</i>&nbsp;        Toast.makeText(this,</b>
+<i>132</i>&nbsp;                &quot;ORGANIZER&quot;,
+<i>133</i>&nbsp;                Toast.LENGTH_SHORT)
+<b class="nc"><i>134</i>&nbsp;                .show();</b>
+<b class="nc"><i>135</i>&nbsp;        Intent intent = new Intent(this, RegisterOrganizerActivity.class);</b>
+<b class="nc"><i>136</i>&nbsp;        startActivity(intent);</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;    /**
+<i>140</i>&nbsp;     * Starts the player registration activity.
+<i>141</i>&nbsp;     * This method is called when the user
+<i>142</i>&nbsp;     * clicks on the register (player) button
+<i>143</i>&nbsp;     */
+<i>144</i>&nbsp;    @Override
+<i>145</i>&nbsp;    public void playerRegisterAction() {
+<b class="nc"><i>146</i>&nbsp;        Toast.makeText(this,</b>
+<i>147</i>&nbsp;                &quot;PLAYER&quot;,
+<i>148</i>&nbsp;                Toast.LENGTH_SHORT)
+<b class="nc"><i>149</i>&nbsp;                .show();</b>
+<b class="nc"><i>150</i>&nbsp;        Intent intent = new Intent(this, RegisterPlayerActivity.class);</b>
+<b class="nc"><i>151</i>&nbsp;        startActivity(intent);</b>
+<i>152</i>&nbsp;    }
+<i>153</i>&nbsp;
+<i>154</i>&nbsp;    /**
+<i>155</i>&nbsp;     * Starts the Browse Activity
+<i>156</i>&nbsp;     * This method is called when the user
+<i>157</i>&nbsp;     * clicks on the browse button
+<i>158</i>&nbsp;     */
+<i>159</i>&nbsp;    @Override
+<i>160</i>&nbsp;    public void browseAction() {
+<b class="nc"><i>161</i>&nbsp;        Intent intent = new Intent(this, BrowsingActivity.class);</b>
+<b class="nc"><i>162</i>&nbsp;        startActivity(intent);</b>
+<i>163</i>&nbsp;    }
+<i>164</i>&nbsp;
+<i>165</i>&nbsp;    /**
+<i>166</i>&nbsp;     * Overrides the back button and throws a pop up message
+<i>167</i>&nbsp;     * asking for confirmation of wanted action
+<i>168</i>&nbsp;     */
+<i>169</i>&nbsp;    @Override
+<i>170</i>&nbsp;    public void onBackPressed() {
+<b class="nc"><i>171</i>&nbsp;        AlertDialog.Builder builder = new AlertDialog.Builder(HomePageActivity.this);</b>
+<b class="nc"><i>172</i>&nbsp;        builder.setTitle(R.string.app_name);</b>
+<b class="nc"><i>173</i>&nbsp;        builder.setIcon(R.mipmap.ic_launcher);</b>
+<b class="nc"><i>174</i>&nbsp;        builder.setMessage(&quot;Are you sure you want to exit?&quot;)</b>
+<b class="nc"><i>175</i>&nbsp;                .setCancelable(false)</b>
+<b class="nc"><i>176</i>&nbsp;                .setPositiveButton(&quot;Yes&quot;, new DialogInterface.OnClickListener() {</b>
+<i>177</i>&nbsp;                    public void onClick(DialogInterface dialog, int id) {
+<b class="nc"><i>178</i>&nbsp;                        moveTaskToBack(true);</b>
+<b class="nc"><i>179</i>&nbsp;                        android.os.Process.killProcess(android.os.Process.myPid());</b>
+<b class="nc"><i>180</i>&nbsp;                        System.exit(1);</b>
+<i>181</i>&nbsp;                    }
+<i>182</i>&nbsp;                })
+<b class="nc"><i>183</i>&nbsp;                .setNegativeButton(&quot;No&quot;, new DialogInterface.OnClickListener() {</b>
+<i>184</i>&nbsp;                    public void onClick(DialogInterface dialog, int id) {
+<b class="nc"><i>185</i>&nbsp;                        dialog.cancel();</b>
+<i>186</i>&nbsp;                    }
+<i>187</i>&nbsp;                });
+<b class="nc"><i>188</i>&nbsp;        AlertDialog alert = builder.create();</b>
+<b class="nc"><i>189</i>&nbsp;        alert.show();</b>
+<i>190</i>&nbsp;    }
+<i>191</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

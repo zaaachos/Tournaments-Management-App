@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="appColor">#87baab</color>
+    <color name="colorDarkBG">#393939</color><!-- background color -->
+    <color name="colorWhite">#FFFFFF</color><!-- primary text color, used a ton on text views and titles -->
+    <color name="colorSemiWhite">#CACACA</color><!-- secondary text color, used a ton next to primary -->
+    <color name="colorPrimary">#e84d3c</color><!-- buttons and header color -->
+    <color name="topBar">#111111</color><!-- top android bar color, usually black -->
+    <!-- bellow are colors of small images -->
+    <color name="colorSmallBlue">#0067b4</color>
+    <color name="colorSmallGreen">#1EA33E</color>
+    <color name="colorSmallOrange">#f8a100</color>
+</resources>

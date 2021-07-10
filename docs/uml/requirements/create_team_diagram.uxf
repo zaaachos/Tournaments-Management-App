@@ -1,0 +1,60 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>860</x><y>150</y><w>400</w><h>220</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; CreateTeamView
+--
+backToHomePage(isPlayer : boolean, name : String) : void
+startSaveTeam(userName : String) : void
+getTeamName() : String
+getTeamColors() : String
+getSportType() : int
+setTeamName(name : String) : void
+setTeamColors(colors: String) : void
+setSportType(position: int) : void
+lockSportType() : void
+showPopIp(view : CreaTeamView, msg : String) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>130</y><w>470</w><h>330</h></coordinates><panel_attributes>CreateTeamActivity
+--
+~ btnHome : ImageButton
+- saveBtn : Button
+~ teamsName : String
+- spinner : Spinner
+_- TEAM_NAME_EXTRA: String_
+_- PLAYER_USERNAME_EXTRA: String_
+--
+# onCreate(savedInstanceState : Bundle) : void
++ backToHomePage(isPlayer : boolean, name : String) : void
++ startSaveTeam(userName : String) : void
++ getTeamName() : String
++ getTeamColors() : String
++ getSportType() : int
++ setTeamName(name : String) : void
++ setTeamColors(colors: String) : void
++ setSportType(position: int) : void
++ lockSportType() : void
++ setSpinnerList(list : ArrayList&lt;String&gt;) : void
++ showPopIp(view : CreaTeamView, msg : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>560</y><w>330</w><h>100</h></coordinates><panel_attributes>CreateTeamViewModel
+--
++ SetDatesViewModel()
++ getPresenter() : CreateTeamPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>830</x><y>460</y><w>420</w><h>310</h></coordinates><panel_attributes>CreateTeamPresenter
+--
+- player : Player
+- connedTeam : Team
+- sportTypes : ArrayList&lt;String&gt;
+--
++ CreateTeamPresenter()
++ showPreviousInfo(teamName : String) : void
++ onSaveTeam() : void
++ getSportTypes() : ArrayList&lt;String&gt;
+- getTypeIndex(sportType : String) : int
+- findSportTypes() : ArrayList&lt;String&gt;
++ setTeamDAO(teamDAO : TeamDAO) : void
++ setPlayerDAO(playerDAO : PlayerDAO) : void
++ setPlayer(player : Player) : void
++ validateName(name : String) : boolean
++ onHomePage() : void
++ setView(view : CreateTeamView) : void
++ clearView() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>30</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>20;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>578</y><w>250</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>448</y><w>70</w><h>130</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>510</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>100</x><y>538</y><w>200</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;180;82</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>228</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>150;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>358</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1360</x><y>390</y><w>150</w><h>40</h></coordinates><panel_attributes>TeamDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>408</y><w>140</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>120;10;10;52</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1370</x><y>490</y><w>150</w><h>40</h></coordinates><panel_attributes>PlayerDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>498</y><w>150</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>130;20;10;12</additional_attributes></element></diagram>

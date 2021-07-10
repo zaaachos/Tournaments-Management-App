@@ -1,0 +1,235 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TeamsListRecyclerViewAdapter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TeamsListRecyclerViewAdapter (com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TeamsListRecyclerViewAdapter</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 12)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">TeamsListRecyclerViewAdapter$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">TeamsListRecyclerViewAdapter$ViewHolder</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 21)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.view.LayoutInflater;
+<i>4</i>&nbsp;import android.view.View;
+<i>5</i>&nbsp;import android.view.ViewGroup;
+<i>6</i>&nbsp;import android.widget.ImageButton;
+<i>7</i>&nbsp;import android.widget.TextView;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import androidx.recyclerview.widget.RecyclerView;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;import com.example.managetournamentapp.R;
+<i>12</i>&nbsp;import com.example.managetournamentapp.domain.Team;
+<i>13</i>&nbsp;import com.example.managetournamentapp.view.Tournament.ParticipatingTeams.fragment.TeamsListFragment.OnListFragmentInteractionListener;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;import java.util.ArrayList;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;
+<b class="nc"><i>18</i>&nbsp;public class TeamsListRecyclerViewAdapter extends RecyclerView.Adapter&lt;TeamsListRecyclerViewAdapter.ViewHolder&gt; {</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    private final ArrayList&lt;Team&gt; mValues;
+<i>21</i>&nbsp;    private final OnListFragmentInteractionListener mListener;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    /**
+<i>25</i>&nbsp;     * the constructor
+<i>26</i>&nbsp;     * @param items the list of teams
+<i>27</i>&nbsp;     * @param listener the listener for a teams selection
+<i>28</i>&nbsp;     */
+<b class="nc"><i>29</i>&nbsp;    public TeamsListRecyclerViewAdapter(ArrayList&lt;Team&gt; items, OnListFragmentInteractionListener listener) {</b>
+<b class="nc"><i>30</i>&nbsp;        mValues = items;</b>
+<b class="nc"><i>31</i>&nbsp;        mListener = listener;</b>
+<i>32</i>&nbsp;    }
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     *
+<i>36</i>&nbsp;     * @param parent the view parent
+<i>37</i>&nbsp;     * @param viewType the view type
+<i>38</i>&nbsp;     * @return
+<i>39</i>&nbsp;     */
+<i>40</i>&nbsp;    @Override
+<i>41</i>&nbsp;    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+<b class="nc"><i>42</i>&nbsp;        View view = LayoutInflater.from(parent.getContext())</b>
+<b class="nc"><i>43</i>&nbsp;                .inflate(R.layout.fragment_teams_list_item, parent, false);</b>
+<b class="nc"><i>44</i>&nbsp;        return new ViewHolder(view);</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    /**
+<i>48</i>&nbsp;     *
+<i>49</i>&nbsp;     * @param holder the holder
+<i>50</i>&nbsp;     * @param position the index of the item
+<i>51</i>&nbsp;     */
+<i>52</i>&nbsp;    @Override
+<i>53</i>&nbsp;    public void onBindViewHolder(final ViewHolder holder, int position) {
+<b class="nc"><i>54</i>&nbsp;        Team currentTeam = mValues.get(position);</b>
+<b class="nc"><i>55</i>&nbsp;        holder.mItem = currentTeam;</b>
+<b class="nc"><i>56</i>&nbsp;        holder.txtTeamTitle.setText(currentTeam.getName());</b>
+<i>57</i>&nbsp;
+<b class="nc"><i>58</i>&nbsp;        holder.btnSelect.setOnClickListener(new View.OnClickListener() {</b>
+<i>59</i>&nbsp;            @Override
+<i>60</i>&nbsp;            public void onClick(View v) {
+<b class="nc"><i>61</i>&nbsp;                if (null != mListener) {</b>
+<i>62</i>&nbsp;                    // Notify the active callbacks interface (the activity, if the
+<i>63</i>&nbsp;                    // fragment is attached to one) that an item has been selected.
+<b class="nc"><i>64</i>&nbsp;                    mListener.onListFragmentInteraction(holder.mItem);</b>
+<i>65</i>&nbsp;                }
+<i>66</i>&nbsp;            }
+<i>67</i>&nbsp;        });
+<i>68</i>&nbsp;    }
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    /**
+<i>72</i>&nbsp;     * get the number of teams in the list
+<i>73</i>&nbsp;     * @return the number of teams
+<i>74</i>&nbsp;     */
+<i>75</i>&nbsp;    @Override
+<i>76</i>&nbsp;    public int getItemCount() {
+<b class="nc"><i>77</i>&nbsp;        return mValues.size();</b>
+<i>78</i>&nbsp;    }
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    public class ViewHolder extends RecyclerView.ViewHolder {
+<i>81</i>&nbsp;        public final View mView;
+<i>82</i>&nbsp;        public final TextView txtTeamTitle;
+<i>83</i>&nbsp;        public final ImageButton btnSelect;
+<i>84</i>&nbsp;        public Team mItem;
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;        /**
+<i>87</i>&nbsp;         *  constructor
+<i>88</i>&nbsp;         * @param view the view
+<i>89</i>&nbsp;         */
+<b class="nc"><i>90</i>&nbsp;        public ViewHolder(View view) {</b>
+<b class="nc"><i>91</i>&nbsp;            super(view);</b>
+<b class="nc"><i>92</i>&nbsp;            mView = view;</b>
+<b class="nc"><i>93</i>&nbsp;            txtTeamTitle = view.findViewById(R.id.txt_team_name);</b>
+<b class="nc"><i>94</i>&nbsp;            btnSelect = view.findViewById(R.id.btn_select_team);</b>
+<i>95</i>&nbsp;        }
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;        /**
+<i>98</i>&nbsp;         * represents the basic info of the view holder as a string
+<i>99</i>&nbsp;         * @return the string representation of the view holder contents
+<i>100</i>&nbsp;         */
+<i>101</i>&nbsp;        @Override
+<i>102</i>&nbsp;        public String toString() {
+<b class="nc"><i>103</i>&nbsp;            return super.toString() + &quot; &#39;&quot; + txtTeamTitle.getText() + &quot;&#39;&quot;;</b>
+<i>104</i>&nbsp;        }
+<i>105</i>&nbsp;    }
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

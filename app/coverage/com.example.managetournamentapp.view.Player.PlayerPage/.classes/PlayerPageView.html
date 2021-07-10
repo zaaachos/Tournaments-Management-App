@@ -1,0 +1,126 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PlayerPageView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Player.PlayerPage</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PlayerPageView (com.example.managetournamentapp.view.Player.PlayerPage)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">PlayerPageView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Player.PlayerPage;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>7</i>&nbsp; * Athens University of Economics and Business
+<i>8</i>&nbsp; * 2020-2021
+<i>9</i>&nbsp; */
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public interface PlayerPageView {
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    /**
+<i>14</i>&nbsp;     * when the &quot;info&quot; button is pressed
+<i>15</i>&nbsp;     * the player info activity starts
+<i>16</i>&nbsp;     * @param playerUsername the player&#39;s username
+<i>17</i>&nbsp;     */
+<i>18</i>&nbsp;    void toPlayerInfo(String playerUsername);
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    /**
+<i>21</i>&nbsp;     * when the &quot;teams&quot; button is pressed
+<i>22</i>&nbsp;     * the joined teams activity starts
+<i>23</i>&nbsp;     * @param playerUsername the player&#39;s username
+<i>24</i>&nbsp;     */
+<i>25</i>&nbsp;    void toPlayerTeams(String playerUsername);
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    /**
+<i>28</i>&nbsp;     * when the &quot;invites&quot; button is pressed
+<i>29</i>&nbsp;     * the invites activity starts
+<i>30</i>&nbsp;     * @param playerUsername the player&#39;s username
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    void toPlayerInvites(String playerUsername);
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * the invites can be seen only by the player
+<i>36</i>&nbsp;     * who owns the account
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    void changesOfAccess();
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /**
+<i>41</i>&nbsp;     * log out from the current account
+<i>42</i>&nbsp;     */
+<i>43</i>&nbsp;    void logOut();
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    /**
+<i>46</i>&nbsp;     * display a popup
+<i>47</i>&nbsp;     * @param layout the layout of the popup
+<i>48</i>&nbsp;     * @param msg the message of the popup
+<i>49</i>&nbsp;     * @param btn1 the first button
+<i>50</i>&nbsp;     * @param btn2 the second button
+<i>51</i>&nbsp;     */
+<i>52</i>&nbsp;    void displayPopUpAction(int layout, String msg, int btn1, int btn2);
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    /**
+<i>55</i>&nbsp;     * create a popup
+<i>56</i>&nbsp;     * @param layoutId the layout of the popup
+<i>57</i>&nbsp;     * @param msg the message of the popup
+<i>58</i>&nbsp;     * @param btn1 the first button
+<i>59</i>&nbsp;     * @param btn2 the second button
+<i>60</i>&nbsp;     * @return the AlertDialog that will be shown
+<i>61</i>&nbsp;     */
+<i>62</i>&nbsp;    AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2);
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    /**
+<i>65</i>&nbsp;     * close the popup
+<i>66</i>&nbsp;     */
+<i>67</i>&nbsp;    void dismissPopUpAction();
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    /**
+<i>70</i>&nbsp;     * confirm that the player wants to log out
+<i>71</i>&nbsp;     */
+<i>72</i>&nbsp;    void logOutConfirmation();
+<i>73</i>&nbsp;
+<i>74</i>&nbsp;    /**
+<i>75</i>&nbsp;     * if the player doesn&#39;t want to log out
+<i>76</i>&nbsp;     */
+<i>77</i>&nbsp;    void noLogOut();
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

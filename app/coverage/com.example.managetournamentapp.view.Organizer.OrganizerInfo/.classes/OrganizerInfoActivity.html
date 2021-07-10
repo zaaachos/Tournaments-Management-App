@@ -1,0 +1,252 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: OrganizerInfoActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Organizer.OrganizerInfo</a> ]
+</div>
+
+<h1>Coverage Summary for Class: OrganizerInfoActivity (com.example.managetournamentapp.view.Organizer.OrganizerInfo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OrganizerInfoActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 24)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Organizer.OrganizerInfo;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.content.Intent;
+<i>4</i>&nbsp;import android.os.Bundle;
+<i>5</i>&nbsp;import android.widget.Button;
+<i>6</i>&nbsp;import android.widget.TextView;
+<i>7</i>&nbsp;import android.widget.Toast;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import androidx.appcompat.app.ActionBar;
+<i>10</i>&nbsp;import androidx.appcompat.app.AppCompatActivity;
+<i>11</i>&nbsp;import androidx.lifecycle.ViewModelProvider;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import com.example.managetournamentapp.R;
+<i>14</i>&nbsp;import com.example.managetournamentapp.view.HomePage.HomePageActivity;
+<i>15</i>&nbsp;import com.example.managetournamentapp.view.User.RegisterOrganizer.RegisterOrganizerActivity;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;/**
+<i>19</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>20</i>&nbsp; * Athens University of Economics and Business
+<i>21</i>&nbsp; * 2020-2021
+<i>22</i>&nbsp; */
+<i>23</i>&nbsp;
+<b class="nc"><i>24</i>&nbsp;public class OrganizerInfoActivity extends AppCompatActivity implements OrganizerInfoView {</b>
+<i>25</i>&nbsp;    private OrganizerInfoViewModel viewModel;
+<i>26</i>&nbsp;    public static final String ORGANIZER_TITLE = &quot;organizer_title&quot;;
+<i>27</i>&nbsp;    Button btnEditOrganizer;
+<i>28</i>&nbsp;    Button btnDeleteOrganizer;
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    /**
+<i>31</i>&nbsp;     * Creates the layout and initializes the activity
+<i>32</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>33</i>&nbsp;     */
+<i>34</i>&nbsp;    @Override
+<i>35</i>&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<b class="nc"><i>36</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>37</i>&nbsp;        setContentView(R.layout.activity_organizer_info);</b>
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;
+<b class="nc"><i>40</i>&nbsp;        viewModel = new ViewModelProvider(this).get(OrganizerInfoViewModel.class);</b>
+<b class="nc"><i>41</i>&nbsp;        viewModel.getPresenter().setView(this);</b>
+<b class="nc"><i>42</i>&nbsp;        viewModel.getPresenter().findOrganizerInfo();</b>
+<i>43</i>&nbsp;
+<b class="nc"><i>44</i>&nbsp;        btnEditOrganizer = findViewById(R.id.edit_organizer_button);</b>
+<b class="nc"><i>45</i>&nbsp;        btnDeleteOrganizer = findViewById(R.id.delete_organizer_button);</b>
+<i>46</i>&nbsp;
+<b class="nc"><i>47</i>&nbsp;        btnEditOrganizer.setOnClickListener(v -&gt; viewModel.getPresenter().onEditOrganizer());</b>
+<b class="nc"><i>48</i>&nbsp;        btnDeleteOrganizer.setOnClickListener(v -&gt; viewModel.getPresenter().onDeleteOrganizer());</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    /**
+<i>53</i>&nbsp;     * Method used
+<i>54</i>&nbsp;     * to set the username field of activity&#39;s layout
+<i>55</i>&nbsp;     * screen to the username of the organizer that is logged in
+<i>56</i>&nbsp;     * @param username username of organizer to be set
+<i>57</i>&nbsp;     */
+<i>58</i>&nbsp;    @Override
+<i>59</i>&nbsp;    public void setUsername(String username) {
+<b class="nc"><i>60</i>&nbsp;        ((TextView) findViewById(R.id.text_username)).setText(username);</b>
+<i>61</i>&nbsp;    }
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;    /**
+<i>64</i>&nbsp;     * Method used
+<i>65</i>&nbsp;     * to set the password field of activity&#39;s layout
+<i>66</i>&nbsp;     * to the password of the organizer that is logged in
+<i>67</i>&nbsp;     * @param password password of organizer to be set
+<i>68</i>&nbsp;     */
+<i>69</i>&nbsp;    @Override
+<i>70</i>&nbsp;    public void setPassword(String password) {
+<b class="nc"><i>71</i>&nbsp;        ((TextView) findViewById(R.id.text_password)).setText(password);</b>
+<i>72</i>&nbsp;    }
+<i>73</i>&nbsp;    /**
+<i>74</i>&nbsp;     * Method used
+<i>75</i>&nbsp;     * to set the name field of activity&#39;s layout
+<i>76</i>&nbsp;     * to the name of the organizer that is logged in
+<i>77</i>&nbsp;     * @param name name of organizer to be set
+<i>78</i>&nbsp;     */
+<i>79</i>&nbsp;    @Override
+<i>80</i>&nbsp;    public void setName(String name) {
+<b class="nc"><i>81</i>&nbsp;        ((TextView) findViewById(R.id.text_name)).setText(name);</b>
+<i>82</i>&nbsp;    }
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    /**
+<i>85</i>&nbsp;     * Method used
+<i>86</i>&nbsp;     * to set the surname field of activity&#39;s layout
+<i>87</i>&nbsp;     * to the surname of the organizer that is logged in
+<i>88</i>&nbsp;     * @param surname surname of organizer to be set
+<i>89</i>&nbsp;     */
+<i>90</i>&nbsp;    @Override
+<i>91</i>&nbsp;    public void setSurname(String surname) {
+<b class="nc"><i>92</i>&nbsp;        ((TextView) findViewById(R.id.text_surname)).setText(surname);</b>
+<i>93</i>&nbsp;    }
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;    /**
+<i>96</i>&nbsp;     * Method used
+<i>97</i>&nbsp;     * to set the phone field of activity&#39;s layout
+<i>98</i>&nbsp;     * to the phone number of the organizer that is logged in
+<i>99</i>&nbsp;     * @param phone phone of organizer to be set
+<i>100</i>&nbsp;     */
+<i>101</i>&nbsp;    @Override
+<i>102</i>&nbsp;    public void setPhone(String phone) {
+<b class="nc"><i>103</i>&nbsp;        ((TextView) findViewById(R.id.text_phone)).setText(phone);</b>
+<i>104</i>&nbsp;    }
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;    /**
+<i>107</i>&nbsp;     * Method used
+<i>108</i>&nbsp;     * to set the email field of activity&#39;s layout
+<i>109</i>&nbsp;     * to the email of the organizer that is logged in
+<i>110</i>&nbsp;     * @param email email of organizer to be set
+<i>111</i>&nbsp;     */
+<i>112</i>&nbsp;    @Override
+<i>113</i>&nbsp;    public void setEmail(String email) {
+<b class="nc"><i>114</i>&nbsp;        ((TextView) findViewById(R.id.text_email)).setText(email);</b>
+<i>115</i>&nbsp;    }
+<i>116</i>&nbsp;
+<i>117</i>&nbsp;    /**
+<i>118</i>&nbsp;     * Method used
+<i>119</i>&nbsp;     * to set the birthdate field of activity&#39;s layout
+<i>120</i>&nbsp;     * to the birthdate of the organizer that is logged in
+<i>121</i>&nbsp;     * @param date birthdate of organizer to be set
+<i>122</i>&nbsp;     */
+<i>123</i>&nbsp;    @Override
+<i>124</i>&nbsp;    public void setBirthDate(String date) {
+<b class="nc"><i>125</i>&nbsp;        ((TextView) findViewById(R.id.text_birth_date)).setText(date);</b>
+<i>126</i>&nbsp;    }
+<i>127</i>&nbsp;
+<i>128</i>&nbsp;    /**
+<i>129</i>&nbsp;     * Method used
+<i>130</i>&nbsp;     * to set the title field of activity&#39;s layout
+<i>131</i>&nbsp;     * to the title of the organizer that is logged in
+<i>132</i>&nbsp;     * @param title title of organizer to be set
+<i>133</i>&nbsp;     */
+<i>134</i>&nbsp;    @Override
+<i>135</i>&nbsp;    public void setTitle(String title) {
+<b class="nc"><i>136</i>&nbsp;        ((TextView) findViewById(R.id.text_organizer_title)).setText(title);</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;    /**
+<i>140</i>&nbsp;     * Starts the register organizer activity so that the user can modify account
+<i>141</i>&nbsp;     * @param organizerTitle title of organizer to be passed as an extra
+<i>142</i>&nbsp;     */
+<i>143</i>&nbsp;    @Override
+<i>144</i>&nbsp;    public void startEditOrganizer(String organizerTitle) {
+<b class="nc"><i>145</i>&nbsp;        Intent intent = new Intent(OrganizerInfoActivity.this, RegisterOrganizerActivity.class);</b>
+<b class="nc"><i>146</i>&nbsp;        intent.putExtra( ORGANIZER_TITLE , organizerTitle);</b>
+<b class="nc"><i>147</i>&nbsp;        startActivity(intent);</b>
+<i>148</i>&nbsp;    }
+<i>149</i>&nbsp;
+<i>150</i>&nbsp;    /**
+<i>151</i>&nbsp;     * Deletes the organizer&#39;s account
+<i>152</i>&nbsp;     * and goes back to the home page screen
+<i>153</i>&nbsp;     */
+<i>154</i>&nbsp;    @Override
+<i>155</i>&nbsp;    public void startDeleteOrganizer() {
+<b class="nc"><i>156</i>&nbsp;        Intent intent = new Intent(OrganizerInfoActivity.this, HomePageActivity.class);</b>
+<b class="nc"><i>157</i>&nbsp;        startActivity(intent);</b>
+<i>158</i>&nbsp;    }
+<i>159</i>&nbsp;
+<i>160</i>&nbsp;    /**
+<i>161</i>&nbsp;     * Toast message shown in case user can&#39;t delete account
+<i>162</i>&nbsp;     */
+<i>163</i>&nbsp;    @Override
+<i>164</i>&nbsp;    public void showCantDelete() {
+<b class="nc"><i>165</i>&nbsp;        Toast.makeText(this,&quot;YOU CAN&#39;T DELETE YOUR ACCOUNT&quot;, Toast.LENGTH_SHORT).show();</b>
+<i>166</i>&nbsp;    }
+<i>167</i>&nbsp;
+<i>168</i>&nbsp;
+<i>169</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

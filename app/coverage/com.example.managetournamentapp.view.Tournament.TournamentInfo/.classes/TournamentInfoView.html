@@ -1,0 +1,137 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TournamentInfoView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Tournament.TournamentInfo</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TournamentInfoView (com.example.managetournamentapp.view.Tournament.TournamentInfo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">TournamentInfoView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Tournament.TournamentInfo;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;public interface TournamentInfoView {
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;    /**
+<i>6</i>&nbsp;     * set the contents in the teams number edit text
+<i>7</i>&nbsp;     * @param teamsNumber the number of teams
+<i>8</i>&nbsp;     */
+<i>9</i>&nbsp;    void setTeamsNumber(String teamsNumber);
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    /**
+<i>12</i>&nbsp;     * set the contents in the location edit text
+<i>13</i>&nbsp;     * @param location the new location
+<i>14</i>&nbsp;     */
+<i>15</i>&nbsp;    void setLocation(String location);
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * get the contents of the location edit text
+<i>19</i>&nbsp;     * @return the given finish date
+<i>20</i>&nbsp;     */
+<i>21</i>&nbsp;    void setStartDate(String startDate);
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    /**
+<i>24</i>&nbsp;     * get the contents of the finish date edit text
+<i>25</i>&nbsp;     * @return the given finish date
+<i>26</i>&nbsp;     */
+<i>27</i>&nbsp;    void setFinishDate(String finishDate);
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    /**
+<i>30</i>&nbsp;     * set the contents in the sport edit text
+<i>31</i>&nbsp;     * @param sportType the new sport
+<i>32</i>&nbsp;     */
+<i>33</i>&nbsp;    void setsportType(String sportType);
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * set the contents in the title edit text
+<i>37</i>&nbsp;     * @param title the new title
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    void setTitle(String title);
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /**
+<i>42</i>&nbsp;     * set the contents in the age division edit text
+<i>43</i>&nbsp;     * @param ageDivision the new age division
+<i>44</i>&nbsp;     */
+<i>45</i>&nbsp;    void setAgeDivision(String ageDivision);
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    /**
+<i>48</i>&nbsp;     * set the contents in the description edit text
+<i>49</i>&nbsp;     * @param description the new description
+<i>50</i>&nbsp;     */
+<i>51</i>&nbsp;    void setDescription(String description);
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    /**
+<i>54</i>&nbsp;     * when the organizer chooses to edit this tournament
+<i>55</i>&nbsp;     * the create tournament activity is started
+<i>56</i>&nbsp;     */
+<i>57</i>&nbsp;    void startEditTournament();
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    /**
+<i>60</i>&nbsp;     * hide the edit and delete buttons
+<i>61</i>&nbsp;     * if the user viewing the page is not
+<i>62</i>&nbsp;     * the organizer of this tournament
+<i>63</i>&nbsp;     */
+<i>64</i>&nbsp;    void changesOfAccess();
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    /**
+<i>67</i>&nbsp;     * ask for a confirmation before
+<i>68</i>&nbsp;     * deleting a tournament
+<i>69</i>&nbsp;     */
+<i>70</i>&nbsp;    void deleteConfirmation();
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;    /**
+<i>73</i>&nbsp;     * when the organizer presses
+<i>74</i>&nbsp;     * &quot;no&quot; on the confirmation
+<i>75</i>&nbsp;     */
+<i>76</i>&nbsp;    void noDeleteTournament();
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;    /**
+<i>79</i>&nbsp;     * when the organizer presses
+<i>80</i>&nbsp;     * &quot;yes&quot; on the confirmation
+<i>81</i>&nbsp;     */
+<i>82</i>&nbsp;    void yesDeleteTournament(String title);
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    /**
+<i>85</i>&nbsp;     * show a toast on the screen
+<i>86</i>&nbsp;     * @param txt the message of the toast
+<i>87</i>&nbsp;     */
+<i>88</i>&nbsp;    void showToast(String txt);
+<i>89</i>&nbsp;
+<i>90</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.managetournamentapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/SecondaryTheme">
+        <activity android:name=".view.User.Browsing.BrowsingActivity"
+            android:label = "@string/browse_tourn"
+            ></activity>
+        <activity
+            android:name=".view.Player.ReceivedInvites.ReceivedInvitesActivity"
+            android:label="Invites Received" />
+        <activity
+            android:name=".view.Team.JoinedPlayers.JoinedPlayersActivity"
+            android:exported="true"
+            android:label="@string/joined_players" />
+        <activity
+            android:name=".view.HomePage.HomePageActivity"
+            android:label="@string/manageApp"
+            android:theme="@style/SecondaryTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.User.RegisterPlayer.RegisterPlayerActivity"
+            android:label="@string/register_player"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.User.RegisterOrganizer.RegisterOrganizerActivity"
+            android:exported="true"
+            android:label="@string/register_organizer"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.User.Login.LoginActivity"
+            android:exported="true"
+            android:label="@string/log_in" />
+        <activity
+            android:name=".view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity"
+            android:exported="true"
+            android:label="@string/created_tournaments"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Organizer.OrganizerPage.OrganizerPageActivity"
+            android:exported="true"
+            android:label="@string/title_activity_organizer_page"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Tournament.ParticipatingTeams.ParticipatingTeamsActivity"
+            android:exported="true"
+            android:label="@string/participating_teams"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Player.JoinedTeams.JoinedTeamsActivity"
+            android:exported="true"
+            android:label="@string/joined_teams"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Team.ParticipatingTournaments.ParticipatingTournamentsActivity"
+            android:exported="true"
+            android:label="@string/participating_tournaments"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Team.InvitePlayers.InvitePlayersActivity"
+            android:exported="true"
+            android:label="@string/invite_players"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Player.PlayerPage.PlayerPageActivity"
+            android:exported="true"
+            android:label="@string/player"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Player.PlayerInfo.PlayerInfoActivity"
+            android:exported="true"
+            android:label="@string/player_info"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Team.TeamPage.TeamPageActivity"
+            android:exported="true"
+            android:label="@string/prof_omadas"
+            android:screenOrientation="portrait"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Organizer.OrganizerInfo.OrganizerInfoActivity"
+            android:exported="true"
+            android:label="@string/account_Details"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Player.CreateTeam.CreateTeamActivity"
+            android:exported="true"
+            android:label="@string/create_team"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Tournament.TournamentPage.TournamentPageActivity"
+            android:exported="true"
+            android:label="@string/tournament_prof"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Team.AddParticipation.AddParticipationActivity"
+            android:exported="true"
+            android:label="@string/join_tournament"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Team.TeamInfo.TeamInfoActivity"
+            android:exported="true"
+            android:label="@string/team_details"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Tournament.TournamentInfo.TournamentInfoActivity"
+            android:exported="true"
+            android:label="@string/tournament_info"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Organizer.CreateTournament.CreateTournamentActivity"
+            android:exported="true"
+            android:label="@string/create_tournament"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Organizer.SetDates.SetDatesActivity"
+            android:exported="true"
+            android:label="@string/set_dates"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Tournament.TournamentRounds.TournamentRoundsActivity"
+            android:exported="true"
+            android:label="@string/rounds"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Tournament.RoundGames.RoundGamesActivity"
+            android:exported="true"
+            android:label="@string/games"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Tournament.TournamentGroups.TournamentGroupsActivity"
+            android:exported="true"
+            android:label="@string/groups"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".view.Tournament.GroupRankings.GroupRankingsActivity"
+            android:exported="true"
+            android:label="@string/rankings"
+            android:theme="@style/SecondaryTheme" />
+    </application>
+
+</manifest>

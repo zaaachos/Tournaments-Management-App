@@ -1,0 +1,97 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>20</x><y>0</y><w>420</w><h>580</h></coordinates><panel_attributes>CreateTournamentActivity
+--
+~ btnHome : ImageButton
+- teamsNumberSpinner : Spinner
+- ageDivisionSpinner : Spinner
+- sportTypeSpinner : Spinner
+~ tournamentTitle : String
+- saveBtn : Button
+_+ ORGANIZER_TITLE_EXTRA : String_
+_+ TOURNAMENT_TITLE_EXTRA : String_
+_+ BASIC_INFO_EXTRA : String_
+--
+# onCreate(savedInstanceState : Bundle ) : void
++ startSaveTournament( organizerTitle : String ) : void
++ startSetDates(basicInfo : ArrayList&lt;String&gt;) : void
++ getTournamentTitle() : String
++ getDescription() : String
++ getLocation() : String
++ getStartDate() : String
++ getFinishDate() : String
++ getAgeDivision() : int
++ getTeamsNumber() : int
++ getSportType() : int
++ setTournamentTitle(title : String) : void
++ setDescription(description : String) : void
++ setLocation(location : String) : void
++ setStartDate(date : String) : void
++ setFinishDate(date : String) : void
++ setAgeDivision(poaition : int) : void
++ setTeamsNumber(position : int ) : void
++ setSportType(position : int) : void
++ lockPrevious() : void
++ showPopUp(view : CreateTournamentView, msg: String) : void
++ setSportTypeSpinner(list : ArrayList&lt;String&gt;) : void
++ setAgeDivisionSpinner(list : ArrayList&lt;String&gt;) : void
++ setTeamsNumberSpinner(list : ArrayList&lt;String&gt;) : void
++ backToHomePage(name : String) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>660</y><w>390</w><h>430</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; CreateTournamentView
+--
+startSaveTournament( organizerTitle : String ) : void
+startSetDates(basicInfo : ArrayList&lt;String&gt;) : void
+getTournamentTitle() : String
+getDescription() : String
+getLocation() : String
+getStartDate() : String
+getFinishDate() : String
+getAgeDivision() : int
+getTeamsNumber() : int
+getSportType() : int
+setTournamentTitle(title : String) : void
+setDescription(description : String) : void
+setLocation(location : String) : void
+setStartDate(date : String) : void
+setFinishDate(date : String) : void
+setAgeDivision(poaition : int) : void
+setTeamsNumber(position : int ) : void
+setSportType(position : int) : void
+lockPrevious() : void
+showPopUp(view : CreateTournamentView, msg: String) : void
+setSportTypeSpinner(list : ArrayList&lt;String&gt;) : void
+setAgeDivisionSpinner(list : ArrayList&lt;String&gt;) : void
+setTeamsNumberSpinner(list : ArrayList&lt;String&gt;) : void
+backToHomePage(name : String) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>420</y><w>440</w><h>460</h></coordinates><panel_attributes>CreateTournamentPresenter
+--
+- organizer : Organizer
+- connectedTournament : Tournament
+- teamNumbers : ArrayList&lt;String&gt;
+- ageDivisions : ArrayList&lt;String&gt;
+- sportTypes: ArrayList&lt;String&gt;
+--
++ CreateTournamentPresenter()
++ showPreviousInfo(tournamentInfo : String) : void
++ onSaveTournament() : void
++ setOrganizer(user : User) : void
++ getAgeDivisions() : ArrayList&lt;String&gt;
++ getTeamNumbers() : ArrayList&lt;String&gt;
++ getSportTypes() : ArrayList&lt;String&gt;
+- getSportTypeIndex(sportType: int) : int
+- getAgeDivisionIndex(ageDivision: int) : int
+- getTeamsNumberIndex(teamsNumber: int) : int
+- findSportTypes() : ArrayList&lt;String&gt;
+- findAgeDivisions() : ArrayList&lt;String&gt;
++ setTournamentDAO (tournamentDAO : TournamentDAO) : void
++ setView(view : CreateTournamentView) : void
++ clearView() : void
++ validateTitle(name : String) : boolean
++ validateName(name : String) : boolean
++ valideDate(date : String) : boolean
++ reformatDate(date : String) : LocalDate
++ onHomePage() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>110</y><w>190</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>160</y><w>330</w><h>90</h></coordinates><panel_attributes>CreateTournamentViewModel
+--
++ CreateTournamentViewModel()
++ getPresenter() : CreateTournamentPresenter
+# onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>30</y><w>260</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1090</x><y>400</y><w>140</w><h>40</h></coordinates><panel_attributes>TournamentDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>50</y><w>110</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>140</y><w>160</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>400</y><w>140</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>240</y><w>70</w><h>200</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;180;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>570</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>200</y><w>160</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>600</y><w>160</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;60;140;10</additional_attributes></element></diagram>

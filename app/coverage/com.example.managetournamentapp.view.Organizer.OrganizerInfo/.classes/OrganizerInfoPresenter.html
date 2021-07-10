@@ -1,0 +1,191 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: OrganizerInfoPresenter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Organizer.OrganizerInfo</a> ]
+</div>
+
+<h1>Coverage Summary for Class: OrganizerInfoPresenter (com.example.managetournamentapp.view.Organizer.OrganizerInfo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OrganizerInfoPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.5%
+  </span>
+  <span class="absValue">
+    (7/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (32/ 36)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Organizer.OrganizerInfo;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.dao.OrganizerDAO;
+<i>4</i>&nbsp;import com.example.managetournamentapp.domain.Organizer;
+<i>5</i>&nbsp;import com.example.managetournamentapp.domain.Round;
+<i>6</i>&nbsp;import com.example.managetournamentapp.domain.Tournament;
+<i>7</i>&nbsp;import com.example.managetournamentapp.domain.User;
+<i>8</i>&nbsp;import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import java.time.format.DateTimeFormatter;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;/**
+<i>13</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>14</i>&nbsp; * Athens University of Economics and Business
+<i>15</i>&nbsp; * 2020-2021
+<i>16</i>&nbsp; */
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;public class OrganizerInfoPresenter {
+<i>19</i>&nbsp;    private OrganizerInfoView view;
+<i>20</i>&nbsp;    private Organizer organizer;
+<i>21</i>&nbsp;    private OrganizerDAO organizerDAO;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    /**
+<i>24</i>&nbsp;     * Default Constructor
+<i>25</i>&nbsp;     */
+<b class="fc"><i>26</i>&nbsp;    public OrganizerInfoPresenter(){}</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * Finds the organizer info to
+<i>30</i>&nbsp;     * set all text fields in the current layout
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    public void findOrganizerInfo() {
+<b class="fc"><i>33</i>&nbsp;        view.setUsername(organizer.getCredentials().getUsername());</b>
+<b class="fc"><i>34</i>&nbsp;        view.setPassword(organizer.getCredentials().getPassword());</b>
+<b class="fc"><i>35</i>&nbsp;        view.setName(organizer.getName());</b>
+<b class="fc"><i>36</i>&nbsp;        view.setSurname(organizer.getSurname());</b>
+<b class="fc"><i>37</i>&nbsp;        view.setPhone(organizer.getPhoneNumber());</b>
+<b class="fc"><i>38</i>&nbsp;        view.setEmail(organizer.getEmail());</b>
+<b class="fc"><i>39</i>&nbsp;        view.setBirthDate(organizer.getBirthDate().format(DateTimeFormatter.ofPattern(&quot;dd-MM-yyyy&quot;)).replace(&quot;-&quot;,&quot;/&quot;) );</b>
+<b class="fc"><i>40</i>&nbsp;        view.setTitle(organizer.getTitle());</b>
+<b class="fc"><i>41</i>&nbsp;    }</b>
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    /**
+<i>44</i>&nbsp;     * Starts the Register Organizer Actitity
+<i>45</i>&nbsp;     * so that the user can modify account
+<i>46</i>&nbsp;     */
+<i>47</i>&nbsp;    public void onEditOrganizer() {
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;        view.startEditOrganizer(organizer.getTitle());</b>
+<b class="fc"><i>50</i>&nbsp;    }</b>
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    /**
+<i>53</i>&nbsp;     * Deletes the organizer&#39;s account
+<i>54</i>&nbsp;     * and goes back to the home page screen
+<i>55</i>&nbsp;     */
+<i>56</i>&nbsp;    public void onDeleteOrganizer() {
+<b class="fc"><i>57</i>&nbsp;        boolean canDelete = true;</b>
+<i>58</i>&nbsp;
+<b class="fc"><i>59</i>&nbsp;        for (Tournament tournament : organizer.getTournaments())</b>
+<b class="fc"><i>60</i>&nbsp;            for ( Round round : tournament.getRounds())</b>
+<b class="fc"><i>61</i>&nbsp;                if ( !round.allGamesFinished() )</b>
+<b class="fc"><i>62</i>&nbsp;                    canDelete = false;</b>
+<i>63</i>&nbsp;
+<b class="fc"><i>64</i>&nbsp;        if ( !canDelete ){</b>
+<b class="fc"><i>65</i>&nbsp;            view.showCantDelete();</b>
+<b class="fc"><i>66</i>&nbsp;            return;</b>
+<i>67</i>&nbsp;        }
+<b class="fc"><i>68</i>&nbsp;        organizerDAO.delete(organizer);</b>
+<b class="fc"><i>69</i>&nbsp;        (new MemoryLoggedInUser()).clear();</b>
+<b class="fc"><i>70</i>&nbsp;        view.startDeleteOrganizer();</b>
+<b class="fc"><i>71</i>&nbsp;    }</b>
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    /**
+<i>74</i>&nbsp;     * Sets the organizer to the user that is currently logged in
+<i>75</i>&nbsp;     * @param user user to be set as an organizer
+<i>76</i>&nbsp;     */
+<i>77</i>&nbsp;    public void setOrganizer(User user){
+<b class="fc"><i>78</i>&nbsp;        if (user == null)</b>
+<b class="nc"><i>79</i>&nbsp;            return;</b>
+<b class="fc"><i>80</i>&nbsp;        if (!(user instanceof Organizer))</b>
+<b class="nc"><i>81</i>&nbsp;            return;</b>
+<b class="fc"><i>82</i>&nbsp;        organizer = (Organizer) user;</b>
+<i>83</i>&nbsp;
+<b class="fc"><i>84</i>&nbsp;    }</b>
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;    /**
+<i>87</i>&nbsp;     * Sets the organizerDAO
+<i>88</i>&nbsp;     * @param organizerDAO organizerDAO to be set
+<i>89</i>&nbsp;     */
+<i>90</i>&nbsp;    public void setOrganizerDAO(OrganizerDAO organizerDAO){
+<b class="fc"><i>91</i>&nbsp;        this.organizerDAO = organizerDAO;</b>
+<b class="fc"><i>92</i>&nbsp;    }</b>
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;    /**
+<i>95</i>&nbsp;     * Sets the view of the OrganizerInfoPresenter
+<i>96</i>&nbsp;     * @param view OrganizerInfoView to be set
+<i>97</i>&nbsp;     */
+<i>98</i>&nbsp;    public void setView(OrganizerInfoView view) {
+<b class="fc"><i>99</i>&nbsp;        this.view = view;</b>
+<b class="fc"><i>100</i>&nbsp;    }</b>
+<i>101</i>&nbsp;
+<i>102</i>&nbsp;    /**
+<i>103</i>&nbsp;     * Sets the view of the presenter to null
+<i>104</i>&nbsp;     */
+<i>105</i>&nbsp;    public void clearView() {
+<b class="nc"><i>106</i>&nbsp;        this.view = null;</b>
+<b class="nc"><i>107</i>&nbsp;    }</b>
+<i>108</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

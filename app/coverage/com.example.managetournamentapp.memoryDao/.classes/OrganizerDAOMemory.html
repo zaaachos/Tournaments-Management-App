@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: OrganizerDAOMemory</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.memoryDao</a> ]
+</div>
+
+<h1>Coverage Summary for Class: OrganizerDAOMemory (com.example.managetournamentapp.memoryDao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OrganizerDAOMemory</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    94.1%
+  </span>
+  <span class="absValue">
+    (32/ 34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.memoryDao;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.dao.OrganizerDAO;
+<i>4</i>&nbsp;import com.example.managetournamentapp.domain.Credentials;
+<i>5</i>&nbsp;import com.example.managetournamentapp.domain.Organizer;
+<i>6</i>&nbsp;import com.example.managetournamentapp.domain.Player;
+<i>7</i>&nbsp;import com.example.managetournamentapp.domain.User;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import java.util.ArrayList;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;/**
+<i>12</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>13</i>&nbsp; * Athens University of Economics and Business
+<i>14</i>&nbsp; * 2020-2021
+<i>15</i>&nbsp; */
+<b class="fc"><i>16</i>&nbsp;public class OrganizerDAOMemory implements OrganizerDAO {</b>
+<b class="fc"><i>17</i>&nbsp;    protected static ArrayList&lt;Organizer&gt; entities = new ArrayList&lt;&gt;();</b>
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * Verifies user, checks if credentials are ok.
+<i>21</i>&nbsp;     *
+<i>22</i>&nbsp;     * @param credentials Credentials of User.
+<i>23</i>&nbsp;     * @return true if credentials are verified.
+<i>24</i>&nbsp;     */
+<i>25</i>&nbsp;    @Override
+<i>26</i>&nbsp;    public boolean verify(Credentials credentials) {
+<b class="fc"><i>27</i>&nbsp;        boolean valid = false;</b>
+<b class="fc"><i>28</i>&nbsp;        if (exist(credentials))</b>
+<b class="nc"><i>29</i>&nbsp;            valid = true;</b>
+<b class="fc"><i>30</i>&nbsp;        return valid;</b>
+<i>31</i>&nbsp;    }
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    /**
+<i>34</i>&nbsp;     * Saves a specific organizer.
+<i>35</i>&nbsp;     *
+<i>36</i>&nbsp;     * @param entity Organizer to be saved.
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    @Override
+<i>39</i>&nbsp;    public void save(Organizer entity) {
+<b class="fc"><i>40</i>&nbsp;        entities.add(entity);</b>
+<b class="fc"><i>41</i>&nbsp;    }</b>
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    /**
+<i>44</i>&nbsp;     * Deletes a specific organizer.
+<i>45</i>&nbsp;     *
+<i>46</i>&nbsp;     * @param entity Organizer to be deleted.
+<i>47</i>&nbsp;     */
+<i>48</i>&nbsp;    @Override
+<i>49</i>&nbsp;    public void delete(Organizer entity) {
+<b class="fc"><i>50</i>&nbsp;        entities.remove(entity);</b>
+<b class="fc"><i>51</i>&nbsp;    }</b>
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    /**
+<i>54</i>&nbsp;     * Deletes all organizers.
+<i>55</i>&nbsp;     */
+<i>56</i>&nbsp;    @Override
+<i>57</i>&nbsp;    public void deleteAll() {
+<b class="fc"><i>58</i>&nbsp;        entities = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>59</i>&nbsp;    }</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    /**
+<i>62</i>&nbsp;     * Finds a specific organizer.
+<i>63</i>&nbsp;     *
+<i>64</i>&nbsp;     * @param title Title of the organizer.
+<i>65</i>&nbsp;     * @return Organizer with the title specified.
+<i>66</i>&nbsp;     */
+<i>67</i>&nbsp;    @Override
+<i>68</i>&nbsp;    public Organizer findByTitle(String title) {
+<b class="fc"><i>69</i>&nbsp;        for (Organizer o : entities) {</b>
+<b class="fc"><i>70</i>&nbsp;            if (o.getTitle().equals(title))</b>
+<b class="fc"><i>71</i>&nbsp;                return o;</b>
+<b class="fc"><i>72</i>&nbsp;        }</b>
+<b class="fc"><i>73</i>&nbsp;        return null;</b>
+<i>74</i>&nbsp;    }
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    /**
+<i>77</i>&nbsp;     * Finds a specific organizer.
+<i>78</i>&nbsp;     *
+<i>79</i>&nbsp;     * @param credentials credentials of the organizer.
+<i>80</i>&nbsp;     * @return Organizer with the credentials specified.
+<i>81</i>&nbsp;     */
+<i>82</i>&nbsp;    @Override
+<i>83</i>&nbsp;    public Organizer findByCredentials(Credentials credentials) {
+<b class="fc"><i>84</i>&nbsp;        for (Organizer o : entities) {</b>
+<b class="fc"><i>85</i>&nbsp;            if (o.getCredentials().equals(credentials))</b>
+<b class="fc"><i>86</i>&nbsp;                return o;</b>
+<b class="fc"><i>87</i>&nbsp;        }</b>
+<b class="fc"><i>88</i>&nbsp;        return null;</b>
+<i>89</i>&nbsp;    }
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;    /**
+<i>92</i>&nbsp;     * Check if the user who tries to login exists in DAO.
+<i>93</i>&nbsp;     *
+<i>94</i>&nbsp;     * @param credentials User input credentials
+<i>95</i>&nbsp;     * @return true if User exists in DAO
+<i>96</i>&nbsp;     */
+<i>97</i>&nbsp;    @Override
+<i>98</i>&nbsp;    public boolean exist(Credentials credentials) {
+<b class="fc"><i>99</i>&nbsp;        for (Organizer o : entities) {</b>
+<b class="fc"><i>100</i>&nbsp;            if (o.getCredentials().getUsername().equals(credentials.getUsername()))</b>
+<b class="nc"><i>101</i>&nbsp;                return true;</b>
+<b class="fc"><i>102</i>&nbsp;        }</b>
+<b class="fc"><i>103</i>&nbsp;        return false;</b>
+<i>104</i>&nbsp;    }
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;    /**
+<i>107</i>&nbsp;     * Checks if credentials is used by another user in registration
+<i>108</i>&nbsp;     *
+<i>109</i>&nbsp;     * @param credentials User input credentials
+<i>110</i>&nbsp;     * @param user        if user is current
+<i>111</i>&nbsp;     * @return true if credentials used by another user
+<i>112</i>&nbsp;     */
+<i>113</i>&nbsp;    @Override
+<i>114</i>&nbsp;    public boolean isUsedByAnother(Credentials credentials, User user) {
+<b class="fc"><i>115</i>&nbsp;        Organizer existingOrganizer = findByCredentials(credentials);</b>
+<b class="fc"><i>116</i>&nbsp;        return !(existingOrganizer == null || existingOrganizer.equals(user));</b>
+<i>117</i>&nbsp;    }
+<i>118</i>&nbsp;
+<i>119</i>&nbsp;    /**
+<i>120</i>&nbsp;     * Checks if title is used by another user in registration
+<i>121</i>&nbsp;     *
+<i>122</i>&nbsp;     * @param title title input
+<i>123</i>&nbsp;     * @param user  if user is current
+<i>124</i>&nbsp;     * @return true if credentials used by another user
+<i>125</i>&nbsp;     */
+<i>126</i>&nbsp;    @Override
+<i>127</i>&nbsp;    public boolean TitleUsedByAnother(String title, User user) {
+<b class="fc"><i>128</i>&nbsp;        Organizer existingOrganizer = findByTitle(title);</b>
+<b class="fc"><i>129</i>&nbsp;        return !(existingOrganizer == null || existingOrganizer.equals(user));</b>
+<i>130</i>&nbsp;    }
+<i>131</i>&nbsp;
+<i>132</i>&nbsp;    /**
+<i>133</i>&nbsp;     * Finds all organizers.
+<i>134</i>&nbsp;     *
+<i>135</i>&nbsp;     * @return All organizers.
+<i>136</i>&nbsp;     */
+<i>137</i>&nbsp;    @Override
+<i>138</i>&nbsp;    public ArrayList&lt;Organizer&gt; findAll() {
+<b class="fc"><i>139</i>&nbsp;        ArrayList&lt;Organizer&gt; result = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>140</i>&nbsp;        result.addAll(entities);</b>
+<b class="fc"><i>141</i>&nbsp;        return result;</b>
+<i>142</i>&nbsp;    }
+<i>143</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

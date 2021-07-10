@@ -1,0 +1,428 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CreateTournamentPresenter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Organizer.CreateTournament</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CreateTournamentPresenter (com.example.managetournamentapp.view.Organizer.CreateTournament)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CreateTournamentPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.5%
+  </span>
+  <span class="absValue">
+    (21/ 22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    79.4%
+  </span>
+  <span class="absValue">
+    (100/ 126)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Organizer.CreateTournament;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.util.Log;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import com.example.managetournamentapp.dao.TournamentDAO;
+<i>6</i>&nbsp;import com.example.managetournamentapp.domain.AgeDivision;
+<i>7</i>&nbsp;import com.example.managetournamentapp.domain.Organizer;
+<i>8</i>&nbsp;import com.example.managetournamentapp.domain.Sport;
+<i>9</i>&nbsp;import com.example.managetournamentapp.domain.Tournament;
+<i>10</i>&nbsp;import com.example.managetournamentapp.domain.TournamentType;
+<i>11</i>&nbsp;import com.example.managetournamentapp.domain.User;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import java.text.DateFormat;
+<i>15</i>&nbsp;import java.text.ParseException;
+<i>16</i>&nbsp;import java.text.SimpleDateFormat;
+<i>17</i>&nbsp;import java.time.LocalDate;
+<i>18</i>&nbsp;import java.time.format.DateTimeFormatter;
+<i>19</i>&nbsp;import java.util.ArrayList;
+<i>20</i>&nbsp;import java.util.Arrays;
+<i>21</i>&nbsp;import java.util.regex.Matcher;
+<i>22</i>&nbsp;import java.util.regex.Pattern;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;/**
+<i>25</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>26</i>&nbsp; * Athens University of Economics and Business
+<i>27</i>&nbsp; * 2020-2021
+<i>28</i>&nbsp; */
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;public class CreateTournamentPresenter {
+<i>31</i>&nbsp;    private CreateTournamentView view;
+<i>32</i>&nbsp;    private ArrayList&lt;String&gt; sportTypes;
+<i>33</i>&nbsp;    private ArrayList&lt;String&gt; ageDivisions;
+<i>34</i>&nbsp;    private ArrayList&lt;String&gt; teamNumbers;
+<i>35</i>&nbsp;    private Tournament connectedTournament;
+<i>36</i>&nbsp;    private TournamentDAO tournamentDAO;
+<i>37</i>&nbsp;    private Organizer organizer;
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    /**
+<i>40</i>&nbsp;     * Default Constructor
+<i>41</i>&nbsp;     */
+<b class="fc"><i>42</i>&nbsp;    public CreateTournamentPresenter() {</b>
+<b class="fc"><i>43</i>&nbsp;        sportTypes = findSportTypes();</b>
+<b class="fc"><i>44</i>&nbsp;        ageDivisions = findAgeDivisions();</b>
+<b class="fc"><i>45</i>&nbsp;        teamNumbers = new ArrayList&lt;&gt;(Arrays.asList(new String[]{&quot;8&quot;, &quot;16&quot;, &quot;32&quot;}));</b>
+<b class="fc"><i>46</i>&nbsp;    }</b>
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    /**
+<i>49</i>&nbsp;     * Shows previous info of the tournament
+<i>50</i>&nbsp;     * @param tournamentName name of tournament that we want to show the info
+<i>51</i>&nbsp;     */
+<i>52</i>&nbsp;    public void showPreviousInfo(String tournamentName) {
+<b class="fc"><i>53</i>&nbsp;        if (tournamentName == null)</b>
+<b class="nc"><i>54</i>&nbsp;            return;</b>
+<b class="fc"><i>55</i>&nbsp;        connectedTournament = tournamentDAO.find(tournamentName);</b>
+<b class="fc"><i>56</i>&nbsp;        if (connectedTournament == null)</b>
+<b class="nc"><i>57</i>&nbsp;            return;</b>
+<i>58</i>&nbsp;
+<b class="fc"><i>59</i>&nbsp;        view.setTournamentTitle(connectedTournament.getTitle());</b>
+<b class="fc"><i>60</i>&nbsp;        view.setDescription(connectedTournament.getDescription());</b>
+<b class="fc"><i>61</i>&nbsp;        view.setLocation(connectedTournament.getLocation());</b>
+<b class="fc"><i>62</i>&nbsp;        view.setStartDate(connectedTournament.getStartDate().format(DateTimeFormatter.ofPattern(&quot;dd-MM-yyyy&quot;)).replace(&quot;-&quot;, &quot;/&quot;));</b>
+<b class="fc"><i>63</i>&nbsp;        view.setFinishDate(connectedTournament.getFinishDate().format(DateTimeFormatter.ofPattern(&quot;dd-MM-yyyy&quot;)).replace(&quot;-&quot;, &quot;/&quot;));</b>
+<b class="fc"><i>64</i>&nbsp;        view.setAgeDivision(getAgeDivisionIndex(connectedTournament.getAgeDivision().toString()));</b>
+<b class="fc"><i>65</i>&nbsp;        view.setTeamsNumber(getTeamsNumberIndex(String.valueOf(connectedTournament.getMAX_TEAMS_NUMBER())));</b>
+<b class="fc"><i>66</i>&nbsp;        view.setSportType(getSportTypeIndex(connectedTournament.getSportType().getName()));</b>
+<i>67</i>&nbsp;
+<b class="fc"><i>68</i>&nbsp;        view.lockPrevious();</b>
+<b class="fc"><i>69</i>&nbsp;    }</b>
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    /**
+<i>72</i>&nbsp;     * When the user presses the save button when being on the create tournament page
+<i>73</i>&nbsp;     * In this method appropriate checks are done
+<i>74</i>&nbsp;     */
+<i>75</i>&nbsp;    public void onSaveTournament() {
+<b class="fc"><i>76</i>&nbsp;        String title = view.getTournamentTitle();</b>
+<b class="fc"><i>77</i>&nbsp;        String location = view.getLocation();</b>
+<b class="fc"><i>78</i>&nbsp;        String startDate = view.getStartDate();</b>
+<b class="fc"><i>79</i>&nbsp;        String finishDate = view.getFinishDate();</b>
+<b class="fc"><i>80</i>&nbsp;        String description = view.getDescription();</b>
+<b class="fc"><i>81</i>&nbsp;        String ageDivision = ageDivisions.get(view.getAgeDivision());</b>
+<b class="fc"><i>82</i>&nbsp;        String sportType = sportTypes.get(view.getSportType());</b>
+<b class="fc"><i>83</i>&nbsp;        String teamsNumber = teamNumbers.get(view.getTeamsNumber());</b>
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;
+<b class="fc"><i>86</i>&nbsp;        if (title.length() &lt; 2 || title.length() &gt; 20 || !validateTitle(title))</b>
+<b class="nc"><i>87</i>&nbsp;            view.showPopUp(view, &quot;Title must contain at least 2 alphanumerical chars and be 20 chars long!&quot;);</b>
+<b class="fc"><i>88</i>&nbsp;        else if (location.length() &lt; 2 || location.length() &gt; 20 || !validateName(location))</b>
+<b class="nc"><i>89</i>&nbsp;            view.showPopUp(view, &quot;Location must be at least 2 chars and only alphabetical chars!&quot;);</b>
+<b class="fc"><i>90</i>&nbsp;        else if (!validateDate(startDate) || !validateDate(finishDate))</b>
+<b class="nc"><i>91</i>&nbsp;            view.showPopUp(view, &quot;Not valid date!&quot;);</b>
+<i>92</i>&nbsp;        else {
+<i>93</i>&nbsp;
+<b class="fc"><i>94</i>&nbsp;            if (connectedTournament == null) {</b>
+<b class="fc"><i>95</i>&nbsp;                if (checkTitle(title, connectedTournament)) {</b>
+<b class="nc"><i>96</i>&nbsp;                    view.showPopUp(view, &quot;Title already in use! Try a new one.&quot;);</b>
+<b class="nc"><i>97</i>&nbsp;                    return;</b>
+<i>98</i>&nbsp;                }
+<b class="fc"><i>99</i>&nbsp;                LocalDate startLocalDate = reformatDate(startDate);</b>
+<b class="fc"><i>100</i>&nbsp;                if (!checkDateIsNotPassed(startLocalDate)) {</b>
+<b class="nc"><i>101</i>&nbsp;                    view.showPopUp(view, &quot;Start Date has already passed! Try a new one.&quot;);</b>
+<b class="nc"><i>102</i>&nbsp;                    return;</b>
+<i>103</i>&nbsp;                }
+<i>104</i>&nbsp;
+<b class="fc"><i>105</i>&nbsp;                LocalDate finishLocalDate = reformatDate(finishDate);</b>
+<b class="fc"><i>106</i>&nbsp;                if (!checkDateIsNotPassed(finishLocalDate)) {</b>
+<b class="nc"><i>107</i>&nbsp;                    view.showPopUp(view, &quot;Finish Date has already passed! Try a new one.&quot;);</b>
+<b class="nc"><i>108</i>&nbsp;                    return;</b>
+<i>109</i>&nbsp;                }
+<i>110</i>&nbsp;
+<b class="fc"><i>111</i>&nbsp;                ArrayList&lt;String&gt; basicInfo = new ArrayList&lt;&gt;(Arrays.asList(title, startLocalDate.toString(), finishLocalDate.toString(), location, sportType, teamsNumber, ageDivision, description));</b>
+<b class="fc"><i>112</i>&nbsp;                view.startSetDates(basicInfo);</b>
+<b class="fc"><i>113</i>&nbsp;            } else {</b>
+<b class="fc"><i>114</i>&nbsp;                if (checkTitle(title, connectedTournament)) {</b>
+<b class="nc"><i>115</i>&nbsp;                    view.showPopUp(view, &quot;Title already in use! Try a new one.&quot;);</b>
+<b class="nc"><i>116</i>&nbsp;                    return;</b>
+<i>117</i>&nbsp;                }
+<i>118</i>&nbsp;
+<b class="fc"><i>119</i>&nbsp;                LocalDate startLocalDate = reformatDate(startDate);</b>
+<b class="fc"><i>120</i>&nbsp;                if (!checkDateIsNotPassed(startLocalDate)) {</b>
+<b class="nc"><i>121</i>&nbsp;                    view.showPopUp(view, &quot;Start Date has already passed! Try a new one.&quot;);</b>
+<b class="nc"><i>122</i>&nbsp;                    return;</b>
+<i>123</i>&nbsp;                }
+<i>124</i>&nbsp;
+<b class="fc"><i>125</i>&nbsp;                LocalDate finishLocalDate = reformatDate(finishDate);</b>
+<b class="fc"><i>126</i>&nbsp;                if (!checkDateIsNotPassed(finishLocalDate)) {</b>
+<b class="nc"><i>127</i>&nbsp;                    view.showPopUp(view, &quot;Finish Date has already passed! Try a new one.&quot;);</b>
+<b class="nc"><i>128</i>&nbsp;                    return;</b>
+<i>129</i>&nbsp;                }
+<i>130</i>&nbsp;
+<b class="fc"><i>131</i>&nbsp;                connectedTournament.setTitle(title);</b>
+<b class="fc"><i>132</i>&nbsp;                connectedTournament.setDescription(description);</b>
+<b class="fc"><i>133</i>&nbsp;                connectedTournament.setLocation(location);</b>
+<b class="fc"><i>134</i>&nbsp;                connectedTournament.setStartDate(startLocalDate);</b>
+<b class="fc"><i>135</i>&nbsp;                connectedTournament.setFinishDate(finishLocalDate);</b>
+<b class="fc"><i>136</i>&nbsp;                connectedTournament.setAgeDivision(AgeDivision.values()[getAgeDivisionIndex(ageDivision)]);</b>
+<b class="fc"><i>137</i>&nbsp;                connectedTournament.setSportType(new Sport(sportType));</b>
+<b class="fc"><i>138</i>&nbsp;                view.startSaveTournament(organizer.getTitle());</b>
+<i>139</i>&nbsp;            }
+<i>140</i>&nbsp;        }
+<b class="fc"><i>141</i>&nbsp;    }</b>
+<i>142</i>&nbsp;
+<i>143</i>&nbsp;    /**
+<i>144</i>&nbsp;     * Sets the organizer to the current user that is logged in as an organizer
+<i>145</i>&nbsp;     * @param user the user to be set as an organizer
+<i>146</i>&nbsp;     */
+<i>147</i>&nbsp;    public void setOrganizer(User user) {
+<b class="fc"><i>148</i>&nbsp;        if (user == null)</b>
+<b class="nc"><i>149</i>&nbsp;            return;</b>
+<b class="fc"><i>150</i>&nbsp;        if (!(user instanceof Organizer))</b>
+<b class="nc"><i>151</i>&nbsp;            return;</b>
+<b class="fc"><i>152</i>&nbsp;        organizer = (Organizer) user;</b>
+<i>153</i>&nbsp;
+<b class="fc"><i>154</i>&nbsp;    }</b>
+<i>155</i>&nbsp;
+<i>156</i>&nbsp;    /**
+<i>157</i>&nbsp;     * Returns the tournament sport type
+<i>158</i>&nbsp;     * @return the tournament sport type found
+<i>159</i>&nbsp;     */
+<i>160</i>&nbsp;    public ArrayList&lt;String&gt; getSportTypes() {
+<b class="fc"><i>161</i>&nbsp;        return sportTypes;</b>
+<i>162</i>&nbsp;    }
+<i>163</i>&nbsp;
+<i>164</i>&nbsp;    /**
+<i>165</i>&nbsp;     * Returns the tournament age division
+<i>166</i>&nbsp;     * @return the tournament age division found
+<i>167</i>&nbsp;     */
+<i>168</i>&nbsp;    public ArrayList&lt;String&gt; getAgeDivisions() {
+<b class="fc"><i>169</i>&nbsp;        return ageDivisions;</b>
+<i>170</i>&nbsp;    }
+<i>171</i>&nbsp;
+<i>172</i>&nbsp;    /**
+<i>173</i>&nbsp;     * Returns the tournament team numbers
+<i>174</i>&nbsp;     * @return the tournament team numbers found
+<i>175</i>&nbsp;     */
+<i>176</i>&nbsp;    public ArrayList&lt;String&gt; getTeamNumbers() {
+<b class="fc"><i>177</i>&nbsp;        return teamNumbers;</b>
+<i>178</i>&nbsp;    }
+<i>179</i>&nbsp;
+<i>180</i>&nbsp;    /**
+<i>181</i>&nbsp;     * Returns the sport type index taken from the arraylist
+<i>182</i>&nbsp;     * @param sportType sportType to be found in the arraylist
+<i>183</i>&nbsp;     * @return the index that the sportype is in. 0 in case it doesn&#39;t exist
+<i>184</i>&nbsp;     */
+<i>185</i>&nbsp;    private int getSportTypeIndex(String sportType) {
+<b class="fc"><i>186</i>&nbsp;        for (int i = 0; i &lt; sportTypes.size(); i++) {</b>
+<b class="fc"><i>187</i>&nbsp;            if (sportTypes.get(i).equals(sportType))</b>
+<b class="fc"><i>188</i>&nbsp;                return i;</b>
+<i>189</i>&nbsp;        }
+<b class="nc"><i>190</i>&nbsp;        return 0;</b>
+<i>191</i>&nbsp;    }
+<i>192</i>&nbsp;
+<i>193</i>&nbsp;    /**
+<i>194</i>&nbsp;     * Returns the age division index taken from the arraylist
+<i>195</i>&nbsp;     * @param ageDivision age division to be found in the arraylist
+<i>196</i>&nbsp;     * @return the index that the specific age division is in. 0 in case it doesn&#39;t exist
+<i>197</i>&nbsp;     */
+<i>198</i>&nbsp;    private int getAgeDivisionIndex(String ageDivision) {
+<b class="fc"><i>199</i>&nbsp;        for (int i = 0; i &lt; ageDivisions.size(); i++) {</b>
+<b class="fc"><i>200</i>&nbsp;            if (ageDivisions.get(i).equals(ageDivision))</b>
+<b class="fc"><i>201</i>&nbsp;                return i;</b>
+<i>202</i>&nbsp;        }
+<b class="nc"><i>203</i>&nbsp;        return 0;</b>
+<i>204</i>&nbsp;    }
+<i>205</i>&nbsp;
+<i>206</i>&nbsp;    /**
+<i>207</i>&nbsp;     * Returns the teams number idex taken from the arraylist
+<i>208</i>&nbsp;     * @param teamsNumber teams number to be found in the arraylist
+<i>209</i>&nbsp;     * @return the index that the specific teams number is in. 0 in case it doesn&#39;t exist
+<i>210</i>&nbsp;     */
+<i>211</i>&nbsp;    private int getTeamsNumberIndex(String teamsNumber) {
+<b class="fc"><i>212</i>&nbsp;        for (int i = 0; i &lt; teamNumbers.size(); i++) {</b>
+<b class="fc"><i>213</i>&nbsp;            if (teamNumbers.get(i).equals(teamsNumber))</b>
+<b class="fc"><i>214</i>&nbsp;                return i;</b>
+<i>215</i>&nbsp;        }
+<b class="nc"><i>216</i>&nbsp;        return 0;</b>
+<i>217</i>&nbsp;    }
+<i>218</i>&nbsp;
+<i>219</i>&nbsp;    /**
+<i>220</i>&nbsp;     * Returns the arraylist containing sport types
+<i>221</i>&nbsp;     * @return the arraylist of sport types to be returned
+<i>222</i>&nbsp;     */
+<i>223</i>&nbsp;    private ArrayList&lt;String&gt; findSportTypes() {
+<b class="fc"><i>224</i>&nbsp;        ArrayList&lt;String&gt; sportTypes = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>225</i>&nbsp;        for (int i = 0; i &lt; TournamentType.values().length; i++) {</b>
+<b class="fc"><i>226</i>&nbsp;            sportTypes.add(TournamentType.values()[i].toString());</b>
+<i>227</i>&nbsp;        }
+<b class="fc"><i>228</i>&nbsp;        return sportTypes;</b>
+<i>229</i>&nbsp;    }
+<i>230</i>&nbsp;
+<i>231</i>&nbsp;    /**
+<i>232</i>&nbsp;     * Returns the arraylist containing sport types
+<i>233</i>&nbsp;     * @return the arraylist of sport types to be returned
+<i>234</i>&nbsp;     */
+<i>235</i>&nbsp;    private ArrayList&lt;String&gt; findAgeDivisions() {
+<b class="fc"><i>236</i>&nbsp;        ArrayList&lt;String&gt; ageDivisions = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>237</i>&nbsp;        for (int i = 0; i &lt; AgeDivision.values().length; i++) {</b>
+<b class="fc"><i>238</i>&nbsp;            ageDivisions.add(AgeDivision.values()[i].toString());</b>
+<i>239</i>&nbsp;        }
+<b class="fc"><i>240</i>&nbsp;        return ageDivisions;</b>
+<i>241</i>&nbsp;    }
+<i>242</i>&nbsp;
+<i>243</i>&nbsp;
+<i>244</i>&nbsp;    /**
+<i>245</i>&nbsp;     * Sets the tournamentDAO
+<i>246</i>&nbsp;     * @param tournamentDAO tournamentDAO to be set
+<i>247</i>&nbsp;     */
+<i>248</i>&nbsp;    public void setTournamentDAO(TournamentDAO tournamentDAO) {
+<b class="fc"><i>249</i>&nbsp;        this.tournamentDAO = tournamentDAO;</b>
+<b class="fc"><i>250</i>&nbsp;    }</b>
+<i>251</i>&nbsp;
+<i>252</i>&nbsp;    /**
+<i>253</i>&nbsp;     * Checks if the tournament title is being used
+<i>254</i>&nbsp;     * @param title title to be checked
+<i>255</i>&nbsp;     * @param tournament tournament with the specific title
+<i>256</i>&nbsp;     * @return true if it exists, false otherwise
+<i>257</i>&nbsp;     */
+<i>258</i>&nbsp;    public boolean checkTitle(String title, Tournament tournament) {
+<b class="fc"><i>259</i>&nbsp;        return tournamentDAO.TitleIsUsed(title, tournament);</b>
+<i>260</i>&nbsp;    }
+<i>261</i>&nbsp;
+<i>262</i>&nbsp;    /**
+<i>263</i>&nbsp;     * Sets the view
+<i>264</i>&nbsp;     * @param view view to be set
+<i>265</i>&nbsp;     */
+<i>266</i>&nbsp;    public void setView(CreateTournamentView view) {
+<b class="fc"><i>267</i>&nbsp;        this.view = view;</b>
+<b class="fc"><i>268</i>&nbsp;    }</b>
+<i>269</i>&nbsp;
+<i>270</i>&nbsp;    /**
+<i>271</i>&nbsp;     * Sets view to null
+<i>272</i>&nbsp;     */
+<i>273</i>&nbsp;    public void clearView() {
+<b class="nc"><i>274</i>&nbsp;        this.view = null;</b>
+<b class="nc"><i>275</i>&nbsp;    }</b>
+<i>276</i>&nbsp;
+<i>277</i>&nbsp;    /**
+<i>278</i>&nbsp;     * Validates title
+<i>279</i>&nbsp;     * @param name the name we want to check if it&#39;s valid.
+<i>280</i>&nbsp;     * @return true if the name is valid
+<i>281</i>&nbsp;     */
+<i>282</i>&nbsp;    public boolean validateTitle(String name) {
+<b class="fc"><i>283</i>&nbsp;        String valid = &quot;^[a-zA-Z0-9]+$&quot;;</b>
+<b class="fc"><i>284</i>&nbsp;        Pattern pattern = Pattern.compile(valid);</b>
+<b class="fc"><i>285</i>&nbsp;        Matcher matcher = pattern.matcher(name);</b>
+<b class="fc"><i>286</i>&nbsp;        return matcher.matches();</b>
+<i>287</i>&nbsp;    }
+<i>288</i>&nbsp;
+<i>289</i>&nbsp;    /**
+<i>290</i>&nbsp;     * Validates name
+<i>291</i>&nbsp;     * @param name the name we want to check if it&#39;s valid.
+<i>292</i>&nbsp;     * @return true if the name is valid
+<i>293</i>&nbsp;     */
+<i>294</i>&nbsp;    public boolean validateName(String name) {
+<b class="fc"><i>295</i>&nbsp;        String valid = &quot;^[a-zA-Z]*$&quot;;</b>
+<b class="fc"><i>296</i>&nbsp;        Pattern pattern = Pattern.compile(valid);</b>
+<b class="fc"><i>297</i>&nbsp;        Matcher matcher = pattern.matcher(name);</b>
+<b class="fc"><i>298</i>&nbsp;        return matcher.matches();</b>
+<i>299</i>&nbsp;    }
+<i>300</i>&nbsp;
+<i>301</i>&nbsp;    /**
+<i>302</i>&nbsp;     * Reformats date in the desired format
+<i>303</i>&nbsp;     * @param date to reformat
+<i>304</i>&nbsp;     * @return the new date
+<i>305</i>&nbsp;     */
+<i>306</i>&nbsp;    public LocalDate reformatDate(String date) {
+<b class="fc"><i>307</i>&nbsp;        date = date.replace(&quot;/&quot;, &quot;-&quot;);</b>
+<b class="fc"><i>308</i>&nbsp;        LocalDate Localdate = LocalDate.parse(date, DateTimeFormatter.ofPattern(&quot;dd-MM-uuuu&quot;));</b>
+<b class="fc"><i>309</i>&nbsp;        return Localdate;</b>
+<i>310</i>&nbsp;    }
+<i>311</i>&nbsp;
+<i>312</i>&nbsp;    /**
+<i>313</i>&nbsp;     * Validates date
+<i>314</i>&nbsp;     * @param date the date we want to check if it&#39;s valid
+<i>315</i>&nbsp;     * @return true if the date is valid
+<i>316</i>&nbsp;     */
+<i>317</i>&nbsp;    public boolean validateDate(String date) {
+<b class="fc"><i>318</i>&nbsp;        DateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</b>
+<b class="fc"><i>319</i>&nbsp;        dateFormat.setLenient(false);</b>
+<i>320</i>&nbsp;        try {
+<b class="fc"><i>321</i>&nbsp;            dateFormat.parse(date);</b>
+<b class="nc"><i>322</i>&nbsp;        } catch (ParseException e) {</b>
+<b class="nc"><i>323</i>&nbsp;            return false;</b>
+<b class="fc"><i>324</i>&nbsp;        }</b>
+<b class="fc"><i>325</i>&nbsp;        return true;</b>
+<i>326</i>&nbsp;    }
+<i>327</i>&nbsp;
+<i>328</i>&nbsp;    /**
+<i>329</i>&nbsp;     * Check if the date has passed
+<i>330</i>&nbsp;     * @param date Date that is checked
+<i>331</i>&nbsp;     * @return
+<i>332</i>&nbsp;     */
+<i>333</i>&nbsp;    public boolean checkDateIsNotPassed(LocalDate date) {
+<b class="fc"><i>334</i>&nbsp;        return date.isAfter(LocalDate.now());</b>
+<i>335</i>&nbsp;    }
+<i>336</i>&nbsp;
+<i>337</i>&nbsp;    /**
+<i>338</i>&nbsp;     * Returns to organizer profile
+<i>339</i>&nbsp;     */
+<i>340</i>&nbsp;    public void onHomePage() {
+<i>341</i>&nbsp;
+<b class="fc"><i>342</i>&nbsp;        view.backToHomePage(organizer.getTitle());</b>
+<i>343</i>&nbsp;
+<b class="fc"><i>344</i>&nbsp;    }</b>
+<i>345</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

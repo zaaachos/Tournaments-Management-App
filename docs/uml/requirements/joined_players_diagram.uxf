@@ -1,0 +1,70 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>890</x><y>230</y><w>420</w><h>250</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; JoinedPlayersView
+--
+showPopUp(int layoutId, String msg, int btn1, int btn2) : AlertDialog
+startPlayerInfo() : void
+startInvitePlayerPage() : void
+displayPopUpAction(nt layoutId, String msg, int btn1, int btn2) : void
+displayPopUpDeletion(nt layoutId, String msg, int btn1, int btn2) : void
+dismissPopUpAction() : void
+dismissPopUpDeletion() : void
+resetPopUps() : void
+restartActivity() : void
+getPlayersList() : ArrayList&lt;Player&gt;
+changesOfAccess(captain : boolean, player : boolean) : void
+backToHomePage(name : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>150</y><w>470</w><h>460</h></coordinates><panel_attributes>JoinedPlayersActivity
+--
+~ btnHome : ImageButton
+- teamName : String
+- player : boolean
+- captain : boolean
+- inviteNewBtn : FloatingActionButton
+_- playerSelected : Player_
+_- PLAYER_USERNAME_EXTRA: String_
+_- ORGANIZER_TITLE_EXTRA: String_
+_- TEAM_NAME_EXTRA: String_
+_- POPUP_ACTION : AlertDialog_
+_- POPUP_DELETION : AlertDialog_
+_- removeActionPopup : boolean_
+--
+# onCreate(Bundle savedInstanceState) : void
++ showPopUp(int layoutId, String msg, int btn1, int btn2) : AlertDialog
++ onClick(v : View) : void
++ onListFragmentInteraction(item : Invitation) : void
++ startPlayerInfo() : void
++ startInvitePlayerPage() : void
++ displayPopUpAction(nt layoutId, String msg, int btn1, int btn2) : void
++ displayPopUpDeletion(nt layoutId, String msg, int btn1, int btn2) : void
++ dismissPopUpAction() : void
++ dismissPopUpDeletion() : void
++ resetPopUps() : void
++ restartActivity() : void
++ getPlayersList() : ArrayList&lt;Player&gt;
++ changesOfAccess(captain : boolean, player : boolean) : void
++ backToHomePage(name : String) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>220</x><y>740</y><w>330</w><h>100</h></coordinates><panel_attributes>JoinedPlayersViewModel
+--
++ JoinedPlayersViewModel()
++ getPresenter() : JoinedPlayersPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>640</y><w>420</w><h>260</h></coordinates><panel_attributes>JoinedPlayersPresenter
+--
+- teamName : String
+- results: ArrayList&lt;Player&gt;
+--
++ JoinedPlayersPresenter()
++ findPlayers(teamName: String) : void
++ removePlayer(teamName : String, player : Player) : void
++ findAccess() : void
++ getResults() : ArrayList&lt;Player&gt;
++ setLoggedInUser( loggedInUser : LoggedInUser ) :void
++ setTeamDAO(teamDAO : TeamDAO) : void
++ setPlayerDAO(playerDAO: PlayerDAO) : void
++ onHomePage() : void
++ setView(view : JoinedPlayersView) : void
++ clearView() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>30</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>758</y><w>300</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>280;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>598</y><w>70</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>670</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>100</x><y>698</y><w>140</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;92</additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>288</y><w>260</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>240;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>468</y><w>70</w><h>190</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1370</x><y>650</y><w>150</w><h>40</h></coordinates><panel_attributes>PlayerDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>658</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>140;10;10;22</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1360</x><y>750</y><w>150</w><h>40</h></coordinates><panel_attributes>TeamDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>748</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>130;20;10;22</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>10</y><w>240</w><h>40</h></coordinates><panel_attributes>fragment.PlayersListFragment</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>38</y><w>40</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>20;12;10;112</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1330</x><y>550</y><w>150</w><h>40</h></coordinates><panel_attributes>LoggedInUser</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1220</x><y>578</y><w>130</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>110;10;10;62</additional_attributes></element></diagram>

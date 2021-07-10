@@ -1,0 +1,111 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CreateTeamView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Player.CreateTeam</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CreateTeamView (com.example.managetournamentapp.view.Player.CreateTeam)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">CreateTeamView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Player.CreateTeam;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;public interface CreateTeamView {
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;    /**
+<i>6</i>&nbsp;     * show the player&#39;s page activity
+<i>7</i>&nbsp;     * after the team has been saved
+<i>8</i>&nbsp;     * @param userName the username of the captain
+<i>9</i>&nbsp;     */
+<i>10</i>&nbsp;    void startSaveTeam(String userName);
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * get the colors of the team
+<i>14</i>&nbsp;     * @return the name of the team
+<i>15</i>&nbsp;     */
+<i>16</i>&nbsp;    String getTeamName();
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    /**
+<i>19</i>&nbsp;     * get the colors of the team
+<i>20</i>&nbsp;     * @return the colors
+<i>21</i>&nbsp;     */
+<i>22</i>&nbsp;    String getTeamColors();
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    /**
+<i>25</i>&nbsp;     * set the contents of the spinner
+<i>26</i>&nbsp;     */
+<i>27</i>&nbsp;    int getSportType();
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    /**
+<i>30</i>&nbsp;     * set the contents in the name edit text
+<i>31</i>&nbsp;     * @param name the new name
+<i>32</i>&nbsp;     */
+<i>33</i>&nbsp;    void setTeamName(String name);
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * set the contents in the colors edit text
+<i>37</i>&nbsp;     * @param colors the new colors
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    void setTeamColors(String colors);
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /**
+<i>42</i>&nbsp;     * set the contents of the spinner
+<i>43</i>&nbsp;     * @param position the index of the sport type
+<i>44</i>&nbsp;     */
+<i>45</i>&nbsp;    void setSportType(int position);
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    /**
+<i>48</i>&nbsp;     * freeze the sport type spinner
+<i>49</i>&nbsp;     */
+<i>50</i>&nbsp;    void lockSportType();
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    /**
+<i>53</i>&nbsp;     *show a popup on the screen
+<i>54</i>&nbsp;     * @param view the view of the popup
+<i>55</i>&nbsp;     * @param msg the message that will be shown
+<i>56</i>&nbsp;     */
+<i>57</i>&nbsp;    void showPopUp(CreateTeamView view, String msg);
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    /**
+<i>60</i>&nbsp;     * what happens when the homepage button is pressed
+<i>61</i>&nbsp;     * @param string is the name of a player
+<i>62</i>&nbsp;     */
+<i>63</i>&nbsp;    void backToHomePage(String string);
+<i>64</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

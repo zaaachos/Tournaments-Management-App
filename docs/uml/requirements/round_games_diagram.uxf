@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1200</x>
+      <y>150</y>
+      <w>430</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt; RoundGamesView
+--
+ backToHomePage(flag: boolean, string: String) : void
+ recreateView() : void
+ showPopup(game : Game) : void
+ showToast(test :String) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>200</y>
+      <w>630</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>RoundGamesActivity
+--
+~ btnHome : ImageButton
+- specificGroup : int
+- roundTeamsNumber : int
+- tournamentTitle : String
+_- POPUP_ACTION: AlertDialog_
+_- ORGANIZER_TITLE_EXTRA: String_
+_- PLAYER_USERNAME_EXTRA: String_
+_+ SPECIFIC_GROUP_EXTRA: String_
+_+ ROUND_TEAMS_EXTRA: String_
+_+ TOURNAMENT_TITLE_EXTRA: String_
+--
+# onCreate(savedInstanceState : Bundle) : void
++ showPopup(game : Game) : void
++ showPopUp(layoutId : int, btn1 : int, txt1 : int, txt2 : int, game : Game) : AlertDialog
++ onListFragmentInteraction(item : Team) : void
++ getGamesList() : ArrayList&lt;Team&gt;
++ showToast(text : String) : void
++ recreateView() : void
++ backToHomePage(isPlayer : boolean, name : String) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>690</y>
+      <w>360</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>RoundGamesViewModel
+--
++ RoundGamesViewModel()
++ getPresenter() : RoundGamesPresenter
+#  onCleared() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>580</y>
+      <w>670</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>RoundGamesPresenter
+--
+- currentRoundIndex : int
+- currentRound : Round
+- hasAccess : boolean
+- results : ArrayList&lt;Game&gt;
+- loggedInUser : LoggedInUser
+- tournament : Tournament
+--
++ RoundGamesPresenter()
++ findGames(tournamentTitle : String , roundTeamsNumber : int, specificGroup : int) : void
++ onPressed(game : Game) : void
++ onSave(game : Game, socreA : String, scoreB :String) : void
++ checkIfFinished() : void
++ findAccess() : void
++ getResults() : ArrayList&lt;Game&gt;
++ setLoggedInUser(loggedInUser : LoggedInUser) : void
++ setTournamentDAO(tournamentDAO : TournamentDAO) : void
++ setView(view : ParticipatingTeamsView) : void
++ clearView() : void
++ onHomePage() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>10</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>40</y>
+      <w>40</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>700</y>
+      <w>190</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>540</y>
+      <w>140</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>10.0;150.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1310</x>
+      <y>380</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>TournamentDAO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>390</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>androidx.lifecycle.ViewModel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>110</x>
+      <y>420</y>
+      <w>300</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1300</x>
+      <y>410</y>
+      <w>120</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>250</y>
+      <w>240</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>220.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>250</y>
+      <w>320</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>300.0;10.0;10.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>0</y>
+      <w>280</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>fragment.GamesListFragment</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>830</x>
+      <y>30</y>
+      <w>40</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>20.0;12.0;10.0;172.0</additional_attributes>
+  </element>
+</diagram>

@@ -1,0 +1,330 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: OrganizerPageActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Organizer.OrganizerPage</a> ]
+</div>
+
+<h1>Coverage Summary for Class: OrganizerPageActivity (com.example.managetournamentapp.view.Organizer.OrganizerPage)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OrganizerPageActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 51)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">OrganizerPageActivity$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">OrganizerPageActivity$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 57)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Organizer.OrganizerPage;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.content.DialogInterface;
+<i>4</i>&nbsp;import android.content.Intent;
+<i>5</i>&nbsp;import android.os.Bundle;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import androidx.appcompat.app.AlertDialog;
+<i>8</i>&nbsp;import androidx.appcompat.app.AppCompatActivity;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import androidx.lifecycle.ViewModelProvider;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import android.view.View;
+<i>13</i>&nbsp;import android.widget.Button;
+<i>14</i>&nbsp;import android.widget.TextView;
+<i>15</i>&nbsp;import android.widget.Toast;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;import com.example.managetournamentapp.R;
+<i>18</i>&nbsp;import com.example.managetournamentapp.view.Organizer.OrganizerTournaments.OrganizerTournamentsActivity;
+<i>19</i>&nbsp;import com.example.managetournamentapp.view.Organizer.OrganizerInfo.OrganizerInfoActivity;
+<i>20</i>&nbsp;import com.example.managetournamentapp.view.User.Login.LoginActivity;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;/**
+<i>23</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>24</i>&nbsp; * Athens University of Economics and Business
+<i>25</i>&nbsp; * 2020-2021
+<i>26</i>&nbsp; */
+<i>27</i>&nbsp;
+<b class="nc"><i>28</i>&nbsp;public class OrganizerPageActivity extends AppCompatActivity implements OrganizerPageView{</b>
+<i>29</i>&nbsp;    private OrganizerPageViewModel viewModel;
+<i>30</i>&nbsp;    private static final String ORGANIZER_TITLE_EXTRA = &quot;organizer_title_extra&quot;;
+<i>31</i>&nbsp;    private static AlertDialog POPUP_ACTION;
+<i>32</i>&nbsp;    private TextView txtOrganizerName;
+<i>33</i>&nbsp;    private Button btnOrganizerAccount;
+<i>34</i>&nbsp;    private Button btnOrganizerTournaments;
+<i>35</i>&nbsp;    private Button btnLogOut;
+<i>36</i>&nbsp;    private String organizerUsername;
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    /**
+<i>39</i>&nbsp;     * Creates the layout and initializes the activity
+<i>40</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>41</i>&nbsp;     */
+<i>42</i>&nbsp;    @Override
+<i>43</i>&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<i>44</i>&nbsp;
+<b class="nc"><i>45</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>46</i>&nbsp;        setContentView(R.layout.activity_organizer_page);</b>
+<b class="nc"><i>47</i>&nbsp;        organizerUsername = this.getIntent().getStringExtra(ORGANIZER_TITLE_EXTRA);</b>
+<i>48</i>&nbsp;
+<b class="nc"><i>49</i>&nbsp;        viewModel = new ViewModelProvider(this).get(OrganizerPageViewModel.class);</b>
+<b class="nc"><i>50</i>&nbsp;        viewModel.getPresenter().setView(this);</b>
+<b class="nc"><i>51</i>&nbsp;        viewModel.getPresenter().findOrganizerInfo(organizerUsername);</b>
+<i>52</i>&nbsp;
+<b class="nc"><i>53</i>&nbsp;        txtOrganizerName = findViewById(R.id.title_organizer_name);</b>
+<b class="nc"><i>54</i>&nbsp;        btnOrganizerAccount = findViewById(R.id.organizer_account);</b>
+<b class="nc"><i>55</i>&nbsp;        btnOrganizerTournaments = findViewById(R.id.organizer_tournaments);</b>
+<b class="nc"><i>56</i>&nbsp;        btnLogOut = findViewById(R.id.log_out_button);</b>
+<i>57</i>&nbsp;
+<b class="nc"><i>58</i>&nbsp;        txtOrganizerName.setText(viewModel.getPresenter().getOrganizerTitle());</b>
+<b class="nc"><i>59</i>&nbsp;        btnOrganizerAccount.setOnClickListener(v -&gt; viewModel.getPresenter().onOrganizerAccount());</b>
+<b class="nc"><i>60</i>&nbsp;        btnOrganizerTournaments.setOnClickListener(v -&gt; viewModel.getPresenter().onOrganizerTournaments());</b>
+<b class="nc"><i>61</i>&nbsp;        btnLogOut.setOnClickListener(v-&gt;viewModel.getPresenter().onLogOut());</b>
+<i>62</i>&nbsp;    }
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    /**
+<i>65</i>&nbsp;     * Starts Organizer&#39;s Account Activity
+<i>66</i>&nbsp;     * when &quot;Account&quot; button is pressed
+<i>67</i>&nbsp;     */
+<i>68</i>&nbsp;    public void toOrganizerAccount() {
+<b class="nc"><i>69</i>&nbsp;        Intent intent = new Intent(OrganizerPageActivity.this, OrganizerInfoActivity.class);</b>
+<b class="nc"><i>70</i>&nbsp;        startActivity(intent);</b>
+<i>71</i>&nbsp;    }
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    /**
+<i>74</i>&nbsp;     * Starts organizer&#39;s tournaments activity
+<i>75</i>&nbsp;     * when &quot;My tournaments&quot; button is pressed
+<i>76</i>&nbsp;     * @param title organizer&#39;s title is passed as an extra to the activity
+<i>77</i>&nbsp;     */
+<i>78</i>&nbsp;    public void toOrganizerTournaments(String title) {
+<b class="nc"><i>79</i>&nbsp;        Intent intent = new Intent(OrganizerPageActivity.this, OrganizerTournamentsActivity.class);</b>
+<b class="nc"><i>80</i>&nbsp;        intent.putExtra(ORGANIZER_TITLE_EXTRA,title);</b>
+<b class="nc"><i>81</i>&nbsp;        startActivity(intent);</b>
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    }
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    /**
+<i>86</i>&nbsp;     * Sets organizer title in the layout to the title of the organizer we specify
+<i>87</i>&nbsp;     * @param organizerTitle organizer title that will be showed
+<i>88</i>&nbsp;     */
+<i>89</i>&nbsp;    public void setTitle(String organizerTitle){
+<b class="nc"><i>90</i>&nbsp;        txtOrganizerName.setText(organizerTitle);</b>
+<i>91</i>&nbsp;    }
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;    /**
+<i>94</i>&nbsp;     * When the user logs out
+<i>95</i>&nbsp;     *  Goes Back to log in screen
+<i>96</i>&nbsp;     */
+<i>97</i>&nbsp;    @Override
+<i>98</i>&nbsp;    public void logOut() {
+<b class="nc"><i>99</i>&nbsp;        Toast.makeText(this,</b>
+<i>100</i>&nbsp;                &quot;LOGGED OUT&quot;,
+<i>101</i>&nbsp;                Toast.LENGTH_SHORT)
+<b class="nc"><i>102</i>&nbsp;                .show();</b>
+<b class="nc"><i>103</i>&nbsp;        Intent intent = new Intent(OrganizerPageActivity.this, LoginActivity.class);</b>
+<b class="nc"><i>104</i>&nbsp;        startActivity(intent);</b>
+<i>105</i>&nbsp;    }
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;    /**
+<i>108</i>&nbsp;     * Overrides the back button so that a confirmation pop up shows asking the user to exit.
+<i>109</i>&nbsp;     */
+<i>110</i>&nbsp;    @Override
+<i>111</i>&nbsp;    public void onBackPressed() {
+<b class="nc"><i>112</i>&nbsp;            AlertDialog.Builder builder = new AlertDialog.Builder(OrganizerPageActivity.this);</b>
+<b class="nc"><i>113</i>&nbsp;            builder.setTitle(R.string.app_name);</b>
+<b class="nc"><i>114</i>&nbsp;            builder.setIcon(R.mipmap.ic_launcher);</b>
+<b class="nc"><i>115</i>&nbsp;            builder.setMessage(&quot;Are you sure you want to exit?&quot;)</b>
+<b class="nc"><i>116</i>&nbsp;                    .setCancelable(false)</b>
+<b class="nc"><i>117</i>&nbsp;                    .setPositiveButton(&quot;Yes&quot;, new DialogInterface.OnClickListener() {</b>
+<i>118</i>&nbsp;                        public void onClick(DialogInterface dialog, int id) {
+<b class="nc"><i>119</i>&nbsp;                            moveTaskToBack(true);</b>
+<b class="nc"><i>120</i>&nbsp;                            android.os.Process.killProcess(android.os.Process.myPid());</b>
+<b class="nc"><i>121</i>&nbsp;                            System.exit(1);</b>
+<i>122</i>&nbsp;                        }
+<i>123</i>&nbsp;                    })
+<b class="nc"><i>124</i>&nbsp;                    .setNegativeButton(&quot;No&quot;, new DialogInterface.OnClickListener() {</b>
+<i>125</i>&nbsp;                        public void onClick(DialogInterface dialog, int id) {
+<b class="nc"><i>126</i>&nbsp;                            dialog.cancel();</b>
+<i>127</i>&nbsp;                        }
+<i>128</i>&nbsp;                    });
+<b class="nc"><i>129</i>&nbsp;            AlertDialog alert = builder.create();</b>
+<b class="nc"><i>130</i>&nbsp;            alert.show();</b>
+<i>131</i>&nbsp;        }
+<i>132</i>&nbsp;
+<i>133</i>&nbsp;    /**
+<i>134</i>&nbsp;     * Shows a popup
+<i>135</i>&nbsp;     * @param layoutId the layout of the popup
+<i>136</i>&nbsp;     * @param msg the message of the popup
+<i>137</i>&nbsp;     * @param btn1 the first button
+<i>138</i>&nbsp;     * @param btn2 the second button
+<i>139</i>&nbsp;     * @return the AlertDialog that will be shown
+<i>140</i>&nbsp;     */
+<i>141</i>&nbsp;    @Override
+<i>142</i>&nbsp;    public AlertDialog showPopUp(int layoutId, String msg, int btn1, int btn2) {
+<b class="nc"><i>143</i>&nbsp;        AlertDialog.Builder builder = new AlertDialog.Builder(this);</b>
+<b class="nc"><i>144</i>&nbsp;        View customLayout = getLayoutInflater().inflate(layoutId, null);</b>
+<b class="nc"><i>145</i>&nbsp;        builder.setView(customLayout);</b>
+<b class="nc"><i>146</i>&nbsp;        AlertDialog dialog = builder.create();</b>
+<i>147</i>&nbsp;
+<b class="nc"><i>148</i>&nbsp;        TextView textMsg = (TextView) customLayout.findViewById(R.id.action_message);</b>
+<b class="nc"><i>149</i>&nbsp;        Button firstButton = (Button) customLayout.findViewById(btn1);</b>
+<b class="nc"><i>150</i>&nbsp;        Button secondButton = (Button) customLayout.findViewById(btn2);</b>
+<i>151</i>&nbsp;
+<b class="nc"><i>152</i>&nbsp;        textMsg.setText(msg);</b>
+<i>153</i>&nbsp;
+<b class="nc"><i>154</i>&nbsp;        firstButton.setOnClickListener(v-&gt;viewModel.getPresenter().onNoLogOut());</b>
+<b class="nc"><i>155</i>&nbsp;        secondButton.setOnClickListener(v-&gt;viewModel.getPresenter().onYesLogOut());</b>
+<i>156</i>&nbsp;
+<b class="nc"><i>157</i>&nbsp;        return dialog;</b>
+<i>158</i>&nbsp;    }
+<i>159</i>&nbsp;
+<i>160</i>&nbsp;    /**
+<i>161</i>&nbsp;     * When the user presses log out
+<i>162</i>&nbsp;     * a pop up shows asking for confirmation
+<i>163</i>&nbsp;     */
+<i>164</i>&nbsp;    @Override
+<i>165</i>&nbsp;    public void logOutConfirmation(){
+<b class="nc"><i>166</i>&nbsp;        POPUP_ACTION = showPopUp(R.layout.tournament_delete_popup, &quot;Do you really want to log out?&quot;, R.id.no_delete, R.id.yes_delete);</b>
+<b class="nc"><i>167</i>&nbsp;        POPUP_ACTION.show();</b>
+<i>168</i>&nbsp;
+<i>169</i>&nbsp;    }
+<i>170</i>&nbsp;
+<i>171</i>&nbsp;    /**
+<i>172</i>&nbsp;     * When the user presses no to the log out pop up
+<i>173</i>&nbsp;     * the pop up message dismisses
+<i>174</i>&nbsp;     */
+<i>175</i>&nbsp;    @Override
+<i>176</i>&nbsp;    public void noLogOut(){
+<b class="nc"><i>177</i>&nbsp;        POPUP_ACTION.dismiss();</b>
+<i>178</i>&nbsp;    }
+<i>179</i>&nbsp;
+<i>180</i>&nbsp;
+<i>181</i>&nbsp;    /**
+<i>182</i>&nbsp;     * Displays the desired pop up
+<i>183</i>&nbsp;     * @param layout the layout of the popup
+<i>184</i>&nbsp;     * @param msg the message of the popup
+<i>185</i>&nbsp;     * @param btn1 the first button
+<i>186</i>&nbsp;     * @param btn2 the second button
+<i>187</i>&nbsp;     */
+<i>188</i>&nbsp;    @Override
+<i>189</i>&nbsp;    public void displayPopUpAction(int layout, String msg, int btn1, int btn2) {
+<b class="nc"><i>190</i>&nbsp;        POPUP_ACTION = showPopUp(layout, msg, btn1, btn2);</b>
+<b class="nc"><i>191</i>&nbsp;        POPUP_ACTION.show();</b>
+<i>192</i>&nbsp;    }
+<i>193</i>&nbsp;
+<i>194</i>&nbsp;    /**
+<i>195</i>&nbsp;     * The pop up dismisses
+<i>196</i>&nbsp;     */
+<i>197</i>&nbsp;    @Override
+<i>198</i>&nbsp;    public void dismissPopUpAction() {
+<b class="nc"><i>199</i>&nbsp;        POPUP_ACTION.dismiss();</b>
+<i>200</i>&nbsp;    }
+<i>201</i>&nbsp;
+<i>202</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

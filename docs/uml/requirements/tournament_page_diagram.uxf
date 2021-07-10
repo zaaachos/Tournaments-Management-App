@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1107</x>
+      <y>63</y>
+      <w>387</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt; TournamentPageView
+--
+backToHomePage(flag : boolean, string : String) : void
+startTournamentGames() : void
+startTeamsParticipating() : void
+startTournamentInfo() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>252</x>
+      <y>153</y>
+      <w>612</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>TournamentPageActivity
+--
+~ btnHome : ImageButton
+~ btnTournamentGames : Button
+~ btnTournamentTeams : Button
+~ btnTournamentInfo : Button
+~ txtTournamentName : TextView
+~ tournamentName : String
+_- ORGANIZER_TITLE_EXTRA: String_
+_- PLAYER_USERNAME_EXTRA: String_
+_+ TOURNAMENT_TITLE_EXTRA: String_
+--
+# onCreate(savedInstanceState : Bundle) : void
++ startTournamentInfo() : void
++ startTeamsParticipating() : void
++ startTournamentGames() : void
++ backToHomePage(isPlayer : boolean, name : String) : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>333</x>
+      <y>693</y>
+      <w>324</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>TournamentPageViewModel
+--
++ TournamentPageViewModel()
++ getPresenter() : TournamentPagePresenter
+#  onCleared() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>801</x>
+      <y>594</y>
+      <w>603</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>TournamentPagePresenter
+--
+- tournament : Tournament
+- loggedInUser : LoggedInUser
+--
++ TournamentPagePresenter()
++ onTournamentInfo() : void
++ onTournamentTeams() : void
++ onTournamentGames() : void
++ setView(view : TournamentPageView) : void
++ clearView() : void
++ onHomePage() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>0</y>
+      <w>297</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>477</x>
+      <y>36</y>
+      <w>63</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>702</y>
+      <w>171</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>396</y>
+      <w>90</w>
+      <h>315</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>40.0;330.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>459</y>
+      <w>207</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>androidx.lifecycle.ViewModel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>108</x>
+      <y>486</y>
+      <w>324</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;340.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>855</x>
+      <y>117</y>
+      <w>270</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>280.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>999</x>
+      <y>162</y>
+      <w>225</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>230.0;10.0;10.0;480.0</additional_attributes>
+  </element>
+</diagram>

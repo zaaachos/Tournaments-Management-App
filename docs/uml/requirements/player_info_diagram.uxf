@@ -1,0 +1,65 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>910</x><y>200</y><w>390</w><h>270</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; PlayerInfoView
+--
+showPopUp(laoutId : int, msg : String, btn1 : int, btn2 : int)
+setUsername(username : String) : void
+setPassword(password : String) : void
+setName(name : String) : void
+setSurname(surname : String) : void
+setPhone(phone : String) : void
+setEmail(email : String) : void
+setLocation(location : String) : void
+setBirthDate(date : String) : void
+startEditPlayer() : void
+startDeletePlayer() : void
+showCantDelete() : void
+changesOfAccess() : void
+displayPopUp(laoutId : int, msg : String, btn1 : int, btn2 : int)
+dismissPopUp() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>220</x><y>130</y><w>470</w><h>380</h></coordinates><panel_attributes>PlayerInfoActivity
+--
+~ POPUP_DELETION : AlertDialog
+~ btnDeletePlayer : Button
+~ btnEditPlayer : Button
+~ playerUsername : String
+_- PLAYER_USERNAME_EXTRA: String_
+--
+# onCreate(savedInstanceState : Bundle) : void
++ showPopUp(laoutId : int, msg : String, btn1 : int, btn2 : int)
++ setUsername(username : String) : void
++ setPassword(password : String) : void
++ setName(name : String) : void
++ setSurname(surname : String) : void
++ setPhone(phone : String) : void
++ setEmail(email : String) : void
++ setLocation(location : String) : void
++ setBirthDate(date : String) : void
++ startEditPlayer() : void
++ startDeletePlayer() : void
++ showCantDelete() : void
++ changesOfAccess() : void
++ displayPopUp(laoutId : int, msg : String, btn1 : int, btn2 : int)
++ dismissPopUp() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>720</y><w>330</w><h>100</h></coordinates><panel_attributes>PlayerInfoViewModel
+--
++ PlayerInfoViewModel()
++ getPresenter() : PlayerInfoPresenter
+#  onCleared() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>640</y><w>420</w><h>250</h></coordinates><panel_attributes>PlayerInfoPresenter
+--
+- player : Player
+--
++ PlayerInfoPresenter()
++ findPlayerInfo(playerUsername : String) : void
++ findAccess() : void
++ onEditPlayer() : void
++ onDeletePlayer() : void
++ setPlayerDAO(playerDAO : PlayerDAO) : void
++ setLoggedInUser(loggedInUser : LoggedInUser) : void
++ onNoDeletePlayer() : void
++ onYesDeletePlayer() : void
++ displayPopUp(laoutId : int, msg : String, btn1 : int, btn2 : int)
++ setView(view : PlayerInfoView) : void
++ clearView() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>220</x><y>0</y><w>290</w><h>40</h></coordinates><panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>30</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>20;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>748</y><w>280</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>260;30;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>498</y><w>80</w><h>240</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;220;20;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>630</y><w>210</w><h>40</h></coordinates><panel_attributes>androidx.lifecycle.ViewModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>668</y><w>170</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;102</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>228</y><w>250</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>230;12;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>458</y><w>70</w><h>200</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>10;12;10;180</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>580</y><w>150</w><h>40</h></coordinates><panel_attributes>PlayerDAO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>598</y><w>140</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>120;10;10;42</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>690</y><w>150</w><h>40</h></coordinates><panel_attributes>LoggedInUser</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1230</x><y>668</y><w>140</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+περιέχει</panel_attributes><additional_attributes>120;40;10;12</additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>28</y><w>90</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>70;12;10;102</additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>0</y><w>210</w><h>40</h></coordinates><panel_attributes>fragment.TeamsListFragment</panel_attributes><additional_attributes></additional_attributes></element></diagram>

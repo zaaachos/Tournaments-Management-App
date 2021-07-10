@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>960</x>
+      <y>320</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt; GroupRankingsView
+--
+backToHomePage(title : String) : void
+getTeamsList() : ArrayList&lt;Team&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>300</y>
+      <w>470</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>GroupRankingsActivity
+--
+- btnHome : ImageButton
+- specificGroup: int
+- tournamentTitle: String
+_- ORGANIZER_TITLE_EXTRA: String_
+_- TOURNAMENT_TITLE_EXTRA: String_
+_- SPECIFIC_GROUP_EXTRA: String_
+_- TEAM_NAME_EXTRA: String_
+_- PLAYER_USERNAME_EXTRA: String_
+--
+# onCreate(savedInstanceState : Bundle) : void
++ onListFragmentInteraction(item : Team) : void
++ getTeamsList() : ArrayList&lt;Team&gt;
++ backToHomePage(isPlayer: boolean, name : String) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>720</y>
+      <w>330</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>GroupRankingsViewModel
+--
+
++ GroupRankingsViewModel()
++ getPresenter() : GroupRankingsPresenter
+#  onCleared() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>510</y>
+      <w>540</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>GroupRankingsPresenter
+--
+- tournaments : Tournament
+- results : ArrayList&lt;Team&gt;
+--
++ findTeams(tournamentName : String, specificGroup: int) : void
++ getResults() : ArrayList&lt;Team&gt;
++ setTournamentDAO(tournamentDAO : TournamentDAO) : void
++ setView(view : GroupRankingsView) : void
++ clearView() : void
++ onHomePage() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>140</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>170</y>
+      <w>30</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>630</y>
+      <w>190</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>570</y>
+      <w>90</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>500</y>
+      <w>210</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>androidx.lifecycle.ViewModel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>110</x>
+      <y>530</y>
+      <w>300</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;182.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>390</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>190.0;12.0;10.0;12.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1090</x>
+      <y>410</y>
+      <w>90</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>10.0;12.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1360</x>
+      <y>320</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>TournamentDAO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1270</x>
+      <y>330</y>
+      <w>130</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>120</y>
+      <w>300</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>fragment.TeamListFragment</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>160</y>
+      <w>90</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>70.0;12.0;10.0;132.0</additional_attributes>
+  </element>
+</diagram>

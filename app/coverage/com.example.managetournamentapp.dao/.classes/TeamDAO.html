@@ -1,0 +1,115 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TeamDAO</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.dao</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TeamDAO (com.example.managetournamentapp.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">TeamDAO</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.dao;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.domain.Team;
+<i>4</i>&nbsp;import com.example.managetournamentapp.domain.Tournament;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.util.ArrayList;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;/**
+<i>10</i>&nbsp; * Developed for the purposes of the Course &quot;Software Engineering&quot; at AUEB
+<i>11</i>&nbsp; * Athens University of Economics and Business
+<i>12</i>&nbsp; * 2020-2021
+<i>13</i>&nbsp; */
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;public interface TeamDAO {
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * Saves a specific team.
+<i>19</i>&nbsp;     *
+<i>20</i>&nbsp;     * @param entity Team to be saved.
+<i>21</i>&nbsp;     */
+<i>22</i>&nbsp;    void save(Team entity);
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    /**
+<i>25</i>&nbsp;     * Finds a specific team
+<i>26</i>&nbsp;     *
+<i>27</i>&nbsp;     * @param teamName Team name.
+<i>28</i>&nbsp;     * @return Team with the specific name.
+<i>29</i>&nbsp;     */
+<i>30</i>&nbsp;    Team find(String teamName);
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    /**
+<i>33</i>&nbsp;     * Finds all teams.
+<i>34</i>&nbsp;     *
+<i>35</i>&nbsp;     * @return All teams.
+<i>36</i>&nbsp;     */
+<i>37</i>&nbsp;    ArrayList&lt;Team&gt; findAll();
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    /**
+<i>40</i>&nbsp;     * Deletes a specific team.
+<i>41</i>&nbsp;     *
+<i>42</i>&nbsp;     * @param entity Team to be deleted.
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;    void delete(Team entity);
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    /**
+<i>47</i>&nbsp;     * Deletes all teams
+<i>48</i>&nbsp;     */
+<i>49</i>&nbsp;    void deleteAll();
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    /**
+<i>52</i>&nbsp;     * Find teams that are participating in the specified tournament.
+<i>53</i>&nbsp;     *
+<i>54</i>&nbsp;     * @param tournament Tournament in which we are searching for teams.
+<i>55</i>&nbsp;     * @return Teams that are participating.
+<i>56</i>&nbsp;     */
+<i>57</i>&nbsp;    public ArrayList&lt;Team&gt; findByTournament(Tournament tournament);
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    /**
+<i>60</i>&nbsp;     * Checks if title is used by another team
+<i>61</i>&nbsp;     *
+<i>62</i>&nbsp;     * @param title title input
+<i>63</i>&nbsp;     * @param team  current team
+<i>64</i>&nbsp;     * @return true if title used by another team
+<i>65</i>&nbsp;     */
+<i>66</i>&nbsp;    boolean TitleIsUsed(String title, Team team);
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

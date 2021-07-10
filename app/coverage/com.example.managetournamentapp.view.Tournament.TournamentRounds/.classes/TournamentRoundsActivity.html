@@ -1,0 +1,220 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TournamentRoundsActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Tournament.TournamentRounds</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TournamentRoundsActivity (com.example.managetournamentapp.view.Tournament.TournamentRounds)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TournamentRoundsActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 47)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Tournament.TournamentRounds;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.content.Intent;
+<i>4</i>&nbsp;import android.os.Bundle;
+<i>5</i>&nbsp;import android.view.View;
+<i>6</i>&nbsp;import android.widget.Button;
+<i>7</i>&nbsp;import android.widget.ImageButton;
+<i>8</i>&nbsp;import android.widget.TextView;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import androidx.appcompat.app.AppCompatActivity;
+<i>11</i>&nbsp;import androidx.lifecycle.ViewModelProvider;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import com.example.managetournamentapp.R;
+<i>14</i>&nbsp;import com.example.managetournamentapp.view.Organizer.OrganizerPage.OrganizerPageActivity;
+<i>15</i>&nbsp;import com.example.managetournamentapp.view.Player.PlayerPage.PlayerPageActivity;
+<i>16</i>&nbsp;import com.example.managetournamentapp.view.Tournament.RoundGames.RoundGamesActivity;
+<i>17</i>&nbsp;import com.example.managetournamentapp.view.Tournament.TournamentGroups.TournamentGroupsActivity;
+<i>18</i>&nbsp;import com.example.managetournamentapp.view.User.Browsing.BrowsingActivity;
+<i>19</i>&nbsp;
+<b class="nc"><i>20</i>&nbsp;public class TournamentRoundsActivity extends AppCompatActivity implements TournamentRoundsView {</b>
+<i>21</i>&nbsp;    public static final String TOURNAMENT_TITLE_EXTRA = &quot;tournament_title_extra&quot;;
+<i>22</i>&nbsp;    private static final String ROUND_TEAMS_EXTRA = &quot;round_teams_extra&quot; ;
+<i>23</i>&nbsp;    private static final String SPECIFIC_GROUP_EXTRA = &quot;specific_group_extra&quot; ;
+<i>24</i>&nbsp;    private static final String PLAYER_USERNAME_EXTRA = &quot;player_username_extra&quot;;
+<i>25</i>&nbsp;    private static final String ORGANIZER_TITLE_EXTRA = &quot;organizer_title_extra&quot;;
+<i>26</i>&nbsp;    private TournamentRoundsViewModel viewModel;
+<i>27</i>&nbsp;    String tournamentTitle;
+<i>28</i>&nbsp;    Button btnGroups;
+<i>29</i>&nbsp;    Button btn16;
+<i>30</i>&nbsp;    Button btn8;
+<i>31</i>&nbsp;    Button btnSemifinals;
+<i>32</i>&nbsp;    Button btnFinal;
+<i>33</i>&nbsp;    ImageButton btnHome;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * Creates the layout and initializes the activity
+<i>37</i>&nbsp;     * @param savedInstanceState the Instance state
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    @Override
+<i>40</i>&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<b class="nc"><i>41</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>42</i>&nbsp;        tournamentTitle = this.getIntent().getStringExtra(TOURNAMENT_TITLE_EXTRA);</b>
+<b class="nc"><i>43</i>&nbsp;        setContentView(R.layout.activity_tournament_rounds);</b>
+<b class="nc"><i>44</i>&nbsp;        TextView textView = (TextView) findViewById(R.id.text_tournament_name);</b>
+<b class="nc"><i>45</i>&nbsp;        textView.setText(tournamentTitle);</b>
+<i>46</i>&nbsp;
+<b class="nc"><i>47</i>&nbsp;        viewModel = new ViewModelProvider(this).get(TournamentRoundsViewModel.class);</b>
+<b class="nc"><i>48</i>&nbsp;        viewModel.getPresenter().setView(this);</b>
+<b class="nc"><i>49</i>&nbsp;        viewModel.getPresenter().findTournamentInfo(tournamentTitle);</b>
+<i>50</i>&nbsp;
+<b class="nc"><i>51</i>&nbsp;        btnGroups = findViewById(R.id.groups_button);</b>
+<b class="nc"><i>52</i>&nbsp;        btn16 = findViewById(R.id.round16_button);</b>
+<b class="nc"><i>53</i>&nbsp;        btn8 = findViewById(R.id.round8_button);</b>
+<b class="nc"><i>54</i>&nbsp;        btnSemifinals = findViewById(R.id.semifinals_button);</b>
+<b class="nc"><i>55</i>&nbsp;        btnFinal = findViewById(R.id.final_button);</b>
+<b class="nc"><i>56</i>&nbsp;        btnHome = findViewById(R.id.imageButton);</b>
+<i>57</i>&nbsp;
+<b class="nc"><i>58</i>&nbsp;        viewModel.getPresenter().findAccess();</b>
+<i>59</i>&nbsp;
+<b class="nc"><i>60</i>&nbsp;        btnGroups.setOnClickListener(v -&gt; viewModel.getPresenter().onGroups());</b>
+<b class="nc"><i>61</i>&nbsp;        btn16.setOnClickListener(v -&gt; viewModel.getPresenter().on16());</b>
+<b class="nc"><i>62</i>&nbsp;        btn8.setOnClickListener(v -&gt; viewModel.getPresenter().on8());</b>
+<b class="nc"><i>63</i>&nbsp;        btnSemifinals.setOnClickListener(v -&gt; viewModel.getPresenter().onSemifinals());</b>
+<b class="nc"><i>64</i>&nbsp;        btnFinal.setOnClickListener(v -&gt; viewModel.getPresenter().onFinal());</b>
+<b class="nc"><i>65</i>&nbsp;        btnHome.setOnClickListener(v -&gt; viewModel.getPresenter().onHomePage());</b>
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    }
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    /**
+<i>70</i>&nbsp;     * hide the button of a round
+<i>71</i>&nbsp;     * if this round doesn&#39;t exist in the tournament
+<i>72</i>&nbsp;     * @param teamsNumber the number of teams in the tournament
+<i>73</i>&nbsp;     */
+<i>74</i>&nbsp;    @Override
+<i>75</i>&nbsp;    public void changesOfAccess(int teamsNumber) {
+<b class="nc"><i>76</i>&nbsp;        if (teamsNumber == 8){</b>
+<b class="nc"><i>77</i>&nbsp;            btn8.setVisibility(View.GONE);</b>
+<b class="nc"><i>78</i>&nbsp;            btn16.setVisibility(View.GONE);</b>
+<b class="nc"><i>79</i>&nbsp;        }else if (teamsNumber==16){</b>
+<b class="nc"><i>80</i>&nbsp;            btn16.setVisibility(View.GONE);</b>
+<i>81</i>&nbsp;        }
+<i>82</i>&nbsp;    }
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    /**
+<i>85</i>&nbsp;     * when a player presses on the button of a round
+<i>86</i>&nbsp;     * apart from the group stage round
+<i>87</i>&nbsp;     * @param tournamentTitle the title of the tournament
+<i>88</i>&nbsp;     * @param roundTeamsNumber the number of teams in the round
+<i>89</i>&nbsp;     */
+<i>90</i>&nbsp;    @Override
+<i>91</i>&nbsp;    public void showRoundGames(String tournamentTitle, int roundTeamsNumber){
+<b class="nc"><i>92</i>&nbsp;        Intent intent = new Intent(TournamentRoundsActivity.this, RoundGamesActivity.class);</b>
+<b class="nc"><i>93</i>&nbsp;        intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);</b>
+<b class="nc"><i>94</i>&nbsp;        intent.putExtra(ROUND_TEAMS_EXTRA, String.valueOf(roundTeamsNumber));</b>
+<b class="nc"><i>95</i>&nbsp;        intent.putExtra(SPECIFIC_GROUP_EXTRA, String.valueOf(-1));</b>
+<b class="nc"><i>96</i>&nbsp;        startActivity(intent);</b>
+<i>97</i>&nbsp;    }
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    /**
+<i>100</i>&nbsp;     * when the &quot;groups&quot; button is pressed,
+<i>101</i>&nbsp;     * the user wants to explore the &quot;group&quot; stage (1st round)
+<i>102</i>&nbsp;     * the tournament groups activity starts
+<i>103</i>&nbsp;     */
+<i>104</i>&nbsp;    @Override
+<i>105</i>&nbsp;    public void showGroups(String tournamentTitle, int roundTeamsNumber){
+<b class="nc"><i>106</i>&nbsp;        Intent intent = new Intent(TournamentRoundsActivity.this, TournamentGroupsActivity.class);</b>
+<b class="nc"><i>107</i>&nbsp;        intent.putExtra(TOURNAMENT_TITLE_EXTRA, tournamentTitle);</b>
+<b class="nc"><i>108</i>&nbsp;        startActivity(intent);</b>
+<i>109</i>&nbsp;    }
+<i>110</i>&nbsp;
+<i>111</i>&nbsp;    /**
+<i>112</i>&nbsp;     * what happens when the homepage button is pressed
+<i>113</i>&nbsp;     * @param noLogin boolean parameter, if true the user has not logged in
+<i>114</i>&nbsp;     * @param isPlayer boolean parameter,if true the user is a player
+<i>115</i>&nbsp;     * @param name name of the player or title of the organizer
+<i>116</i>&nbsp;     */
+<i>117</i>&nbsp;    @Override
+<i>118</i>&nbsp;    public void backToHomePage(boolean noLogin, boolean isPlayer, String name) {
+<b class="nc"><i>119</i>&nbsp;        if (noLogin){</b>
+<b class="nc"><i>120</i>&nbsp;            Intent intent = new Intent(this, BrowsingActivity.class);</b>
+<b class="nc"><i>121</i>&nbsp;            startActivity(intent);</b>
+<b class="nc"><i>122</i>&nbsp;        }</b>
+<b class="nc"><i>123</i>&nbsp;        else if (isPlayer){</b>
+<b class="nc"><i>124</i>&nbsp;            Intent intent = new Intent(this, PlayerPageActivity.class);</b>
+<b class="nc"><i>125</i>&nbsp;            intent.putExtra(PLAYER_USERNAME_EXTRA,name);</b>
+<b class="nc"><i>126</i>&nbsp;            startActivity(intent);</b>
+<b class="nc"><i>127</i>&nbsp;        }</b>
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;        else{
+<b class="nc"><i>130</i>&nbsp;            Intent intent = new Intent (this, OrganizerPageActivity.class);</b>
+<b class="nc"><i>131</i>&nbsp;            intent.putExtra(ORGANIZER_TITLE_EXTRA, name);</b>
+<b class="nc"><i>132</i>&nbsp;            startActivity(intent);</b>
+<i>133</i>&nbsp;        }
+<i>134</i>&nbsp;    }
+<i>135</i>&nbsp;
+<i>136</i>&nbsp;
+<i>137</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

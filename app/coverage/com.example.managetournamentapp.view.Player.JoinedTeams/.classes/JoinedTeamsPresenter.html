@@ -1,0 +1,184 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: JoinedTeamsPresenter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Player.JoinedTeams</a> ]
+</div>
+
+<h1>Coverage Summary for Class: JoinedTeamsPresenter (com.example.managetournamentapp.view.Player.JoinedTeams)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">JoinedTeamsPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90%
+  </span>
+  <span class="absValue">
+    (9/ 10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84.6%
+  </span>
+  <span class="absValue">
+    (22/ 26)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Player.JoinedTeams;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.dao.LoggedInUser;
+<i>4</i>&nbsp;import com.example.managetournamentapp.dao.PlayerDAO;
+<i>5</i>&nbsp;import com.example.managetournamentapp.dao.TeamDAO;
+<i>6</i>&nbsp;import com.example.managetournamentapp.domain.Player;
+<i>7</i>&nbsp;import com.example.managetournamentapp.domain.Team;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import java.util.ArrayList;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public class JoinedTeamsPresenter {
+<i>12</i>&nbsp;    private JoinedTeamsView view;
+<i>13</i>&nbsp;    private TeamDAO teamDAO;
+<b class="fc"><i>14</i>&nbsp;    private Player player = null;</b>
+<i>15</i>&nbsp;    private PlayerDAO playerDAO;
+<b class="fc"><i>16</i>&nbsp;    private ArrayList&lt;Team&gt; results = new ArrayList&lt;&gt;();</b>
+<i>17</i>&nbsp;    private LoggedInUser loggedInUser;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * default constructor
+<i>21</i>&nbsp;     */
+<b class="fc"><i>22</i>&nbsp;    public JoinedTeamsPresenter(){}</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    /**
+<i>25</i>&nbsp;     * find the teams that the player has joined
+<i>26</i>&nbsp;     * @param playerUsername the username of the player
+<i>27</i>&nbsp;     */
+<i>28</i>&nbsp;    public void findJoinedTeams(String playerUsername){
+<b class="fc"><i>29</i>&nbsp;        if (playerUsername==null)</b>
+<b class="nc"><i>30</i>&nbsp;            return;</b>
+<b class="fc"><i>31</i>&nbsp;        player = playerDAO.find(playerUsername);</b>
+<b class="fc"><i>32</i>&nbsp;        if( player == null )</b>
+<b class="nc"><i>33</i>&nbsp;            return;</b>
+<i>34</i>&nbsp;
+<b class="fc"><i>35</i>&nbsp;        results.clear();</b>
+<b class="fc"><i>36</i>&nbsp;        results.addAll(player.getTeamsJoined());</b>
+<b class="fc"><i>37</i>&nbsp;    }</b>
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    /**
+<i>40</i>&nbsp;     * get the teams that the player has joined
+<i>41</i>&nbsp;     * @return the ArrayList of teams
+<i>42</i>&nbsp;     */
+<i>43</i>&nbsp;    public ArrayList&lt;Team&gt; getResults() {
+<b class="fc"><i>44</i>&nbsp;        return results;</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    /**
+<i>48</i>&nbsp;     * show the page of a team creation
+<i>49</i>&nbsp;     */
+<i>50</i>&nbsp;    public void onAddTeam(){
+<b class="fc"><i>51</i>&nbsp;        view.startAddTeam();</b>
+<b class="fc"><i>52</i>&nbsp;    }</b>
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    /**
+<i>55</i>&nbsp;     * set a new view
+<i>56</i>&nbsp;     * @param view the new view
+<i>57</i>&nbsp;     */
+<i>58</i>&nbsp;    public void setView(JoinedTeamsView view) {
+<b class="fc"><i>59</i>&nbsp;        this.view = view;</b>
+<b class="fc"><i>60</i>&nbsp;    }</b>
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    /**
+<i>63</i>&nbsp;     * clear the view
+<i>64</i>&nbsp;     */
+<i>65</i>&nbsp;    public void clearView(){
+<b class="nc"><i>66</i>&nbsp;        this.view = null;</b>
+<b class="nc"><i>67</i>&nbsp;    }</b>
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    /**
+<i>70</i>&nbsp;     * set the playerDAO
+<i>71</i>&nbsp;     * @param playerDAO the new PlayerDAO
+<i>72</i>&nbsp;     */
+<i>73</i>&nbsp;    public void setPlayerDAO(PlayerDAO playerDAO) {
+<b class="fc"><i>74</i>&nbsp;        this.playerDAO = playerDAO;</b>
+<b class="fc"><i>75</i>&nbsp;    }</b>
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    /**
+<i>78</i>&nbsp;     * set the teamDAO
+<i>79</i>&nbsp;     * @param teamDAO the new TeamDAO
+<i>80</i>&nbsp;     */
+<i>81</i>&nbsp;    public void setTeamDAO(TeamDAO teamDAO) {
+<b class="fc"><i>82</i>&nbsp;        this.teamDAO = teamDAO;</b>
+<b class="fc"><i>83</i>&nbsp;    }</b>
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    /**
+<i>86</i>&nbsp;     * set the logged in user
+<i>87</i>&nbsp;     * @param loggedInUser the logged in user
+<i>88</i>&nbsp;     */
+<i>89</i>&nbsp;    public void setLoggedInUser(LoggedInUser loggedInUser) {
+<b class="fc"><i>90</i>&nbsp;        this.loggedInUser = loggedInUser;</b>
+<b class="fc"><i>91</i>&nbsp;    }</b>
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;    /**
+<i>94</i>&nbsp;     * what happens when the homepage button is pressed
+<i>95</i>&nbsp;     */
+<i>96</i>&nbsp;    public void onHomePage(){
+<b class="fc"><i>97</i>&nbsp;        view.backToHomePage();</b>
+<b class="fc"><i>98</i>&nbsp;    }</b>
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;
+<i>101</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>

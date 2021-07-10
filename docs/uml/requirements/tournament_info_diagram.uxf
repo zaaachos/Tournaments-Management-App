@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>938</x>
+      <y>210</y>
+      <w>301</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt; TournamentInfoView
+--
+ showToast(txt : String) : void
+ yesDeleteTournament( title : String) : void
+ noDeleteTournament() : void
+ deleteConfirmation() : void
+ changesOfAccess() : void
+ startEditTournament() : void
+ setDescription(description : String) : void
+ setAgeDivision(ageDivision : String) : void
+ setTitle(title : String) : void
+ setsportType(sportType : String) : void
+ setFinishDate(finishDate : String) : void
+ setStartDate(startDate : String) : void
+ setLocation(location : String) : void
+ setTeamsNumber(teamsNumber : String) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>245</x>
+      <y>273</y>
+      <w>476</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>TournamentInfoActivity
+--
+_- POPUP_ACTION: AlertDialog_
+- btnDeleteTournament : Button
+- btnEditTournament : Button
+- tournamentName : String
+_- ORGANIZER_TITLE_EXTRA: String_
+_+ TOURNAMENT_TITLE_EXTRA: String_
+--
+# onCreate(savedInstanceState : Bundle) : void
++ setTeamsNUmber(teamsNumber : String) : void
++ setLocation(Location : String) : void
++ setStartDate(startDat : String) : void
++ setFInishDate(finishDate : String) : void
++ setsportType(sportType : String) : void
++ setTitle(title : String) : void
++ setAgeDivision(ageDivision : String) : void
++ setDescription(description : String) : void
++ startEditTournament() : void
++ yesDeleteTournament(title : String) : void
++ showToast(txt : String) : void
++ noDeleteTournament() : void
++ changesOfAccess() : void
++ deleteConfirmation() : void
++ showPopUp(layoutId : int, msg : String, btn1: int, btn2 : int) : AlertDialog
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>308</x>
+      <y>693</y>
+      <w>252</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>TournamentInfoViewModel
+--
++ TournamentInfoViewModel()
++ getPresenter() : TournamentInfoPresenter
+#  onCleared() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>672</x>
+      <y>616</y>
+      <w>469</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>TournamentInfoPresenter
+--
+- tournament : Tournament
+- loggedInUser : LoggedInUser
+--
++ TournamentInfoPresenter()
++ findTournamentInfo(tournamentName : String) : void
++ findAccess() : void
++ onEditTournament() : void
++ onDeleteTournament() : void
++ onYesDeleteTournament() : void
++ onNoDeleteTournament() : void
++ setLoggedInUser(loggedInUser : LoggedInUser) : void
++ setTournamentDAO(tournamentDAO : TournamentDAO) : void
++ setView(view : TournamentGroupsView) : void
++ clearView() : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>322</x>
+      <y>161</y>
+      <w>231</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>androidx.appcompat.app.AppCompatActivity</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>448</x>
+      <y>189</y>
+      <w>21</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>553</x>
+      <y>707</y>
+      <w>133</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>427</x>
+      <y>560</y>
+      <w>70</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>40.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1036</x>
+      <y>476</y>
+      <w>105</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>TournamentDAO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>49</x>
+      <y>511</y>
+      <w>161</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>androidx.lifecycle.ViewModel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>133</x>
+      <y>532</y>
+      <w>252</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;340.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1029</x>
+      <y>497</y>
+      <w>84</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>714</x>
+      <y>252</y>
+      <w>238</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>320.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>392</y>
+      <w>203</w>
+      <h>238</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+περιέχει</panel_attributes>
+    <additional_attributes>270.0;10.0;10.0;320.0</additional_attributes>
+  </element>
+</diagram>

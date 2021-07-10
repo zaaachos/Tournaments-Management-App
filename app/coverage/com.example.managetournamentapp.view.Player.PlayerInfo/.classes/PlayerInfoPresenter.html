@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PlayerInfoPresenter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Player.PlayerInfo</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PlayerInfoPresenter (com.example.managetournamentapp.view.Player.PlayerInfo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PlayerInfoPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91.7%
+  </span>
+  <span class="absValue">
+    (11/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91.1%
+  </span>
+  <span class="absValue">
+    (41/ 45)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Player.PlayerInfo;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.managetournamentapp.R;
+<i>4</i>&nbsp;import com.example.managetournamentapp.dao.LoggedInUser;
+<i>5</i>&nbsp;import com.example.managetournamentapp.dao.PlayerDAO;
+<i>6</i>&nbsp;import com.example.managetournamentapp.domain.Player;
+<i>7</i>&nbsp;import com.example.managetournamentapp.memoryDao.MemoryLoggedInUser;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import java.time.format.DateTimeFormatter;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public class PlayerInfoPresenter {
+<i>12</i>&nbsp;    private PlayerInfoView view;
+<i>13</i>&nbsp;    private Player player;
+<i>14</i>&nbsp;    private PlayerDAO playerDAO;
+<i>15</i>&nbsp;    private LoggedInUser loggedInUser;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * default constructor
+<i>19</i>&nbsp;     */
+<b class="fc"><i>20</i>&nbsp;    public PlayerInfoPresenter() { }</b>
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    /**
+<i>23</i>&nbsp;     * find the info of the player
+<i>24</i>&nbsp;     * @param playerUsername the username of the player
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    public void findPlayerInfo(String playerUsername) {
+<b class="fc"><i>27</i>&nbsp;        if (playerUsername == null)</b>
+<b class="nc"><i>28</i>&nbsp;            return;</b>
+<b class="fc"><i>29</i>&nbsp;        player = playerDAO.find(playerUsername);</b>
+<b class="fc"><i>30</i>&nbsp;        if (player == null)</b>
+<b class="nc"><i>31</i>&nbsp;            return;</b>
+<i>32</i>&nbsp;
+<b class="fc"><i>33</i>&nbsp;        view.setUsername(player.getCredentials().getUsername());</b>
+<b class="fc"><i>34</i>&nbsp;        view.setPassword(player.getCredentials().getPassword());</b>
+<b class="fc"><i>35</i>&nbsp;        view.setName(player.getName());</b>
+<b class="fc"><i>36</i>&nbsp;        view.setSurname(player.getSurname());</b>
+<b class="fc"><i>37</i>&nbsp;        view.setPhone(player.getPhoneNumber());</b>
+<b class="fc"><i>38</i>&nbsp;        view.setEmail(player.getEmail());</b>
+<b class="fc"><i>39</i>&nbsp;        view.setLocation(player.getLocation());</b>
+<b class="fc"><i>40</i>&nbsp;        view.setBirthDate(player.getBirthDate().format(DateTimeFormatter.ofPattern(&quot;dd-MM-yyyy&quot;)).replace(&quot;-&quot;, &quot;/&quot;));</b>
+<b class="fc"><i>41</i>&nbsp;    }</b>
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    /**
+<i>44</i>&nbsp;     * the account can be edited or deleted only by the player
+<i>45</i>&nbsp;     * how owns it
+<i>46</i>&nbsp;     */
+<i>47</i>&nbsp;    public void findAccess() {
+<b class="fc"><i>48</i>&nbsp;        if (loggedInUser.getUser() != null)</b>
+<b class="fc"><i>49</i>&nbsp;            if (loggedInUser.getUser() instanceof Player)</b>
+<b class="fc"><i>50</i>&nbsp;                if (((Player) loggedInUser.getUser()).equals(player))</b>
+<b class="fc"><i>51</i>&nbsp;                    return;</b>
+<b class="fc"><i>52</i>&nbsp;        view.changesOfAccess();</b>
+<b class="fc"><i>53</i>&nbsp;    }</b>
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    /**
+<i>56</i>&nbsp;     * when the player decides to edit his account
+<i>57</i>&nbsp;     * the register player activity is started
+<i>58</i>&nbsp;     */
+<i>59</i>&nbsp;    public void onEditPlayer() {
+<b class="fc"><i>60</i>&nbsp;        view.startEditPlayer();</b>
+<b class="fc"><i>61</i>&nbsp;    }</b>
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    /**
+<i>65</i>&nbsp;     * when the player decides to delete his account
+<i>66</i>&nbsp;     */
+<i>67</i>&nbsp;    public void onDeletePlayer() {
+<b class="fc"><i>68</i>&nbsp;        if (player.getTeamsJoined().size() &gt; 0) {</b>
+<b class="fc"><i>69</i>&nbsp;            view.showCantDelete();</b>
+<b class="fc"><i>70</i>&nbsp;            return;</b>
+<i>71</i>&nbsp;        }
+<b class="fc"><i>72</i>&nbsp;        displayPopUp(R.layout.player_delete_popup, &quot;Do you really want to delete your account?&quot;, R.id.no_delete, R.id.yes_delete);</b>
+<i>73</i>&nbsp;
+<b class="fc"><i>74</i>&nbsp;    }</b>
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    /**
+<i>77</i>&nbsp;     * set the playerDAO
+<i>78</i>&nbsp;     * @param playerDAO the new PlayerDAO
+<i>79</i>&nbsp;     */
+<i>80</i>&nbsp;    public void setPlayerDAO(PlayerDAO playerDAO) {
+<b class="fc"><i>81</i>&nbsp;        this.playerDAO = playerDAO;</b>
+<b class="fc"><i>82</i>&nbsp;    }</b>
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    /**
+<i>85</i>&nbsp;     * set the logged in user
+<i>86</i>&nbsp;     * @param loggedInUser the logged in user
+<i>87</i>&nbsp;     */
+<i>88</i>&nbsp;    public void setLoggedInUser(LoggedInUser loggedInUser) {
+<b class="fc"><i>89</i>&nbsp;        this.loggedInUser = loggedInUser;</b>
+<b class="fc"><i>90</i>&nbsp;    }</b>
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    /**
+<i>93</i>&nbsp;     * set a new view
+<i>94</i>&nbsp;     * @param view the new view
+<i>95</i>&nbsp;     */
+<i>96</i>&nbsp;    public void setView(PlayerInfoView view) {
+<b class="fc"><i>97</i>&nbsp;        this.view = view;</b>
+<b class="fc"><i>98</i>&nbsp;    }</b>
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;    /**
+<i>101</i>&nbsp;     * clear the view
+<i>102</i>&nbsp;     */
+<i>103</i>&nbsp;    public void clearView() {
+<b class="nc"><i>104</i>&nbsp;        this.view = null;</b>
+<b class="nc"><i>105</i>&nbsp;    }</b>
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;    /**
+<i>108</i>&nbsp;     * when the player doesn&#39;t verify the deletion
+<i>109</i>&nbsp;     */
+<i>110</i>&nbsp;    public void onNoDeletePlayer() {
+<b class="fc"><i>111</i>&nbsp;        view.dismissPopUp();</b>
+<b class="fc"><i>112</i>&nbsp;    }</b>
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;    /**
+<i>115</i>&nbsp;     * when the player verifies the deletion
+<i>116</i>&nbsp;     */
+<i>117</i>&nbsp;    public void onYesDeletePlayer() {
+<b class="fc"><i>118</i>&nbsp;        playerDAO.delete(player);</b>
+<b class="fc"><i>119</i>&nbsp;        (new MemoryLoggedInUser()).clear();</b>
+<b class="fc"><i>120</i>&nbsp;        view.dismissPopUp();</b>
+<b class="fc"><i>121</i>&nbsp;        view.startDeletePlayer();</b>
+<b class="fc"><i>122</i>&nbsp;    }</b>
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;    /**
+<i>125</i>&nbsp;     * close the deletion popup
+<i>126</i>&nbsp;     */
+<i>127</i>&nbsp;    public void displayPopUp(int layout, String msg, int btn1, int btn2) {
+<b class="fc"><i>128</i>&nbsp;        view.displayPopUp(layout, msg, btn1, btn2);</b>
+<b class="fc"><i>129</i>&nbsp;    }</b>
+<i>130</i>&nbsp;
+<i>131</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:42</div>
+</div>
+</body>
+</html>

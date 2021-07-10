@@ -1,0 +1,91 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TournamentGroupsView</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.managetournamentapp.view.Tournament.TournamentGroups</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TournamentGroupsView (com.example.managetournamentapp.view.Tournament.TournamentGroups)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">TournamentGroupsView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.managetournamentapp.view.Tournament.TournamentGroups;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;public interface TournamentGroupsView {
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;    /**
+<i>6</i>&nbsp;     * hide the button of a group
+<i>7</i>&nbsp;     * if this group doesn&#39;t exist in the tournament
+<i>8</i>&nbsp;     * @param groupsNumber the number of groups in the first round
+<i>9</i>&nbsp;     */
+<i>10</i>&nbsp;    void changesOfAccess(int groupsNumber);
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * show the games of a group
+<i>14</i>&nbsp;     * @param tournamentTitle the title of the tournament
+<i>15</i>&nbsp;     * @param roundTeamsNumber the number of the teams in this round
+<i>16</i>&nbsp;     * @param index the index of the particular group
+<i>17</i>&nbsp;     */
+<i>18</i>&nbsp;    void showGroupGames(String tournamentTitle, int roundTeamsNumber, int index);
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    /**
+<i>21</i>&nbsp;     * show the rankings of the teams in a group
+<i>22</i>&nbsp;     * @param tournamentTitle the title of the tournament
+<i>23</i>&nbsp;     * @param roundTeamsNumber the number of the teams in this round
+<i>24</i>&nbsp;     * @param index the index of the particular group
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    void showGroupRankings(String tournamentTitle, int roundTeamsNumber, int index);
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * when the user presses on a group
+<i>30</i>&nbsp;     * a popup is shown, where he can choose to view the
+<i>31</i>&nbsp;     * games or the rankings of this group
+<i>32</i>&nbsp;     * @param index the index of the group that was pressed
+<i>33</i>&nbsp;     */
+<i>34</i>&nbsp;    void showPopup(int index);
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    /**
+<i>37</i>&nbsp;     * what happens when the homepage button is pressed
+<i>38</i>&nbsp;     * @param noLogin boolean parameter, if true the user has not logged in
+<i>39</i>&nbsp;     * @param isPlayer boolean parameter,if true the user is a player
+<i>40</i>&nbsp;     * @param name name of the player or title of the organizer
+<i>41</i>&nbsp;     */
+<i>42</i>&nbsp;    void backToHomePage(boolean noLogin, boolean isPlayer, String name);
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-06-08 20:43</div>
+</div>
+</body>
+</html>
